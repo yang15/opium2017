@@ -1,0 +1,6 @@
+atom/do_ae.c:      hfsolve_(&param->z,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&iprint);
+atom/do_nl.c:void hfsolve_(double  *, int * ,double *, int * , int *, int *, int *, int *);
+atom/do_nl.c:    hfsolve_(&zeff,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&iprint);
+atom/do_tc.c:void hfsolve_(double  *, int * ,double *, int * , int *, int *, int *, int *);
+atom/do_tc.c:	hfsolve_(&param->z,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&iprint);
+atom/do_tc.c:      hfsolve_(&zeff,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&iprint);

@@ -31,7 +31,7 @@
 #include "energy.h"           /* this is for saving the energies */
 
 /* report feature */
-//comment by JY hfsolve_ defined here
+
 static char report[8000];
 void nrelorbnl(param_t *param, int, char *); 
 char * write_reportnl(param_t *param, char *rp,int,double temp_eigen[], double temp_norm[], int, int);
