@@ -45,7 +45,6 @@ c along with this program; if not, write to the Free Software
 c Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 c
 c
-*    1/n*sqrt(Z*(n-l-1)!*(n+l)!) the loop is amazing!!
       double precision function hnorm(n,l,zs)
       implicit double precision(a-h,o-z)
 #include "fortdim.h"
@@ -75,8 +74,6 @@ c
 *   with nuclear charge ZZ and radius r.
 *   hwf stands for hydrogenic wavefunction, equations are in page 4 of 
 *   Fisher's book.
-*   the sum part of the Laguerre polynomials P(nl;r) computed by the
-*   loop  
 *
       double precision function hwf(n,l,zs,r)
       implicit double precision(a-h,o-z)
