@@ -1,13 +1,5 @@
-atom/hfde.F:               rx=quadr(m,j,0)
-atom/hfde.F:         rx=dsqrt(quadr(m,m,0))
-atom/hfenergy.F:            rm1(i) = z*quadr(i,i,-1)
-atom/hfsolve.F:               rx=quadr(i,j,0)
-atom/hfuncs.F:      double precision function quadr(i,j,k)
-atom/hfuncs.F:      quadr = h1*(d + 2.d0*dd)
-atom/hfuncs.F:               c = quadr(i,j,0)
-atom/hfuncs.F:            pnn = dsqrt(quadr(i,i,0))
-pseudo/cq.F:c     regions in which quadratures are applied.
-pseudo/dij.F:c q**4 * b(i,...) * b(j,...) dq by gaussian quadrature.
-pseudo/dij.F:c b(i,...) at all the gaussian quadrature points.
-pseudo/ei.F:c q**4 * bi(q) * c(q) using gaussian quadrature.
-pseudo/ginteg.F:c q**4 * c(q)**2 using gaussian quadrature.
+main/opium.c:#include "do_ae.h"
+main/opium.c:    do_ae(param, logfile);
+main/opium.c:    if (verbosity) do_ae_report(stdout);
+main/opium.c:    do_ae_report(fp);
+main/opium.c:    do_ae(param, logfile); if (verbosity) do_ae_report(stdout);
