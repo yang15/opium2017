@@ -17,3 +17,8 @@ schsl(iorb,nqn,lang,ei,imax,rv,p,igh,ibound)
   nqn  : n-quantum number of orbital iorb ?
   lang : l-quantum number of orbital iorb ?
   ei : energy of orbital iorb ?
+  imax : ?
+  rv : some potential ?
+  p : output wavefunction 
+  igh : ?
+  ibound : ?

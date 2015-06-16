@@ -300,6 +300,10 @@ c     if AE or local
                      call schsl(m,no(m),lo(m),en(m),nmax(m),
      $                    rvps(1,m),p,igh,ibound)
 
+                     ! LZT : for AE Hatree-Fock, here we should apply 
+                     ! the Fock operator to wavefunction m, and store
+                     ! the result in p.
+
                      if (itermcount.gt.10) goto 911
 c     911 = terminal error - exit scpot
                      
