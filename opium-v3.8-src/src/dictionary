@@ -12,7 +12,7 @@ no(m) : n-quantum number of orbital m ?
 lo(m) : l-quantum number of orbital m ?
 en(m) : energy of orbital m ?
 
-schsl(iorb,nqn,lang,ei,imax,rv,p,igh,ibound)
+subroutine schsl(iorb,nqn,lang,ei,imax,rv,p,igh,ibound)
   iorb : orbital index
   nqn  : n-quantum number of orbital iorb ?
   lang : l-quantum number of orbital iorb ?
@@ -22,3 +22,14 @@ schsl(iorb,nqn,lang,ei,imax,rv,p,igh,ibound)
   p : output wavefunction 
   igh : ?
   ibound : ?
+
+subroutine hfmethd(m,ipsp,p,zeff,azz,fail,iprint)
+  m : orbital index
+  ipsp : ?
+  p : output wavefunction
+  zeff = z - s, where s = screening parameter
+  azz : ?
+  fail : .true. if the calculation fails
+  iprint : ?
+  
+

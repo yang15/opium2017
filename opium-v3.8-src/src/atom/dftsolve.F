@@ -300,9 +300,30 @@ c     if AE or local
                      call schsl(m,no(m),lo(m),en(m),nmax(m),
      $                    rvps(1,m),p,igh,ibound)
 
-                     ! LZT : for AE Hatree-Fock, here we should apply 
+                     ! LZT : for AE Hartree-Fock, here we should apply 
                      ! the Fock operator to wavefunction m, and store
                      ! the result in p.
+
+                     !if (todohf)
+                     !  ... prepare HF calculation ...
+                     !  call hfmethd(m,ipsp,p,zeff,azz,fail,iprint)
+                     !enddo
+
+                     ! LZT: For hybrid functionals, we apply Kohn-Sham
+                     ! operator to current wavefunction, and apply Fock
+                     ! operator to current wavefunction, and take a
+                     ! weighted sum of the two
+
+                     !if (todohybrid)
+                     !
+                     !  call schsl(m,no(m),lo(m),en(m),nmax(m),rvps(1,m),pdft,igh,ibound)
+                     !  ... prepare HF calculation ...
+                     !  call hfmethd(m,ipsp,phf,zeff,azz,fail,iprint)
+                     !  p = exxweight*phf + (1.0-exxweight) * pdft
+                     !
+                     !endif
+
+
 
                      if (itermcount.gt.10) goto 911
 c     911 = terminal error - exit scpot
