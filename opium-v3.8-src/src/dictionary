@@ -12,6 +12,11 @@ no(m) : n-quantum number of orbital m ?
 lo(m) : l-quantum number of orbital m ?
 en(m) : energy of orbital m ?
 
+ipsp : controls whether to do all-electron calculation
+  ipsp = 0 : do ae calculation 
+
+yk : an energy integral defined in Fisher's book (page 23).
+
 subroutine schsl(iorb,nqn,lang,ei,imax,rv,p,igh,ibound)
   iorb : orbital index
   nqn  : n-quantum number of orbital iorb ?
@@ -32,4 +37,5 @@ subroutine hfmethd(m,ipsp,p,zeff,azz,fail,iprint)
   fail : .true. if the calculation fails
   iprint : ?
   
-
+function quads2
+  computes Slater F and G integrals
