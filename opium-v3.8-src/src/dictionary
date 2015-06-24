@@ -22,8 +22,11 @@ ijptr(i,j) : gives the index of coeff corresponding to orbital i and j
 
 acc : mixing parameter for convergence procedure
 
-wnl : where is this initialized?
-en : where is this initialized?
+wnl(i) : This appears to be the occupation number for orbital i, set in the input file
+en(i) : This appears to be the energy eigenvalue guess for orbital i, set in the input file
+
+r(i) : a logarithmic grid. The points are {1, exp(h), exp(2h), exp(3h), ...}
+h : controls the spacing of the logarithmic grid
 
 subroutine schsl(iorb,nqn,lang,ei,imax,rv,p,igh,ibound)
   iorb : orbital index
