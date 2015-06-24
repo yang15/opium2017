@@ -39,12 +39,3 @@ subroutine hfmethd(m,ipsp,p,zeff,azz,fail,iprint)
   
 function quads2
   computes Slater F and G integrals
-
-subroutine corvwn(rs,ec,uc,rho)
-  VWN form of exchange correlation 
-  pi32=3 pi**2
-  alpha = (9pi/4)**thrd
-
-subroutine corpz(rs,ec,uc)
-  Perdew-Zunger correlation ?
-
