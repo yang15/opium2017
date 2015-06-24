@@ -187,6 +187,7 @@ c     starting guess for channels which don't have a psp-wfn guess
       etotlast = 0
       ifock=0
       
+      !LZT: what's ss ? Doesn't seem to be used anywhere
       ss=0.d0
       do i=1,ncore
          imf=4*lo(i)+2
@@ -269,9 +270,9 @@ c     ***********************************************************************
          dp1=0.d0
 c         nfails=0
          do m=1,norb
-            ed1=0
+            ed1=0 !LZT: this doesn't seem to be used anywhere
             eold(m)=en(m)
-            ed2=e(m,m)
+            ed2=e(m,m) !LZT: this doesn't seem to be used anywhere
 
             call hfde(m,ipsp,zeff,dpm,iprint)
 c            write(7,*) 'NFAILS', nfails
