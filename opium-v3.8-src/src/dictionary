@@ -41,12 +41,19 @@ subroutine schsl(iorb,nqn,lang,ei,imax,rv,p,igh,ibound)
 
 subroutine hfmethd(m,ipsp,p,zeff,azz,fail,iprint)
   m : orbital index
-  ipsp : ?
+  ipsp : controls whether to do all-electron calculation
   p : output wavefunction
   zeff = z - s, where s = screening parameter
   azz : ?
   fail : .true. if the calculation fails
   iprint : ?
+
+
+subroutine hfde(m,ipsp,zeff,dpm,iprint)
+  updates orbital m by calling hfmethd, 
+  and then doing a bunch of orthogonalization and normalization.
+  Here, dpm is a parameter that controls when to do orthogonalization 
+  (basically, when dp>dpm)
   
 function quads2
   computes Slater F and G integrals

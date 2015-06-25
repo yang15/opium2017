@@ -86,6 +86,7 @@ c -------------------------------------------------------------------------
          imeth=2
       endif
 
+      !LZT: apply Fock operator to orbital m
       call hfmethd(m,ipsp,p,zeff,azz,fail,iprint)
 
       if (fail) goto 25
@@ -110,6 +111,7 @@ c      write(7,*) 'azz 1',azz,pnn
          endif
       endif
 
+      !LZT: This sets the mixing parameter
       if (ipr.ne.m) then
          acc(m)=0.75*acc(m)
       else
@@ -127,6 +129,10 @@ c      write(7,*) 'ACC', m,acc(m),c,ipr
 
       if (acc(m).gt.0.99999) acc(m)=0.50
 
+
+      !LZT: This updates the radial wavefunction.
+      !Here, dp is the difference between previous and current radial
+      !wavefunctions.
       dp=0.d0
       do j=1,nmax(m)
 c      do j=1,np
@@ -149,6 +155,8 @@ c      write(7,*) 'before de adj', m,az(m),azz
          dpw=dp/sqrt(wnl(m))
       endif
 
+      !LZT: This looks like it orthogonalizes orbital m relative to the
+      !occupied orbitals.
       do j=1,norb
          if (abs(e(m,j)).ne.0.d0.and.m.ne.j) then
             if (dpm(j).lt.dsqrt(wnl(j))*dpw) then
@@ -166,6 +174,7 @@ c               write(7,*) 'orth', j,azz,az(j),rx
 
  63   format(6x,'<',i3,'|',i3,'>=',1pd8.1)      
 
+      !LZT: This normalizes orbital m
       if (abs(rx).gt.0) then
          rx=dsqrt(quadr(m,m,0))
          
