@@ -357,6 +357,8 @@ c               write(7,35) nlm(i),nlm(j),e(i,j),nlm(j),nlm(i),e(j,i)
       end
 
 
+      ! orthog orthonormalizes all orbitals,
+      ! and updates az(:) in the process
       subroutine orthog(ilast)
       implicit double precision (a-h,o-z)
 #include "fortdim.h"

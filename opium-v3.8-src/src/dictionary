@@ -21,6 +21,8 @@ coef(:) : coefficients of slater integrals, used in calculating the energies e(i
 ijptr(i,j) : gives the index of coeff corresponding to orbital i and j
 
 acc : mixing parameter for convergence procedure
+az(:),azz : ? Not sure how this is used, but seems to be linear in the orbitals
+  
 
 wnl(i) : This appears to be the occupation number for orbital i, set in the input file
 en(i) : This appears to be the energy eigenvalue guess for orbital i, set in the input file
@@ -53,7 +55,8 @@ subroutine hfde(m,ipsp,zeff,dpm,iprint)
   updates orbital m by calling hfmethd, 
   and then doing a bunch of orthogonalization and normalization.
   Here, dpm is a parameter that controls when to do orthogonalization 
-  (basically, when dp>dpm)
+  (basically, when dp>dpm). Here, dp is the difference between previous and current radial
+  wavefunctions.
   
 function quads2
   computes Slater F and G integrals
