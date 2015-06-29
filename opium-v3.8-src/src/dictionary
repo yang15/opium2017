@@ -55,8 +55,9 @@ subroutine hfde(m,ipsp,zeff,dpm,iprint)
   updates orbital m by calling hfmethd, 
   and then doing a bunch of orthogonalization and normalization.
   Here, dpm is a parameter that controls when to do orthogonalization 
-  (basically, when dp>dpm). Here, dp is the difference between previous and current radial
-  wavefunctions.
+  (basically, when dp>dpm). 
+  Here, dp is the difference between previous and current radial
+  wavefunctions. On output, dpm is set to dp.
   
 function quads2
   computes Slater F and G integrals
