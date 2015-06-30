@@ -31,7 +31,7 @@ c     -------------------------------------------------------------------------
 c     External (shared between C and Fortran) common blocks
 c     -------------------------------------------------------------------------
 
-      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
       common /wfnrel/ rnla(npdm,n0),rnlb(npdm,n0)
       
       common /rscore/ rscore(npdm),rdd(npdm),rddd(npdm),rscoretot(npdm),
@@ -261,6 +261,9 @@ c     ***********************************************************************
 c     Section 3:  call schsl for each orbital & compile charge density.
 c     ***********************************************************************
 
+
+         !LZT: begin application of kohn-sham operator
+
          do m = 1,norb
             if (m.le.ncore) then
                ibound=1
@@ -299,29 +302,6 @@ c     if AE or local
 
                      call schsl(m,no(m),lo(m),en(m),nmax(m),
      $                    rvps(1,m),p,igh,ibound)
-
-                     ! LZT : for AE Hartree-Fock, here we should apply 
-                     ! the Fock operator to wavefunction m, and store
-                     ! the result in p.
-
-                     !if (todohf)
-                     !  ... prepare HF calculation ...
-                     !  call hfmethd(m,ipsp,p,zeff,azz,fail,iprint)
-                     !enddo
-
-                     ! LZT: For hybrid functionals, we apply Kohn-Sham
-                     ! operator to current wavefunction, and apply Fock
-                     ! operator to current wavefunction, and take a
-                     ! weighted sum of the two
-
-                     !if (todohybrid)
-                     !
-                     !  call schsl(m,no(m),lo(m),en(m),nmax(m),rvps(1,m),pdft,igh,ibound)
-                     !  ... prepare HF calculation ...
-                     !  call hfmethd(m,ipsp,phf,zeff,azz,fail,iprint)
-                     !  p = exxweight*phf + (1.0-exxweight) * pdft
-                     !
-                     !endif
 
 
 
@@ -380,7 +360,40 @@ c     if relativistic
                
 c     if not a frozen core calc or if valence 
             endif
-         enddo
+          enddo
+
+          !LZT: end application of kohn-sham operator
+          
+          !LZT: begin application of Fock operator
+          !ihf = 0 : dft
+          !ihf = 1 : hartree-fock
+          !ihf = 2 : hybrid functional
+          if(ihf>0) then
+
+          ! LZT : for AE Hartree-Fock, here we should apply 
+          ! the Fock operator to wavefunction m, and store
+          ! the result in p.
+
+          !if (todohf)
+          !  ... prepare HF calculation ...
+          !  call hfmethd(m,ipsp,p,zeff,azz,fail,iprint)
+          !enddo
+
+          ! LZT: For hybrid functionals, we apply Kohn-Sham
+          ! operator to current wavefunction, and apply Fock
+          ! operator to current wavefunction, and take a
+          ! weighted sum of the two
+
+          !if (todohybrid)
+          !
+          !  call schsl(m,no(m),lo(m),en(m),nmax(m),rvps(1,m),pdft,igh,ibound)
+          !  ... prepare HF calculation ...
+          !  call hfmethd(m,ipsp,phf,zeff,azz,fail,iprint)
+          !  p = exxweight*phf + (1.0-exxweight) * pdft
+          !
+          !endif
+
+          endif
 
          if(maxim.eq.0) then
             goto 911
