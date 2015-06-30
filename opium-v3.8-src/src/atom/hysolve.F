@@ -263,6 +263,7 @@ c     ***********************************************************************
 
 
          !LZT: begin application of kohn-sham operator
+         if(ixc.ge.0. .and. ixc.lt.7) then
 
          do m = 1,norb
             if (m.le.ncore) then
@@ -362,12 +363,14 @@ c     if not a frozen core calc or if valence
             endif
           enddo
 
+          endif
           !LZT: end application of kohn-sham operator
           
           !LZT: begin application of Fock operator
           !ixc = -1 : hartree-fock
           !ixc = 7 : hybrid functional
           if(ixc.lt.0 .or. ixc.eq.7) then
+            write (7,*) "Hybrid functionals will be implemented soon!"
 
           ! LZT : for AE Hartree-Fock, here we should apply 
           ! the Fock operator to wavefunction m, and store

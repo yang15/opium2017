@@ -163,6 +163,7 @@ int read_param(param_t *param, FILE *fp, FILE *fp_log){
   /*  if (streq(param->xcparam, "vwn5lda")) param->ixc = 6;
       if (streq(param->xcparam, "vwn5")) param->ixc = 6;*/
   if (streq(param->xcparam, "hf")) param->ixc = -1;
+  if (streq(param->xcparam, "hy")) param->ixc = 7;
 
   if (param->ixc == -100) {
     printf(" \nXC functional not understood \n ");

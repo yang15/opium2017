@@ -1,0 +1,52 @@
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+           OPIUM  Version:        3.8                             
+           =====================================            
+ See http://opium.sourceforge.net for help and information                 
+ Copyright 2009 : The OPIUM project                         
+
+ Compile host     : hoponpop
+ Compile OS       : Linux 3.10.3-1-ARCH unknown
+ Compile date     : Fri Jun 26 10:34:17 EDT 2015
+
+ Execution host   : hoponpop
+ time of execution: Tue Jun 30 10:33:02 2015
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Reading parameter file:  <c.param> ... 
+ File prefix             : c 
+ Element                 : Carbon     (C) 
+ Z                       : 6 
+ 
+ Number of all-electron orbitals   : 3 
+ Number of pseudo       orbitals   : 2 
+ 
+ Pseudopotential is non-relativistic 
+ The s potential is used for the KB construction 
+ Optimized (RRKJ) pseudopotential method will be used 
+
+ nl    cutoff radii    q-max      # bessel functions
+ 2s       1.450        7.070              10 
+ 2p       1.550        7.070              10 
+
+ Reference Configuration: core  <-/-> valence 
+ 1s2  <-/-> 2s2  2p2 
+
+ Grid definitions: 
+ a_grid=1.00e-04    b_grid=6.50e-03    # points=2245 
+ r(1)=5.50e-05      r(np)=1.19e+02    
+
+ dEmax tolerance:  1.00e-08      dVmax tolerance:  1.00e-06     
+
+ Starting calculation...
+
+ ======================================================================== 
+ Begin AE calculation
+ ======================================================================== 
+ Performing non-relativistic AE calculation...  
+ ---------Eigenvalue guesses---------
+ 1s           -36.00000000
+ 2s            -2.25000000
+ 2p            -2.25000000
+ Hybrid functionals will be implemented soon!
+  !!ERROR!! Could not find self-consistent solution!
