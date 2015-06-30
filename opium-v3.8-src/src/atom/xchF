@@ -1,0 +1,54 @@
+akeato.F:c angular coefficient at the exchange coulomb integral gk                       
+average.F:      dimension xah(npdm),xdh(npdm),xch(npdm),xlh(npdm)
+average.F:            xch(imat) = -(xah(imat-1)) * rnlt(imat-1,ic)/sqrt(r(imat-1))
+average.F:               xch(j) = -xch(j-1) * xah(j-1)/xlh(j-1)
+average.F:            rnlt(imax,ic) = xch(imax)/(xlh(imax) + xah(imax+1) * ap)
+average.F:               rnlt(j,ic) = (xch(j) - xah(j+1) * rnlt(j+1,ic))/xlh(j)
+dfsolve.F:c            write(7,*) ' for HF exchange -- STOP'
+dfsolve.F:c            write(6,*) ' for HF exchange -- STOP'
+etotal.F:c ech  ener(2) exchange coulomb interaction                                     
+etotal.F:c       exchange  integrales                                                    
+excorr.F:            call exchpbe(rho,zero,zero,zero,0,1,ex,vx,fx,fs,fss)
+excorr.F:               call exchpbe(rho,agde(i),ggagde(i),rlape(i),1,1,
+excorr.F:               call exchpbe(rho,zero,zero,zero,0,1,
+excorr.F:               call exchpw91(rho,agde(i),ggagde(i),rlape(i),
+excorr.F:               call exchpbe(rho,zero,zero,zero,0,1,
+excorr.F:               call exchpbewc(rho,agde(i),ggagde(i),rlape(i),1,1,
+excorr.F:               call exchpbewc(rho,zero,zero,zero,0,1,
+excorr.F:               call exchpbesol(rho,agde(i),ggagde(i),rlape(i),1,1,
+excorr.F:               call exchpbesol(rho,zero,zero,zero,0,1,
+hfcoef.F:c     Exchange part
+hfcoef.F:*         istart the beginning of the exchange terms
+hfint.F:      call xch(x,m,3)
+hfsolve.F:c            call xch(x,i,1)
+hfsolve.F:            call xch(x,i,1)
+hfuncs.F:      call xch(x,i,2)
+intdir.F:c gg gp initially exchage terms, at the time of return - wave functions         
+lagdat.F:c     contribution of the exchange terms is omitted if iex=0                    
+pbe.F:c for Becke exchange, set a3=b1=0
+pbe.F:c outputs: exlsd=LSD exchange energy density, so that
+pbe.F:c        : vxuplsd=up LSD exchange potential
+pbe.F:c        : vxdnlsd=down LSD exchange potential
+pbe.F:c        : exclsd=LSD exchange-correlation energy density
+pbe.F:c        : vxcuplsd=up LSD exchange-correlation potential
+pbe.F:c        : vxcdnlsd=down LSD exchange-correlation potential
+pbe.F:c PBE exchange
+pbe.F:c do up exchange
+pbe.F:        call exchpbe(rho2,s,u,v,0,lpot,exuplsd,vxuplsd,fxpbe,fs,fss)
+pbe.F:        call exchpw91(rho2,s,u,v,exuppw91,vxuppw91,fxpw91,fs,fss)
+pbe.F:        call exchpbe(rho2,s,u,v,1,lpot,exuppbe,vxuppbe,fxpbe,fs,fss)
+pbe.F:        call exchpbe(rho2,s,u,v,0,lpot,exdnlsd,vxdnlsd,fxpbe,fs,fss)
+pbe.F:        call exchpw91(rho2,s,u,v,exdnpw91,vxdnpw91,fxpw91,fs,fss)
+pbe.F:        call exchpbe(rho2,s,u,v,1,lpot,exdnpbe,vxdnpbe,fxpbe,fs,fss)
+pbe.F:c construct LDA exchange energy density
+pbe.F:c construct LDA exchange energy density
+pbe.F:c construct LDA exchange energy density
+potrdf.F:c     exchange terms                                                            
+potrdf2.F:c     exchange terms                                                            
+schsl.F:      dimension xli(npdm),phom(npdm),xah(npdm),xch(npdm)
+schsl.F:      xch(imat) = -(xah(imat-1)) * phom(imat-1)
+schsl.F:         xch(i) = -xch(i-1) * xah(i-1)/xlh(i-1)
+schsl.F:      phom(imax) = xch(imax)/(xlh(imax) + xah(imax+1) * ap)
+schsl.F:         phom(i) = (xch(i) - xah(i+1) * phom(i+1))/xlh(i)
+xch.F:      subroutine xch(x,i,iopt)
+xch.F:*  *****  check if exchange is zero: if so, method 2 should be used.
