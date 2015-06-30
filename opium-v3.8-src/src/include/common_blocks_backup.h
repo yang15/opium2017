@@ -38,12 +38,10 @@ extern struct{
 
 extern struct{
   double rnl[N0][NPDM];
-  double rnlp[N0][NPDM];
 }wfn_;  
 
 extern struct{
   double rnla[N0][NPDM],rnlb[N0][NPDM];
-  double rnlap[N0][NPDM],rnlbp[N0][NPDM];
 }wfnrel_;  
 
 extern struct{

@@ -70,3 +70,18 @@ subroutine corvwn(rs,ec,uc,rho)
 subroutine corpz(rs,ec,uc)
   Perdew-Zunger correlation ?
 
+subroutine dftsolve(zeff,ixc,exccut,ipsp,ifc,iexit,irel,irelxc,iprint)
+  parameters initiated in do_nl.c and do_tc.c
+  ixc and exccut from *.param input file
+  inl : initialized in c.F
+  insl : initialized in do_nl.c
+  rsatom(i) : density of ??
+  rsatom2(i) : density of ??
+  rvh(i) : hartree potential
+  rvxc(i) : exchange correlation potential
+  rexc(i) : also exchange correlation related need more understanding
+  rvloc(i) : local potential
+
+subroutine  excorr(maxim,ixc,exccut,rsatom2,rvxc,rexc,irelxc)
+  exchange correlation part
+

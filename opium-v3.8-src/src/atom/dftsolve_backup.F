@@ -31,7 +31,7 @@ c     -------------------------------------------------------------------------
 c     External (shared between C and Fortran) common blocks
 c     -------------------------------------------------------------------------
 
-      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
+      common /wfn/ rnl(npdm,n0)
       common /wfnrel/ rnla(npdm,n0),rnlb(npdm,n0)
       
       common /rscore/ rscore(npdm),rdd(npdm),rddd(npdm),rscoretot(npdm),
