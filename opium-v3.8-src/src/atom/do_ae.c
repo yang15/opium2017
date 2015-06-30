@@ -136,7 +136,7 @@ int do_ae(param_t *param, char *logfile){
     param->ncorerel=aorb_.ncore;
 
     if (!strcmp(param->reltype, "srl")) {
-      if (param->ixc < 0) {
+      if (param->ixc < 0 || param->ixc==7) {
 	/*printf(" nval= %d \n ", aorb_.nval);*/
       }else{
 	nrelorbae(param,config,logfile);

@@ -552,7 +552,7 @@ c     911 = terminal error - exit scpot
             endif
          enddo
 
-      enddo
+      enddo !self-consistency loop ends here
 
  505  format(1x,'!WARNING! positive eigenvalue predicted',
      $     ' in scpot  nlm=',i4,5x,'new e =',e13.7)
