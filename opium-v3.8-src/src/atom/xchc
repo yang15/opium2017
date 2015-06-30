@@ -1,2 +1,0 @@
-do_ae.c:      fprintf(fp_log, "  Hartree-Fock exchange is incompatible with a partial core correction  -- STOP\n");
-do_ae.c:      printf("  Hartree-Fock exchange is incompatible with a partial core correction -- STOP\n");

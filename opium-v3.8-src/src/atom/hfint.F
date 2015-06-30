@@ -87,7 +87,7 @@ c -------------------------------------------------------------------------
 
       if (ighost*ighost2.gt.1) goto 17
       call potl(yr,m)
-      call xch(x,m,3)
+      call xch(x,m,3,rnlp)
       ighost2=ighost2+1
 
       cd=(lo(m)+1.d0/2.d0)**2

@@ -1,2 +1,0 @@
-ykf.F:      call zkf(yk,i,j,k)
-zkf.F:      subroutine zkf(yk,i,j,k)

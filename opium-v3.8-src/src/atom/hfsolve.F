@@ -468,7 +468,7 @@ c      enddo
 c      if (ipsp.ne.0) then
 c         do i=1,3
 c            call potl(yr,i)
-c            call xch(x,i,1)
+c            call xch(x,i,1,rnlp)
 c            do j=1,np
 c               write(600+i,8585) r(j),-2.d0*rvcore(j,i),2.d0*yr(j)+x(j)
 c            enddo
@@ -494,7 +494,7 @@ c 8585 format(4f20.10)
             if (iprint.gt.1) write(7,*) 'Max radius used for Veff:',
      $           i,rmmax
             call potl(yr,i)
-            call xch(x,i,1)
+            call xch(x,i,1,rnlp)
             eps=1d-18
             do j=1,np
                if (r(j).gt.rmmax) goto 922

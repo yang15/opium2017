@@ -70,7 +70,7 @@ c     *************************************************************************
       do j=1,norb
          do k = 0,2*min(lo(i),lo(j)),2
             if (dabs(aaa(i,j,k)) .ge. 1.d-8) then
-               call ykf(yk,j,j,k)
+               call ykf(yk,j,j,k,rnl)
 c               write(7,*) 'hart', i,j,k,aaa(i,j,k)
                do in=1,np                  
                   yr(in) = yr(in) + aaa(i,j,k)*yk(in)

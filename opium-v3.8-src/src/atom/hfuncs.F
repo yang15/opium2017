@@ -210,7 +210,7 @@ c
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
       dimension yk(npdm),yr(npdm),x(npdm)
 
-      call xch(x,i,2)
+      call xch(x,i,2,rnlp)
       call potl(yr,i)
       do 1 j=1,np
          yk(j) = yr(j)
@@ -559,7 +559,7 @@ c      write (7,100) nlm(i),nlm(j),g,nlm(i),nlm(j),dg,eps
 
       dimension yk(npdm)
 
-      call ykf(yk,i,i,k)
+      call ykf(yk,i,i,k,rnlp)
       fk = quads2(yk,j,j,1)
       return
       end
@@ -570,7 +570,7 @@ c      write (7,100) nlm(i),nlm(j),g,nlm(i),nlm(j),dg,eps
 
       dimension yk(npdm)
 
-      call ykf(yk,i,j,k)
+      call ykf(yk,i,j,k,rnlp)
       gk = quads2(yk,i,j,1)
       return
       end
@@ -581,7 +581,7 @@ c      write (7,100) nlm(i),nlm(j),g,nlm(i),nlm(j),dg,eps
 
       dimension yk(npdm)
 
-      call ykf(yk,i,ii,k)
+      call ykf(yk,i,ii,k,rnlp)
       rk = quads2(yk,j,jj,1)
       return
       end

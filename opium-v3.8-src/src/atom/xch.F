@@ -45,8 +45,8 @@ c along with this program; if not, write to the Free Software
 c Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 c
 c
-      subroutine xch(x,i,iopt,ixc)
-     
+      subroutine xch(x,i,iopt,rnl)
+c     JY: passing rnl(npdm,n0) as a parameter from outside subroutines    
 c     *************************************************************************
 c     get the hartree potential function
 c     *************************************************************************
@@ -60,7 +60,7 @@ c     *************************************************************************
       common /adat/ wnl(n0),en(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /edi/ e(n0,n0)
-      common /wfn/ rnl(npdm,n0), rnlp(npdm,n0)
+!      common /wfn/ rnl(npdm,n0), rnlp(npdm,n0)
 
       dimension yk(npdm),yr(npdm),x(npdm)
 
@@ -74,7 +74,7 @@ c     *************************************************************************
          if (j .ne. i) then
             do  k=iabs(lo(i)-lo(j)),lo(i)+lo(j),2
                if (dabs(bbb(i,j,k)) .ge. 1.d-10) then
-                  call ykf(yk,i,j,k)
+                  call ykf(yk,i,j,k,rnl)
 c                  write(7,*) 'xc', i,j,k,bbb(i,j,k)
                   do in=1,np
                       !if (ixc.eq.7) then

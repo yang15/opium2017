@@ -45,8 +45,8 @@ c along with this program; if not, write to the Free Software
 c Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 c
 c
-      subroutine zkf(yk,i,j,k)
-     
+      subroutine zkf(yk,i,j,k,rnl)
+c     JY: passing rnl or rnlp from outside     
 c     *************************************************************************
 c     get the zk function
 c     *************************************************************************
@@ -59,7 +59,7 @@ c     *************************************************************************
      $     no(n0),lo(n0),nmax(n0),maxim
       common /adat/ wnl(n0),en(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
-      common /wfn/ rnl(npdm,n0),  rnlp(npdm,n0)
+!      common /wfn/ rnl(npdm,n0),  rnlp(npdm,n0)
 
       dimension yk(npdm)
 
