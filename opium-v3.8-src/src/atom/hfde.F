@@ -56,7 +56,7 @@ c -------------------------------------------------------------------------
      $     no(n0),lo(n0),nmax(n0),maxim
       common /adat/ wnl(n0),en(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
-      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnlp(npdm,n0)
       common /consts/ etol,vtol,maxit,isoft
       common /grid/ h,r1,z,r(npdm),np
       common /edi/ e(n0,n0)
@@ -136,12 +136,12 @@ c      write(7,*) 'ACC', m,acc(m),c,ipr
       dp=0.d0
       do j=1,nmax(m)
 c      do j=1,np
-         diff=rnl(j,m)-p(j)
+         diff=rnlp(j,m)-p(j)
          dp=max(dp,dabs(diff)*sqrt(r(j)))
-         rnl(j,m)=p(j)+c*diff
+         rnlp(j,m)=p(j)+c*diff
       enddo
       do i=nmax(m)+1,np
-         rnl(i,m)=0.d0
+         rnlp(i,m)=0.d0
       enddo
 
 c      write(7,*) 'before de adj', m,az(m),azz
@@ -164,7 +164,7 @@ c      write(7,*) 'before de adj', m,az(m),azz
                rx=quadr(m,j,0)
 c               write(7,63) nlm(j),nlm(m),rx
                do jj=1,nnp
-                  rnl(jj,m)=rnl(jj,m)-rx*rnl(jj,j)
+                  rnlp(jj,m)=rnlp(jj,m)-rx*rnlp(jj,j)
                enddo
                azz=azz-rx*az(j)
 c               write(7,*) 'orth', j,azz,az(j),rx
@@ -179,14 +179,14 @@ c               write(7,*) 'orth', j,azz,az(j),rx
          rx=dsqrt(quadr(m,m,0))
          
          do jj=1,np
-            rnl(jj,m)=rnl(jj,m)/rx
+            rnlp(jj,m)=rnlp(jj,m)/rx
          enddo
          azz=azz/rx
       endif
 
       jjset=np
- 687  if (dabs(rnl(jjset,m)).lt.1e-15) then
-         rnl(jjset,m)=0.d0
+ 687  if (dabs(rnlp(jjset,m)).lt.1e-15) then
+         rnlp(jjset,m)=0.d0
          jjset=jjset-1
          goto 687
       endif
@@ -211,7 +211,7 @@ c      write(7,*) 'after de adj', m,az(m),azz
       endif
       ipr=m
       do i=1,nmax(m)
-         rsatom(i)=rsatom(i)+wnl(m)*rnl(i,m)**2
+         rsatom(i)=rsatom(i)+wnl(m)*rnlp(i,m)**2
       enddo
 
       return

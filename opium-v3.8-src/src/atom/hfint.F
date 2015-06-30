@@ -59,7 +59,7 @@ c -------------------------------------------------------------------------
       common /adat/ wnl(n0),en(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /consts/ etol,vtol,maxit,isoft
-      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnlp(npdm,n0)
       common /grid/ h,r1,z,r(npdm),np
       common /edi/ e(n0,n0)
       common /ahf/ s(n0),az(n0),acc(n0)
@@ -122,13 +122,13 @@ c -------------------------------------------------------------------------
       enddo
       x(nmax(m)-1)=ch*(x4+10.d0*x3+x2)
 
-      x1=ch*rnl(1,m)*(yk(1)+ed*r(1)*r(1))
-      x2=ch*rnl(2,m)*(yk(2)+ed*r(2)*r(2))
-      x3=ch*rnl(3,m)*(yk(3)+ed*r(3)*r(3))
-      x4=ch*rnl(4,m)*(yk(4)+ed*r(4)*r(4))
+      x1=ch*rnlp(1,m)*(yk(1)+ed*r(1)*r(1))
+      x2=ch*rnlp(2,m)*(yk(2)+ed*r(2)*r(2))
+      x3=ch*rnlp(3,m)*(yk(3)+ed*r(3)*r(3))
+      x4=ch*rnlp(4,m)*(yk(4)+ed*r(4)*r(4))
 
       do j=3,np
-         x5=ch*rnl(j+2,m)*(yk(j+2)+ed*r(j+2)*r(j+2))
+         x5=ch*rnlp(j+2,m)*(yk(j+2)+ed*r(j+2)*r(j+2))
          x(j)=x(j)-(x5-4.d0*(x2+x4)+6.d0*x3+x1)/20.d0
          x1=x2
          x2=x3
@@ -160,14 +160,14 @@ c -------------------------------------------------------------------------
       cden=0.d0
       np2=np-2
       do j=2,np2
-         fnum=rnl(j+1,m)-2.d0*rnl(j,m)+rnl(j-1,m)
-         fnum=fnum-ch*(yk(j+1)*rnl(j+1,m)+10.d0*yk(j)*rnl(j,m)
-     $        +yk(j-1)*rnl(j-1,m))
+         fnum=rnlp(j+1,m)-2.d0*rnlp(j,m)+rnlp(j-1,m)
+         fnum=fnum-ch*(yk(j+1)*rnlp(j+1,m)+10.d0*yk(j)*rnlp(j,m)
+     $        +yk(j-1)*rnlp(j-1,m))
      $        -x(j)
-         ddum=r(j+1)*r(j+1)*rnl(j+1,m) + 10.d0*r(j)*r(j)*rnl(j,m)
-     $        + r(j-1)*r(j-1)*rnl(j-1,m)
-         fl=fl+rnl(j,m)*fnum
-         cden=cden+rnl(j,m)*ddum
+         ddum=r(j+1)*r(j+1)*rnlp(j+1,m) + 10.d0*r(j)*r(j)*rnlp(j,m)
+     $        + r(j-1)*r(j-1)*rnlp(j-1,m)
+         fl=fl+rnlp(j,m)*fnum
+         cden=cden+rnlp(j,m)*ddum
       enddo
       ed=fl/(cden*ch)
 
@@ -181,7 +181,7 @@ c -------------------------------------------------------------------------
          endif
          pnf=hnorm(no(m),lo(m),zzz-s(m))
          do k=1,np
-            rnl(k,m)=pnf*hwf(no(m),lo(m),zzz-s(m),r(k))/sqrt(r(k))
+            rnlp(k,m)=pnf*hwf(no(m),lo(m),zzz-s(m),r(k))/sqrt(r(k))
          enddo
       endif
 
@@ -222,7 +222,7 @@ c -------------------------------------------------------------------------
          if (ipsp.eq.0) then
             hw=hwf(no(m),lo(m),z,r(k))/cn
          else
-            hw=rnl(k,m)*sqrt(r(k))
+            hw=rnlp(k,m)*sqrt(r(k))
          endif
          hq(k)=azd*(hw+r(k)**(lo(m)+3)*b3*(1.d0-r(k)*b4))/sqrt(r(k))
       enddo
@@ -253,12 +253,12 @@ c -------------------------------------------------------------------------
       if (imeth.eq.2) then
 c         write(7,*) 'Hey in var section'
 
-         x1 = rnl(1,m)*r(1)**2
-         x2 = rnl(2,m)*r(2)**2
+         x1 = rnlp(1,m)*r(1)**2
+         x2 = rnlp(2,m)*r(2)**2
          p2(1) = x1/c
          p2(2) = x2/c
          do  j = 3,np
-            x3 = rnl(j,m)*r(j)**2
+            x3 = rnlp(j,m)*r(j)**2
             xx(j-1) = (10.d0*x2 + x1 + x3)*ch
             x1 = x2
  8          x2 = x3

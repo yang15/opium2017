@@ -117,7 +117,7 @@ c
      $     no(n0),lo(n0),nmax(n0),maxim
       common /adat/ wnl(n0),en(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
-      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnlp(npdm,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
 
       k12 = k + 2
@@ -127,20 +127,20 @@ c
       den = li + lj + 1 + k12
       zr = z*r(4)
       r24=sqrt(r(4))
-      bi = (rnl(4,i)/(az(i)*r24*r(4)**li) - 1.d0+zr/(li+1) )/zr**2
-      bj = (rnl(4,j)/(az(j)*r24*r(4)**lj) - 1.d0+zr/(lj+1) )/zr**2
+      bi = (rnlp(4,i)/(az(i)*r24*r(4)**li) - 1.d0+zr/(li+1) )/zr**2
+      bj = (rnlp(4,j)/(az(j)*r24*r(4)**lj) - 1.d0+zr/(lj+1) )/zr**2
       alpha= (1.d0/(li + 1) + 1.d0/(lj + 1))/(den + 1.d0)
       zr = z*r(1)
       beta = (den+1.d0)*alpha**2 
      $     - 2.d0*(bi+bj+1.d0/((li+1)*(lj+1)))/(den+2.d0)
-      d = rnl(1,i)*rnl(1,j)*r(1)**k12
+      d = rnlp(1,i)*rnlp(1,j)*r(1)**k12
      $     *(((beta*zr+alpha)*zr+1.d0)/(den*h1)+0.5d0)
       dd = 0.d0
       m = min0(nmax(i),nmax(j)) - 1
       do 1 jj = 2,m,2
       jp = jj + 1
-      d = d +rnl(jp,i)*rnl(jp,j)*r(jp)**k12
-      dd = dd + rnl(jj,i)*rnl(jj,j)*r(jj)**k12
+      d = d +rnlp(jp,i)*rnlp(jp,j)*r(jp)**k12
+      dd = dd + rnlp(jj,i)*rnlp(jj,j)*r(jj)**k12
 1     continue
       quadr = h1*(d + 2.d0*dd)
       return
@@ -164,7 +164,7 @@ c
      $     no(n0),lo(n0),nmax(n0),maxim
       common /adat/ wnl(n0),en(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
-      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnlp(npdm,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
       dimension yk(npdm)
 
@@ -173,14 +173,14 @@ c
       kk = 2 - k
       cd = 1.d0 + z*r(1)*(den-1.d0)/
      $     ((den+1.d0)*((lo(i)+1)*(lo(j)+1)))
-      d = yk(1)*rnl(1,i)*rnl(1,j)*r(1)**kk*( cd/(den*h1)+ 0.5)
+      d = yk(1)*rnlp(1,i)*rnlp(1,j)*r(1)**kk*( cd/(den*h1)+ 0.5)
       dd = 0.d0
 
       mx = min0(nmax(i),nmax(j)) - 1
       mx=np-1
       do m = 2,mx,2
-         dd = dd + yk(m)*rnl(m,i)*rnl(m,j)*r(m)**kk
-         d= d+  yk(m+1)*rnl(m+1,i)*rnl(m+1,j)*r(m+1)**kk
+         dd = dd + yk(m)*rnlp(m,i)*rnlp(m,j)*r(m)**kk
+         d= d+  yk(m+1)*rnlp(m+1,i)*rnlp(m+1,j)*r(m+1)**kk
       enddo
       quads2 = h1*(d + 2.d0*dd)
       return
@@ -206,7 +206,7 @@ c
      $     no(n0),lo(n0),nmax(n0),maxim
       common /adat/ wnl(n0),en(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
-      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnlp(npdm,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
       dimension yk(npdm),yr(npdm),x(npdm)
 
@@ -214,7 +214,7 @@ c
       call potl(yr,i)
       do 1 j=1,np
          yk(j) = yr(j)
-         yr(j) = rnl(j,ii)
+         yr(j) = rnlp(j,ii)
 1     continue
       ekin = 2.d0*quads2(yk,i,ii,1) + quad(ii,np,yr,x)
       return
@@ -242,7 +242,7 @@ c
      $     no(n0),lo(n0),nmax(n0),maxim
       common /adat/ wnl(n0),en(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
-      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnlp(npdm,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
 
       dimension yr(npdm),x(npdm)
@@ -286,7 +286,7 @@ c
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /edi/ e(n0,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
-      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnlp(npdm,n0)
       common /consts/ etol,vtol,maxit,isoft
       common /grid/ h,r1,z,r(npdm),np
       common /coeff/coef(100),ijptr(n0,n0)
@@ -368,7 +368,7 @@ c               write(7,35) nlm(i),nlm(j),e(i,j),nlm(j),nlm(i),e(j,i)
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /edi/ e(n0,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
-      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnlp(npdm,n0)
       common /consts/ etol,vtol,maxit,isoft
       common /grid/ h,r1,z,r(npdm),np
       common /coeff/coef(100),ijptr(n0,n0)
@@ -389,7 +389,7 @@ c               write(7,35) nlm(i),nlm(j),e(i,j),nlm(j),nlm(i),e(j,i)
  63               format(6x,'{',i3,'|',i3,'}=',1pd8.1)
                   m = max0(m,nmax(j))
                   do jj = 1,m
-                     rnl(jj,i) = rnl(jj,i) - c*rnl(jj,j)
+                     rnlp(jj,i) = rnlp(jj,i) - c*rnlp(jj,j)
                   enddo
                   azz = azz - c*az(j)
                   change = .true.
@@ -399,14 +399,14 @@ c               write(7,35) nlm(i),nlm(j),e(i,j),nlm(j),nlm(i),e(j,i)
          
          if (change) then
             pnn = dsqrt(quadr(i,i,0))
-            if (rnl(1,i) .lt. 0.d0) pnn = - pnn
+            if (rnlp(1,i) .lt. 0.d0) pnn = - pnn
             do jj = 1,m
-               rnl(jj,i) = rnl(jj,i)/pnn
+               rnlp(jj,i) = rnlp(jj,i)/pnn
             enddo
             azz = azz/pnn
             m = np
- 67         if (dabs(rnl(m,i)) .lt. 1.d-15) then
-               rnl(m,i) = 0.d0
+ 67         if (dabs(rnlp(m,i)) .lt. 1.d-15) then
+               rnlp(m,i) = 0.d0
                m = m-1
                go to 67
             end if
@@ -441,7 +441,7 @@ c               write(7,35) nlm(i),nlm(j),e(i,j),nlm(j),nlm(i),e(j,i)
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /edi/ e(n0,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
-      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnlp(npdm,n0)
       common /consts/ etol,vtol,maxit,isoft
       common /grid/ h,r1,z,r(npdm),np
       common /totpot/ rvcore(npdm,n0),rvps(npdm,n0),rvcoul(npdm)
@@ -535,9 +535,9 @@ c               write(7,35) nlm(i),nlm(j),e(i,j),nlm(j),nlm(i),e(j,i)
          dd = dsqrt(1.d0 + eps*eps)
 
          do jj = 1,np
-            pi = (rnl(jj,i) + eps*rnl(jj,j))/dd
-            rnl(jj,j) = (rnl(jj,j) - eps*rnl(jj,i))/dd
-            rnl(jj,i) = pi
+            pi = (rnlp(jj,i) + eps*rnlp(jj,j))/dd
+            rnlp(jj,j) = (rnlp(jj,j) - eps*rnlp(jj,i))/dd
+            rnlp(jj,i) = pi
          enddo
       else
          eps = 0.d0
@@ -604,7 +604,7 @@ c      write (7,100) nlm(i),nlm(j),g,nlm(i),nlm(j),dg,eps
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /edi/ e(n0,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
-      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnlp(npdm,n0)
       common /consts/ etol,vtol,maxit,isoft
       common /grid/ h,r1,z,r(npdm),np
       common /totpot/ rvcore(npdm,n0),rvps(npdm,n0),rvcoul(npdm)
@@ -622,45 +622,45 @@ c      write (7,100) nlm(i),nlm(j),g,nlm(i),nlm(j),dg,eps
 
       ZR = Z*R(1)
 
-      HL = H*C*RNL(1,I)*RNL(1,J)*(1.D0+ZR*(A1+ZR*(A2+ZR*A3)))
+      HL = H*C*rnlp(1,I)*rnlp(1,J)*(1.D0+ZR*(A1+ZR*(A2+ZR*A3)))
 
       MM = MIN0(NMAX(I)+3,NMAX(J)+3,NP-1)
       K = 2
       C = 4.D0/3.D0
-      DI1 = RNL(K+1,I) - RNL(K-1,I)
-      DI2 = RNL(K+1,I) - 2.D0*RNL(K,I) + RNL(K-1,I)
-      DJ1 = RNL(K+1,J) - RNL(K-1,J)
-      DJ2 = RNL(K+1,J) - 2.D0*RNL(K,J) + RNL(K-1,J)
+      DI1 = rnlp(K+1,I) - rnlp(K-1,I)
+      DI2 = rnlp(K+1,I) - 2.D0*rnlp(K,I) + rnlp(K-1,I)
+      DJ1 = rnlp(K+1,J) - rnlp(K-1,J)
+      DJ2 = rnlp(K+1,J) - 2.D0*rnlp(K,J) + rnlp(K-1,J)
       HL = HL + DI1*DJ1 + C*DI2*DJ2
 
       DO 1 K = 4,MM,2
-      DI1 = RNL(K+1,I) - RNL(K-1,I)
-      DI2 = RNL(K+1,I) - 2.D0*RNL(K,I) + RNL(K-1,I)
-      DI4 = RNL(K+2,I) - 4.D0*(RNL(K+1,I)+RNL(K-1,I)) 
-     $     + 6.D0*RNL(K,I) +RNL(K-2,I)
-      DI3 = RNL(K+2,I) - RNL(K-2,I) - 2.D0*DI1
-      DI5 = RNL(K+3,I)-RNL(K-3,I) - 4.D0*(RNL(K+2,I)-RNL(K-2,I))
-     :   + 5.D0*(RNL(K+1,I)-RNL(K-1,I))
-      DI6 = RNL(K+3,I)+RNL(K-3,I) - 6.D0*(RNL(K+2,I)+RNL(K-2,I))
-     :   + 15.D0*(RNL(K+1,I)+RNL(K-1,I)) - 20.D0*RNL(K,I)
-      DJ1 = RNL(K+1,J) - RNL(K-1,J)
-      DJ2 = RNL(K+1,J) - 2.D0*RNL(K,J) + RNL(K-1,J)
-      DJ4 = RNL(K+2,J) - 4.D0*(RNL(K+1,J)+RNL(K-1,J)) 
-     $     + 6.D0*RNL(K,J) +RNL(K-2,J)
-      DJ3 = RNL(K+2,J) - RNL(K-2,J) - 2.D0*DJ1
-      DJ5 = RNL(K+3,J)-RNL(K-3,J) - 4.D0*(RNL(K+2,J)-RNL(K-2,J))
-     :   + 5.D0*(RNL(K+1,J)-RNL(K-1,J))
-      DJ6 = RNL(K+3,J)+RNL(K-3,J) - 6.D0*(RNL(K+2,J)+RNL(K-2,J))
-     :   + 15.D0*(RNL(K+1,J)+RNL(K-1,J)) - 20.D0*RNL(K,J)
+      DI1 = rnlp(K+1,I) - rnlp(K-1,I)
+      DI2 = rnlp(K+1,I) - 2.D0*rnlp(K,I) + rnlp(K-1,I)
+      DI4 = rnlp(K+2,I) - 4.D0*(rnlp(K+1,I)+rnlp(K-1,I)) 
+     $     + 6.D0*rnlp(K,I) +rnlp(K-2,I)
+      DI3 = rnlp(K+2,I) - rnlp(K-2,I) - 2.D0*DI1
+      DI5 = rnlp(K+3,I)-rnlp(K-3,I) - 4.D0*(rnlp(K+2,I)-rnlp(K-2,I))
+     :   + 5.D0*(rnlp(K+1,I)-rnlp(K-1,I))
+      DI6 = rnlp(K+3,I)+rnlp(K-3,I) - 6.D0*(rnlp(K+2,I)+rnlp(K-2,I))
+     :   + 15.D0*(rnlp(K+1,I)+rnlp(K-1,I)) - 20.D0*rnlp(K,I)
+      DJ1 = rnlp(K+1,J) - rnlp(K-1,J)
+      DJ2 = rnlp(K+1,J) - 2.D0*rnlp(K,J) + rnlp(K-1,J)
+      DJ4 = rnlp(K+2,J) - 4.D0*(rnlp(K+1,J)+rnlp(K-1,J)) 
+     $     + 6.D0*rnlp(K,J) +rnlp(K-2,J)
+      DJ3 = rnlp(K+2,J) - rnlp(K-2,J) - 2.D0*DJ1
+      DJ5 = rnlp(K+3,J)-rnlp(K-3,J) - 4.D0*(rnlp(K+2,J)-rnlp(K-2,J))
+     :   + 5.D0*(rnlp(K+1,J)-rnlp(K-1,J))
+      DJ6 = rnlp(K+3,J)+rnlp(K-3,J) - 6.D0*(rnlp(K+2,J)+rnlp(K-2,J))
+     :   + 15.D0*(rnlp(K+1,J)+rnlp(K-1,J)) - 20.D0*rnlp(K,J)
 1     HL = HL + DI1*DJ1 + C*DI2*DJ2 + (DI3*DJ3 + DI2*DJ4+DI4*DJ2)/45.D0
      :  -(DI3*DJ5+DI5*DJ3)/252.D0 - (DI2*DJ6+DI6*DJ2-1.1*DI4*DJ4)/378.D0
       TZ = 2.D0*RVCORE(1,I)
       C = (LI + 0.5D0)**2
-      HL2 = 0.5D0*(TZ*R(1) - C)*RNL(1,I)*RNL(1,J)
+      HL2 = 0.5D0*(TZ*R(1) - C)*rnlp(1,I)*rnlp(1,J)
       DO 2 K = 2,MM,2
          TZ = 2.D0*RVCORE(K,I)
-2     HL2 = HL2 + 2.D0*(TZ*R(K) - C)*RNL(K,I)*RNL(K,J)
-     :   + (TZ*R(K+1) - C)*RNL(K+1,I)*RNL(K+1,J)
+2     HL2 = HL2 + 2.D0*(TZ*R(K) - C)*rnlp(K,I)*rnlp(K,J)
+     :   + (TZ*R(K+1) - C)*rnlp(K+1,I)*rnlp(K+1,J)
       HL = -HL/(2.D0*H) + HL2*H1
 
       return

@@ -55,7 +55,7 @@ c
       subroutine hfenergy(ipsp,etotal,ehart,exx,ekn)
       implicit double precision(a-h,o-z)
 #include "fortdim.h"
-      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnlp(npdm,n0)
       common /grid/ h,r1,z,r(npdm),np
       common /totpot/ rvcore(npdm,n0),rvps(npdm,n0),rvcoul(npdm)
       common /aorb/ ncore,nval,norb,nlm(n0),

@@ -54,7 +54,7 @@ c
      $     no(n0),lo(n0),nmax(n0),maxim
       common /adat/ wnl(n0),en(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
-      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnlp(npdm,n0)
       common /coeff/ coef(100),ijptr(n0,n0)
       common /eav/cca(10),ccb(35)
 

@@ -60,7 +60,7 @@ c     -------------------------------------------------------------------------
 c     External (shared between C and Fortran) common blocks
 c     -------------------------------------------------------------------------
 
-      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnlp(npdm,n0)
       common /wfnrel/ rnla(npdm,n0),rnlb(npdm,n0)
       
       common /rscore/ rscore(npdm),rdd(npdm),rddd(npdm),rscoretot(npdm),
@@ -173,13 +173,13 @@ c     starting guess for channels which don't have a psp-wfn guess
             do i = 1,np
                rnla(i,j) = 0
                rnlb(i,j) = 0
-               rnl(i,j) = 0
+               rnlp(i,j) = 0
             enddo
          enddo
       else
          do j=1,norb
             do i = 1,np
-             rnl(i,j)=rnl(i,j)/sqrt(r(i))
+             rnlp(i,j)=rnlp(i,j)/sqrt(r(i))
             enddo
          enddo
       endif
@@ -203,7 +203,7 @@ c     starting guess for channels which don't have a psp-wfn guess
          do i=1,norb
             pnf=hnorm(no(i),lo(i),z-s(i))
             do k=1,np
-               rnl(k,i)=pnf*hwf(no(i),lo(i),z-s(i),r(k))/sqrt(r(k))
+               rnlp(k,i)=pnf*hwf(no(i),lo(i),z-s(i),r(k))/sqrt(r(k))
             enddo
             az(i)=pnf*(2.d0*(z-s(i)/2)/no(i))**(lo(i)+1.d0)
          enddo
@@ -214,7 +214,7 @@ c     starting guess for channels which don't have a psp-wfn guess
 
             if (lcount(lo(i)+1).gt.1) then
                do k=1,np
-                 rnl(k,i)=pnf*hwf(no(i),lo(i),zeff-s(i),r(k))/sqrt(r(k))
+                 rnlp(k,i)=pnf*hwf(no(i),lo(i),zeff-s(i),r(k))/sqrt(r(k))
                enddo
             endif
             az(i)=1.d0
@@ -228,9 +228,9 @@ c     starting guess for channels which don't have a psp-wfn guess
                rx=quadr(i,j,0)
                if (abs(rx).gt.1e-8) then
                   rx2=sqrt(1.d0-rx**2)
-                  if (rnl(50,i)-rx*rnl(50,j).lt.0.d0) rx2=-rx2
+                  if (rnlp(50,i)-rx*rnlp(50,j).lt.0.d0) rx2=-rx2
                   do k=1,np
-                     rnl(k,i)=(rnl(k,i)-rx*rnl(k,j))/rx2
+                     rnlp(k,i)=(rnlp(k,i)-rx*rnlp(k,j))/rx2
                   enddo
                endif
             endif
@@ -245,9 +245,9 @@ C             do i=1,norb
 C                do j=1,np
 C                   if (r(j).lt.15) write(850+i,*) r(j),rvps(j,i)
 C                   if (r(j).lt.15) write(860+i,*) r(j),
-C      $                 x(j)/rnl(j,i),rnl(j,i)
+C      $                 x(j)/rnlp(j,i),rnlp(j,i)
 C                   if (r(j).lt.15) write(870+i,*) r(j),yr(j)
-C                   if (r(j).lt.15) write(370+i,*) r(j),rnl(j,i)
+C                   if (r(j).lt.15) write(370+i,*) r(j),rnlp(j,i)
 C                enddo
 C             enddo
 C             stop
@@ -406,7 +406,7 @@ c         do i=1,3
 c            if (nloc.ne.i) then
 c               ll=lo(i)
 c               do j = 1,np
-c                  fr(j) = -2.d0*rnl(j,i)**2*
+c                  fr(j) = -2.d0*rnlp(j,i)**2*
 c     $                 (rvcore(j,i)-rvcore(j,nloc))/r(j)
 c
 c               enddo
@@ -445,7 +445,7 @@ c      enddo
          do k=1,np
             rsold(k)=rvcore(k,m)
             rvcore(k,m)=rvcore(k,n)
-            rnl(k,m)=rnl(k,n)
+            rnlp(k,m)=rnlp(k,n)
          enddo
          ighost=1
          ighost2=1
@@ -484,7 +484,7 @@ c 8585 format(4f20.10)
          do i=1,norb
 
             do j=1,np
-               if ((abs(rnl(j,i)*sqrt(r(j))).lt.1e-8).
+               if ((abs(rnlp(j,i)*sqrt(r(j))).lt.1e-8).
      $              and.(r(j).gt.15.0)) then
                   rmmax=r(j-1)
                   goto 788
@@ -501,11 +501,11 @@ c 8585 format(4f20.10)
                xxx=x(j)/sqrt(r(j))
                rji=2.d0*yr(j)/r(j)
                rvps(j,i)=-2.d0*rvcore(j,i)+2.d0*yr(j)+x(j)
-     $              /(rnl(j,i)+eps)
+     $              /(rnlp(j,i)+eps)
 c     if (r(j).lt.15) write(850+i,*) r(j),rvps(j,i)
-c     if (r(j).lt.15) write(860+i,*) r(j),x(j)/rnl(j,i),rnl(j,i)
+c     if (r(j).lt.15) write(860+i,*) r(j),x(j)/rnlp(j,i),rnlp(j,i)
 c     if (r(j).lt.15) write(870+i,*) r(j),yr(j)
-c     if (r(j).lt.15) write(370+i,*) r(j),rnl(j,i)
+c     if (r(j).lt.15) write(370+i,*) r(j),rnlp(j,i)
             enddo
  922        continue
          enddo
@@ -513,7 +513,7 @@ c     if (r(j).lt.15) write(370+i,*) r(j),rnl(j,i)
 
       do i=1,norb
          do j=1,np
-            rnl(j,i)=rnl(j,i)*sqrt(r(j))
+            rnlp(j,i)=rnlp(j,i)*sqrt(r(j))
             rvcore(j,i)=-2.d0*rvcore(j,i)
          enddo
          en(i)=-en(i)
@@ -524,7 +524,7 @@ c     if (r(j).lt.15) write(370+i,*) r(j),rnl(j,i)
       enddo
       do nnn=1,ncore
          do i=1,np
-            rsatom(i)=rsatom(i)+wnl(nnn)*rnl(i,nnn)**2
+            rsatom(i)=rsatom(i)+wnl(nnn)*rnlp(i,nnn)**2
          enddo
       enddo
       call hrtree(np,h,r,rsatom,rvh)
@@ -544,15 +544,15 @@ c     Flip wfn s.t. it is >0 as r->oo
 
       do i = ncore+1,norb
          do j=np,1,-1
-            if (abs(rnl(j,i)).gt.1e-6) then
+            if (abs(rnlp(j,i)).gt.1e-6) then
                nmax(i)=j
                goto 939
             endif
          enddo
  939     continue
-         if (rnl(nmax(i)-1,i).lt.0.0) then
+         if (rnlp(nmax(i)-1,i).lt.0.0) then
             do j = 1,np
-               rnl(j,i) = -rnl(j,i)
+               rnlp(j,i) = -rnlp(j,i)
             enddo
          endif
       enddo
@@ -564,7 +564,7 @@ c     compute valence density
 
       do i = ncore+1,norb
          do j = 1,nmax(i)
-            rsval(j) = rsval(j) + wnl(i) * rnl(j,i)**2
+            rsval(j) = rsval(j) + wnl(i) * rnlp(j,i)**2
          enddo
       enddo
 
@@ -578,7 +578,7 @@ c     compute core density
          
          do i = 1,ncore
             do j = 1,nmax(i)
-               rscore(j) = rscore(j) + wnl(i) * rnl(j,i)**2
+               rscore(j) = rscore(j) + wnl(i) * rnlp(j,i)**2
             enddo
          enddo
          call radin(r,rscore,0,np,h,rsc)
@@ -594,7 +594,7 @@ c     compute icarray!! put OUT
      $        log(exp(1.0)))/h + 1
 c     compute tail-norm (actually, here it is 1.d0-head norm)
          do k = 1,np
-            wavea(k) = rnl(k,i) * rnl(k,i)
+            wavea(k) = rnlp(k,i) * rnlp(k,i)
          enddo
          
          pow = 2 * lo(i) + 2
@@ -606,8 +606,8 @@ c     radius of outermost peak
       do i=ncore+1,norb
          rvapmax=0.0
          do j=maxim-1,1,-1
-            if ((rnl(j,i).lt.rnl(j+1,i)).
-     $           and.(abs(rnl(j,i)).gt.1e-6)) then
+            if ((rnlp(j,i).lt.rnlp(j+1,i)).
+     $           and.(abs(rnlp(j,i)).gt.1e-6)) then
                rvap(i)=r(j+1)
                if (rvapmax.lt.rvap(i)) rvapmax=rvap(i)
                goto 944
