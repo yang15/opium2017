@@ -45,7 +45,7 @@ c along with this program; if not, write to the Free Software
 c Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 c
 c
-      subroutine xch(x,i,iopt)
+      subroutine xch(x,i,iopt,ixc)
      
 c     *************************************************************************
 c     get the hartree potential function
@@ -60,7 +60,7 @@ c     *************************************************************************
       common /adat/ wnl(n0),en(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /edi/ e(n0,n0)
-      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnl(npdm,n0), rnlp(npdm,n0)
 
       dimension yk(npdm),yr(npdm),x(npdm)
 
@@ -77,7 +77,11 @@ c     *************************************************************************
                   call ykf(yk,i,j,k)
 c                  write(7,*) 'xc', i,j,k,bbb(i,j,k)
                   do in=1,np
-                     x(in) = x(in)+ 2.d0*bbb(i,j,k)*yk(in)*rnl(in,j)
+                      !if (ixc.eq.7) then
+                      !  x(in) = x(in)+ 2.d0*bbb(i,j,k)*yk(in)*rnlp(in,j)
+                      !else
+                        x(in) = x(in)+ 2.d0*bbb(i,j,k)*yk(in)*rnl(in,j)
+                      !endif
                   enddo
                endif
             enddo
@@ -102,7 +106,11 @@ c                  write(7,*) 'xc', i,j,k,bbb(i,j,k)
             c = e(i,j)
             if (dabs(c).gt.1.d-10.and.(j.ne.i)) then
                do in = 1,np
-                  x(in) = x(in) + c*rnl(in,j)*r(in)*r(in)
+                  !if (ixc.eq.7) then
+                  !   x(in) = x(in) + c*rnlp(in,j)*r(in)*r(in)
+                  !else
+                     x(in) = x(in) + c*rnl(in,j)*r(in)*r(in)
+                  !endif
                enddo
             endif
          enddo

@@ -554,6 +554,9 @@ c     911 = terminal error - exit scpot
 
       enddo !self-consistency loop ends here
 
+      !Store HF orbitals in rnl for post-processing
+      rnl(:) = rnlp(:)
+
  505  format(1x,'!WARNING! positive eigenvalue predicted',
      $     ' in scpot  nlm=',i4,5x,'new e =',e13.7)
      

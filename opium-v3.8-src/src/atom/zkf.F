@@ -59,7 +59,7 @@ c     *************************************************************************
      $     no(n0),lo(n0),nmax(n0),maxim
       common /adat/ wnl(n0),en(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
-      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnl(npdm,n0),  rnlp(npdm,n0)
 
       dimension yk(npdm)
 
@@ -77,16 +77,28 @@ c     *************************************************************************
       ai = h90/a
       an = 114.d0*a*h90
       a34 = 34.d0*h90
-      f1 = r(1)**2*rnl(1,i)*rnl(1,j)
-      f2 = r(2)**2*rnl(2,i)*rnl(2,j)
-      f3 = r(3)**2*rnl(3,i)*rnl(3,j)
-      f4 = r(4)**2*rnl(4,i)*rnl(4,j)
+      !if (ixc.eq.7) then
+      !  f1 = r(1)**2*rnlp(1,i)*rnlp(1,j)
+      !  f2 = r(2)**2*rnlp(2,i)*rnlp(2,j)
+      !  f3 = r(3)**2*rnlp(3,i)*rnlp(3,j)
+      !  f4 = r(4)**2*rnlp(4,i)*rnlp(4,j)
+      !else
+        f1 = r(1)**2*rnl(1,i)*rnl(1,j)
+        f2 = r(2)**2*rnl(2,i)*rnl(2,j)
+        f3 = r(3)**2*rnl(3,i)*rnl(3,j)
+        f4 = r(4)**2*rnl(4,i)*rnl(4,j)
+      !endif
+
       yk(1) = f1*(1.d0 + z*r(1)*fact)/den
       yk(2) = f2*(1.d0 + z*r(2)*fact)/den
       yk(3) = yk(1)*a2 + h3*(f3 + 4.d0*a*f2 + a2*f1)
       mx = (min(nmax(i),nmax(j))/2)*2
       do m = 5,mx
-         f5 = (r(m)**2*rnl(m,i))*rnl(m,j)
+         !if (ixc.eq.7) then
+         !   f5 = (r(m)**2*rnlp(m,i))*rnlp(m,j)
+         !else
+            f5 = (r(m)**2*rnl(m,i))*rnl(m,j)
+         !endif
          yk(m-1) = yk(m-3)*a2 + ( an*f3 + a34*(f4+a2*f2)-f5*ai-f1*a3)
          f1 = f2
          f2 = f3
