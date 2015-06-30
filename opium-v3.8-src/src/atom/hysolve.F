@@ -16,7 +16,7 @@ c along with this program; if not, write to the Free Software
 c Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 c
 c
-      subroutine dftsolve(zeff,ixc,exccut,ipsp,ifc,iexit,irel,
+      subroutine hysolve(zeff,ixc,exccut,ipsp,ifc,iexit,irel,
      $     irelxc,iprint)
      
 c     *************************************************************************
@@ -365,35 +365,27 @@ c     if not a frozen core calc or if valence
           !LZT: end application of kohn-sham operator
           
           !LZT: begin application of Fock operator
-          !ihf = 0 : dft
-          !ihf = 1 : hartree-fock
-          !ihf = 2 : hybrid functional
-          if(ihf>0) then
+          !ixc = -1 : hartree-fock
+          !ixc = 7 : hybrid functional
+          if(ixc.lt.0 .or. ixc.eq.7) then
 
           ! LZT : for AE Hartree-Fock, here we should apply 
           ! the Fock operator to wavefunction m, and store
           ! the result in p.
 
-          !if (todohf)
-          !  ... prepare HF calculation ...
-          !  call hfmethd(m,ipsp,p,zeff,azz,fail,iprint)
-          !enddo
-
-          ! LZT: For hybrid functionals, we apply Kohn-Sham
-          ! operator to current wavefunction, and apply Fock
-          ! operator to current wavefunction, and take a
-          ! weighted sum of the two
-
-          !if (todohybrid)
-          !
-          !  call schsl(m,no(m),lo(m),en(m),nmax(m),rvps(1,m),pdft,igh,ibound)
           !  ... prepare HF calculation ...
           !  call hfmethd(m,ipsp,phf,zeff,azz,fail,iprint)
+          endif
+
+          ! LZT: For hybrid functionals, we  take a
+          ! weighted sum of the KS wfns and HF wfns
+
+          if (ixc.eq.7) then 
+          !
           !  p = exxweight*phf + (1.0-exxweight) * pdft
           !
-          !endif
-
           endif
+
 
          if(maxim.eq.0) then
             goto 911

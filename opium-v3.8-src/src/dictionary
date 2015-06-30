@@ -30,6 +30,18 @@ en(i) : This appears to be the energy eigenvalue guess for orbital i, set in the
 r(i) : a logarithmic grid. The points are {1, exp(h), exp(2h), exp(3h), ...}
 h : controls the spacing of the logarithmic grid
 
+ixc : controls type of functional to use
+  ixc = -1: hartree fock
+  ixc - 0 : PZ LDA 81
+  ixc - 1 : PW LDA 92
+  ixc - 2 : PBE GGA 96
+  ixc - 3 : PW GGA 91
+  ixc - 4 : WC GGA 06
+  ixc - 5 : PBEsol GGA 08
+  ixc - 6 : VWN LDA V (the CA formulation)
+  ixc - 7 : currently, testing for hybrid functionals
+ 
+
 subroutine schsl(iorb,nqn,lang,ei,imax,rv,p,igh,ibound)
   iorb : orbital index
   nqn  : n-quantum number of orbital iorb ?

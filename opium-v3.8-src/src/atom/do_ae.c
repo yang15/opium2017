@@ -88,9 +88,12 @@ int do_ae(param_t *param, char *logfile){
     irel=0;
     irelxc=0;    
     if (param->ixc < 0) {
-	    // comment by JY adding the new hfsolve here
       hfsolve_(&param->z,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&iprint);
-    }else {
+    }else if(param->ixc ==7){
+      //testing hybrid functionals
+      hysolve_(&param->z,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&iprint);
+   
+    } else {
       dftsolve_(&param->z,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&irelxc,&iprint);
     }
     if (iexit) {
