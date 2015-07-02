@@ -59,7 +59,7 @@ extern struct{
 }aorb_;  
 
 extern struct{
-  double wnl[N0],en[N0],so[N0],xion;
+  double wnl[N0],en[N0],enp[N0],so[N0],xion;
 }adat_;  
 
 extern struct{
