@@ -96,8 +96,12 @@ c     *************************************************************************
       character*1 xc(0:3)
       logical ilast,first
       
+      write(*,*) "inside hysolve"
       open(unit=7,file=file_log,form='formatted',access='append')
-      write(7,*) "inside hysolve"
+      !open(unit=8,file='testfile',form='formatted',status='new')
+      !write(8,*) "inside testfile"
+      !close(8)
+      write(*,*) "after open 7"
       
       xc(0)='s'
       xc(1)='p'
@@ -136,6 +140,7 @@ c         enddo
 c      endif
 
       write(7,*) '---------Eigenvalue guesses---------'      
+      write(*,*) '---------Eigenvalue guesses---------'      
 
       do i=1,norb
          ipos(i)=0
@@ -189,7 +194,7 @@ c      endif
         rvcoul(i) = rvps(i,1) - rvcore(i,1)
       enddo
 
-
+      write(*,*) "dft init. done"
 
       !initialize for HF calculations
 
@@ -318,7 +323,7 @@ c     starting guess for channels which don't have a psp-wfn guess
       enddo
 
       !end initialization of HF
-
+      write(*,*) "hf init. done"
 
       if (inl.ne.0) then
         write(7,*)"Performing non-local pseudopotential calculation"
@@ -372,6 +377,7 @@ c     *************************************************************************
 c     *************************************************************************
 c     Begin self-consistency loop.
 c     *************************************************************************
+      write(*,*) "begin self-consistency loop"
       maxit=1000
       etotlast = 0
       ifock=0
@@ -401,11 +407,13 @@ c     unbound info
             rsatom(i) = 0
          enddo
 
+         write(*,*) "dft init. end"
 
          !initialization for HF
          dp1 = 0
          call grange
          
+         write(*,*) "grange end"
 c     ***********************************************************************
 c     Section 3:  call schsl for each orbital & compile charge density.
 c     ***********************************************************************
@@ -516,12 +524,14 @@ c     if not a frozen core calc or if valence
 
           endif
           !LZT: end application of kohn-sham operator
+          write(*,*) "KS operator end"
           
           !LZT: begin application of Fock operator
           !ixc = -1 : hartree-fock
           !ixc = 7 : hybrid functional
           if(ixc.lt.0 .or. ixc.eq.7) then
             write (7,*) "Hybrid functionals will be implemented soon!"
+            write(*,*) "hybrid start"
 
             ! LZT : for AE Hartree-Fock, here we should apply 
             ! the Fock operator to wavefunction m, and store
@@ -535,8 +545,8 @@ c     if not a frozen core calc or if valence
               ed2=e(m,m) !LZT: this doesn't seem to be used anywhere
 
               call hfde(m,ipsp,zeff,dpm,iprint)
-c            write(7,*) 'NFAILS', nfails
-              if (nfails.gt.25) goto 922
+              write(*,*) 'NFAILS', nfails
+              if (nfails.gt.25) goto 911
 
               dp=dpm(m)
               if (dp1.ge.dp) goto 2
@@ -547,6 +557,7 @@ c            write(7,*) 'NFAILS', nfails
               eold(m) = enp(m)
               edmax = max(edif,edmax)
             enddo
+            write(*,*) "finished first m-loop"
 
 
             if (dp1.lt.vtl) goto 66
@@ -559,7 +570,7 @@ c            write(7,*) 'NFAILS', nfails
               eold(m)=enp(m)
               call hfde(m,ipsp,zeff,dpm,iprint)
 
-              if (nfails.gt.25) goto 923
+              if (nfails.gt.25) goto 911
               dp1=0.d0
               do j=1,norb
                 dp=dsqrt(wnl(j))*dpm(j)
@@ -576,9 +587,11 @@ c            write(7,*) 'NFAILS', nfails
               if (dp1.lt.vtl) goto 66
             enddo
  66         continue
+            write(*,*) "finished 2nd m-loop"
 
             call orthog(ilast)
 
+            write(*,*) "finished orthog"
 
           endif
 
@@ -589,9 +602,10 @@ c            write(7,*) 'NFAILS', nfails
           rnl = 0.0*rnlp + (1.0) * rnl
           rnlp = rnl
 
+          write(*,*) "finished hybrid mixing"
 
          if(maxim.eq.0) then
-            goto 924
+            goto 911
 c     911 = terminal error - exit scpot
          endif
 
@@ -1154,26 +1168,26 @@ c     911 = terminal error - exit scpot
       call flush(7)
       close(unit=7)
 
- 922  continue
-      write(7,*) " !!ERROR!! 922"
-      iexit=1
-      
-      call flush(7)
-      close(unit=7)
-
- 923  continue
-      write(7,*) " !!ERROR!! 923"
-      iexit=1
-      
-      call flush(7)
-      close(unit=7)
-
- 924  continue
-      write(7,*) " !!ERROR!! 924"
-      iexit=1
-      
-      call flush(7)
-      close(unit=7)
+! 922  continue
+!      write(7,*) " !!ERROR!! 922"
+!      iexit=1
+!      
+!      call flush(7)
+!      close(unit=7)
+!
+! 923  continue
+!      write(7,*) " !!ERROR!! 923"
+!      iexit=1
+!      
+!      call flush(7)
+!      close(unit=7)
+!
+! 924  continue
+!      write(7,*) " !!ERROR!! 924"
+!      iexit=1
+!      
+!      call flush(7)
+!      close(unit=7)
 
 
 
