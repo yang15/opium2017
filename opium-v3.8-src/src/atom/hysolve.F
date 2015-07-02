@@ -176,6 +176,136 @@ c      endif
         rvcoul(i) = rvps(i,1) - rvcore(i,1)
       enddo
 
+
+
+      !initialize for HF calculations
+
+      vtl=vtol
+      etl=etol*10.d0
+      ilast=.false.
+      iexit=0
+      itermcount=0
+      isoft=ipsp
+      nig=0
+      ipratt=6
+      npratt = ipratt
+      rvapmax=0.0
+      ib=1
+      ipr=0
+      icorb = norb/4+2
+      ighost=0
+      ighost2=0
+c      iprint=5
+
+      !open(unit=7,file=file_log,form='formatted',access='append')
+
+      iflag=0  ! comment by JY: this is a dummy variable 
+      nfails=0
+
+      call hfcoef(iflag,ipsp)
+
+c     EJW - adding this to keep allow to pick a hyrdogenic wavefunction 
+c     starting guess for channels which don't have a psp-wfn guess 
+      do i=1,10
+         lcount(i)=0
+      enddo
+
+      do i=1,norb        
+         en(i)=-en(i)
+         meth(i)=1
+         do j=1,norb
+            e(i,j)=0.d0
+            if (lo(i).eq.lo(j)) e(i,j)=1e-5
+         enddo
+
+         e(i,i)=en(i)
+         
+         nmax(i)=np
+         dpm(i)=0.d0
+         acc(i)=0.d0
+         do j=1,np
+            rvcore(j,i)=-rvcore(j,i)/2.d0
+         enddo
+      enddo
+
+      if (ipsp.eq.0) then
+         do j=1,norb
+            do jj=1,norb
+               e(j,jj)=0.d0
+               if (lo(j).eq.lo(jj)) e(j,jj)=1e-5
+            enddo
+            e(j,j)=-en(j)
+            do i = 1,np
+               rnla(i,j) = 0
+               rnlb(i,j) = 0
+               rnlp(i,j) = 0
+            enddo
+         enddo
+      else
+         do j=1,norb
+            do i = 1,np
+             rnlp(i,j)=rnlp(i,j)/sqrt(r(i))
+            enddo
+         enddo
+      endif
+
+      etotlast = 0
+      ifock=0
+      
+      !LZT: what's ss ? Doesn't seem to be used anywhere
+      ss=0.d0
+      do i=1,ncore
+         imf=4*lo(i)+2
+         s(i)=ss+imf/2.d0
+         ss=ss+imf
+      enddo
+      do i=ncore+1,norb
+         s(i)=ss+(wnl(i)-1.d0)/2
+         ss=ss+wnl(i)
+      enddo
+
+      if (ipsp.eq.0) then
+         do i=1,norb
+            pnf=hnorm(no(i),lo(i),z-s(i))
+            do k=1,np
+               rnlp(k,i)=pnf*hwf(no(i),lo(i),z-s(i),r(k))/sqrt(r(k))
+            enddo
+            az(i)=pnf*(2.d0*(z-s(i)/2)/no(i))**(lo(i)+1.d0)
+         enddo
+      else
+         do i=1,norb
+            lcount(lo(i)+1)=lcount(lo(i)+1)+1
+            pnf=hnorm(no(i),lo(i),zeff-s(i))
+
+            if (lcount(lo(i)+1).gt.1) then
+               do k=1,np
+                 rnlp(k,i)=pnf*hwf(no(i),lo(i),zeff-s(i),r(k))/sqrt(r(k))
+               enddo
+            endif
+            az(i)=1.d0
+         enddo
+      endif
+
+      do i=1,norb
+         if (no(i).eq.0.and.lo(i).eq.0) goto 33
+         do j=1,i-1
+            if (e(i,j).gt.0.d0) then
+               rx=quadr(i,j,0)
+               if (abs(rx).gt.1e-8) then
+                  rx2=sqrt(1.d0-rx**2)
+                  if (rnlp(50,i)-rx*rnlp(50,j).lt.0.d0) rx2=-rx2
+                  do k=1,np
+                     rnlp(k,i)=(rnlp(k,i)-rx*rnlp(k,j))/rx2
+                  enddo
+               endif
+            endif
+         enddo
+ 33      continue
+      enddo
+
+      !end initialization of HF
+
+
       if (inl.ne.0) then
         write(7,*)"Performing non-local pseudopotential calculation"
       else
@@ -256,6 +386,11 @@ c     unbound info
             rsold(i)=rsatom(i)
             rsatom(i) = 0
          enddo
+
+
+         !initialization for HF
+         dp1 = 0
+         call grange
          
 c     ***********************************************************************
 c     Section 3:  call schsl for each orbital & compile charge density.
@@ -378,6 +513,9 @@ c     if not a frozen core calc or if valence
 
           !  ... prepare HF calculation ...
           !  call hfmethd(m,ipsp,phf,zeff,azz,fail,iprint)
+
+ 
+
           endif
 
           ! LZT: For hybrid functionals, we  take a
