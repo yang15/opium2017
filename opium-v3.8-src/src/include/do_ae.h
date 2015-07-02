@@ -27,6 +27,7 @@ void nrelorbae(param_t *param, int, char *);
 char * write_reportae(param_t *param, char *rp,int,double temp_eigen[], double temp_norm[],int);
 void writeAE(param_t *param);
 void dftsolve_(double  *, int * ,double *, int * , int *, int *, int *, int *, int *);
+void hysolve_(double  *, int * ,double *, int * , int *, int *, int *, int *, int *);
 void hfsolve_(double  *, int * ,double *, int * , int *, int *, int *, int *);
 void dfsolve_(double  *, int * ,double *, int * , int *, int *, int *, int *);
 void atm_(double *, int *, int *);

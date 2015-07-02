@@ -76,6 +76,7 @@ int do_ae(param_t *param, char *logfile){
     /* do the NRL type AE solve */
 
     fprintf(fp_log," Performing non-relativistic AE calculation...  \n" );
+    fprintf(fp_log," is make clean necessary?  \n" );
     fclose(fp_log);
 
     /* set up the nlm's ; config=-1 is the reference state */
@@ -91,7 +92,8 @@ int do_ae(param_t *param, char *logfile){
       hfsolve_(&param->z,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&iprint);
     }else if(param->ixc ==7){
       //testing hybrid functionals
-      hysolve_(&param->z,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&iprint);
+      printf("%f %i %f %f %f %f %f %f\n", param->z,param->ixc,exccut_temp,ipsp,ifc,iexit,irel,iprint);
+      hysolve_(&param->z,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&irelxc,&iprint);
    
     } else {
       dftsolve_(&param->z,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&irelxc,&iprint);

@@ -36,6 +36,7 @@ static char report[8000];
 void nrelorbnl(param_t *param, int, char *); 
 char * write_reportnl(param_t *param, char *rp,int,double temp_eigen[], double temp_norm[], int, int);
 void dftsolve_(double  *, int * ,double *, int *, int *, int *, int *, int *, int *);
+void hysolve_(double  *, int * ,double *, int *, int *, int *, int *, int *, int *);
 void readPS(param_t *param);
 void writeNL(param_t *param);
 void writeSL(param_t *param);

@@ -99,6 +99,7 @@ c     *************************************************************************
       rvapmax=0.0
 
       open(unit=7,file=file_log,form='formatted',access='append')
+      write(7,*) "inside dftsolve"
 
 c     User supplied eigenvalue guesses were never used in the SRL
 c     routines ; disable for now.

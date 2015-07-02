@@ -56,6 +56,8 @@ c     -------------------------------------------------------------------------
      $     no(n0),lo(n0),nmax(n0),maxim
       common /adat/ wnl(n0),en(n0), enp(n0), so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
+      common /edi/ e(n0,n0)
+      common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
 
       common /niter/ niter
 c     -------------------------------------------------------------------------
@@ -67,6 +69,12 @@ c     -------------------------------------------------------------------------
       common /ipos/ ipos(n0),itermcount
       common /vdir/ vdir(npdm),pold(npdm)
       common /rold/ rnlold(npdm,n0),rpold(npdm,n0)
+      common /eihom/ eihom(n0),rnlhom(npdm,n0)
+      common /ind/ ind(n0)
+      common /ameth/ meth(n0),imeth,nfails
+
+      common /ighost/ ighost,ighost2
+
 c     -------------------------------------------------------------------------
 
 c     *************************************************************************
@@ -78,12 +86,18 @@ c     *************************************************************************
       dimension dl(n0), rsatom2(npdm)
       dimension rsold(npdm),wnlfract(npdm)
       dimension wavea(npdm),icarray(n0)
+      dimension x(npdm),yr(npdm),fr(npdm),fr2(npdm)
+      dimension lcount(10)
 c     rvpostloc(npdm),rvpreloc(npdm)
 c     *************************************************************************
 c     Section 1:  set up tolerance params and zero out arrays.
 c     *************************************************************************
       character*80 file_log
       character*1 xc(0:3)
+      logical ilast,first
+      
+      open(unit=7,file=file_log,form='formatted',access='append')
+      write(7,*) "inside hysolve"
       
       xc(0)='s'
       xc(1)='p'
@@ -98,7 +112,6 @@ c     *************************************************************************
       npratt = ipratt
       rvapmax=0.0
 
-      open(unit=7,file=file_log,form='formatted',access='append')
 
 c     User supplied eigenvalue guesses were never used in the SRL
 c     routines ; disable for now.
@@ -279,7 +292,8 @@ c     starting guess for channels which don't have a psp-wfn guess
 
             if (lcount(lo(i)+1).gt.1) then
                do k=1,np
-                 rnlp(k,i)=pnf*hwf(no(i),lo(i),zeff-s(i),r(k))/sqrt(r(k))
+                 rnlp(k,i)=pnf*hwf(no(i),lo(i),zeff-s(i),r(k))
+     $                     /sqrt(r(k))
                enddo
             endif
             az(i)=1.d0
@@ -424,6 +438,8 @@ c     if non-local
                      call schsl (m,no(m),lo(m),en(m),nmax(m),
      $                    rvloc,p,igh,ibound)
 
+                     rnl(:,m) = p(:)
+
                      if (itermcount.gt.10) goto 911
 c     911 = terminal error - exit scpot
                      
@@ -507,29 +523,75 @@ c     if not a frozen core calc or if valence
           if(ixc.lt.0 .or. ixc.eq.7) then
             write (7,*) "Hybrid functionals will be implemented soon!"
 
-          ! LZT : for AE Hartree-Fock, here we should apply 
-          ! the Fock operator to wavefunction m, and store
-          ! the result in p.
+            ! LZT : for AE Hartree-Fock, here we should apply 
+            ! the Fock operator to wavefunction m, and store
+            ! the result in p.
 
-          !  ... prepare HF calculation ...
-          !  call hfmethd(m,ipsp,phf,zeff,azz,fail,iprint)
+            !  ... prepare HF calculation ...
+            !  call hfmethd(m,ipsp,phf,zeff,azz,fail,iprint)
+            do m=1,norb
+              ed1=0 !LZT: this doesn't seem to be used anywhere
+              eold(m)=enp(m)
+              ed2=e(m,m) !LZT: this doesn't seem to be used anywhere
 
- 
+              call hfde(m,ipsp,zeff,dpm,iprint)
+c            write(7,*) 'NFAILS', nfails
+              if (nfails.gt.25) goto 922
+
+              dp=dpm(m)
+              if (dp1.ge.dp) goto 2
+              dp1=dp
+              ibad=m
+ 2          continue
+              edif = abs((enp(m) - eold(m))/eold(m))
+              eold(m) = enp(m)
+              edmax = max(edif,edmax)
+            enddo
+
+
+            if (dp1.lt.vtl) goto 66
+
+            dp1=0.d0
+            do mm=1,6
+              m=ibad
+              ed1=0
+              ed2=e(m,m)
+              eold(m)=enp(m)
+              call hfde(m,ipsp,zeff,dpm,iprint)
+
+              if (nfails.gt.25) goto 923
+              dp1=0.d0
+              do j=1,norb
+                dp=dsqrt(wnl(j))*dpm(j)
+                if (dp1.gt.dp) goto 5
+                ibad=j
+                dp1=dp
+ 5              continue
+
+                edif = abs((enp(m) - eold(m))/eold(m))
+                eold(m) = enp(m)
+                edmax = max(edif,edmax)
+              enddo
+
+              if (dp1.lt.vtl) goto 66
+            enddo
+ 66         continue
+
+            call orthog(ilast)
+
 
           endif
 
           ! LZT: For hybrid functionals, we  take a
           ! weighted sum of the KS wfns and HF wfns
 
-          if (ixc.eq.7) then 
-          !
-          !  p = exxweight*phf + (1.0-exxweight) * pdft
-          !
-          endif
+          !rnl = exxweight*rnlp + (1.0-exxweight) * p
+          rnl = 0.0*rnlp + (1.0) * rnl
+          rnlp = rnl
 
 
          if(maxim.eq.0) then
-            goto 911
+            goto 924
 c     911 = terminal error - exit scpot
          endif
 
@@ -638,6 +700,8 @@ c     ***********************************************************************
  490     format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7)
  491     format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7,1x,e8.2,1x,e8.2)
 
+         !update vtl and etl here, like in hfsolve?
+
          if (dvmax.lt.vtol.and.edmax.lt.etol) goto 1000
          
 c     ***********************************************************************
@@ -692,8 +756,6 @@ c     911 = terminal error - exit scpot
 
       enddo !self-consistency loop ends here
 
-      !Store HF orbitals in rnl for post-processing
-      rnl(:) = rnlp(:)
 
  505  format(1x,'!WARNING! positive eigenvalue predicted',
      $     ' in scpot  nlm=',i4,5x,'new e =',e13.7)
@@ -1086,10 +1148,34 @@ c     ***********************************************************************
  911  continue
 c     911 = terminal error - exit scpot
       write(7,*) " !!ERROR!! Could not find self-consistent solution!"
+      write(6,*) " !!ERROR!! Could not find self-consistent solution!"
       iexit=1
       
       call flush(7)
       close(unit=7)
+
+ 922  continue
+      write(7,*) " !!ERROR!! 922"
+      iexit=1
+      
+      call flush(7)
+      close(unit=7)
+
+ 923  continue
+      write(7,*) " !!ERROR!! 923"
+      iexit=1
+      
+      call flush(7)
+      close(unit=7)
+
+ 924  continue
+      write(7,*) " !!ERROR!! 924"
+      iexit=1
+      
+      call flush(7)
+      close(unit=7)
+
+
 
 
  370  format(1x,i2,2i5,2f6.1,f10.4)

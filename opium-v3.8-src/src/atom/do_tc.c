@@ -43,6 +43,7 @@ void dfsolve_(double  *, int * ,double *, int * , int *, int *, int *, int *);
 void readPS(param_t *param);
 void readAE(param_t *param);
 void dftsolve_(double  *, int * ,double *, int *, int *, int *, int *, int *, int *);
+void hysolve_(double  *, int * ,double *, int *, int *, int *, int *, int *, int *);
 
 #define streq(a,b) (!strcasecmp(a,b))
 

@@ -60,7 +60,7 @@ c     -------------------------------------------------------------------------
 c     External (shared between C and Fortran) common blocks
 c     -------------------------------------------------------------------------
 
-      common /wfn/ rnlp(npdm,n0)
+      common /wfn/ rnlp(npdm,n0), rnl(npdm,n0)
       common /wfnrel/ rnla(npdm,n0),rnlb(npdm,n0)
       
       common /rscore/ rscore(npdm),rdd(npdm),rddd(npdm),rscoretot(npdm),
@@ -214,7 +214,8 @@ c     starting guess for channels which don't have a psp-wfn guess
 
             if (lcount(lo(i)+1).gt.1) then
                do k=1,np
-                 rnlp(k,i)=pnf*hwf(no(i),lo(i),zeff-s(i),r(k))/sqrt(r(k))
+                 rnlp(k,i)=pnf*hwf(no(i),lo(i),zeff-s(i),r(k)) 
+     $                      /sqrt(r(k))
                enddo
             endif
             az(i)=1.d0
@@ -323,6 +324,7 @@ c     ***********************************************************************
  66      continue
 
          call orthog(ilast)
+         !End of wavefunction updates for current iteration
 
          ebs=0.d0
          do m = 1,norb
@@ -381,7 +383,7 @@ c     ***********************************************************************
 c     ***********************************************************************
          vtl=vtl*1.1d0
          etl=etl*1.1d0
-      enddo
+       enddo ! end self-consistency loop
 
  1000 continue
 
