@@ -52,7 +52,7 @@ c
       common /grid/ h,r1,z,r(npdm),np
       common /aorb/ ncore,nval,norb,nlm(n0),
      $     no(n0),lo(n0),nmax(n0),maxim
-      common /adat/ wnl(n0),en(n0),so(n0),xion
+      common /adat/ wnl(n0),enp(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /wfn/ rnlp(npdm,n0)
       common /coeff/ coef(100),ijptr(n0,n0)
@@ -198,7 +198,7 @@ c     Exchange part
       common /grid/ h,r1,z,r(npdm),np
       common /aorb/ ncore,nval,norb,nlm(n0),
      $     no(n0),lo(n0),nmax(n0),maxim
-      common /adat/ wnl(n0),en(n0),so(n0),xion
+      common /adat/ wnl(n0),enp(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /coeff/coef(100),ijptr(n0,n0)
 
@@ -230,7 +230,7 @@ c      if ((i.eq.3).and.(j.eq.3).and.(k.eq.2)) aaa=-0.4
       common /grid/ h,r1,z,r(npdm),np
       common /aorb/ ncore,nval,norb,nlm(n0),
      $     no(n0),lo(n0),nmax(n0),maxim
-      common /adat/ wnl(n0),en(n0),so(n0),xion
+      common /adat/ wnl(n0),enp(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /coeff/coef(100),ijptr(n0,n0)
 

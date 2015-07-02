@@ -53,7 +53,7 @@ c
 c -------------------------------------------------------------------------
       common /aorb/ ncore,nval,norb,nlm(n0),
      $     no(n0),lo(n0),nmax(n0),maxim
-      common /adat/ wnl(n0),en(n0),so(n0),xion
+      common /adat/ wnl(n0),enp(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /wfn/ rnlp(npdm,n0)
       common /consts/ etol,vtol,maxit,isoft
@@ -210,7 +210,7 @@ c     count the number of nodes
       
       azz=azd*(pp+1.d0)
       e(m,m)=ed
-      en(m)=e(m,m)
+      enp(m)=e(m,m)
       
       return
       end

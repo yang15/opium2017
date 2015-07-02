@@ -81,7 +81,7 @@ c     -------------------------------------------------------------------------
 
       common /aorb/ ncore,nval,norb,nlm(n0),
      $     no(n0),lo(n0),nmax(n0),maxim
-      common /adat/ wnl(n0),en(n0),so(n0),xion
+      common /adat/ wnl(n0),enp(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /edi/ e(n0,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
@@ -146,14 +146,14 @@ c     starting guess for channels which don't have a psp-wfn guess
       enddo
 
       do i=1,norb        
-         en(i)=-en(i)
+         enp(i)=-enp(i)
          meth(i)=1
          do j=1,norb
             e(i,j)=0.d0
             if (lo(i).eq.lo(j)) e(i,j)=1e-5
          enddo
 
-         e(i,i)=en(i)
+         e(i,i)=enp(i)
          
          nmax(i)=np
          dpm(i)=0.d0
@@ -169,7 +169,7 @@ c     starting guess for channels which don't have a psp-wfn guess
                e(j,jj)=0.d0
                if (lo(j).eq.lo(jj)) e(j,jj)=1e-5
             enddo
-            e(j,j)=-en(j)
+            e(j,j)=-enp(j)
             do i = 1,np
                rnla(i,j) = 0
                rnlb(i,j) = 0
@@ -271,7 +271,7 @@ c     ***********************************************************************
 c         nfails=0
          do m=1,norb
             ed1=0 !LZT: this doesn't seem to be used anywhere
-            eold(m)=en(m)
+            eold(m)=enp(m)
             ed2=e(m,m) !LZT: this doesn't seem to be used anywhere
 
             call hfde(m,ipsp,zeff,dpm,iprint)
@@ -283,8 +283,8 @@ c            write(7,*) 'NFAILS', nfails
             dp1=dp
             ibad=m
  2          continue
-            edif = abs((en(m) - eold(m))/eold(m))
-            eold(m) = en(m)
+            edif = abs((enp(m) - eold(m))/eold(m))
+            eold(m) = enp(m)
             edmax = max(edif,edmax)
          enddo
 
@@ -299,7 +299,7 @@ c     ***********************************************************************
             m=ibad
             ed1=0
             ed2=e(m,m)
-            eold(m)=en(m)
+            eold(m)=enp(m)
             call hfde(m,ipsp,zeff,dpm,iprint)
 
             if (nfails.gt.25) goto 911
@@ -313,8 +313,8 @@ c     ***********************************************************************
                dp1=dp
  5             continue
 
-               edif = abs((en(m) - eold(m))/eold(m))
-               eold(m) = en(m)
+               edif = abs((enp(m) - eold(m))/eold(m))
+               eold(m) = enp(m)
                edmax = max(edif,edmax)
             enddo
 
@@ -326,7 +326,7 @@ c     ***********************************************************************
 
          ebs=0.d0
          do m = 1,norb
-            ebs = ebs + wnl(m) * en(m)
+            ebs = ebs + wnl(m) * enp(m)
          enddo
          etot = 0.d0
 
@@ -436,7 +436,7 @@ c      enddo
       m=1
       n=2
       if (ipsp.eq.33) then
-         write(7,*) 'E=',-en(m)
+         write(7,*) 'E=',-enp(m)
          iprint=5
 
          dpm(m)=0.d0
@@ -452,11 +452,11 @@ c      enddo
          
          do k=1,1
             call hfmethd(m,ipsp,rsold,zeff,azz,fail,iprint)
-            write(7,*) 'E=',-en(m)
+            write(7,*) 'E=',-enp(m)
             no(m)=no(m)+1
 
             call hfmethd(m,ipsp,rsold,zeff,azz,fail,iprint)
-            write(7,*) 'E=',-en(m)
+            write(7,*) 'E=',-enp(m)
             no(m)=no(m)-1
          enddo
          
@@ -516,7 +516,7 @@ c     if (r(j).lt.15) write(370+i,*) r(j),rnlp(j,i)
             rnlp(j,i)=rnlp(j,i)*sqrt(r(j))
             rvcore(j,i)=-2.d0*rvcore(j,i)
          enddo
-         en(i)=-en(i)
+         enp(i)=-enp(i)
       enddo
 
       do i=1,np
@@ -636,11 +636,11 @@ c     write(7,701) etot,ebs,ehart+exx
       if (iprint.gt.0)  write (7,9222)
 
       do i = 1,ncore
-         if (iprint.gt.0)  write (7,9223) nlm(i),wnl(i),en(i)
+         if (iprint.gt.0)  write (7,9223) nlm(i),wnl(i),enp(i)
       enddo
       do i = ncore+1,norb
          if (iprint.gt.0)  write (7,9223) nlm(i),wnl(i),
-     $        en(i),rnorm(i),rvap(i)
+     $        enp(i),rnorm(i),rvap(i)
       enddo
 
  500  format(1x,i4,1x,'iterations: (units are Ry and bohr)')

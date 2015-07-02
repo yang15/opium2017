@@ -54,7 +54,7 @@ c     -------------------------------------------------------------------------
 
       common /aorb/ ncore,nval,norb,nlm(n0),
      $     no(n0),lo(n0),nmax(n0),maxim
-      common /adat/ wnl(n0),en(n0),so(n0),xion
+      common /adat/ wnl(n0),en(n0), enp(n0), so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
 
       common /niter/ niter
@@ -211,14 +211,14 @@ c     starting guess for channels which don't have a psp-wfn guess
       enddo
 
       do i=1,norb        
-         en(i)=-en(i)
+         enp(i)=-enp(i)
          meth(i)=1
          do j=1,norb
             e(i,j)=0.d0
             if (lo(i).eq.lo(j)) e(i,j)=1e-5
          enddo
 
-         e(i,i)=en(i)
+         e(i,i)=enp(i)
          
          nmax(i)=np
          dpm(i)=0.d0
@@ -234,7 +234,7 @@ c     starting guess for channels which don't have a psp-wfn guess
                e(j,jj)=0.d0
                if (lo(j).eq.lo(jj)) e(j,jj)=1e-5
             enddo
-            e(j,j)=-en(j)
+            e(j,j)=-enp(j)
             do i = 1,np
                rnla(i,j) = 0
                rnlb(i,j) = 0

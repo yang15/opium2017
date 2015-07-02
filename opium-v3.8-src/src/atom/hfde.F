@@ -54,7 +54,7 @@ c     External (shared between C and Fortran) common blocks
 c -------------------------------------------------------------------------
       common /aorb/ ncore,nval,norb,nlm(n0),
      $     no(n0),lo(n0),nmax(n0),maxim
-      common /adat/ wnl(n0),en(n0),so(n0),xion
+      common /adat/ wnl(n0),enp(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /wfn/ rnlp(npdm,n0)
       common /consts/ etol,vtol,maxit,isoft
@@ -196,7 +196,7 @@ c               write(7,*) 'orth', j,azz,az(j),rx
 
 c      write(7,*) 'after de adj', m,az(m),azz
 
-      en(m)=e(m,m)
+      enp(m)=e(m,m)
 
       if (iprint.gt.1) 
      $     write (7,17) nlm(m),e(m,m),az(m),pnn,dp,r(nmax(m))
