@@ -59,7 +59,7 @@ c     *************************************************************************
      $     no(n0),lo(n0),nmax(n0),maxim
       common /adat/ wnl(n0),en(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
-      common /wfn/ rnlp(npdm,n0)
+      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
 
       dimension yk(npdm),yr(npdm)
 
@@ -70,8 +70,10 @@ c     *************************************************************************
       do j=1,norb
          do k = 0,2*min(lo(i),lo(j)),2
             if (dabs(aaa(i,j,k)) .ge. 1.d-8) then
-               write(*,*) "before ykf in potl"
-               call ykf(yk,j,j,k,rnlp)
+               write(*,*) "before ykf in potl",rnlp(1,1)
+               write(*,*) "before ykf in potl",rnlp(1,1)
+               ! already changed by previous function
+               call ykf(yk,j,j,k)
                write(*,*) "after ykf in potl"
 c               write(7,*) 'hart', i,j,k,aaa(i,j,k)
                do in=1,np                  

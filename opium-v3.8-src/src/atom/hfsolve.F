@@ -60,7 +60,7 @@ c     -------------------------------------------------------------------------
 c     External (shared between C and Fortran) common blocks
 c     -------------------------------------------------------------------------
 
-      common /wfn/ rnlp(npdm,n0), rnl(npdm,n0)
+      common /wfn/ rnl(npdm,n0), rnlp(npdm,n0)
       common /wfnrel/ rnla(npdm,n0),rnlb(npdm,n0)
       
       common /rscore/ rscore(npdm),rdd(npdm),rddd(npdm),rscoretot(npdm),
@@ -110,6 +110,7 @@ c     *************************************************************************
       dimension wavea(npdm),icarray(30)
       dimension x(npdm),yr(npdm),fr(npdm),fr2(npdm)
       dimension lcount(10)
+      dimension rnltemp(npdm,n0)
 c     *************************************************************************
 c     *************************************************************************
       character*80 file_log
@@ -495,8 +496,12 @@ c 8585 format(4f20.10)
  788        continue
             if (iprint.gt.1) write(7,*) 'Max radius used for Veff:',
      $           i,rmmax
+            rnltemp(:,:)=rnl(:,:)
+            rnl(:,:)=rnlp(:,:)
             call potl(yr,i)
-            call xch(x,i,1,rnlp)
+            call xch(x,i,1)
+            rnlp(:,:)=rnl(:,:)
+            rnl(:,:)=rnltemp(:,:)
             eps=1d-18
             do j=1,np
                if (r(j).gt.rmmax) goto 922

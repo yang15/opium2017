@@ -45,7 +45,7 @@ c along with this program; if not, write to the Free Software
 c Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 c
 c
-      subroutine ykf(yk,i,j,k,rnl)
+      subroutine ykf(yk,i,j,k)
 c     JY: passing rnl or rnlp from outside     
 c     *************************************************************************
 c     get the yk function
@@ -59,12 +59,11 @@ c     *************************************************************************
      $     no(n0),lo(n0),nmax(n0),maxim
       common /adat/ wnl(n0),en(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
-!      common /wfn/ rnl(npdm,n0)
+      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
 
       dimension yk(npdm)
-
-      write(*,*) "before zkf in ykf" 
-      call zkf(yk,i,j,k,rnl)
+      write(*,*) "before zkf in ykf",rnl(1,1) 
+      call zkf(yk,i,j,k)
       write(*,*) "after zkf in ykf" 
 
       a =  dexp(-h)**(k+1)

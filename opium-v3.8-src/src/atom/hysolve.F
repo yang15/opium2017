@@ -531,7 +531,7 @@ c     if not a frozen core calc or if valence
           !ixc = 7 : hybrid functional
           if(ixc.lt.0 .or. ixc.eq.7) then
             write (7,*) "Hybrid functionals will be implemented soon!"
-            write(*,*) "hybrid start 1"
+            write(*,*) "hybrid start 1",rnlp(1,1)
 
             ! LZT : for AE Hartree-Fock, here we should apply 
             ! the Fock operator to wavefunction m, and store

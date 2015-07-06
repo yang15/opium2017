@@ -5,12 +5,21 @@
  See http://opium.sourceforge.net for help and information                 
  Copyright 2009 : The OPIUM project                         
 
+<<<<<<< Updated upstream
  Compile host     : hoponpop
  Compile OS       : Linux 3.10.3-1-ARCH unknown
  Compile date     : Thu Jul  2 16:53:28 EDT 2015
 
  Execution host   : hoponpop
  time of execution: Thu Jul  2 16:54:03 2015
+=======
+ Compile host     : vagvlan567.0803.wlan.wireless-pennnet.upenn.edu
+ Compile OS       : Darwin 14.3.0 i386
+ Compile date     : Thu Jul  2 17:02:02 EDT 2015
+
+ Execution host   : vagvlan567.0803.wlan.wireless-pennnet.upenn.edu
+ time of execution: Thu Jul  2 17:04:01 2015
+>>>>>>> Stashed changes
 
  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  Reading parameter file:  <c.param> ... 
@@ -22,8 +31,11 @@
  Number of pseudo       orbitals   : 2 
  
  Pseudopotential is non-relativistic 
+<<<<<<< Updated upstream
  Exchage-correlation functional is : Perdew, Burke, Ernzerhof GGA 
  GGA smoothed from 0 to 0.001000 bohr using switch to LDA 
+=======
+>>>>>>> Stashed changes
  The s potential is used for the KB construction 
  Optimized (RRKJ) pseudopotential method will be used 
 
@@ -52,6 +64,7 @@
  1s           -36.00000000
  2s            -2.25000000
  2p            -2.25000000
+<<<<<<< Updated upstream
 
  iter       Etot             Ebs             Ehxc       de_max   dv_max
    1      -78.1737072     -46.1066343     -32.0670729 0.73E+00 0.20E+01
@@ -93,3 +106,6 @@
  End AE calculation
  ======================================================================== 
 ------------- closing opium session ------------
+=======
+ ixc out of range - stop
+>>>>>>> Stashed changes

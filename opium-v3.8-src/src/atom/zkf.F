@@ -45,7 +45,7 @@ c along with this program; if not, write to the Free Software
 c Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 c
 c
-      subroutine zkf(yk,i,j,k,rnl)
+      subroutine zkf(yk,i,j,k)
 c     JY: passing rnl or rnlp from outside     
 c     *************************************************************************
 c     get the zk function
@@ -59,11 +59,11 @@ c     *************************************************************************
      $     no(n0),lo(n0),nmax(n0),maxim
       common /adat/ wnl(n0),en(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
-!      common /wfn/ rnl(npdm,n0),  rnlp(npdm,n0)
+      common /wfn/ rnl(npdm,n0),  rnlp(npdm,n0)
 
       dimension yk(npdm)
 
-      write(*,*) "In zkf"
+      write(*,*) "In zkf",rnl(1,1)
 
       do in=1,np
          yk(in)=0.d0
@@ -79,12 +79,14 @@ c     *************************************************************************
       ai = h90/a
       an = 114.d0*a*h90
       a34 = 34.d0*h90
+      write(*,*) a34
       !if (ixc.eq.7) then
       !  f1 = r(1)**2*rnlp(1,i)*rnlp(1,j)
       !  f2 = r(2)**2*rnlp(2,i)*rnlp(2,j)
       !  f3 = r(3)**2*rnlp(3,i)*rnlp(3,j)
       !  f4 = r(4)**2*rnlp(4,i)*rnlp(4,j)
       !else
+      write(*,*) "before rnl appears"
         f1 = r(1)**2*rnl(1,i)*rnl(1,j)
         f2 = r(2)**2*rnl(2,i)*rnl(2,j)
         f3 = r(3)**2*rnl(3,i)*rnl(3,j)

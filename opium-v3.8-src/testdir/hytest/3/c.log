@@ -5,12 +5,12 @@
  See http://opium.sourceforge.net for help and information                 
  Copyright 2009 : The OPIUM project                         
 
- Compile host     : hoponpop
- Compile OS       : Linux 3.10.3-1-ARCH unknown
- Compile date     : Mon Jul  6 12:10:03 EDT 2015
+ Compile host     : vagvlan567.351.wlan.sas.upenn.edu
+ Compile OS       : Darwin 14.3.0 i386
+ Compile date     : Mon Jul  6 17:47:15 EDT 2015
 
- Execution host   : hoponpop
- time of execution: Mon Jul  6 12:10:35 2015
+ Execution host   : vagvlan567.351.wlan.sas.upenn.edu
+ time of execution: Mon Jul  6 17:49:21 2015
 
  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  Reading parameter file:  <c.param> ... 
@@ -45,3 +45,10 @@
  ======================================================================== 
  Performing non-relativistic AE calculation...  
  is make clean necessary?  
+ ---------Eigenvalue guesses---------
+ 1s           -36.00000000
+ 2s            -2.25000000
+ 2p            -2.25000000
+ Rotation needed            1           2   1.0000000000000001E-005
+ Hybrid functionals will be implemented soon!
+ ixc out of range - stop

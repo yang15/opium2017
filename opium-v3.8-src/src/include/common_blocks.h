@@ -37,8 +37,7 @@ extern struct{
 }grid_;  
 
 extern struct{
-  double rnl[N0][NPDM];
-  double rnlp[N0][NPDM];
+  double rnl[N0][NPDM], rnlp[N0][NPDM];
 }wfn_;  
 
 extern struct{

@@ -117,7 +117,7 @@ c
      $     no(n0),lo(n0),nmax(n0),maxim
       common /adat/ wnl(n0),enp(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
-      common /wfn/ rnlp(npdm,n0)
+      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
 
       k12 = k + 2
@@ -164,7 +164,7 @@ c
      $     no(n0),lo(n0),nmax(n0),maxim
       common /adat/ wnl(n0),enp(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
-      common /wfn/ rnlp(npdm,n0)
+      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
       dimension yk(npdm)
 
@@ -206,12 +206,23 @@ c
      $     no(n0),lo(n0),nmax(n0),maxim
       common /adat/ wnl(n0),enp(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
-      common /wfn/ rnlp(npdm,n0)
+      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
       dimension yk(npdm),yr(npdm),x(npdm)
+      dimension rnltemp(npdm,n0)
 
-      call xch(x,i,2,rnlp)
+      do 33 l=1,np
+        do 33 ll=1,n0
+           rnltemp(l,ll)=rnl(l,ll)
+           rnl(l,ll)=rnlp(l,ll)
+33      continue        
+      call xch(x,i,2)
       call potl(yr,i)
+      do 34 l=1,np
+        do 34 ll=1,n0
+           rnlp(l,ll)=rnl(l,ll)
+           rnl(l,ll)=rnltemp(l,ll)
+34      continue        
       do 1 j=1,np
          yk(j) = yr(j)
          yr(j) = rnlp(j,ii)
@@ -242,7 +253,7 @@ c
      $     no(n0),lo(n0),nmax(n0),maxim
       common /adat/ wnl(n0),enp(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
-      common /wfn/ rnlp(npdm,n0)
+      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
 
       dimension yr(npdm),x(npdm)
@@ -286,7 +297,7 @@ c
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /edi/ e(n0,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
-      common /wfn/ rnlp(npdm,n0)
+      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
       common /consts/ etol,vtol,maxit,isoft
       common /grid/ h,r1,z,r(npdm),np
       common /coeff/coef(100),ijptr(n0,n0)
@@ -368,7 +379,7 @@ c               write(7,35) nlm(i),nlm(j),e(i,j),nlm(j),nlm(i),e(j,i)
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /edi/ e(n0,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
-      common /wfn/ rnlp(npdm,n0)
+      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
       common /consts/ etol,vtol,maxit,isoft
       common /grid/ h,r1,z,r(npdm),np
       common /coeff/coef(100),ijptr(n0,n0)
@@ -441,7 +452,7 @@ c               write(7,35) nlm(i),nlm(j),e(i,j),nlm(j),nlm(i),e(j,i)
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /edi/ e(n0,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
-      common /wfn/ rnlp(npdm,n0)
+      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
       common /consts/ etol,vtol,maxit,isoft
       common /grid/ h,r1,z,r(npdm),np
       common /totpot/ rvcore(npdm,n0),rvps(npdm,n0),rvcoul(npdm)
@@ -556,10 +567,28 @@ c      write (7,100) nlm(i),nlm(j),g,nlm(i),nlm(j),dg,eps
       double precision function fk(i,j,k)
       implicit double precision(a-h,o-z)
 #include "fortdim.h"
+      common /grid/ h,r1,z,r(npdm),np
+      common /aorb/ ncore,nval,norb,nlm(n0),
+     $     no(n0),lo(n0),nmax(n0),maxim
+      common /adat/ wnl(n0),enp(n0),so(n0),xion
+      common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
+      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
+      common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
 
       dimension yk(npdm)
+      dimension rnltemp(npdm,n0)
 
-      call ykf(yk,i,i,k,rnlp)
+      do 35 l=1,npdm
+        do 35 ll=1,n0
+           rnltemp(l,ll)=rnl(l,ll)
+           rnl(l,ll)=rnlp(l,ll)
+35      continue
+      call ykf(yk,i,i,k)
+      do 36 l=1,npdm
+        do 36 ll=1,n0
+           rnlp(l,ll)=rnl(l,ll)
+           rnl(l,ll)=rnltemp(l,ll)
+36      continue
       fk = quads2(yk,j,j,1)
       return
       end
@@ -567,10 +596,27 @@ c      write (7,100) nlm(i),nlm(j),g,nlm(i),nlm(j),dg,eps
       double precision function gk(i,j,k)
       implicit double precision(a-h,o-z)
 #include "fortdim.h"
+      common /grid/ h,r1,z,r(npdm),np
+      common /aorb/ ncore,nval,norb,nlm(n0),
+     $     no(n0),lo(n0),nmax(n0),maxim
+      common /adat/ wnl(n0),enp(n0),so(n0),xion
+      common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
+      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
+      common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
 
       dimension yk(npdm)
-
-      call ykf(yk,i,j,k,rnlp)
+      dimension rnltemp(npdm,n0)
+      do 37 l=1,np
+        do 37 ll=1,n0
+           rnltemp(l,ll)=rnl(l,ll)
+           rnl(l,ll)=rnlp(l,ll)
+37      continue
+      call ykf(yk,i,j,k)
+      do 38 l=1,np
+        do 38 ll=1,n0
+           rnlp(l,ll)=rnl(l,ll)
+           rnl(l,ll)=rnltemp(l,ll)
+38      continue        
       gk = quads2(yk,i,j,1)
       return
       end
@@ -578,10 +624,27 @@ c      write (7,100) nlm(i),nlm(j),g,nlm(i),nlm(j),dg,eps
       double precision function rk(i,j,ii,jj,k)
       implicit double precision(a-h,o-z)
 #include "fortdim.h"
+      common /grid/ h,r1,z,r(npdm),np
+      common /aorb/ ncore,nval,norb,nlm(n0),
+     $     no(n0),lo(n0),nmax(n0),maxim
+      common /adat/ wnl(n0),enp(n0),so(n0),xion
+      common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
+      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
+      common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
 
       dimension yk(npdm)
-
-      call ykf(yk,i,ii,k,rnlp)
+      dimension rnltemp(npdm,n0)
+      do 39 l=1,np
+        do 39 ll=1,n0
+           rnltemp(l,ll)=rnl(l,ll)
+           rnl(l,ll)=rnlp(l,ll)
+39      continue
+      call ykf(yk,i,ii,k)
+      do 40 l=1,np
+        do 40 ll=1,n0
+           rnlp(l,ll)=rnl(l,ll)
+           rnl(l,ll)=rnltemp(l,ll)
+40      continue
       rk = quads2(yk,j,jj,1)
       return
       end
@@ -604,7 +667,7 @@ c      write (7,100) nlm(i),nlm(j),g,nlm(i),nlm(j),dg,eps
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /edi/ e(n0,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
-      common /wfn/ rnlp(npdm,n0)
+      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
       common /consts/ etol,vtol,maxit,isoft
       common /grid/ h,r1,z,r(npdm),np
       common /totpot/ rvcore(npdm,n0),rvps(npdm,n0),rvcoul(npdm)

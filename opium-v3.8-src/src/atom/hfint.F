@@ -59,7 +59,7 @@ c -------------------------------------------------------------------------
       common /adat/ wnl(n0),enp(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /consts/ etol,vtol,maxit,isoft
-      common /wfn/ rnlp(npdm,n0)
+      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
       common /grid/ h,r1,z,r(npdm),np
       common /edi/ e(n0,n0)
       common /ahf/ s(n0),az(n0),acc(n0)
@@ -79,6 +79,7 @@ c -------------------------------------------------------------------------
 c -------------------------------------------------------------------------
       dimension p(npdm), yk(npdm)
       dimension x(npdm)
+      dimension rnltemp(npdm,n0)
       dimension xz(npdm),w(npdm),p1(npdm),p2(npdm)
       dimension yr(npdm),hq(npdm),xx(npdm)
       logical v2,first
@@ -87,10 +88,17 @@ c -------------------------------------------------------------------------
 
       if (ighost*ighost2.gt.1) goto 17
       write(*,*) "before potl"
+      ! copy rnlp to rnl and save rnl to a local array
+      rnltemp(:,:)=rnl(:,:)
+      rnl(:,:)=rnlp(:,:)
       call potl(yr,m)
       write(*,*) "after potl"
-      call xch(x,m,3,rnlp)
+      call xch(x,m,3)
       write(*,*) "after xch"
+      ! copy rnl to rnlp and save rnltemp to rnl
+      rnlp(:,:)=rnl(:,:)
+      rnl(:,:)=rnltemp(:,:)
+      ! end of array modification by JY
       ighost2=ighost2+1
 
       cd=(lo(m)+1.d0/2.d0)**2

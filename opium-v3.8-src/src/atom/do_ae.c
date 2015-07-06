@@ -94,6 +94,7 @@ int do_ae(param_t *param, char *logfile){
     if(param->ixc ==7){
       //testing hybrid functionals
       printf("%f %i %f %f %f %f %f %f\n", param->z,param->ixc,exccut_temp,ipsp,ifc,iexit,irel,iprint);
+//      dftsolve_(&param->z,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&irelxc,&iprint);
       hysolve_(&param->z,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&irelxc,&iprint);
    
     } else {
