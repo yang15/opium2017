@@ -87,7 +87,9 @@ c -------------------------------------------------------------------------
       endif
 
       !LZT: apply Fock operator to orbital m
+      write(*,*) "before hfmethd"
       call hfmethd(m,ipsp,p,zeff,azz,fail,iprint)
+      write(*,*) "after hfmethd"
 
       if (fail) goto 25
 

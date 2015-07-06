@@ -63,7 +63,9 @@ c     *************************************************************************
 
       dimension yk(npdm)
 
+      write(*,*) "before zkf in ykf" 
       call zkf(yk,i,j,k,rnl)
+      write(*,*) "after zkf in ykf" 
 
       a =  dexp(-h)**(k+1)
       ccc = 2*k+1

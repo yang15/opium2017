@@ -87,7 +87,9 @@ c -------------------------------------------------------------------------
       fu=eu
       mk=0
       
+      write(*,*) "before hfint" 
  17   call hfint(m,ipsp,p,pp,zeff,ed,ntp,azd,deltae,first,eu,em,iprint)
+      write(*,*) "after hfint" 
 
       if (imeth.eq.3) goto 111
 

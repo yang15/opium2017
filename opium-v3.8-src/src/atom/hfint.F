@@ -86,8 +86,11 @@ c -------------------------------------------------------------------------
       if (.not.first) goto 17
 
       if (ighost*ighost2.gt.1) goto 17
+      write(*,*) "before potl"
       call potl(yr,m)
+      write(*,*) "after potl"
       call xch(x,m,3,rnlp)
+      write(*,*) "after xch"
       ighost2=ighost2+1
 
       cd=(lo(m)+1.d0/2.d0)**2
@@ -227,10 +230,12 @@ c -------------------------------------------------------------------------
          hq(k)=azd*(hw+r(k)**(lo(m)+3)*b3*(1.d0-r(k)*b4))/sqrt(r(k))
       enddo
 
+      write(*,*) "before nmrvs"
       call nmrvs(ntp,delh,mh,hq,xz,yr,m,iprint)
       p1(1)=hq(1)+xy/c
       p1(2)=hq(2)+xp/c
       call nmrvs(ntp,del1,m1,p1,x,yr,m,iprint)
+      write(*,*) "after nmrvs"
 
       nmax(m)=max(m1,mh)
       pnorm=0.d0
