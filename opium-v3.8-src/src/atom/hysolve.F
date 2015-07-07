@@ -597,9 +597,12 @@ c     if not a frozen core calc or if valence
 
           ! LZT: For hybrid functionals, we  take a
           ! weighted sum of the KS wfns and HF wfns
-
-          !rnl = exxweight*rnlp + (1.0-exxweight) * p
-          rnl = 0.0*rnlp + (1.0) * rnl
+          
+          !PBE0
+          rnl = 0.25*rnlp + 0.75 * rnl
+          
+          !DFT
+          !rnl = 0.0*rnlp + (1.0) * rnl
           rnlp = rnl
 
           write(*,*) "finished hybrid mixing"
