@@ -92,12 +92,16 @@ c -------------------------------------------------------------------------
       rnltemp(:,:)=rnl(:,:)
       rnl(:,:)=rnlp(:,:)
       call potl(yr,m)
-      write(*,*) "after potl"
+      rnlp(:,:)=rnl(:,:)
+      rnl(:,:)=rnltemp(:,:)
+      write(*,*) "after potl",rnltemp(1,1),rnlp(1,1)
+      rnltemp(:,:)=rnl(:,:)
+      rnl(:,:)=rnlp(:,:)
       call xch(x,m,3)
-      write(*,*) "after xch"
       ! copy rnl to rnlp and save rnltemp to rnl
       rnlp(:,:)=rnl(:,:)
       rnl(:,:)=rnltemp(:,:)
+      write(*,*) "after xch",rnl(1,1),rnlp(1,1)
       ! end of array modification by JY
       ighost2=ighost2+1
 

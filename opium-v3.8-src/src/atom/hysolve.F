@@ -420,8 +420,8 @@ c     ***********************************************************************
 
 
          !LZT: begin application of kohn-sham operator
-         if(ixc.ge.0. .and. ixc.lt.7) then
-
+         if(ixc.ge.0. .and. ixc.le.7) then
+         write(*,*) "entering KS"
          do m = 1,norb
             if (m.le.ncore) then
                ibound=1
@@ -524,7 +524,7 @@ c     if not a frozen core calc or if valence
 
           endif
           !LZT: end application of kohn-sham operator
-          write(*,*) "KS operator end"
+          write(*,*) "KS operator end",rnl(1,1)
           
           !LZT: begin application of Fock operator
           !ixc = -1 : hartree-fock
