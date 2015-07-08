@@ -88,10 +88,9 @@ int do_ae(param_t *param, char *logfile){
     /* find the SCF solution */
     irel=0;
     irelxc=0;    
-    //if (param->ixc < 0) {
-    //  hfsolve_(&param->z,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&iprint);
-    //}else 
-    if(param->ixc ==7){
+    if (param->ixc < 0) {
+      hfsolve_(&param->z,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&iprint);
+    } else if(param->ixc ==7){
       //testing hybrid functionals
       printf("%f %i %f %f %f %f %f %f\n", param->z,param->ixc,exccut_temp,ipsp,ifc,iexit,irel,iprint);
 //      dftsolve_(&param->z,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&irelxc,&iprint);

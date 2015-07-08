@@ -27,11 +27,7 @@ opt
 lfc
 
 [XC]
-<<<<<<< Updated upstream
 gga
-=======
-hy
->>>>>>> Stashed changes
 
 [Grid]
 2402 .0001 .0065  

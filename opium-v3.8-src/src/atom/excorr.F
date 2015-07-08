@@ -46,6 +46,7 @@ c     ixc - 3 : PW GGA 91
 c     ixc - 4 : WC GGA 06
 c     ixc - 5 : PBEsol GGA 08
 c     ixc - 6 : VWN LDA V (the CA formulation)
+c     ixc - 7 : PBE0 hybrid functional
 
       ictype=0
       if (exccut.lt.0) ictype=1
@@ -53,7 +54,7 @@ c     ixc - 6 : VWN LDA V (the CA formulation)
 c     ictype=0  : smoothing at origin is done by slow crossover to LDA
 c     ictype=1  : smoothing at origin is done by polynomial fit when descreening ONLY
       
-      if ((ixc.gt.6).or.(ixc.lt.0)) then
+      if ((ixc.gt.7).or.(ixc.lt.0)) then
          write(7,*) 'ixc out of range - stop'
          write(6,*) 'ixc out of range - stop'
          stop
@@ -74,7 +75,7 @@ c     ictype=1  : smoothing at origin is done by polynomial fit when descreening
  10   continue
       if (iset.eq.0) inxc=maxim-1
 
-      if (ixc.ge.2.and.ixc.lt.6) then
+      if ( (ixc.ge.2.and.ixc.lt.6) .or. ixc.eq.7) then
          call grad(dens,agde,
      $        ggagde,rlape,agdc,ggagdc,rlapc,tau,inxc)
          if (irelxc.eq.1) then
@@ -123,7 +124,19 @@ c     This is PW92 LDA X which is the same LDA X for PZ X LDA and VWN X LDA
             endif
          endif
 
-         if (ixc.ge.2.and.ixc.lt.6) then
+         if ( (ixc.ge.2.and.ixc.lt.6) .or. ixc.eq.7) then
+
+            if (ixc.eq.7) then
+c     This is PBEGGA X
+               call exchpbe(rho,agde(i),ggagde(i),rlape(i),1,1,
+     $              ex,vx,fx,fs,fss)
+c     This is PW92LDA X - just for terms needed in rel correction
+               call exchpbe(rho,zero,zero,zero,0,1,
+     $              exlda,vxlda,f1,f2,f3)
+
+            endif
+
+
 
             if (ixc.eq.2) then
 c     This is PBEGGA X
@@ -238,6 +251,17 @@ c     This is PBE GGA C - used for WCGGA also
             ec=ec+hc*rwgt
             vc=vc+dvc*rwgt
          endif            
+         if (ixc.eq.7) then
+c     This is for PBE0
+            call corpbe(rs,zero,agdc(i),ggagdc(i),rlapc(i),zero,1,1,
+     $           ec,vc,vc,hc,dvc,dvc)
+            ec=ec+hc*rwgt
+            vc=vc+dvc*rwgt
+
+            ec = 4.0/3.0 * ec
+            ev = 4.0/3.0 * ev
+         endif        
+
          if (ixc.eq.3) then
 c     This is PW91 GGA C 
             gg=1.d0
