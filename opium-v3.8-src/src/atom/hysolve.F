@@ -80,7 +80,7 @@ c     -------------------------------------------------------------------------
 c     *************************************************************************
 c     local variables
 c     *************************************************************************
-      dimension rvn(npdm),rvf(npdm),eold(n0),p(npdm)
+      dimension rvn(npdm),rvf(npdm),eold(n0),eoldp(n0),p(npdm)
       dimension rsatom(npdm),f(npdm),f2(npdm),f3(npdm)
       dimension pder(npdm),ader(npdm)
       dimension dl(n0), rsatom2(npdm)
@@ -311,7 +311,7 @@ c     starting guess for channels which don't have a psp-wfn guess
             if (e(i,j).gt.0.d0) then
                rx=quadr(i,j,0)
                if (abs(rx).gt.1e-8) then
-                  rx2=sqrt(1.d0-rx**2)
+                 rx2=sqrt(1.d0-rx**2)
                   if (rnlp(50,i)-rx*rnlp(50,j).lt.0.d0) rx2=-rx2
                   do k=1,np
                      rnlp(k,i)=(rnlp(k,i)-rx*rnlp(k,j))/rx2
@@ -410,6 +410,7 @@ c     unbound info
          write(*,*) "dft init. end"
 
          !initialization for HF
+         edmaxp = 0
          dp1 = 0
          call grange
          
@@ -529,7 +530,8 @@ c     if not a frozen core calc or if valence
           !LZT: begin application of Fock operator
           !ixc = -1 : hartree-fock
           !ixc = 7 : hybrid functional
-          if(ixc.lt.0 .or. ixc.eq.7) then
+          !if(ixc.lt.0 .or. ixc.eq.7) then
+          if(.false.) then
             write (7,*) "Hybrid functionals will be implemented soon!"
             write(*,*) "hybrid start 1",rnlp(1,1)
 
@@ -538,10 +540,9 @@ c     if not a frozen core calc or if valence
             ! the result in p.
 
             !  ... prepare HF calculation ...
-            !  call hfmethd(m,ipsp,phf,zeff,azz,fail,iprint)
             do m=1,norb
               ed1=0 !LZT: this doesn't seem to be used anywhere
-              eold(m)=enp(m)
+              eoldp(m)=enp(m)
               ed2=e(m,m) !LZT: this doesn't seem to be used anywhere
 
               call hfde(m,ipsp,zeff,dpm,iprint)
@@ -553,21 +554,22 @@ c     if not a frozen core calc or if valence
               dp1=dp
               ibad=m
  2          continue
-              edif = abs((enp(m) - eold(m))/eold(m))
-              eold(m) = enp(m)
-              edmax = max(edif,edmax)
+              edifp = abs((enp(m) - eoldp(m))/eoldp(m))
+              eoldp(m) = enp(m)
+              edmaxp = max(edifp,edmaxp)
             enddo
             write(*,*) "finished first m-loop"
 
 
             if (dp1.lt.vtl) goto 66
+            !goto 66
 
             dp1=0.d0
             do mm=1,6
               m=ibad
               ed1=0
               ed2=e(m,m)
-              eold(m)=enp(m)
+              eoldp(m)=enp(m)
               call hfde(m,ipsp,zeff,dpm,iprint)
 
               if (nfails.gt.25) goto 911
@@ -579,9 +581,9 @@ c     if not a frozen core calc or if valence
                 dp1=dp
  5              continue
 
-                edif = abs((enp(m) - eold(m))/eold(m))
-                eold(m) = enp(m)
-                edmax = max(edif,edmax)
+                edifp = abs((enp(m) - eoldp(m))/eoldp(m))
+                eoldp(m) = enp(m)
+                edmax = max(edifp,edmax)
               enddo
 
               if (dp1.lt.vtl) goto 66
@@ -599,10 +601,11 @@ c     if not a frozen core calc or if valence
           ! weighted sum of the KS wfns and HF wfns
           
           !PBE0
-          rnl = 0.25*rnlp + 0.75 * rnl
+          !rnl = 0.25*rnlp + 0.75 * rnl
           
           !DFT
-          !rnl = 0.0*rnlp + (1.0) * rnl
+          rnl = 0.0*rnlp + (1.0) * rnl
+
           rnlp = rnl
 
           write(*,*) "finished hybrid mixing"
@@ -661,6 +664,8 @@ c     ***********************************************************************
             ebs = ebs + wnl(m) * en(m)
          enddo
          etot = ebs + ehxc
+
+         !For hybrids, need to use exx
 
 c     ***********************************************************************
 c     Section 6:  Mix potentials
