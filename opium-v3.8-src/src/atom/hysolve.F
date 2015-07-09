@@ -88,6 +88,7 @@ c     *************************************************************************
       dimension wavea(npdm),icarray(n0)
       dimension x(npdm),yr(npdm),fr(npdm),fr2(npdm)
       dimension lcount(10)
+      dimension rvcore1(npdm,n0)
 c     rvpostloc(npdm),rvpreloc(npdm)
 c     *************************************************************************
 c     Section 1:  set up tolerance params and zero out arrays.
@@ -190,9 +191,13 @@ c      endif
         enddo
       endif
 
+
       do i = 1,np         
         rvcoul(i) = rvps(i,1) - rvcore(i,1)
       enddo
+      
+      !set up local copy because hf uses this too
+      rvcore1 = rvcore
 
       write(*,*) "dft init. done"
 
@@ -222,6 +227,9 @@ c      iprint=5
 
       call hfcoef(iflag,ipsp)
 
+
+      !goto 555
+
 c     EJW - adding this to keep allow to pick a hyrdogenic wavefunction 
 c     starting guess for channels which don't have a psp-wfn guess 
       do i=1,10
@@ -242,9 +250,12 @@ c     starting guess for channels which don't have a psp-wfn guess
          dpm(i)=0.d0
          acc(i)=0.d0
          do j=1,np
-            rvcore(j,i)=-rvcore(j,i)/2.d0
+            rvcore(j,i)=-rvcore(j,i)/2.d0 
          enddo
       enddo
+
+
+      !goto 555
 
       if (ipsp.eq.0) then
          do j=1,norb
@@ -266,6 +277,9 @@ c     starting guess for channels which don't have a psp-wfn guess
             enddo
          enddo
       endif
+
+      !write(*,*) "testing init.", rnlp(1,1)
+      !goto 555
 
       etotlast = 0
       ifock=0
@@ -321,6 +335,8 @@ c     starting guess for channels which don't have a psp-wfn guess
          enddo
  33      continue
       enddo
+
+555   continue
 
       !end initialization of HF
       write(*,*) "hf init. done"
@@ -452,7 +468,7 @@ c     if non-local
                      if (itermcount.gt.10) goto 911
 c     911 = terminal error - exit scpot
                      
-                     call applyaug(rvloc,rvcore(1,iloc))
+                     call applyaug(rvloc,rvcore1(1,iloc))
                      
                      do i = 1, np
                         phiguess(i,m) = p(i)
@@ -530,8 +546,8 @@ c     if not a frozen core calc or if valence
           !LZT: begin application of Fock operator
           !ixc = -1 : hartree-fock
           !ixc = 7 : hybrid functional
-          !if(ixc.lt.0 .or. ixc.eq.7) then
-          if(.false.) then
+          if(ixc.lt.0 .or. ixc.eq.7) then
+          !if(.false.) then
             write (7,*) "Hybrid functionals will be implemented soon!"
             write(*,*) "hybrid start 1",rnlp(1,1)
 
@@ -583,7 +599,7 @@ c     if not a frozen core calc or if valence
 
                 edifp = abs((enp(m) - eoldp(m))/eoldp(m))
                 eoldp(m) = enp(m)
-                edmax = max(edifp,edmax)
+                edmaxp = max(edifp,edmaxp)
               enddo
 
               if (dp1.lt.vtl) goto 66
@@ -601,10 +617,10 @@ c     if not a frozen core calc or if valence
           ! weighted sum of the KS wfns and HF wfns
           
           !PBE0
-          !rnl = 0.25*rnlp + 0.75 * rnl
+          rnl = 0.25*rnlp + 0.75 * rnl
           
           !DFT
-          rnl = 0.0*rnlp + (1.0) * rnl
+          !rnl = 0.0*rnlp + (1.0) * rnl
 
           rnlp = rnl
 
@@ -694,7 +710,7 @@ c     ***********************************************************************
          xmix = 0.9
          do i = 1,np
             do iorb = 1,norb
-               rvps(i,iorb) = (rvcore(i,iorb) + rvcoul(i)) * xmix
+               rvps(i,iorb) = (rvcore1(i,iorb) + rvcoul(i)) * xmix
      $              + (1.0 - xmix) * rvps(i,iorb)
             enddo
          enddo
@@ -777,6 +793,8 @@ c     911 = terminal error - exit scpot
          enddo
 
       enddo !self-consistency loop ends here
+
+      rvcore = rvcore1
 
 
  505  format(1x,'!WARNING! positive eigenvalue predicted',

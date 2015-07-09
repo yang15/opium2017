@@ -81,7 +81,7 @@ c     -------------------------------------------------------------------------
 
       common /aorb/ ncore,nval,norb,nlm(n0),
      $     no(n0),lo(n0),nmax(n0),maxim
-      common /adat/ wnl(n0),enp(n0),so(n0),xion
+      common /adat/ wnl(n0),en(n0),enp(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /edi/ e(n0,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
@@ -185,6 +185,7 @@ c     starting guess for channels which don't have a psp-wfn guess
          enddo
       endif
 
+
       etotlast = 0
       ifock=0
       
@@ -268,6 +269,8 @@ c     ***********************************************************************
             rsold(i)=rsatom(i)
             rsatom(i) = 0
          enddo
+
+         write(*,*) "writing wfn", rnlp(1,1)
 
          dp1=0.d0
 c         nfails=0
