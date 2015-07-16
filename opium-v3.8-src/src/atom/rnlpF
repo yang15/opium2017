@@ -1,0 +1,137 @@
+hfde.F:      common /wfn/ rnlp(npdm,n0)
+hfde.F:         diff=rnlp(j,m)-p(j)
+hfde.F:         rnlp(j,m)=p(j)+c*diff
+hfde.F:         rnlp(i,m)=0.d0
+hfde.F:                  rnlp(jj,m)=rnlp(jj,m)-rx*rnlp(jj,j)
+hfde.F:            rnlp(jj,m)=rnlp(jj,m)/rx
+hfde.F: 687  if (dabs(rnlp(jjset,m)).lt.1e-15) then
+hfde.F:         rnlp(jjset,m)=0.d0
+hfde.F:         rsatom(i)=rsatom(i)+wnl(m)*rnlp(i,m)**2
+hfenergy.F:      common /wfn/ rnlp(npdm,n0)
+hfint.F:      common /wfn/ rnlp(npdm,n0)
+hfint.F:      call xch(x,m,3,rnlp)
+hfint.F:      x1=ch*rnlp(1,m)*(yk(1)+ed*r(1)*r(1))
+hfint.F:      x2=ch*rnlp(2,m)*(yk(2)+ed*r(2)*r(2))
+hfint.F:      x3=ch*rnlp(3,m)*(yk(3)+ed*r(3)*r(3))
+hfint.F:      x4=ch*rnlp(4,m)*(yk(4)+ed*r(4)*r(4))
+hfint.F:         x5=ch*rnlp(j+2,m)*(yk(j+2)+ed*r(j+2)*r(j+2))
+hfint.F:         fnum=rnlp(j+1,m)-2.d0*rnlp(j,m)+rnlp(j-1,m)
+hfint.F:         fnum=fnum-ch*(yk(j+1)*rnlp(j+1,m)+10.d0*yk(j)*rnlp(j,m)
+hfint.F:     $        +yk(j-1)*rnlp(j-1,m))
+hfint.F:         ddum=r(j+1)*r(j+1)*rnlp(j+1,m) + 10.d0*r(j)*r(j)*rnlp(j,m)
+hfint.F:     $        + r(j-1)*r(j-1)*rnlp(j-1,m)
+hfint.F:         fl=fl+rnlp(j,m)*fnum
+hfint.F:         cden=cden+rnlp(j,m)*ddum
+hfint.F:            rnlp(k,m)=pnf*hwf(no(m),lo(m),zzz-s(m),r(k))/sqrt(r(k))
+hfint.F:            hw=rnlp(k,m)*sqrt(r(k))
+hfint.F:         x1 = rnlp(1,m)*r(1)**2
+hfint.F:         x2 = rnlp(2,m)*r(2)**2
+hfint.F:            x3 = rnlp(j,m)*r(j)**2
+hfmethd.F:      common /wfn/ rnlp(npdm,n0)
+hfsolve.F:      common /wfn/ rnlp(npdm,n0), rnl(npdm,n0)
+hfsolve.F:               rnlp(i,j) = 0
+hfsolve.F:             rnlp(i,j)=rnlp(i,j)/sqrt(r(i))
+hfsolve.F:               rnlp(k,i)=pnf*hwf(no(i),lo(i),z-s(i),r(k))/sqrt(r(k))
+hfsolve.F:                 rnlp(k,i)=pnf*hwf(no(i),lo(i),zeff-s(i),r(k)) 
+hfsolve.F:                  if (rnlp(50,i)-rx*rnlp(50,j).lt.0.d0) rx2=-rx2
+hfsolve.F:                     rnlp(k,i)=(rnlp(k,i)-rx*rnlp(k,j))/rx2
+hfsolve.F:C      $                 x(j)/rnlp(j,i),rnlp(j,i)
+hfsolve.F:C                   if (r(j).lt.15) write(370+i,*) r(j),rnlp(j,i)
+hfsolve.F:c                  fr(j) = -2.d0*rnlp(j,i)**2*
+hfsolve.F:            rnlp(k,m)=rnlp(k,n)
+hfsolve.F:c            call xch(x,i,1,rnlp)
+hfsolve.F:               if ((abs(rnlp(j,i)*sqrt(r(j))).lt.1e-8).
+hfsolve.F:            call xch(x,i,1,rnlp)
+hfsolve.F:     $              /(rnlp(j,i)+eps)
+hfsolve.F:c     if (r(j).lt.15) write(860+i,*) r(j),x(j)/rnlp(j,i),rnlp(j,i)
+hfsolve.F:c     if (r(j).lt.15) write(370+i,*) r(j),rnlp(j,i)
+hfsolve.F:            rnlp(j,i)=rnlp(j,i)*sqrt(r(j))
+hfsolve.F:            rsatom(i)=rsatom(i)+wnl(nnn)*rnlp(i,nnn)**2
+hfsolve.F:            if (abs(rnlp(j,i)).gt.1e-6) then
+hfsolve.F:         if (rnlp(nmax(i)-1,i).lt.0.0) then
+hfsolve.F:               rnlp(j,i) = -rnlp(j,i)
+hfsolve.F:            rsval(j) = rsval(j) + wnl(i) * rnlp(j,i)**2
+hfsolve.F:               rscore(j) = rscore(j) + wnl(i) * rnlp(j,i)**2
+hfsolve.F:            wavea(k) = rnlp(k,i) * rnlp(k,i)
+hfsolve.F:            if ((rnlp(j,i).lt.rnlp(j+1,i)).
+hfsolve.F:     $           and.(abs(rnlp(j,i)).gt.1e-6)) then
+hfuncs.F:      common /wfn/ rnlp(npdm,n0)
+hfuncs.F:      bi = (rnlp(4,i)/(az(i)*r24*r(4)**li) - 1.d0+zr/(li+1) )/zr**2
+hfuncs.F:      bj = (rnlp(4,j)/(az(j)*r24*r(4)**lj) - 1.d0+zr/(lj+1) )/zr**2
+hfuncs.F:      d = rnlp(1,i)*rnlp(1,j)*r(1)**k12
+hfuncs.F:      d = d +rnlp(jp,i)*rnlp(jp,j)*r(jp)**k12
+hfuncs.F:      dd = dd + rnlp(jj,i)*rnlp(jj,j)*r(jj)**k12
+hfuncs.F:      common /wfn/ rnlp(npdm,n0)
+hfuncs.F:      d = yk(1)*rnlp(1,i)*rnlp(1,j)*r(1)**kk*( cd/(den*h1)+ 0.5)
+hfuncs.F:         dd = dd + yk(m)*rnlp(m,i)*rnlp(m,j)*r(m)**kk
+hfuncs.F:         d= d+  yk(m+1)*rnlp(m+1,i)*rnlp(m+1,j)*r(m+1)**kk
+hfuncs.F:      common /wfn/ rnlp(npdm,n0)
+hfuncs.F:      call xch(x,i,2,rnlp)
+hfuncs.F:         yr(j) = rnlp(j,ii)
+hfuncs.F:      common /wfn/ rnlp(npdm,n0)
+hfuncs.F:      common /wfn/ rnlp(npdm,n0)
+hfuncs.F:      common /wfn/ rnlp(npdm,n0)
+hfuncs.F:                     rnlp(jj,i) = rnlp(jj,i) - c*rnlp(jj,j)
+hfuncs.F:            if (rnlp(1,i) .lt. 0.d0) pnn = - pnn
+hfuncs.F:               rnlp(jj,i) = rnlp(jj,i)/pnn
+hfuncs.F: 67         if (dabs(rnlp(m,i)) .lt. 1.d-15) then
+hfuncs.F:               rnlp(m,i) = 0.d0
+hfuncs.F:      common /wfn/ rnlp(npdm,n0)
+hfuncs.F:            pi = (rnlp(jj,i) + eps*rnlp(jj,j))/dd
+hfuncs.F:            rnlp(jj,j) = (rnlp(jj,j) - eps*rnlp(jj,i))/dd
+hfuncs.F:            rnlp(jj,i) = pi
+hfuncs.F:      call ykf(yk,i,i,k,rnlp)
+hfuncs.F:      call ykf(yk,i,j,k,rnlp)
+hfuncs.F:      call ykf(yk,i,ii,k,rnlp)
+hfuncs.F:      common /wfn/ rnlp(npdm,n0)
+hfuncs.F:      HL = H*C*rnlp(1,I)*rnlp(1,J)*(1.D0+ZR*(A1+ZR*(A2+ZR*A3)))
+hfuncs.F:      DI1 = rnlp(K+1,I) - rnlp(K-1,I)
+hfuncs.F:      DI2 = rnlp(K+1,I) - 2.D0*rnlp(K,I) + rnlp(K-1,I)
+hfuncs.F:      DJ1 = rnlp(K+1,J) - rnlp(K-1,J)
+hfuncs.F:      DJ2 = rnlp(K+1,J) - 2.D0*rnlp(K,J) + rnlp(K-1,J)
+hfuncs.F:      DI1 = rnlp(K+1,I) - rnlp(K-1,I)
+hfuncs.F:      DI2 = rnlp(K+1,I) - 2.D0*rnlp(K,I) + rnlp(K-1,I)
+hfuncs.F:      DI4 = rnlp(K+2,I) - 4.D0*(rnlp(K+1,I)+rnlp(K-1,I)) 
+hfuncs.F:     $     + 6.D0*rnlp(K,I) +rnlp(K-2,I)
+hfuncs.F:      DI3 = rnlp(K+2,I) - rnlp(K-2,I) - 2.D0*DI1
+hfuncs.F:      DI5 = rnlp(K+3,I)-rnlp(K-3,I) - 4.D0*(rnlp(K+2,I)-rnlp(K-2,I))
+hfuncs.F:     :   + 5.D0*(rnlp(K+1,I)-rnlp(K-1,I))
+hfuncs.F:      DI6 = rnlp(K+3,I)+rnlp(K-3,I) - 6.D0*(rnlp(K+2,I)+rnlp(K-2,I))
+hfuncs.F:     :   + 15.D0*(rnlp(K+1,I)+rnlp(K-1,I)) - 20.D0*rnlp(K,I)
+hfuncs.F:      DJ1 = rnlp(K+1,J) - rnlp(K-1,J)
+hfuncs.F:      DJ2 = rnlp(K+1,J) - 2.D0*rnlp(K,J) + rnlp(K-1,J)
+hfuncs.F:      DJ4 = rnlp(K+2,J) - 4.D0*(rnlp(K+1,J)+rnlp(K-1,J)) 
+hfuncs.F:     $     + 6.D0*rnlp(K,J) +rnlp(K-2,J)
+hfuncs.F:      DJ3 = rnlp(K+2,J) - rnlp(K-2,J) - 2.D0*DJ1
+hfuncs.F:      DJ5 = rnlp(K+3,J)-rnlp(K-3,J) - 4.D0*(rnlp(K+2,J)-rnlp(K-2,J))
+hfuncs.F:     :   + 5.D0*(rnlp(K+1,J)-rnlp(K-1,J))
+hfuncs.F:      DJ6 = rnlp(K+3,J)+rnlp(K-3,J) - 6.D0*(rnlp(K+2,J)+rnlp(K-2,J))
+hfuncs.F:     :   + 15.D0*(rnlp(K+1,J)+rnlp(K-1,J)) - 20.D0*rnlp(K,J)
+hfuncs.F:      HL2 = 0.5D0*(TZ*R(1) - C)*rnlp(1,I)*rnlp(1,J)
+hfuncs.F:2     HL2 = HL2 + 2.D0*(TZ*R(K) - C)*rnlp(K,I)*rnlp(K,J)
+hfuncs.F:     :   + (TZ*R(K+1) - C)*rnlp(K+1,I)*rnlp(K+1,J)
+hysolve.F:      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
+hysolve.F:               rnlp(i,j) = 0
+hysolve.F:             rnlp(i,j)=rnlp(i,j)/sqrt(r(i))
+hysolve.F:               rnlp(k,i)=pnf*hwf(no(i),lo(i),z-s(i),r(k))/sqrt(r(k))
+hysolve.F:                 rnlp(k,i)=pnf*hwf(no(i),lo(i),zeff-s(i),r(k))
+hysolve.F:                  if (rnlp(50,i)-rx*rnlp(50,j).lt.0.d0) rx2=-rx2
+hysolve.F:                     rnlp(k,i)=(rnlp(k,i)-rx*rnlp(k,j))/rx2
+hysolve.F:            write(*,*) "hybrid start 1",rnlp(1,1)
+hysolve.F:          !rnl = exxweight*rnlp + (1.0-exxweight) * p
+hysolve.F:          rnl = 0.0*rnlp + (1.0) * rnl
+hysolve.F:          rnlp = rnl
+potl.F:      common /wfn/ rnlp(npdm,n0)
+potl.F:               write(*,*) "before ykf in potl",rnlp(1,1)
+potl.F:               call ykf(yk,j,j,k,rnlp)
+xch.F:!      common /wfn/ rnl(npdm,n0), rnlp(npdm,n0)
+xch.F:                      !  x(in) = x(in)+ 2.d0*bbb(i,j,k)*yk(in)*rnlp(in,j)
+xch.F:                  !   x(in) = x(in) + c*rnlp(in,j)*r(in)*r(in)
+ykf.F:c     JY: passing rnl or rnlp from outside     
+zkf.F:c     JY: passing rnl or rnlp from outside     
+zkf.F:!      common /wfn/ rnl(npdm,n0),  rnlp(npdm,n0)
+zkf.F:      !  f1 = r(1)**2*rnlp(1,i)*rnlp(1,j)
+zkf.F:      !  f2 = r(2)**2*rnlp(2,i)*rnlp(2,j)
+zkf.F:      !  f3 = r(3)**2*rnlp(3,i)*rnlp(3,j)
+zkf.F:      !  f4 = r(4)**2*rnlp(4,i)*rnlp(4,j)
+zkf.F:         !   f5 = (r(m)**2*rnlp(m,i))*rnlp(m,j)

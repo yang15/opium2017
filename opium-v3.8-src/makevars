@@ -1,0 +1,12 @@
+CC=gcc
+CFLAGS=-I../include -I../FlexiLib -I../uniPPlib -g -O2 -DCSYS=\"'Darwin 14.3.0 i386'\" -DCHOST=\"Jings-iMac.local\" -DCDATE=\"'Wed Jul 15 23:54:00 EDT 2015'\" 
+CPP=gcc -E
+FC=gfortran
+FFLAGS=-fdefault-real-8 -fdefault-double-8 -fno-automatic -g -O2
+FPP=/usr/local/bin/cpp
+FPPFLAGS=
+LD=gfortran
+LDFLAGS=-lm -fdefault-real-8 -fdefault-double-8 -fno-automatic  -lm  -L/usr/local/lib/gcc/x86_64-apple-darwin14.0.0/5.0.0 -L/usr/local/lib/gcc/x86_64-apple-darwin14.0.0/5.0.0/../../.. -lgfortran -lSystem -lgcc_ext.10.5 -lquadmath -lm
+RANLIB=ranlib
+AR=/usr/bin/ar
+NOOPT=-O0

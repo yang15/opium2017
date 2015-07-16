@@ -1,0 +1,9 @@
+hfint.F:      write(*,*) "before potl"
+hfint.F:      call potl(yr,m)
+hfint.F:      write(*,*) "after potl"
+hfsolve.F:c            call potl(yr,i)
+hfsolve.F:            call potl(yr,i)
+hfuncs.F:      call potl(yr,i)
+potl.F:      subroutine potl(yr,i)
+potl.F:               write(*,*) "before ykf in potl"
+potl.F:               write(*,*) "after ykf in potl"

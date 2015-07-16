@@ -1,0 +1,13 @@
+hfmethd.F:      ncc=0
+hfmethd.F:         ncc=ncc+1
+hfmethd.F:      if (iprint.gt.1) write (7,99) no(m),lo(m),ncc,r(mm),r(ntp),
+hfmethd.F:      if (iabs(ncc-node).eq.1.and.dabs(deltae/ed).gt.0.02d0) goto 46
+hfmethd.F:      if ((ncc-node).gt.0) then
+hfmethd.F:         if (del .lt. 0.05d0) fm = fm*((lo(m)+1.d0+ncc)/no(m))**2.5
+hfmethd.F:         if (del .ge. 0.05d0) fm = ed*((lo(m)+1.d0+ncc)/no(m))**2.5
+hfmethd.F:      elseif((ncc-node).lt.0) then
+hfmethd.F:         if (del.lt.0.05d0) fu=fu*((lo(m)+1+ncc)/no(m))**2.5
+hfmethd.F:         if (del.ge.0.05d0) fu=ed*((lo(m)+1+ncc)/no(m))**2.5
+hfmethd.F:      ed=ed*((lo(m)+1+ncc)/float(no(m)))**2.5
+hfmethd.F:      if (ncc-node.ne.0) ed=(ed+deltae)*((lo(m)+1+ncc)
+hfmethd.F:      if (iprint.gt.0) write (7,28) imeth,no(m),lo(m),ncc,mm,ed,em,eu
