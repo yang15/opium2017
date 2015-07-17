@@ -96,6 +96,7 @@ c     *************************************************************************
       character*80 file_log
       character*1 xc(0:3)
       logical ilast,first
+      double precision exxweight ! fraction of exact exchange
       
       write(*,*) "inside hysolve"
       open(unit=7,file=file_log,form='formatted',access='append')
@@ -219,6 +220,15 @@ c      endif
       ighost=0
       ighost2=0
 c      iprint=5
+
+      !exact exchange weight
+      if(ixc.eq.7) then
+        exxweight = 0.25 ! PBE0
+      elseif(ixc.lt.0) then
+        exxweight = 1.0 ! HF
+      else
+        exxweight = 0.0 ! dft
+      endif
 
       !open(unit=7,file=file_log,form='formatted',access='append')
 
@@ -617,7 +627,7 @@ c     if not a frozen core calc or if valence
           ! weighted sum of the KS wfns and HF wfns
           
           !PBE0
-          rnl = 0.25*rnlp + 0.75 * rnl
+          rnl = exxweight*rnlp + (1.0-exxweight) * rnl
           
           !DFT
           !rnl = 0.0*rnlp + (1.0) * rnl
@@ -678,6 +688,8 @@ c     ***********************************************************************
          ebs = 0
          do m = 1,norb
             ebs = ebs + wnl(m) * en(m)
+            ! is this right?
+            !ebs = ebs + wnl(m) * (exxweight*enp(m) + (1.0-exxweight)*en(m))
          enddo
          etot = ebs + ehxc
 
