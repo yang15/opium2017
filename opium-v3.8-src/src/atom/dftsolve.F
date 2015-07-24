@@ -73,7 +73,7 @@ c     *************************************************************************
 c     local variables
 c     *************************************************************************
       dimension rvn(npdm),rvf(npdm),eold(n0),p(npdm)
-      dimension rsatom(npdm),f(npdm),f2(npdm),f3(npdm)
+      dimension rsatom(npdm),f(npdm),f2(npdm),f3(npdm),f4(npdm),f5(npdm)
       dimension pder(npdm),ader(npdm)
       dimension dl(n0), rsatom2(npdm)
       dimension rsold(npdm),wnlfract(npdm)
@@ -400,6 +400,9 @@ c     ***********************************************************************
      $              * rsatom(i)/r(i)
                f2(i) = 0.5d0 * rvh(i)* rsatom(i)/r(i)
                f3(i) = rexc(i)* rsatom(i)/r(i)
+
+               f4(i) = (0.5d0 * rvh(i) - rvh(i))*rsatom(i)/r(i) !hartree part
+               f5(i) = (rexc(i)-rvxc(i))*rsatom(i)/r(i) !exchange corr
             enddo
          endif
          ehxc = 2
@@ -408,6 +411,12 @@ c     ***********************************************************************
          call radin(r,f2,0,maxim,h,ehar)
          exc = 2
          call radin(r,f3,0,maxim,h,exc)
+
+         ehardft = 2
+         call radin(r,f4,0,maxim,h,ehardft)
+         excdft = 2
+         call radin(r,f5,0,maxim,h,excdft)
+
          ebs = 0
          do m = 1,norb
             ebs = ebs + wnl(m) * en(m)
@@ -817,6 +826,7 @@ c     ***********************************************************************
 
       write(7,701) etot,ebs,ehxc
       write(7,702) ehar,exc
+      write(7,703) ehardft,excdft
 
       write (7,*)
       write (7,9222)
@@ -879,6 +889,7 @@ c     ***********************************************************************
  700  format(1x,'Converged in 1 iteration (probably reference state)')
  701  format(1x,'Energy: ',f16.8,2x,'Ebs: ',f16.8,2x,'Ehxc: ',f16.8)
  702  format(1x,'Eh    : ',f16.8,2x,'Exc: ',f16.8)
+ 703  format(1x,'Ehardft    : ',f16.8,2x,'Excdft: ',f16.8)
 
  9222 format(3x,'Orbital',4x,'Filling',7x,'Eigenvalues',4x,
      $     'Norm(rc->oo)',6x,'Peak')

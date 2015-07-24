@@ -105,7 +105,7 @@ c     *************************************************************************
 c     local variables
 c     *************************************************************************
       dimension eold(n0)
-      dimension rsatom(npdm),rsold(npdm)
+      dimension rsatom(npdm),rsold(npdm),f4(npdm)
       
       dimension wavea(npdm),icarray(30)
       dimension x(npdm),yr(npdm),fr(npdm),fr2(npdm)
@@ -333,6 +333,7 @@ c     ***********************************************************************
          ebs=0.d0
          do m = 1,norb
             ebs = ebs + wnl(m) * enp(m)
+            write(*,*) 'enp(m) = ', enp(m)
          enddo
          etot = 0.d0
 
@@ -342,6 +343,15 @@ c     ***********************************************************************
      $        ' weighted maximum change =',1pd10.2,1pd10.2)
 
          call hfenergy(ipsp,etot,ehart,exx,ekn)      
+
+         call hrtree(maxim,h,r,rsatom,rvh)
+
+         do i=1,maxim
+           !hartree part
+           f4(i) = (-0.5d0*rvh(i))*rsatom(i)/r(i)
+         enddo
+         ehardft = 2
+         call radin(r,f4,0,maxim,h,ehardft)
 
          evir=(etot-ekn)/ekn
          ekn=ekn*2.d0
@@ -643,6 +653,7 @@ c     ***********************************************************************
 
       if (iprint.gt.0) write(7,701) etot,-ebs
       if (iprint.gt.0) write(7,702) ehart,exx
+      if (iprint.gt.0) write(7,703) ehartdft
 
 c     write(7,701) etot,ebs,ehart+exx
 
@@ -661,6 +672,7 @@ c     write(7,701) etot,ebs,ehart+exx
  700  format(1x,'Converged in 1 iteration (probably reference state)')
  701  format(1x,'Energy: ',f16.8,4x,'Ebs: ',f16.8)
  702  format(1x,'Eh:     ',f16.8,4x,'Ex : ',f16.8)
+ 703  format(1x,'Ehardft:     ',f16.8,4x)
 
 c 701  format(1x,'Energy: ',f16.8,2x,'Eeig: ',f16.8,
 c     $     2x,'Ehart+Exx: ',f16.8)

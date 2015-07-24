@@ -81,7 +81,7 @@ c     *************************************************************************
 c     local variables
 c     *************************************************************************
       dimension rvn(npdm),rvf(npdm),eold(n0),eoldp(n0),p(npdm)
-      dimension rsatom(npdm),f(npdm),f2(npdm),f3(npdm)
+      dimension rsatom(npdm),f(npdm),f2(npdm),f3(npdm),f4(npdm),f5(npdm)
       dimension pder(npdm),ader(npdm)
       dimension dl(n0), rsatom2(npdm)
       dimension rsold(npdm),wnlfract(npdm)
@@ -89,6 +89,7 @@ c     *************************************************************************
       dimension x(npdm),yr(npdm),fr(npdm),fr2(npdm)
       dimension lcount(10)
       dimension rvcore1(npdm,n0)
+      dimension enfull(n0)
 c     rvpostloc(npdm),rvpreloc(npdm)
 c     *************************************************************************
 c     Section 1:  set up tolerance params and zero out arrays.
@@ -223,7 +224,8 @@ c      iprint=5
 
       !exact exchange weight
       if(ixc.eq.7) then
-        exxweight = 0.25 ! PBE0
+        !exxweight = 0.25 ! PBE0
+        exxweight = 1.0
       elseif(ixc.lt.0) then
         exxweight = 1.0 ! HF
       else
@@ -630,15 +632,17 @@ c     if not a frozen core calc or if valence
          
           do m=1,norb
             
-          rnl(:,m) = exxweight*rnlp(:,m)*sqrt(r) + (1.0-exxweight) *
-     $               rnl(:,m)
+          rnlp(:,m) = exxweight* abs(enp(m))*rnlp(:,m) 
+     $              + (1.0-exxweight)*abs(en(m))*rnl(:,m)/sqrt(r)
 
-          rnlp(:,m) = rnl(:,m)/sqrt(r)
+          enfull(m) = -1.0*sqrt(quadr(m,m,0))
+
+          rnlp(:,m) = rnlp(:,m)/enfull(m)*(-1.0)
+
+          rnl(:,m) = rnlp(:,m)*sqrt(r)
           enddo
           
           
-          !DFT
-          !rnl = 0.0*rnlp + (1.0) * rnl
 
 
           write(*,*) "finished hybrid mixing"
@@ -684,6 +688,9 @@ c     ***********************************************************************
      $              * rsatom(i)/r(i)
                f2(i) = 0.5d0 * rvh(i)* rsatom(i)/r(i)
                f3(i) = rexc(i)* rsatom(i)/r(i)
+
+               f4(i) = (0.5d0 * rvh(i) - rvh(i))*rsatom(i)/r(i) !hartree part
+               f5(i) = (rexc(i)-rvxc(i))*rsatom(i)/r(i) !exchange corr
             enddo
          endif
          ehxc = 2
@@ -692,15 +699,19 @@ c     ***********************************************************************
          call radin(r,f2,0,maxim,h,ehar)
          exc = 2
          call radin(r,f3,0,maxim,h,exc)
+
+         ehardft = 2
+         call radin(r,f4,0,maxim,h,ehardft)
+         excdft = 2
+         call radin(r,f5,0,maxim,h,excdft)
+
          ebs = 0
          do m = 1,norb
-            ebs = ebs + wnl(m) * en(m)
-            ! is this right?
-            !ebs = ebs + wnl(m) * (exxweight*enp(m) + (1.0-exxweight)*en(m))
+            ebs = ebs + wnl(m) * enfull(m)
+            write(*,*) 'enfull(m) = ', enfull(m)
          enddo
-         etot = ebs + ehxc
-
-         !For hybrids, need to use exx
+         !etot = ebs + ehxc !original code
+         etot = ebs + exxweight*exx + (1.0-exxweight)*excdft + ehardft 
 
 c     ***********************************************************************
 c     Section 6:  Mix potentials
@@ -745,21 +756,25 @@ c     ***********************************************************************
          if (niter.eq.1) then
             write(7,*)
             write(7,191)
-            write(7,491) niter,etot,ebs,ehxc,edmax,dvmax
+            write(7,491) niter,etot,ebs,ehxc,ehardft,
+     $                   excdft,edmax,dvmax
          else
-            write(7,491) niter,etot,ebs,ehxc,edmax,dvmax
+            write(7,491) niter,etot,ebs,ehxc,ehardft,
+     $                   excdft,edmax,dvmax
          endif
          
          etotlast = etot
 
  191     format(' iter',7x,'Etot',13x,'Ebs',13x,'Ehxc',7x
-     $        ,'de_max',3x,'dv_max')
+     $        ,'Ehardft',7x,'Excdft',7x,'de_max',3x,'dv_max')
  490     format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7)
- 491     format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7,1x,e8.2,1x,e8.2)
+ 491     format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7,
+     $          1x,f15.7,1x,f15.7,1x,e8.2,1x,e8.2)
 
          !update vtl and etl here, like in hfsolve?
 
-         if (dvmax.lt.vtol.and.edmax.lt.etol) goto 1000
+         if (dvmax.lt.vtol.and.edmax.lt.etol
+     $        .and.edmaxp.lt.10000) goto 1000
          
 c     ***********************************************************************
 c     Section 7:  predict trial eigenvals use 1st order perturb theory.
@@ -1110,6 +1125,7 @@ c     ***********************************************************************
 
       write(7,701) etot,ebs,ehxc
       write(7,702) ehar,exc
+      write(7,703) ehardft,excdft
 
       write (7,*)
       write (7,9222)
@@ -1172,6 +1188,7 @@ c     ***********************************************************************
  700  format(1x,'Converged in 1 iteration (probably reference state)')
  701  format(1x,'Energy: ',f16.8,2x,'Ebs: ',f16.8,2x,'Ehxc: ',f16.8)
  702  format(1x,'Eh    : ',f16.8,2x,'Exc: ',f16.8)
+ 703  format(1x,'Ehardft : ',f16.8,2x,'Excdft: ',f16.8)
 
  9222 format(3x,'Orbital',4x,'Filling',7x,'Eigenvalues',4x,
      $     'Norm(rc->oo)',6x,'Peak')
