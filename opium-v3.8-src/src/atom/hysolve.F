@@ -627,12 +627,19 @@ c     if not a frozen core calc or if valence
           ! weighted sum of the KS wfns and HF wfns
           
           !PBE0
-          rnl = exxweight*rnlp + (1.0-exxweight) * rnl
+         
+          do m=1,norb
+            
+          rnl(:,m) = exxweight*rnlp(:,m)*sqrt(r) + (1.0-exxweight) *
+     $               rnl(:,m)
+
+          rnlp(:,m) = rnl(:,m)/sqrt(r)
+          enddo
+          
           
           !DFT
           !rnl = 0.0*rnlp + (1.0) * rnl
 
-          rnlp = rnl
 
           write(*,*) "finished hybrid mixing"
 

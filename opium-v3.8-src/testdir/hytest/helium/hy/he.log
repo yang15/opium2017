@@ -5,12 +5,12 @@
  See http://opium.sourceforge.net for help and information                 
  Copyright 2009 : The OPIUM project                         
 
- Compile host     : Jings-iMac.local
+ Compile host     : vagvlan567.0572.wlan.wireless-pennnet.upenn.edu
  Compile OS       : Darwin 14.3.0 i386
- Compile date     : Wed Jul 15 23:54:00 EDT 2015
+ Compile date     : Fri Jul 17 14:06:06 EDT 2015
 
- Execution host   : Jings-iMac.local
- time of execution: Wed Jul 15 23:58:50 2015
+ Execution host   : vagvlan567.0572.wlan.wireless-pennnet.upenn.edu
+ time of execution: Fri Jul 17 14:06:58 2015
 
  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  Reading parameter file:  <he.param> ... 
@@ -87,18 +87,18 @@
  Hybrid functionals will be implemented soon!
   19       -5.8132507      -2.3171753      -3.4960755 0.14E-06 0.98E-06
  Hybrid functionals will be implemented soon!
-  20       -5.8132509      -2.3171754      -3.4960755 0.59E-07 0.52E-06
+  20       -5.8132509      -2.3171754      -3.4960755 0.46E-07 0.53E-06
  Hybrid functionals will be implemented soon!
-  21       -5.8132509      -2.3171754      -3.4960755 0.19E-07 0.28E-06
+  21       -5.8132509      -2.3171755      -3.4960755 0.32E-07 0.28E-06
  Hybrid functionals will be implemented soon!
-  22       -5.8132509      -2.3171755      -3.4960755 0.97E-08 0.16E-06
+  22       -5.8132510      -2.3171755      -3.4960755 0.96E-08 0.15E-06
 
    22 iterations: (units are Ry and bohr)
- Energy:      -5.81325095  Ebs:      -2.31717547  Ehxc:      -3.49607548
+ Energy:      -5.81325096  Ebs:      -2.31717547  Ehxc:      -3.49607548
  Eh    :       4.05346888  Exc:      -2.11970308
 
    Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
-    |100>      2.000          -1.158588      0.511352      0.558841
+    |100>      2.000          -1.158588      0.512308      0.558841
 
  ======================================================================== 
  End AE calculation
