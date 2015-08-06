@@ -133,6 +133,10 @@ c     *************************************************************************
       ighost2=0
 c      iprint=5
 
+c     initialize enp(n0)
+      write(*,*) "initialize enp"
+      enp = en  
+      
       open(unit=7,file=file_log,form='formatted',access='append')
 
       iflag=0  ! comment by JY: this is a dummy variable 
@@ -145,8 +149,8 @@ c     starting guess for channels which don't have a psp-wfn guess
       do i=1,10
          lcount(i)=0
       enddo
-
       do i=1,norb        
+         write(*,*) "enp(m) assign value hfsolve", i, enp(i)
          enp(i)=-enp(i)
          meth(i)=1
          do j=1,norb
