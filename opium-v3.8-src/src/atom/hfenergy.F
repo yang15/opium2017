@@ -94,6 +94,17 @@ c
                if (i .eq. j) c = c/2.d0
                if (abs(c).ne.0.d0) etotal = etotal + c*fk(i,j,k)
                if (abs(c).ne.0.d0) ehart = ehart + c*fk(i,j,k)               
+
+               !add back self-interaction
+               if (k.eq.0) then
+                 aaaval = 1.0
+               else
+                 aaaval = -1.0*ca(lo(i),k)
+               end if 
+               if (i .eq. j) ehart = ehart +
+     $            aaaval*wnl(i)*fk(i,j,k)
+               if (i .eq. j) exx = exx +
+     $            aaaval*wnl(i)*fk(i,j,k)
             enddo
          enddo
 

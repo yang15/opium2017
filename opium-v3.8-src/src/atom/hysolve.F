@@ -711,6 +711,8 @@ c     ***********************************************************************
             write(*,*) 'enfull(m) = ', enfull(m)
          enddo
          !etot = ebs + ehxc !original code
+         etothf = 0.d0 
+         call hfenergy(ipsp,etothf,ehart,exx,ekn)      
          etot = ebs + exxweight*exx + (1.0-exxweight)*excdft + ehardft 
 
 c     ***********************************************************************
@@ -757,18 +759,19 @@ c     ***********************************************************************
             write(7,*)
             write(7,191)
             write(7,491) niter,etot,ebs,ehxc,ehardft,
-     $                   excdft,edmax,dvmax
+     $                   ehart, excdft,edmax,dvmax
          else
             write(7,491) niter,etot,ebs,ehxc,ehardft,
-     $                   excdft,edmax,dvmax
+     $                   ehart, excdft,edmax,dvmax
          endif
          
          etotlast = etot
 
  191     format(' iter',7x,'Etot',13x,'Ebs',13x,'Ehxc',7x
-     $        ,'Ehardft',7x,'Excdft',7x,'de_max',3x,'dv_max')
+     $        ,'Ehardft',7x, 'Ehart',7x,'Excdft',7x,'de_max',3x
+     $        ,'dv_max')
  490     format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7)
- 491     format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7,
+ 491     format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7,1x,f15.7,
      $          1x,f15.7,1x,f15.7,1x,e8.2,1x,e8.2)
 
          !update vtl and etl here, like in hfsolve?
