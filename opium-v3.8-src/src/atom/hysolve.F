@@ -224,8 +224,8 @@ c      iprint=5
 
       !exact exchange weight
       if(ixc.eq.7) then
-        !exxweight = 0.25 ! PBE0
-        exxweight = 1.0
+        exxweight = 0.25 ! PBE0
+        !exxweight = 1.0
       elseif(ixc.lt.0) then
         exxweight = 1.0 ! HF
       else
@@ -560,7 +560,6 @@ c     if not a frozen core calc or if valence
           !ixc = 7 : hybrid functional
           if(ixc.lt.0 .or. ixc.eq.7) then
           !if(.false.) then
-            write (7,*) "Hybrid functionals will be implemented soon!"
             write(*,*) "hybrid start 1",rnlp(1,1)
 
             ! LZT : for AE Hartree-Fock, here we should apply 
@@ -629,20 +628,29 @@ c     if not a frozen core calc or if valence
           ! weighted sum of the KS wfns and HF wfns
           
           !PBE0
-         
+          do i=1,np
+            rsatom(i) = 0.0
+          enddo 
+
           do m=1,norb
-            
-          rnlp(:,m) = exxweight* abs(enp(m))*rnlp(:,m) 
+
+            rnlp(:,m) = exxweight* abs(enp(m))*rnlp(:,m) 
      $              + (1.0-exxweight)*abs(en(m))*rnl(:,m)/sqrt(r)
 
-          enfull(m) = -1.0*sqrt(quadr(m,m,0))
+            enfull(m) = -1.0*sqrt(quadr(m,m,0))
 
-          rnlp(:,m) = rnlp(:,m)/enfull(m)*(-1.0)
+            rnlp(:,m) = rnlp(:,m)/enfull(m)*(-1.0)
 
-          rnl(:,m) = rnlp(:,m)*sqrt(r)
+            rnl(:,m) = rnlp(:,m)*sqrt(r)
+
+            !calculate charge densities
+            do i = 1,nmax(m)
+              rsatom(i) = rsatom(i) + wnl(m) * rnl(i,m)**2
+            enddo
+
           enddo
-          
-          
+
+                    
 
 
           write(*,*) "finished hybrid mixing"
@@ -656,12 +664,14 @@ c     ***********************************************************************
 c     Section 4:  mix density
 c     ***********************************************************************
 
-         alpha = 0.5
-         if (niter.gt.3) then
-            do i = 1,np
-               rsatom(i) = alpha * rsatom(i) + (1.0-alpha) * rsold(i)
-            enddo
-         endif
+         !skip density mixing because this is inconsistent with mixing
+         ! of wavefunctions in HF part.
+         !alpha = 0.5
+         !if (niter.gt.3) then
+         !   do i = 1,np
+         !      rsatom(i) = alpha * rsatom(i) + (1.0-alpha) * rsold(i)
+         !   enddo
+         !endif
             
 c     ***********************************************************************
 c     Section 5:  update self-consistent potentials and compute energy.
@@ -712,8 +722,17 @@ c     ***********************************************************************
          enddo
          !etot = ebs + ehxc !original code
          etothf = 0.d0 
-         call hfenergy(ipsp,etothf,ehart,exx,ekn)      
+         eharhf = 0.d0 
+         exx = 0.d0 
+         eknhf = 0.d0 
+         call hfenergyself(ipsp,etothf,eharhf,exx,eknhf)      
+         ! here, scale by -2.0, see hfsolve.F
+         etothf = -2.0*etothf
+         eharhf = -2.0*eharhf
+         exx = -2.0*exx 
+         eknhf = -2.0*eknhf
          etot = ebs + exxweight*exx + (1.0-exxweight)*excdft + ehardft 
+         !etot = 2.0*etothf
 
 c     ***********************************************************************
 c     Section 6:  Mix potentials
@@ -759,20 +778,29 @@ c     ***********************************************************************
             write(7,*)
             write(7,191)
             write(7,491) niter,etot,ebs,ehxc,ehardft,
-     $                   ehart, excdft,edmax,dvmax
+     $                   excdft,edmax,dvmax
+            write(7,*) "etothf = ", etothf 
+            write(7,*) "eharhf = ", eharhf 
+            write(7,*) "exx = ", exx 
+            write(7,*) "eknhf = ", eknhf 
          else
             write(7,491) niter,etot,ebs,ehxc,ehardft,
-     $                   ehart, excdft,edmax,dvmax
+     $                   excdft,edmax,dvmax
+
+            write(7,*) "etothf = ", etothf 
+            write(7,*) "eharhf = ", eharhf 
+            write(7,*) "exx = ", exx 
+            write(7,*) "eknhf = ", eknhf 
          endif
          
          etotlast = etot
 
  191     format(' iter',7x,'Etot',13x,'Ebs',13x,'Ehxc',7x
-     $        ,'Ehardft',7x, 'Ehart',7x,'Excdft',7x,'de_max',3x
+     $        , 'Ehart',7x,'Excdft',7x,'de_max',3x
      $        ,'dv_max')
  490     format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7)
  491     format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7,1x,f15.7,
-     $          1x,f15.7,1x,f15.7,1x,e8.2,1x,e8.2)
+     $          1x,f15.7,1x,e8.2,1x,e8.2)
 
          !update vtl and etl here, like in hfsolve?
 

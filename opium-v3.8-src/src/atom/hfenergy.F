@@ -94,17 +94,7 @@ c
                if (i .eq. j) c = c/2.d0
                if (abs(c).ne.0.d0) etotal = etotal + c*fk(i,j,k)
                if (abs(c).ne.0.d0) ehart = ehart + c*fk(i,j,k)               
-
-               !add back self-interaction
-               if (k.eq.0) then
-                 aaaval = 1.0
-               else
-                 aaaval = -1.0*ca(lo(i),k)
-               end if 
-               if (i .eq. j) ehart = ehart +
-     $            aaaval*wnl(i)*fk(i,j,k)
-               if (i .eq. j) exx = exx +
-     $            aaaval*wnl(i)*fk(i,j,k)
+               
             enddo
          enddo
 
@@ -119,3 +109,69 @@ c
 
       end
       
+!With self interaction included
+      subroutine hfenergyself(ipsp,etotal,ehart,exx,ekn)
+      implicit double precision(a-h,o-z)
+#include "fortdim.h"
+      common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
+      common /grid/ h,r1,z,r(npdm),np
+      common /totpot/ rvcore(npdm,n0),rvps(npdm,n0),rvcoul(npdm)
+      common /aorb/ ncore,nval,norb,nlm(n0),
+     $     no(n0),lo(n0),nmax(n0),maxim
+      common /adat/ wnl(n0),en(n0),enp(n0),so(n0),xion
+      common /edi/ e(n0,n0)
+      common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
+
+      dimension rm1(n0),ek(n0),yk(npdm)
+
+      ekn=0.0
+      etotal = 0.d0
+      exx = 0.d0
+      ehart = 0.d0
+      eloc = 0.d0
+
+      do  i = 1,norb
+         ek(i) = -0.5*hl(i,i)
+         if (ipsp.eq.0) then
+            rm1(i) = z*quadr(i,i,-1)
+         else
+            do ii=1,np
+               yk(ii)=rvcore(ii,i)/r(ii)
+            enddo
+            rm1(i) = quads2(yk,i,i,0)
+         endif
+         ekn = ekn+wnl(i)*(ek(i) + rm1(i))
+      enddo
+
+      do i = 1,norb
+         etotal = etotal + wnl(i)*(ek(i))
+
+         do j = 1,i
+            do k = 0,2*min0(lo(i),lo(j)),2
+               c = aaa(i,j,k)*wnl(i)
+               if (i .eq. j) c = c/2.d0
+               if (abs(c).ne.0.d0) etotal = etotal + c*fk(i,j,k)
+               if (abs(c).ne.0.d0) ehart = ehart + c*fk(i,j,k)               
+
+               !add back self-interaction
+               if (k.eq.0) then
+                 aaaval = 1.0/2.0
+               else
+                 aaaval = -1.0*ca(lo(i),k)/2.0
+               end if 
+               if(i.eq.j)ehart=ehart+aaaval*wnl(i)*fk(i,j,k)
+               if(i.eq.j)exx=exx-aaaval*wnl(i)*fk(i,j,k)
+            enddo
+         enddo
+
+         do j = 1,i-1
+            do k = abs(lo(i)-lo(j)),lo(i)+lo(j),2
+               c = bbb(i,j,k)*wnl(i)
+               if (abs(c).ne.0.d0) etotal=etotal+c*gk(i,j,k)
+               if (abs(c).ne.0.d0) exx=exx+c*gk(i,j,k)
+            enddo
+         enddo
+      enddo
+
+      end
+ 
