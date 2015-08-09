@@ -197,6 +197,7 @@ c               write(7,*) 'orth', j,azz,az(j),rx
       if (azz.gt.0.d0) az(m)=max(azz,az(m)/2.d0)
 
 c      write(7,*) 'after de adj', m,az(m),azz
+      write(*,*) 'enp(m) assign value', m,e(m,m)
 
       enp(m)=e(m,m)
 

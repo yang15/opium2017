@@ -212,6 +212,7 @@ c     count the number of nodes
       
       azz=azd*(pp+1.d0)
       e(m,m)=ed
+      write(*,*) "enp(m) assign value hfmethd", m, e(m,m)
       enp(m)=e(m,m)
       
       return

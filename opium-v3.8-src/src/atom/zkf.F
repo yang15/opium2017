@@ -57,7 +57,7 @@ c     *************************************************************************
       common /grid/ h,r1,z,r(npdm),np
       common /aorb/ ncore,nval,norb,nlm(n0),
      $     no(n0),lo(n0),nmax(n0),maxim
-      common /adat/ wnl(n0),en(n0),so(n0),xion
+      common /adat/ wnl(n0),en(n0),enp(n0),so(n0),xion
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /wfn/ rnl(npdm,n0),  rnlp(npdm,n0)
 

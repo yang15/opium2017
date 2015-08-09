@@ -105,7 +105,7 @@ c     *************************************************************************
 c     local variables
 c     *************************************************************************
       dimension eold(n0)
-      dimension rsatom(npdm),rsold(npdm)
+      dimension rsatom(npdm),rsold(npdm),f4(npdm)
       
       dimension wavea(npdm),icarray(30)
       dimension x(npdm),yr(npdm),fr(npdm),fr2(npdm)
@@ -133,6 +133,10 @@ c     *************************************************************************
       ighost2=0
 c      iprint=5
 
+c     initialize enp(n0)
+      write(*,*) "initialize enp"
+      enp = en  
+      
       open(unit=7,file=file_log,form='formatted',access='append')
 
       iflag=0  ! comment by JY: this is a dummy variable 
@@ -145,8 +149,8 @@ c     starting guess for channels which don't have a psp-wfn guess
       do i=1,10
          lcount(i)=0
       enddo
-
       do i=1,norb        
+         write(*,*) "enp(m) assign value hfsolve", i, enp(i)
          enp(i)=-enp(i)
          meth(i)=1
          do j=1,norb
@@ -333,6 +337,7 @@ c     ***********************************************************************
          ebs=0.d0
          do m = 1,norb
             ebs = ebs + wnl(m) * enp(m)
+            write(*,*) 'enp(m) = ', enp(m)
          enddo
          etot = 0.d0
 
@@ -342,6 +347,15 @@ c     ***********************************************************************
      $        ' weighted maximum change =',1pd10.2,1pd10.2)
 
          call hfenergy(ipsp,etot,ehart,exx,ekn)      
+
+         call hrtree(maxim,h,r,rsatom,rvh)
+
+         do i=1,maxim
+           !hartree part
+           f4(i) = (-0.5d0*rvh(i))*rsatom(i)/r(i)
+         enddo
+         ehardft = 2
+         call radin(r,f4,0,maxim,h,ehardft)
 
          evir=(etot-ekn)/ekn
          ekn=ekn*2.d0
@@ -643,6 +657,7 @@ c     ***********************************************************************
 
       if (iprint.gt.0) write(7,701) etot,-ebs
       if (iprint.gt.0) write(7,702) ehart,exx
+      if (iprint.gt.0) write(7,703) ehartdft
 
 c     write(7,701) etot,ebs,ehart+exx
 
@@ -661,6 +676,7 @@ c     write(7,701) etot,ebs,ehart+exx
  700  format(1x,'Converged in 1 iteration (probably reference state)')
  701  format(1x,'Energy: ',f16.8,4x,'Ebs: ',f16.8)
  702  format(1x,'Eh:     ',f16.8,4x,'Ex : ',f16.8)
+ 703  format(1x,'Ehardft:     ',f16.8,4x)
 
 c 701  format(1x,'Energy: ',f16.8,2x,'Eeig: ',f16.8,
 c     $     2x,'Ehart+Exx: ',f16.8)
