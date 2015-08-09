@@ -96,7 +96,7 @@ c -------------------------------------------------------------------------
 c     count the number of nodes
       node=no(m)-lo(m)-1
 
-      diff1=p(40)-p(39)   !JY: why 40 and 39?
+      diff1=p(40)-p(39)
       mm=nmax(m)
       dm=0.d0
       do j=40,mm
