@@ -91,7 +91,10 @@ c -------------------------------------------------------------------------
       call hfmethd(m,ipsp,p,zeff,azz,fail,iprint)
       write(*,*) "after hfmethd"
 
-      if (fail) goto 25
+      if (fail) then
+         write(*,*) "call hfmethd fail"
+         goto 25
+      endif
 
  12   continue
 
@@ -109,6 +112,7 @@ c      write(7,*) 'azz 1',azz,pnn
      $        gt.0.20d0) then
             meth(m)=2
             imeth=2
+            write(*,*) "hfde line109"
             goto 25
          endif
       endif
@@ -221,7 +225,10 @@ c      write(7,*) 'after de adj', m,az(m),azz
 
  25   continue
       write(7,*) "Solve for HF wfn failed, orthogonalizing..."
-      if (norb.eq.1) goto 27
+      if (norb.eq.1) then
+         write(*,*) "after 25 norb 1"
+         goto 27
+      endif
       call orthog(ilast)
       call grange
       

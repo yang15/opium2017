@@ -224,7 +224,7 @@ c      iprint=5
 
       !exact exchange weight
       if(ixc.eq.7) then
-        exxweight = 0.25 ! PBE0
+        exxweight = 1.0 ! PBE0
         !exxweight = 1.0
       elseif(ixc.lt.0) then
         exxweight = 1.0 ! HF

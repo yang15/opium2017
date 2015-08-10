@@ -75,7 +75,7 @@ c -------------------------------------------------------------------------
 
       fail=.false.
       first=.true.
-
+      write(*,*) "in hfmethd m = ",m 
       if (ipsp.eq.0) then
          em=0.d0
          eu=((z-min(0.5*s(m),2.d0*s(m)))/no(m))**2
@@ -124,7 +124,10 @@ c     count the number of nodes
      :     ' deltae =',d10.2)
 
       
-      if (iabs(ncc-node).eq.1.and.dabs(deltae/ed).gt.0.02d0) goto 46
+      if (iabs(ncc-node).eq.1.and.dabs(deltae/ed).gt.0.02d0) then
+         write(*,*) "line 128"
+         goto 46
+      endif
 
       if ((ncc-node).gt.0) then
          if (p(mm).lt.0.d0) then
@@ -137,9 +140,11 @@ c     count the number of nodes
          if (del .ge. 0.05d0) fm = ed*((lo(m)+1.d0+ncc)/no(m))**2.5
          if (fm .gt. eu) fm = 0.5*(eu + em)
          if (dabs(fm - ed) .lt. 0.00001d0) then
+            write(*,*) "fm-ed < 1e-5"
             go to 27
          endif
          ed = fm
+         write(*,*) "ed-fm"
          go to 33
       elseif((ncc-node).lt.0) then
          del=1.d0-ed/eu
@@ -147,12 +152,20 @@ c     count the number of nodes
          if (del.lt.0.05d0) fu=fu*((lo(m)+1+ncc)/no(m))**2.5
          if (del.ge.0.05d0) fu=ed*((lo(m)+1+ncc)/no(m))**2.5
          if (fu.lt.em) fu=(eu+em)/2.d0
-         if (dabs(fu-ed).lt.1e-4) goto 27
+         if (dabs(fu-ed).lt.1.e-4) then 
+             write(*,*) "fu-ed<1e-4"
+             goto 27
+         endif
          ed=fu
+         write(*,*) "ed=fu"
          goto 33
       else
          v2=dabs(deltae).lt.1.d-3.or.dabs(deltae)/ed.lt.1d-5
-         if (p(mm).lt.0.d0.and. .not.v2) goto 46
+         if (p(mm).lt.0.d0.and. .not.v2) then
+            write(*,*) "line 165"
+            goto 46
+         endif
+
          if (p(mm).gt.0.d0) goto 51
          do j=1,np
             p(j)=-p(j)
@@ -172,7 +185,11 @@ c     count the number of nodes
       
  33   mk=mk+1
       if (mk.gt.2*no(m).or.eu-em.lt.
-     $     float(no(m))**(0.3333333)) goto 27
+     $     float(no(m))**(0.3333333)) then
+           write(*,*) "mk error", mk, 
+     $     no(m), eu, em      
+           goto 27
+      endif
       first=.false.
       goto 17
 
@@ -180,19 +197,29 @@ c     count the number of nodes
  46   continue
       ed=ed-deltae
 
-      if (ed.ge.em.and.ed.le.eu) goto 33
+      if (ed.ge.em.and.ed.le.eu) then
+          write(*,*) "ed.ge.em and ed.le.eu"
+          goto 33
+      endif
       edp=ed
       if (ncc-node.ne.0) ed=(ed+deltae)*((lo(m)+1+ncc)
      $     /float(no(m)))**2.5
 
-      if (ed.ge.em.and.ed.le.eu) goto 33
+      if (ed.ge.em.and.ed.le.eu) then
+         write(*,*) "after ncc-node ed ge em"
+         goto 33
+      endif
 
       ed=edp+deltae*2.d0
 
-      if (ed.ge.em.and.ed.le.eu) goto 33
+      if (ed.ge.em.and.ed.le.eu) then
+         write(*,*) "after ed=edp+d*2 ed ge em"
+         goto 33
+      endif
 
       ed=ed-deltae
       deltae=deltae/2.d0
+      write(*,*) "line 221"
       goto 46
 
  27   continue

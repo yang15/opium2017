@@ -1,13 +1,149 @@
-hfmethd.F:      ncc=0
-hfmethd.F:         ncc=ncc+1
-hfmethd.F:      if (iprint.gt.1) write (7,99) no(m),lo(m),ncc,r(mm),r(ntp),
-hfmethd.F:      if (iabs(ncc-node).eq.1.and.dabs(deltae/ed).gt.0.02d0) goto 46
-hfmethd.F:      if ((ncc-node).gt.0) then
-hfmethd.F:         if (del .lt. 0.05d0) fm = fm*((lo(m)+1.d0+ncc)/no(m))**2.5
-hfmethd.F:         if (del .ge. 0.05d0) fm = ed*((lo(m)+1.d0+ncc)/no(m))**2.5
-hfmethd.F:      elseif((ncc-node).lt.0) then
-hfmethd.F:         if (del.lt.0.05d0) fu=fu*((lo(m)+1+ncc)/no(m))**2.5
-hfmethd.F:         if (del.ge.0.05d0) fu=ed*((lo(m)+1+ncc)/no(m))**2.5
-hfmethd.F:      ed=ed*((lo(m)+1+ncc)/float(no(m)))**2.5
-hfmethd.F:      if (ncc-node.ne.0) ed=(ed+deltae)*((lo(m)+1+ncc)
-hfmethd.F:      if (iprint.gt.0) write (7,28) imeth,no(m),lo(m),ncc,mm,ed,em,eu
+average.F:     $     no(n0),lo(n0),nmax(n0),maxim
+average.F:            if (rnl(k,ic).gt.1e-18) nmax(ic)=k
+dfsolve.F:     $     no(n0),lo(n0),nmax(n0),maxim
+dfsolve.F:      npp=nmax(j)
+dfsolve.F:      ainf=cg(nmax(j),j)
+dfsolve.F:     $     ka(j),nmax(j),ifail,method)
+dfsolve.F:      do i=1,nmax(j)
+dfsolve.F:      do i=1,nmax(j)
+dfsolve.F:      a=dsordf(j,nmax(j),mm,4,fl(j))
+dfsolve.F:            maxim=max(maxim,nmax(i))
+dfsolve.F:               nmax(i)=j
+dfsolve.F:         if (rnlb(nmax(i)-1,i).lt.0.0) then
+dfsolve.F:               nmax(i)=j
+dfsolve.F:         if (rnla(nmax(i)-1,i).lt.0.0) then
+dfsolve.F:            do j = 1,nmax(i)
+dfsolve.F:            do j = 1,nmax(i)
+dfsolve.F:               do j = 1,nmax(i)
+dfsolve.F:               do j = 1,nmax(i)
+dftsolve.F:     $     no(n0),lo(n0),nmax(n0),maxim
+dftsolve.F:            nmax(j) = 0
+dftsolve.F:               nmax(i)=np
+dftsolve.F:                     call schsl (m,no(m),lo(m),en(m),nmax(m),
+dftsolve.F:                     call schsl(m,no(m),lo(m),en(m),nmax(m),
+dftsolve.F:                  do i = 1,nmax(m)
+dftsolve.F:                  do i = nmax(m) + 1,np
+dftsolve.F:                  indey = max(indey,nmax(m))
+dftsolve.F:     $                 rnlb(1,m),z,rvcoul,en,nmax(m),ibound)
+dftsolve.F:                  do i = nmax(m) + 1,np
+dftsolve.F:                  indey = max(indey,nmax(m))
+dftsolve.F:                  do i = 1,nmax(m)
+dftsolve.F:                  do i = 1,nmax(m)
+dftsolve.F:               if(nmax(m).le.10) then
+dftsolve.F:               call radin(r,f,0,nmax(m),h,xl)
+dftsolve.F:            do k=nmax(i),1,-1
+dftsolve.F:            do k=nmax(i),1,-1
+dftsolve.F:            do k=nmax(i),1,-1
+dftsolve.F:            do j = 1,nmax(i)
+dftsolve.F:            do j = 1,nmax(i)
+dftsolve.F:               do j = 1,nmax(i)
+dftsolve.F:               do j = 1,nmax(i)
+dftsolve.F:c     HEY didn't we already do this?? for nmax though?
+dsordf.F:     $     no(n0),lo(n0),nmax(n0),maxim
+dsordf.F: 11   max0= min(nmax(i),nmax(j)) 
+etotal.F:     $     no(n0),lo(n0),nmax(n0),maxim
+etotal.F:c     1nq(N0),kap(N0),nmax(N0)                                                   
+etotal.F:c     1nq(N0),kap(N0),nmax(N0)
+ghostnl.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfcoef.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfcoef.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfcoef.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfcoef_rel.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfde.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfde.F:      pnn=dsqrt(quad(m,nmax(m),p,p))
+hfde.F:      do k=1,nmax(m)
+hfde.F:      do j=1,nmax(m)
+hfde.F:      do i=nmax(m)+1,np
+hfde.F:               nnp=max(nmax(j),nmax(m))
+hfde.F:      nmax(m)=jjset
+hfde.F:     $     write (7,17) nlm(m),e(m,m),az(m),pnn,dp,r(nmax(m))
+hfde.F:      maxim=max(maxim,nmax(m))
+hfde.F:      do i=1,nmax(m)
+hfenergy.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfenergy.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfint.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfint.F:      zinf=max(0.05d0,rvcore(nmax(m),m)-yr(nmax(m)))
+hfint.F:      x(nmax(m)-1)=ch*(x4+10.d0*x3+x2)
+hfint.F:      ntp=max(100,nmax(m)-100)
+hfint.F:      nmax(m)=max(m1,mh)
+hfint.F:      do j=1,nmax(m)
+hfint.F:         nmax(m) = max0(nmax(m),m2)
+hfint.F:         a11 = quad(m,nmax(m),p2,p2)
+hfint.F:         b11 = quad(m,nmax(m),p1,p2)
+hfint.F:         c11 = quad(m,nmax(m),p1,p1) - 1.d0
+hfmethd.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfmethd.F:      mm=nmax(m)
+hfsolve.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfsolve.F:         nmax(i)=np
+hfsolve.F:               nmax(i)=j
+hfsolve.F:         if (rnlp(nmax(i)-1,i).lt.0.0) then
+hfsolve.F:         do j = 1,nmax(i)
+hfsolve.F:            do j = 1,nmax(i)
+hfuncs.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfuncs.F:      m = min0(nmax(i),nmax(j)) - 1
+hfuncs.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfuncs.F:      mx = min0(nmax(i),nmax(j)) - 1
+hfuncs.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfuncs.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfuncs.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfuncs.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfuncs.F:                  m = max0(m,nmax(j))
+hfuncs.F:            nmax(i) = m
+hfuncs.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfuncs.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfuncs.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfuncs.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hfuncs.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hysolve.F:     $     no(n0),lo(n0),nmax(n0),maxim
+hysolve.F:            nmax(j) = 0
+hysolve.F:         nmax(i)=np
+hysolve.F:               nmax(i)=np
+hysolve.F:                     call schsl (m,no(m),lo(m),en(m),nmax(m),
+hysolve.F:                     call schsl(m,no(m),lo(m),en(m),nmax(m),
+hysolve.F:                  do i = 1,nmax(m)
+hysolve.F:                  do i = nmax(m) + 1,np
+hysolve.F:                  indey = max(indey,nmax(m))
+hysolve.F:     $                 rnlb(1,m),z,rvcoul,en,nmax(m),ibound)
+hysolve.F:                  do i = nmax(m) + 1,np
+hysolve.F:                  indey = max(indey,nmax(m))
+hysolve.F:            do i = 1,nmax(m)
+hysolve.F:                  do i = 1,nmax(m)
+hysolve.F:                  do i = 1,nmax(m)
+hysolve.F:               if(nmax(m).le.10) then
+hysolve.F:               call radin(r,f,0,nmax(m),h,xl)
+hysolve.F:            do k=nmax(i),1,-1
+hysolve.F:            do k=nmax(i),1,-1
+hysolve.F:            do k=nmax(i),1,-1
+hysolve.F:            do j = 1,nmax(i)
+hysolve.F:            do j = 1,nmax(i)
+hysolve.F:               do j = 1,nmax(i)
+hysolve.F:               do j = 1,nmax(i)
+hysolve.F:c     HEY didn't we already do this?? for nmax though?
+lagdat.F:     $     no(n0),lo(n0),nmax(n0),maxim
+ortdat.F:     $     no(n0),lo(n0),nmax(n0),maxim
+ortdat.F:         maxl=nmax(l)                                                              
+ortdat.F:         max0=nmax(j)                                                           
+ortdat.F:      nmax(l)=max0                                                              
+potl.F:     $     no(n0),lo(n0),nmax(n0),maxim
+potrdf.F:     $     no(n0),lo(n0),nmax(n0),maxim
+potrdf.F:         m=nmax(j)                                                              
+potrdf.F: 51   max0= max(max0,nmax(j))                                                
+potrdf.F: 105     max0=nmax(j)                                                           
+potrdf.F:         max0=nmax(j)                                                           
+potrdf2.F:     $     no(n0),lo(n0),nmax(n0),maxim
+potrdf2.F:         m=nmax(j)                                                              
+potrdf2.F: 51      max0= max(max0,nmax(j))                                                
+potrdf2.F: 105     max0=nmax(j)                                                           
+potrdf2.F:         max0=nmax(j)                                                           
+schslrel.F:     $     no(n0),lo(n0),nmax(n0),maxim
+setuphf.F:     $     no(n0),lo(n0),nmax(n0),maxim
+setuphf.F:         nmax(i)=np
+setuphf.F:     $        ainf,test1,test2, ka(j),nmax(j),ifail,method)
+xch.F:     $     no(n0),lo(n0),nmax(n0),maxim
+ykf.F:     $     no(n0),lo(n0),nmax(n0),maxim
+ykf.F:      mx = (min(nmax(i),nmax(j))/2)*2
+yzkrdf.F:c     $     nq(N0),kap(N0),nmax(N0)                                                   
+yzkrdf.F:     $     no(n0),lo(n0),nmax(n0),maxim
+yzkrdf.F:      id= min(nmax(i),nmax(j))                                                  
+zkf.F:     $     no(n0),lo(n0),nmax(n0),maxim
+zkf.F:      mx = (min(nmax(i),nmax(j))/2)*2
