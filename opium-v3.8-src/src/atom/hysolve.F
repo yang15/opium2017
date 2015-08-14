@@ -89,7 +89,7 @@ c     *************************************************************************
       dimension x(npdm),yr(npdm),fr(npdm),fr2(npdm)
       dimension lcount(10)
       dimension rvcore1(npdm,n0)
-      dimension enfull(n0)
+      dimension enfull(n0), eoldfull(n0)
 c     rvpostloc(npdm),rvpreloc(npdm)
 c     *************************************************************************
 c     Section 1:  set up tolerance params and zero out arrays.
@@ -224,7 +224,7 @@ c      iprint=5
 
       !exact exchange weight
       if(ixc.eq.7) then
-        exxweight = 1.0 ! PBE0
+        exxweight = 0.25 ! PBE0
         !exxweight = 1.0
       elseif(ixc.lt.0) then
         exxweight = 1.0 ! HF
@@ -441,8 +441,11 @@ c     unbound info
          edmaxp = 0
          dp1 = 0
          call grange
-         
          write(*,*) "grange end"
+
+         !initialization for hybrids
+         edmaxfull = 0
+         
 c     ***********************************************************************
 c     Section 3:  call schsl for each orbital & compile charge density.
 c     ***********************************************************************
@@ -643,6 +646,15 @@ c     if not a frozen core calc or if valence
 
             rnl(:,m) = rnlp(:,m)*sqrt(r)
 
+            !calculate energy differences
+            if(niter.eq.1) then
+              edmaxfull = 100.0
+            else
+              ediffull = abs((enfull(m) - eoldfull(m))/eoldfull(m))
+              edmaxfull = max(ediffull,edmaxfull)
+            endif
+            eoldfull(m) = enfull(m)
+
             !calculate charge densities
             do i = 1,nmax(m)
               rsatom(i) = rsatom(i) + wnl(m) * rnl(i,m)**2
@@ -804,8 +816,11 @@ c     ***********************************************************************
 
          !update vtl and etl here, like in hfsolve?
 
-         if (dvmax.lt.vtol.and.edmax.lt.etol
-     $        .and.edmaxp.lt.10000) goto 1000
+         !if (dvmax.lt.vtol.and.edmax.lt.etol
+    ! $        .and.edmaxp.lt.10000) goto 1000
+         !for hybrid functionals, we should be using the 
+         !  hybrid eigenvalues for convergence.
+         if(edmaxfull.lt.etol) goto 1000
          
 c     ***********************************************************************
 c     Section 7:  predict trial eigenvals use 1st order perturb theory.
