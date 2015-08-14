@@ -224,8 +224,8 @@ c      iprint=5
 
       !exact exchange weight
       if(ixc.eq.7) then
-        exxweight = 0.25 ! PBE0
-        !exxweight = 1.0
+        !exxweight = 0.25 ! PBE0
+        exxweight = 1.0
       elseif(ixc.lt.0) then
         exxweight = 1.0 ! HF
       else
@@ -1178,15 +1178,15 @@ c     ***********************************************************************
 
       do i = 1,ncore
          if (irel.eq.0) then
-            write (7,9223) nlm(i),wnl(i),en(i)
+            write (7,9223) nlm(i),wnl(i),enfull(i)
          else
             if (lo(i).eq.0) then
-               write (7,9523) nlm(i),wnl(i),en(i)
+               write (7,9523) nlm(i),wnl(i),enfull(i)
             else
                if (so(i).lt.0) then
-                  write (7,9323) nlm(i),wnl(i),en(i)
+                  write (7,9323) nlm(i),wnl(i),enfull(i)
                else
-                  write (7,9423) nlm(i),wnl(i),en(i)
+                  write (7,9423) nlm(i),wnl(i),enfull(i)
                endif
             endif
          endif
@@ -1195,29 +1195,29 @@ c     ***********************************************************************
          ic=i-ncore
          if (irel.eq.0) then
             if (ibd(ic).ne.0) then
-               write (7,9223) nlm(i),wnl(i),en(i),rnorm(i),rvap(i)
+               write (7,9223) nlm(i),wnl(i),enfull(i),rnorm(i),rvap(i)
             else
-               write (7,9224) nlm(i),wnl(i),en(i)
+               write (7,9224) nlm(i),wnl(i),enfull(i)
             endif
          else
             if (lo(i).eq.0) then
                if (ibd(ic).ne.0) then
-                  write (7,9523) nlm(i),wnl(i),en(i),rnorm(i),rvap(i)
+                  write (7,9523) nlm(i),wnl(i),enfull(i),rnorm(i),rvap(i)
                else
-                  write (7,9524) nlm(i),wnl(i),en(i)
+                  write (7,9524) nlm(i),wnl(i),enfull(i)
                endif
             else
                if (so(i).lt.0) then
                   if (ibd(ic).ne.0) then
-                     write (7,9323) nlm(i),wnl(i),en(i),rnorm(i),rvap(i)
+                     write (7,9323) nlm(i),wnl(i),enfull(i),rnorm(i),rvap(i)
                   else
-                     write (7,9324) nlm(i),wnl(i),en(i)
+                     write (7,9324) nlm(i),wnl(i),enfull(i)
                   endif
                else
                   if (ibd(ic).ne.0) then
-                     write (7,9423) nlm(i),wnl(i),en(i),rnorm(i),rvap(i)
+                     write (7,9423) nlm(i),wnl(i),enfull(i),rnorm(i),rvap(i)
                   else
-                     write (7,9424) nlm(i),wnl(i),en(i)
+                     write (7,9424) nlm(i),wnl(i),enfull(i)
                   endif
                endif
             endif
