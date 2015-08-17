@@ -62,9 +62,9 @@ c     *************************************************************************
       common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
 
       dimension yk(npdm)
-      write(*,*) "before zkf in ykf",rnl(1,1) 
+      !write(*,*) "before zkf in ykf",rnl(1,1) 
       call zkf(yk,i,j,k)
-      write(*,*) "after zkf in ykf" 
+      !write(*,*) "after zkf in ykf" 
 
       a =  dexp(-h)**(k+1)
       ccc = 2*k+1

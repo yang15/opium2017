@@ -87,9 +87,7 @@ c -------------------------------------------------------------------------
       endif
 
       !LZT: apply Fock operator to orbital m
-      write(*,*) "before hfmethd"
       call hfmethd(m,ipsp,p,zeff,azz,fail,iprint)
-      write(*,*) "after hfmethd"
 
       if (fail) then
          write(*,*) "call hfmethd fail"
@@ -112,7 +110,6 @@ c      write(7,*) 'azz 1',azz,pnn
      $        gt.0.20d0) then
             meth(m)=2
             imeth=2
-            write(*,*) "hfde line109"
             goto 25
          endif
       endif
@@ -201,7 +198,7 @@ c               write(7,*) 'orth', j,azz,az(j),rx
       if (azz.gt.0.d0) az(m)=max(azz,az(m)/2.d0)
 
 c      write(7,*) 'after de adj', m,az(m),azz
-      write(*,*) 'enp(m) assign value', m,e(m,m)
+      !write(*,*) 'enp(m) assign value', m,e(m,m)
 
       enp(m)=e(m,m)
 
@@ -226,7 +223,7 @@ c      write(7,*) 'after de adj', m,az(m),azz
  25   continue
       write(7,*) "Solve for HF wfn failed, orthogonalizing..."
       if (norb.eq.1) then
-         write(*,*) "after 25 norb 1"
+         !write(*,*) "after 25 norb 1"
          goto 27
       endif
       call orthog(ilast)

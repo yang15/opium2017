@@ -75,7 +75,7 @@ c -------------------------------------------------------------------------
 
       fail=.false.
       first=.true.
-      write(*,*) "in hfmethd m = ",m 
+      !write(*,*) "in hfmethd m = ",m 
       if (ipsp.eq.0) then
          em=0.d0
          eu=((z-min(0.5*s(m),2.d0*s(m)))/no(m))**2
@@ -87,9 +87,9 @@ c -------------------------------------------------------------------------
       fu=eu
       mk=0
       
-      write(*,*) "before hfint" 
+      !write(*,*) "before hfint" 
  17   call hfint(m,ipsp,p,pp,zeff,ed,ntp,azd,deltae,first,eu,em,iprint)
-      write(*,*) "after hfint" 
+      !write(*,*) "after hfint" 
 
       if (imeth.eq.3) goto 111
 
@@ -125,7 +125,7 @@ c     count the number of nodes
 
       
       if (iabs(ncc-node).eq.1.and.dabs(deltae/ed).gt.0.02d0) then
-         write(*,*) "line 128"
+         !write(*,*) "line 128"
          goto 46
       endif
 
@@ -140,11 +140,11 @@ c     count the number of nodes
          if (del .ge. 0.05d0) fm = ed*((lo(m)+1.d0+ncc)/no(m))**2.5
          if (fm .gt. eu) fm = 0.5*(eu + em)
          if (dabs(fm - ed) .lt. 0.00001d0) then
-            write(*,*) "fm-ed < 1e-5"
+            !write(*,*) "fm-ed < 1e-5"
             go to 27
          endif
          ed = fm
-         write(*,*) "ed-fm"
+         !write(*,*) "ed-fm"
          go to 33
       elseif((ncc-node).lt.0) then
          del=1.d0-ed/eu
@@ -153,16 +153,16 @@ c     count the number of nodes
          if (del.ge.0.05d0) fu=ed*((lo(m)+1+ncc)/no(m))**2.5
          if (fu.lt.em) fu=(eu+em)/2.d0
          if (dabs(fu-ed).lt.1.e-4) then 
-             write(*,*) "fu-ed<1e-4"
+             !write(*,*) "fu-ed<1e-4"
              goto 27
          endif
          ed=fu
-         write(*,*) "ed=fu"
+         !write(*,*) "ed=fu"
          goto 33
       else
          v2=dabs(deltae).lt.1.d-3.or.dabs(deltae)/ed.lt.1d-5
          if (p(mm).lt.0.d0.and. .not.v2) then
-            write(*,*) "line 165"
+            !write(*,*) "line 165"
             goto 46
          endif
 
@@ -186,7 +186,7 @@ c     count the number of nodes
  33   mk=mk+1
       if (mk.gt.2*no(m).or.eu-em.lt.
      $     float(no(m))**(0.3333333)) then
-           write(*,*) "mk error", mk, 
+           !write(*,*) "mk error", mk, 
      $     no(m), eu, em      
            goto 27
       endif
@@ -198,7 +198,7 @@ c     count the number of nodes
       ed=ed-deltae
 
       if (ed.ge.em.and.ed.le.eu) then
-          write(*,*) "ed.ge.em and ed.le.eu"
+          !write(*,*) "ed.ge.em and ed.le.eu"
           goto 33
       endif
       edp=ed
@@ -206,20 +206,20 @@ c     count the number of nodes
      $     /float(no(m)))**2.5
 
       if (ed.ge.em.and.ed.le.eu) then
-         write(*,*) "after ncc-node ed ge em"
+         !write(*,*) "after ncc-node ed ge em"
          goto 33
       endif
 
       ed=edp+deltae*2.d0
 
       if (ed.ge.em.and.ed.le.eu) then
-         write(*,*) "after ed=edp+d*2 ed ge em"
+         !write(*,*) "after ed=edp+d*2 ed ge em"
          goto 33
       endif
 
       ed=ed-deltae
       deltae=deltae/2.d0
-      write(*,*) "line 221"
+      !write(*,*) "line 221"
       goto 46
 
  27   continue
@@ -239,7 +239,7 @@ c     count the number of nodes
       
       azz=azd*(pp+1.d0)
       e(m,m)=ed
-      write(*,*) "enp(m) assign value hfmethd", m, e(m,m)
+      !write(*,*) "enp(m) assign value hfmethd", m, e(m,m)
       enp(m)=e(m,m)
       
       return

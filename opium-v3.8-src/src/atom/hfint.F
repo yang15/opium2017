@@ -87,21 +87,21 @@ c -------------------------------------------------------------------------
       if (.not.first) goto 17
 
       if (ighost*ighost2.gt.1) goto 17
-      write(*,*) "before potl"
+      !write(*,*) "before potl"
       ! copy rnlp to rnl and save rnl to a local array
       rnltemp(:,:)=rnl(:,:)
       rnl(:,:)=rnlp(:,:)
       call potl(yr,m)
       rnlp(:,:)=rnl(:,:)
       rnl(:,:)=rnltemp(:,:)
-      write(*,*) "after potl",rnltemp(1,1),rnlp(1,1)
+      !write(*,*) "after potl",rnltemp(1,1),rnlp(1,1)
       rnltemp(:,:)=rnl(:,:)
       rnl(:,:)=rnlp(:,:)
       call xch(x,m,3)
       ! copy rnl to rnlp and save rnltemp to rnl
       rnlp(:,:)=rnl(:,:)
       rnl(:,:)=rnltemp(:,:)
-      write(*,*) "after xch",rnl(1,1),rnlp(1,1)
+      !write(*,*) "after xch",rnl(1,1),rnlp(1,1)
       ! end of array modification by JY
       ighost2=ighost2+1
 
@@ -242,12 +242,12 @@ c -------------------------------------------------------------------------
          hq(k)=azd*(hw+r(k)**(lo(m)+3)*b3*(1.d0-r(k)*b4))/sqrt(r(k))
       enddo
 
-      write(*,*) "before nmrvs"
+      !write(*,*) "before nmrvs"
       call nmrvs(ntp,delh,mh,hq,xz,yr,m,iprint)
       p1(1)=hq(1)+xy/c
       p1(2)=hq(2)+xp/c
       call nmrvs(ntp,del1,m1,p1,x,yr,m,iprint)
-      write(*,*) "after nmrvs"
+      !write(*,*) "after nmrvs"
 
       nmax(m)=max(m1,mh)
       pnorm=0.d0

@@ -63,7 +63,7 @@ c     *************************************************************************
 
       dimension yk(npdm)
 
-      write(*,*) "In zkf",rnl(1,1)
+      !write(*,*) "In zkf",rnl(1,1)
 
       do in=1,np
          yk(in)=0.d0
@@ -79,14 +79,14 @@ c     *************************************************************************
       ai = h90/a
       an = 114.d0*a*h90
       a34 = 34.d0*h90
-      write(*,*) a34
+      !write(*,*) a34
       !if (ixc.eq.7) then
       !  f1 = r(1)**2*rnlp(1,i)*rnlp(1,j)
       !  f2 = r(2)**2*rnlp(2,i)*rnlp(2,j)
       !  f3 = r(3)**2*rnlp(3,i)*rnlp(3,j)
       !  f4 = r(4)**2*rnlp(4,i)*rnlp(4,j)
       !else
-      write(*,*) "before rnl appears"
+      !write(*,*) "before rnl appears"
         f1 = r(1)**2*rnl(1,i)*rnl(1,j)
         f2 = r(2)**2*rnl(2,i)*rnl(2,j)
         f3 = r(3)**2*rnl(3,i)*rnl(3,j)
