@@ -1202,20 +1202,23 @@ c     ***********************************************************************
          else
             if (lo(i).eq.0) then
                if (ibd(ic).ne.0) then
-                  write (7,9523) nlm(i),wnl(i),enfull(i),rnorm(i),rvap(i)
+                  write (7,9523) nlm(i),wnl(i),enfull(i),
+     $                           rnorm(i),rvap(i)
                else
                   write (7,9524) nlm(i),wnl(i),enfull(i)
                endif
             else
                if (so(i).lt.0) then
                   if (ibd(ic).ne.0) then
-                     write (7,9323) nlm(i),wnl(i),enfull(i),rnorm(i),rvap(i)
+                     write (7,9323) nlm(i),wnl(i),enfull(i),
+     $                              rnorm(i),rvap(i)
                   else
                      write (7,9324) nlm(i),wnl(i),enfull(i)
                   endif
                else
                   if (ibd(ic).ne.0) then
-                     write (7,9423) nlm(i),wnl(i),enfull(i),rnorm(i),rvap(i)
+                     write (7,9423) nlm(i),wnl(i),enfull(i),
+     $                              rnorm(i),rvap(i)
                   else
                      write (7,9424) nlm(i),wnl(i),enfull(i)
                   endif
