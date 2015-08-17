@@ -820,8 +820,10 @@ c     ***********************************************************************
     ! $        .and.edmaxp.lt.10000) goto 1000
          !for hybrid functionals, we should be using the 
          !  hybrid eigenvalues for convergence.
-         if(edmaxfull.lt.etol) goto 1000
+         if(dp1.lt.vtl.and.dvmax.lt.vtl.and.edmaxfull.lt.etl) goto 1000
          
+         vtl=vtl*1.1d0
+         etl=etl*1.1d0
 c     ***********************************************************************
 c     Section 7:  predict trial eigenvals use 1st order perturb theory.
 c     ***********************************************************************

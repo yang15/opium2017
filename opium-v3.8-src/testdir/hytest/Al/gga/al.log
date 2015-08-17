@@ -1,0 +1,88 @@
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+           OPIUM  Version:        3.8                             
+           =====================================            
+ See http://opium.sourceforge.net for help and information                 
+ Copyright 2009 : The OPIUM project                         
+
+ Compile host     : vagvlan567.203.wlan.design.upenn.edu
+ Compile OS       : Darwin 14.4.0 i386
+ Compile date     : Mon Aug 17 15:10:08 EDT 2015
+
+ Execution host   : vagvlan567.203.wlan.design.upenn.edu
+ time of execution: Mon Aug 17 15:32:53 2015
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Reading parameter file:  <al.param> ... 
+ File prefix             : al 
+ Element                 : Aluminum   (Al) 
+ Z                       : 13 
+ 
+ Number of all-electron orbitals   : 6 
+ Number of pseudo       orbitals   : 3 
+ 
+ Pseudopotential is non-relativistic 
+ Exchage-correlation functional is : Perdew, Burke, Ernzerhof GGA 
+ GGA smoothed from 0 to 0.001000 bohr using switch to LDA 
+ The s potential is used for the KB construction 
+ Optimized (RRKJ) pseudopotential method will be used 
+
+ nl    cutoff radii    q-max      # bessel functions
+ 3s       1.850        7.070              10 
+ 3p       1.850        7.070              10 
+ 3d       1.970        7.070              10 
+
+ Reference Configuration: core  <-/-> valence 
+ 1s2  2s2  2p6  <-/-> 3s2  3p0.95  3d0 
+
+ Grid definitions: 
+ a_grid=1.00e-04    b_grid=1.30e-02    # points=1142 
+ r(1)=4.25e-05      r(np)=1.18e+02    
+
+ dEmax tolerance:  1.00e-08      dVmax tolerance:  1.00e-06     
+
+ Box 1  0.101133 --> 1.61232  height: 0.001 
+ Starting calculation...
+
+ ======================================================================== 
+ Begin AE calculation
+ ======================================================================== 
+ Performing non-relativistic AE calculation...  
+ is make clean necessary?  
+ inside dftsolve
+ ---------Eigenvalue guesses---------
+ 1s           -13.00000000
+ 2s            -1.40000000
+ 2p            -0.40000000
+ 3s            -0.10000000
+ 3p           -13.00000000
+ 3d            -1.40000000
+
+ iter       Etot             Ebs             Ehxc       de_max   dv_max
+   1     -521.4462056    -293.4468929    -227.9993126 0.16E+02 0.20E+01
+   2     -494.5299786    -276.6485445    -217.8814340 0.53E+00 0.10E+01
+ !WARNING! positive eigenvalue predicted in scpot  nlm= 320     new e =-.2232109E-01
+   3     -484.5851148    -270.1195421    -214.4655727 0.98E+00 0.10E+00
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+   4     -484.2461231    -269.7602394    -214.4858837 0.10E+01 0.50E-01
+ !WARNING! positive eigenvalue predicted in scpot  nlm= 320     new e =-.8717672E-02
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+   5     -484.5071256    -269.9289875    -214.5781381 0.35E-01 0.59E-02
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+   6     -484.5039319    -269.8928536    -214.6110783 0.23E-02 0.64E-02
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+   7     -484.4412044    -269.8348681    -214.6063363 0.11E-02 0.49E-02
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+   8     -484.4343365    -269.8329315    -214.6014050 0.17E-02 0.13E-02
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+   9     -484.4346653    -269.8353205    -214.5993447 0.61E-03 0.85E-03
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+  10     -484.4370918    -269.8381087    -214.5989832 0.52E-03 0.53E-03
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+  11     -484.4388329    -269.8396418    -214.5991911 0.26E-03 0.98E-04
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+  12     -484.4396628    -269.8401708    -214.5994919 0.16E-04 0.55E-04
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+  13     -484.4399798    -269.8402862    -214.5996936 0.76E-05 0.31E-04
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+  !!ERROR!! Could not find self-consistent solution!
