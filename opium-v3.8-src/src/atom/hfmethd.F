@@ -186,8 +186,8 @@ c     count the number of nodes
  33   mk=mk+1
       if (mk.gt.2*no(m).or.eu-em.lt.
      $     float(no(m))**(0.3333333)) then
-           !write(*,*) "mk error", mk, 
-     $     no(m), eu, em      
+c           write(*,*) "mk error", mk, 
+c     $     no(m), eu, em      
            goto 27
       endif
       first=.false.

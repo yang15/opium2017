@@ -99,12 +99,12 @@ c     *************************************************************************
       logical ilast,first
       double precision exxweight ! fraction of exact exchange
       
-      write(*,*) "inside hysolve"
+      !write(*,*) "inside hysolve"
       open(unit=7,file=file_log,form='formatted',access='append')
       !open(unit=8,file='testfile',form='formatted',status='new')
       !write(8,*) "inside testfile"
       !close(8)
-      write(*,*) "after open 7"
+      !write(*,*) "after open 7"
       
       xc(0)='s'
       xc(1)='p'
@@ -143,7 +143,7 @@ c         enddo
 c      endif
 
       write(7,*) '---------Eigenvalue guesses---------'      
-      write(*,*) '---------Eigenvalue guesses---------'      
+      !write(*,*) '---------Eigenvalue guesses---------'      
 
       do i=1,norb
          ipos(i)=0
@@ -201,7 +201,7 @@ c      endif
       !set up local copy because hf uses this too
       rvcore1 = rvcore
 
-      write(*,*) "dft init. done"
+      !write(*,*) "dft init. done"
 
       !initialize for HF calculations
 
@@ -351,7 +351,7 @@ c     starting guess for channels which don't have a psp-wfn guess
 555   continue
 
       !end initialization of HF
-      write(*,*) "hf init. done"
+      !write(*,*) "hf init. done"
 
       if (inl.ne.0) then
         write(7,*)"Performing non-local pseudopotential calculation"
@@ -435,13 +435,13 @@ c     unbound info
             rsatom(i) = 0
          enddo
 
-         write(*,*) "dft init. end"
+         !write(*,*) "dft init. end"
 
          !initialization for HF
          edmaxp = 0
          dp1 = 0
          call grange
-         write(*,*) "grange end"
+         !write(*,*) "grange end"
 
          !initialization for hybrids
          edmaxfull = 0
@@ -453,7 +453,7 @@ c     ***********************************************************************
 
          !LZT: begin application of kohn-sham operator
          if(ixc.ge.0. .and. ixc.le.7) then
-         write(*,*) "entering KS"
+         !write(*,*) "entering KS"
          do m = 1,norb
             if (m.le.ncore) then
                ibound=1
@@ -556,14 +556,14 @@ c     if not a frozen core calc or if valence
 
           endif
           !LZT: end application of kohn-sham operator
-          write(*,*) "KS operator end",rnl(1,1)
+          !write(*,*) "KS operator end",rnl(1,1)
           
           !LZT: begin application of Fock operator
           !ixc = -1 : hartree-fock
           !ixc = 7 : hybrid functional
           if(ixc.lt.0 .or. ixc.eq.7) then
           !if(.false.) then
-            write(*,*) "hybrid start 1",rnlp(1,1)
+            !write(*,*) "hybrid start 1",rnlp(1,1)
 
             ! LZT : for AE Hartree-Fock, here we should apply 
             ! the Fock operator to wavefunction m, and store
@@ -576,7 +576,7 @@ c     if not a frozen core calc or if valence
               ed2=e(m,m) !LZT: this doesn't seem to be used anywhere
 
               call hfde(m,ipsp,zeff,dpm,iprint)
-              write(*,*) 'NFAILS', nfails
+              !write(*,*) 'NFAILS', nfails
               if (nfails.gt.25) goto 911
 
               dp=dpm(m)
@@ -588,7 +588,7 @@ c     if not a frozen core calc or if valence
               eoldp(m) = enp(m)
               edmaxp = max(edifp,edmaxp)
             enddo
-            write(*,*) "finished first m-loop"
+            !write(*,*) "finished first m-loop"
 
 
             if (dp1.lt.vtl) goto 66
@@ -619,11 +619,11 @@ c     if not a frozen core calc or if valence
               if (dp1.lt.vtl) goto 66
             enddo
  66         continue
-            write(*,*) "finished 2nd m-loop"
+            !write(*,*) "finished 2nd m-loop"
 
             call orthog(ilast)
 
-            write(*,*) "finished orthog"
+            !write(*,*) "finished orthog"
 
           endif
 
@@ -665,7 +665,7 @@ c     if not a frozen core calc or if valence
                     
 
 
-          write(*,*) "finished hybrid mixing"
+          !write(*,*) "finished hybrid mixing"
 
          if(maxim.eq.0) then
             goto 911
@@ -730,20 +730,24 @@ c     ***********************************************************************
          ebs = 0
          do m = 1,norb
             ebs = ebs + wnl(m) * enfull(m)
-            write(*,*) 'enfull(m) = ', enfull(m)
+            !write(*,*) 'enfull(m) = ', enfull(m)
          enddo
          !etot = ebs + ehxc !original code
          etothf = 0.d0 
          eharhf = 0.d0 
          exx = 0.d0 
          eknhf = 0.d0 
-         call hfenergyself(ipsp,etothf,eharhf,exx,eknhf)      
+         call hfenergy(ipsp,etothf,eharhf,exx,eknhf)      
          ! here, scale by -2.0, see hfsolve.F
          etothf = -2.0*etothf
          eharhf = -2.0*eharhf
          exx = -2.0*exx 
          eknhf = -2.0*eknhf
-         etot = ebs + exxweight*exx + (1.0-exxweight)*excdft + ehardft 
+         !make self-interaction correction
+         selfint = ehardft - eharhf
+         etot = ebs + exxweight*(exx-selfint)
+     $              + (1.0-exxweight)*excdft 
+     $              + ehardft 
          !etot = 2.0*etothf
 
 c     ***********************************************************************
@@ -789,15 +793,15 @@ c     ***********************************************************************
          if (niter.eq.1) then
             write(7,*)
             write(7,191)
-            write(7,491) niter,etot,ebs,ehxc,ehardft,
-     $                   excdft,edmax,dvmax
+            write(7,491) niter,etot,ebs,
+     $                   edmax,dvmax
             write(7,*) "etothf = ", etothf 
             write(7,*) "eharhf = ", eharhf 
             write(7,*) "exx = ", exx 
             write(7,*) "eknhf = ", eknhf 
          else
-            write(7,491) niter,etot,ebs,ehxc,ehardft,
-     $                   excdft,edmax,dvmax
+            write(7,491) niter,etot,ebs,
+     $                   edmax,dvmax
 
             write(7,*) "etothf = ", etothf 
             write(7,*) "eharhf = ", eharhf 
@@ -807,8 +811,8 @@ c     ***********************************************************************
          
          etotlast = etot
 
- 191     format(' iter',7x,'Etot',13x,'Ebs',13x,'Ehxc',7x
-     $        , 'Ehart',7x,'Excdft',7x,'de_max',3x
+ 191     format(' iter',7x,'Etot',13x,'Ebs',13x
+     $        ,'de_max',3x
      $        ,'dv_max')
  490     format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7)
  491     format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7,1x,f15.7,
@@ -817,7 +821,7 @@ c     ***********************************************************************
          !update vtl and etl here, like in hfsolve?
 
          !if (dvmax.lt.vtol.and.edmax.lt.etol
-    ! $        .and.edmaxp.lt.10000) goto 1000
+c     $        .and.edmaxp.lt.10000) goto 1000
          !for hybrid functionals, we should be using the 
          !  hybrid eigenvalues for convergence.
          if(dp1.lt.vtl.and.dvmax.lt.vtl.and.edmaxfull.lt.etl) goto 1000

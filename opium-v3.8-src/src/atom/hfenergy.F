@@ -109,7 +109,7 @@ c
 
       end
       
-!With self interaction included
+!With self interaction included. This only works for s orbitals.
       subroutine hfenergyself(ipsp,etotal,ehart,exx,ekn)
       implicit double precision(a-h,o-z)
 #include "fortdim.h"
