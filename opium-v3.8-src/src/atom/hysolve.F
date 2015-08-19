@@ -83,7 +83,7 @@ c     *************************************************************************
       dimension rvn(npdm),rvf(npdm),eold(n0),eoldp(n0),p(npdm)
       dimension rsatom(npdm),f(npdm),f2(npdm),f3(npdm),f4(npdm),f5(npdm)
       dimension pder(npdm),ader(npdm)
-      dimension dl(n0), rsatom2(npdm)
+      dimension dl(n0), rsatom2(npdm),rsatomp(npdm)
       dimension rsold(npdm),wnlfract(npdm)
       dimension wavea(npdm),icarray(n0)
       dimension x(npdm),yr(npdm),fr(npdm),fr2(npdm)
@@ -289,7 +289,6 @@ c     starting guess for channels which don't have a psp-wfn guess
             enddo
          enddo
       endif
-
       !write(*,*) "testing init.", rnlp(1,1)
       !goto 555
 
@@ -622,7 +621,7 @@ c     if not a frozen core calc or if valence
             !write(*,*) "finished 2nd m-loop"
 
             call orthog(ilast)
-
+            !End of wavefunction updates for current iteration
             !write(*,*) "finished orthog"
 
           endif
@@ -632,7 +631,7 @@ c     if not a frozen core calc or if valence
           
           !PBE0
           do i=1,np
-            rsatom(i) = 0.0
+            rsatomp(i) = 0.0
           enddo 
 
           do m=1,norb
@@ -656,8 +655,9 @@ c     if not a frozen core calc or if valence
             eoldfull(m) = enfull(m)
 
             !calculate charge densities
-            do i = 1,nmax(m)
-              rsatom(i) = rsatom(i) + wnl(m) * rnl(i,m)**2
+c            do i = 1,nmax(m)
+            do i = 1,np
+              rsatomp(i) = rsatomp(i) + wnl(m) * rnl(i,m)**2
             enddo
 
           enddo
@@ -673,16 +673,17 @@ c     911 = terminal error - exit scpot
          endif
 
 c     ***********************************************************************
-c     Section 4:  mix density
+c     Section 4:  hybrid mix density
 c     ***********************************************************************
 
          !skip density mixing because this is inconsistent with mixing
          ! of wavefunctions in HF part.
          !alpha = 0.5
          !if (niter.gt.3) then
-         !   do i = 1,np
-         !      rsatom(i) = alpha * rsatom(i) + (1.0-alpha) * rsold(i)
-         !   enddo
+            do i = 1,np
+               rsatom(i) = (1.0-exxweight) * rsatom(i) + exxweight
+     $                   * rsatomp(i)
+            enddo
          !endif
             
 c     ***********************************************************************
@@ -703,6 +704,7 @@ c     ***********************************************************************
      $              - (rvxc(i)*rsatom(i)+rvh(i)*rsatom(i))/r(i)
             enddo
          else
+            write(*,*) "entering else part"
             call excorr(maxim,ixc,exccut,rsatom,rvxc,rexc,irelxc)
             
             do i = 1,maxim
@@ -745,6 +747,8 @@ c     ***********************************************************************
          eknhf = -2.0*eknhf
          !make self-interaction correction
          selfint = ehardft - eharhf
+         write(*,*) "selfint=",selfint
+         write(*,*) "exx=",exx
          etot = ebs + exxweight*(exx-selfint)
      $              + (1.0-exxweight)*excdft 
      $              + ehardft 
