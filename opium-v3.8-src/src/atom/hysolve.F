@@ -225,9 +225,9 @@ c      iprint=5
       !exact exchange weight
       if(ixc.eq.7) then
         !exxweight = 0.25 ! PBE0
-        exxweight = 1.0
+        exxweight = 0.0
       elseif(ixc.lt.0) then
-        exxweight = 1.0 ! HF
+        exxweight = 0.0 ! HF
       else
         exxweight = 0.0 ! dft
       endif
@@ -704,7 +704,7 @@ c     ***********************************************************************
      $              - (rvxc(i)*rsatom(i)+rvh(i)*rsatom(i))/r(i)
             enddo
          else
-            write(*,*) "entering else part"
+            !write(*,*) "entering else part"
             call excorr(maxim,ixc,exccut,rsatom,rvxc,rexc,irelxc)
             
             do i = 1,maxim
@@ -747,8 +747,8 @@ c     ***********************************************************************
          eknhf = -2.0*eknhf
          !make self-interaction correction
          selfint = ehardft - eharhf
-         write(*,*) "selfint=",selfint
-         write(*,*) "exx=",exx
+         !write(*,*) "selfint=",selfint
+         !write(*,*) "exx=",exx
          etot = ebs + exxweight*(exx-selfint)
      $              + (1.0-exxweight)*excdft 
      $              + ehardft 
