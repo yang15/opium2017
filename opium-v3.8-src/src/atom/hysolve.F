@@ -225,7 +225,7 @@ c      iprint=5
       !exact exchange weight
       if(ixc.eq.7) then
         !exxweight = 0.25 ! PBE0
-        exxweight = 0.0
+        exxweight = 1.0
       elseif(ixc.lt.0) then
         exxweight = 0.0 ! HF
       else
@@ -630,10 +630,10 @@ c     if not a frozen core calc or if valence
           ! weighted sum of the KS wfns and HF wfns
           
           !PBE0
-          do i=1,np
+            do i=1,np
             rsatomp(i) = 0.0
           enddo 
-
+c          rsatomp = rsatom
           do m=1,norb
 
             rnlp(:,m) = exxweight* abs(enp(m))*rnlp(:,m) 
@@ -828,7 +828,8 @@ c     ***********************************************************************
 c     $        .and.edmaxp.lt.10000) goto 1000
          !for hybrid functionals, we should be using the 
          !  hybrid eigenvalues for convergence.
-         if(dp1.lt.vtl.and.dvmax.lt.vtl.and.edmaxfull.lt.etl) goto 1000
+c         if(dp1.lt.vtl.and.dvmax.lt.vtl.and.edmaxfull.lt.etl) goto 1000
+         if(dvmax.lt.vtl.and.edmaxfull.lt.etl) goto 1000
          
          vtl=vtl*1.1d0
          etl=etl*1.1d0
