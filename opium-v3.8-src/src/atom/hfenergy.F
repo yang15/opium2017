@@ -109,7 +109,7 @@ c
 
       end
       
-!With self interaction included. This only works for s orbitals.
+!With self interaction included. 
       subroutine hfenergyself(ipsp,etotal,ehart,exx,ekn)
       implicit double precision(a-h,o-z)
 #include "fortdim.h"
@@ -149,18 +149,26 @@ c
          do j = 1,i
             do k = 0,2*min0(lo(i),lo(j)),2
                c = aaa(i,j,k)*wnl(i)
-               if (i .eq. j) c = c/2.d0
-               if (abs(c).ne.0.d0) etotal = etotal + c*fk(i,j,k)
-               if (abs(c).ne.0.d0) ehart = ehart + c*fk(i,j,k)               
+               if (i .eq. j) then
+                 etotal = etotal +
+     $                    0.5*wnl(i)*wnl(i)*cself(lo(i),k)*fk(i,j,k)
+                 ehart = ehart +
+     $                    0.5*wnl(i)*wnl(i)*cself(lo(i),k)*fk(i,j,k)
+                 exx = exx +
+     $                    0.5*wnl(i)*wnl(i)*cself(lo(i),k)*fk(i,j,k)
+               else
+                 if (abs(c).ne.0.d0) etotal = etotal + c*fk(i,j,k)
+                 if (abs(c).ne.0.d0) ehart = ehart + c*fk(i,j,k)               
+               endif
 
                !add back self-interaction
-               if (k.eq.0) then
-                 aaaval = 1.0/2.0
-               else
-                 aaaval = -1.0*ca(lo(i),k)/2.0
-               end if 
-               if(i.eq.j)ehart=ehart+aaaval*wnl(i)*fk(i,j,k)
-               if(i.eq.j)exx=exx-aaaval*wnl(i)*fk(i,j,k)
+               !if (k.eq.0) then
+               !  aaaval = 1.0/2.0
+               !else
+               !  aaaval = -1.0*ca(lo(i),k)/2.0
+               !end if 
+               !if(i.eq.j)ehart=ehart+aaaval*wnl(i)*fk(i,j,k)
+               !if(i.eq.j)exx=exx-aaaval*wnl(i)*fk(i,j,k)
             enddo
          enddo
 

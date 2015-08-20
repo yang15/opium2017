@@ -56,12 +56,12 @@ c
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /wfn/ rnl(npdm,n0),rnlp(npdm,n0)
       common /coeff/ coef(100),ijptr(n0,n0)
-      common /eav/cca(10),ccb(35)
+      common /eav/cca(10),ccb(35),ccself(15)
 
 
       ip=0
 *  *****  average interactions for equivalent electrons
-*
+*  *****  These are f_k(l) in the books of C. Froese Fischer
 *  *****  p - p
 *
       cca(1) = 2.d0/25.d0
@@ -83,6 +83,45 @@ c
       cca(8) =  162.d0/ 17017.d0
       cca(9) =   20.d0/  2431.d0
       cca(10) = 4410.d0/371943.d0
+*
+*
+*  *****  average interactions for equivalent electrons   
+*  *****  including the self-interaction error.
+*  *****  This should be identical to the terms in DFT.
+*  *****  ( 3JSymb[{l,0},{k,0},{l,0}]
+*  *****     Sum_m 3JSymb[{k,0},{l,-m},{l,m}] )^2
+*
+*  *****  s - s
+*
+      ccself(1) = 1.d0
+*
+*  *****  p - p
+*
+      ccself(2) = 1.d0/9.d0
+      ccself(3) = 16.d0/225.d0
+*
+*  *****  d - d
+*
+      ccself(4) = 1.d0/25.d0
+      ccself(5) = 16.d0/1225.d0
+      ccself(6) = 256.d0/11025.d0
+*
+*  *****  f - f
+*
+      ccself(7) = 1.d0/49.d0
+      ccself(8) = 64.d0/11025.d0
+      ccself(9) = 256.d0/53361.d0
+      ccself(10) = 102400.d0/9018009.d0
+*
+*  *****  g - g
+*
+      ccself(11) = 1.d0/81.d0
+      ccself(12) = 1600.d0/480249.d0
+      ccself(13) = 2304.d0/1002001.d0
+      ccself(14) = 4096.d0/1656369.d0
+      ccself(15) = 3211264.d0/478690641.d0
+
+
 *
 *
 *  ***** average interactions for non-equivalent electrons
@@ -262,6 +301,16 @@ c      if ((i.eq.3).and.(j.eq.3).and.(k.eq.2)) aaa=-0.4
       endif
 
       end
+
+      double precision function cself(l,k)
+      implicit double precision(a-h,o-z)
+      common /eav/cca(10),ccb(35),ccself(15)
+      
+      cself = ccself((l*(l+1) + k)/2 + 1)
+
+      end
+
+
 
 
       double precision function cb(l,lp,k)
