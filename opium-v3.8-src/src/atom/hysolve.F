@@ -90,6 +90,7 @@ c     *************************************************************************
       dimension lcount(10)
       dimension rvcore1(npdm,n0)
       dimension enfull(n0), eoldfull(n0)
+      dimension rsatompold(npdm)
 c     rvpostloc(npdm),rvpreloc(npdm)
 c     *************************************************************************
 c     Section 1:  set up tolerance params and zero out arrays.
@@ -224,8 +225,9 @@ c      iprint=5
 
       !exact exchange weight
       if(ixc.eq.7) then
-        !exxweight = 0.25 ! PBE0
-        exxweight = 1.0
+        exxweight = 0.25 ! PBE0
+        !exxweight = 1.0
+        !exxweight = 0.0 !testing
       elseif(ixc.lt.0) then
         exxweight = 0.0 ! HF
       else
@@ -430,8 +432,8 @@ c     unbound info
          maxim = 0
          indey = 0
          do i = 1,np
-            rsold(i)=rsatom(i)
-            rsatom(i) = 0
+            !rsold(i)=rsatom(i)
+            !rsatom(i) = 0
          enddo
 
          !write(*,*) "dft init. end"
@@ -468,7 +470,7 @@ c     if non-rel
                   
                   if (inl.ne.0) then
 c     if non-local
-                     call applyaug(rvloc,rvps(1,iloc))                        
+                     call applyaug(rvloc,rvps(1,iloc))                
                      do i=1,np
                         Flstar(i) = (rvps(i,m) - rvloc(i))
      $                       *phipsref(i,m)/r(i)
@@ -503,7 +505,7 @@ c     911 = terminal error - exit scpot
                   
                   do i = 1,nmax(m)
                      rnl(i,m) = p(i)
-                     rsatom(i) = rsatom(i) + wnl(m) * rnl(i,m)**2
+                     !rsatom(i)=rsatomtemp(i)+wnl(m)*rnl(i,m)**2
                   enddo
 
                   do i = nmax(m) + 1,np
@@ -526,10 +528,10 @@ c     if relativistic
                   if (itermcount.gt.10) goto 911
 c     911 = terminal error - exit scpot
                   
-                  do i=1,np
-                     rsatom(i)=rsatom(i)
-     $                    +wnl(m)*(rnla(i,m)**2+rnlb(i,m)**2)
-                  enddo
+                  !do i=1,np
+                  !   rsatom(i)=rsatom(i)
+     $            !        +wnl(m)*(rnla(i,m)**2+rnlb(i,m)**2)
+                  !enddo
                   
                   do i = nmax(m) + 1,np
                      rnla(i,m) = 0
@@ -628,11 +630,22 @@ c     if not a frozen core calc or if valence
 
           ! LZT: For hybrid functionals, we  take a
           ! weighted sum of the KS wfns and HF wfns
+         
+          irsstep = 10
+          ipsteps = mod(niter,irsstep) 
           
-          !PBE0
-            do i=1,np
+          if(niter.eq.1) then
+            rsatompold(:) = 0
+          elseif(niter.lt.irsstep.or.ipsteps.eq.0)then
+            rsatompold(:) = rsatomp(:)
+          endif
+
+          do i=1,np
             rsatomp(i) = 0.0
           enddo 
+
+
+
 c          rsatomp = rsatom
           do m=1,norb
 
@@ -640,6 +653,8 @@ c          rsatomp = rsatom
      $              + (1.0-exxweight)*abs(en(m))*rnl(:,m)/sqrt(r)
 
             enfull(m) = -1.0*sqrt(quadr(m,m,0))
+
+            write(*,*) en(m), enfull(m)
 
             rnlp(:,m) = rnlp(:,m)/enfull(m)*(-1.0)
 
@@ -678,13 +693,15 @@ c     ***********************************************************************
 
          !skip density mixing because this is inconsistent with mixing
          ! of wavefunctions in HF part.
-         !alpha = 0.5
-         !if (niter.gt.3) then
+         alpha = 0.5
+         if (niter.eq.1) then
+           rsatom(:) = rsatomp(:)
+         elseif ( ipsteps.eq.0) then
             do i = 1,np
-               rsatom(i) = (1.0-exxweight) * rsatom(i) + exxweight
-     $                   * rsatomp(i)
+               rsatom(i) = alpha * rsatomp(i) + (1.0-alpha)
+     $                   * rsatompold(i)
             enddo
-         !endif
+         endif
             
 c     ***********************************************************************
 c     Section 5:  update self-consistent potentials and compute energy.
@@ -735,6 +752,30 @@ c     ***********************************************************************
             !write(*,*) 'enfull(m) = ', enfull(m)
          enddo
          !etot = ebs + ehxc !original code
+
+         !analytic self-interactionn correction
+         ! currently not working
+c         etothf = 0.d0 
+c         eharhf = 0.d0 
+c         exx = 0.d0 
+c         eknhf = 0.d0 
+c         !call hfenergy(ipsp,etothf,eharhf,exx,eknhf)      
+c         call hfenergyself(ipsp,etothf,eharhf,exx,eknhf)      
+c         ! here, scale by -2.0, see hfsolve.F
+c         etothf = -2.0*etothf
+c         eharhf = -2.0*eharhf
+c         exx = -2.0*exx 
+c         eknhf = -2.0*eknhf
+c         !make self-interaction correction
+c         !selfint = ehardft - eharhf
+c         !write(*,*) "selfint=",selfint
+c         !write(*,*) "exx=",exx
+c         etot = ebs + exxweight*(exx)
+c     $              + (1.0-exxweight)*excdft 
+c     $              + ehardft 
+
+
+         !numerical self-interaction correction
          etothf = 0.d0 
          eharhf = 0.d0 
          exx = 0.d0 
@@ -752,7 +793,7 @@ c     ***********************************************************************
          etot = ebs + exxweight*(exx-selfint)
      $              + (1.0-exxweight)*excdft 
      $              + ehardft 
-         !etot = 2.0*etothf
+
 
 c     ***********************************************************************
 c     Section 6:  Mix potentials

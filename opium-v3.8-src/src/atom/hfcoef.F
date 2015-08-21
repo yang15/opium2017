@@ -245,7 +245,8 @@ c     Exchange part
          istart = ijptr(i-ncore,j-ncore) + 1
          aaa = coef(istart + k/2)
       else if (i.eq.j) then
-         c = wnl(i) - 1.d0
+         c = wnl(i) - 1.d0 
+         !c = wnl(i) !testing
 
          if (k.eq.0) then
             aaa = c
@@ -261,6 +262,40 @@ c      if ((i.eq.2).and.(j.eq.2).and.(k.eq.2)) aaa=-0.4
 c      if ((i.eq.3).and.(j.eq.3).and.(k.eq.2)) aaa=-0.4
 
       end
+
+      double precision function aaa1(i,j,k)
+      implicit double precision(a-h,o-z)
+#include "fortdim.h"
+
+      common /grid/ h,r1,z,r(npdm),np
+      common /aorb/ ncore,nval,norb,nlm(n0),
+     $     no(n0),lo(n0),nmax(n0),maxim
+      common /adat/ wnl(n0),en(n0),enp(n0),so(n0),xion
+      common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
+      common /coeff/coef(100),ijptr(n0,n0)
+
+      if (i.gt.ncore .and. j.gt.ncore) then
+         istart = ijptr(i-ncore,j-ncore) + 1
+         aaa1 = coef(istart + k/2)
+      else if (i.eq.j) then
+         !c = wnl(i) - 1.d0 
+         c = wnl(i) !testing
+
+         if (k.eq.0) then
+            aaa1 = c
+         else
+            aaa1 = -c*ca(lo(i),k)
+         end if
+      else if (k.eq.0) then
+         aaa1= wnl(j)
+      else
+         aaa1 = 0.d0
+      endif
+c      if ((i.eq.2).and.(j.eq.2).and.(k.eq.2)) aaa=-0.4
+c      if ((i.eq.3).and.(j.eq.3).and.(k.eq.2)) aaa=-0.4
+
+      end
+
 
 
       double precision function bbb(i,j,k)
@@ -291,7 +326,7 @@ c      if ((i.eq.3).and.(j.eq.3).and.(k.eq.2)) aaa=-0.4
 
       double precision function ca(l,k)
       implicit double precision(a-h,o-z)
-      common /eav/cca(10),ccb(35)
+      common /eav/cca(10),ccb(35),ccself(15)
       
 
       if (l .le. 4) then
@@ -315,7 +350,7 @@ c      if ((i.eq.3).and.(j.eq.3).and.(k.eq.2)) aaa=-0.4
 
       double precision function cb(l,lp,k)
       implicit double precision(a-h,o-z)
-      common /eav/cca(10),ccb(35)
+      common /eav/cca(10),ccb(35),ccself(15)
       integer icbptr(0:4)
       data    icbptr/1,6,14,23,31/
 

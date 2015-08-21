@@ -93,7 +93,7 @@ c
                c = aaa(i,j,k)*wnl(i)
                if (i .eq. j) c = c/2.d0
                if (abs(c).ne.0.d0) etotal = etotal + c*fk(i,j,k)
-               if (abs(c).ne.0.d0) ehart = ehart + c*fk(i,j,k)               
+               if (abs(c).ne.0.d0) ehart = ehart + c*fk(i,j,k)         
                
             enddo
          enddo
@@ -150,15 +150,18 @@ c
             do k = 0,2*min0(lo(i),lo(j)),2
                c = aaa(i,j,k)*wnl(i)
                if (i .eq. j) then
-                 etotal = etotal +
-     $                    0.5*wnl(i)*wnl(i)*cself(lo(i),k)*fk(i,j,k)
-                 ehart = ehart +
-     $                    0.5*wnl(i)*wnl(i)*cself(lo(i),k)*fk(i,j,k)
-                 exx = exx +
-     $                    0.5*wnl(i)*wnl(i)*cself(lo(i),k)*fk(i,j,k)
+
+                 c = c/2.d0
+                 selfint = 0.5*wnl(i)*wnl(i)*cself(lo(i),k)*fk(i,j,k) 
+     $                   - c*fk(i,j,k)
+
+                 etotal = etotal + c*fk(i,j,k)
+                 ehart = ehart + c*fk(i,j,k)
+                 ehart = ehart + selfint
+                 exx = exx - selfint
                else
                  if (abs(c).ne.0.d0) etotal = etotal + c*fk(i,j,k)
-                 if (abs(c).ne.0.d0) ehart = ehart + c*fk(i,j,k)               
+                 if (abs(c).ne.0.d0) ehart = ehart + c*fk(i,j,k)       
                endif
 
                !add back self-interaction
