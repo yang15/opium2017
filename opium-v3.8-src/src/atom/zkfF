@@ -1,5 +1,0 @@
-ykf.F:      write(*,*) "before zkf in ykf",rnl(1,1) 
-ykf.F:      call zkf(yk,i,j,k)
-ykf.F:      write(*,*) "after zkf in ykf" 
-zkf.F:      subroutine zkf(yk,i,j,k)
-zkf.F:      write(*,*) "In zkf",rnl(1,1)

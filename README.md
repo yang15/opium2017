@@ -1,2 +1,3 @@
 # opium2015
-Let's get it working
+
+This is a partial rewrite of opium, to include hybrid functionals.
