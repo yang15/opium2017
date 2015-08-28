@@ -1,3 +1,5 @@
+#include "params.h"
+
 /* Differential equation solver goes here
    This should solve the differential equation
       P" + ( 2Z/R - Y - L(L+1)/R**2 - E)P = X + T
@@ -13,7 +15,7 @@
      Atoms'',Wiley Interscience, 1977, by Charlotte FROESE FISCHER.
 */
 
-void de(double &y, double &x, double &p){
+void de(params_t &params, double &y, double &x, double &p){
   //in : y,x
   //out: p
 }
