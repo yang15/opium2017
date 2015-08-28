@@ -1,4 +1,4 @@
-#include "params.h"
+#include "ae.h"
 
 /* Differential equation solver goes here
    This should solve the differential equation
