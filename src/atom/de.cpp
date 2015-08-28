@@ -1,4 +1,4 @@
-#include "ae.h"
+#include "parameter.h"
 
 /* Differential equation solver goes here
    This should solve the differential equation
@@ -15,7 +15,7 @@
      Atoms'',Wiley Interscience, 1977, by Charlotte FROESE FISCHER.
 */
 
-void de(params_t &params, double *y, double *x, double *p){
+void de(params_t *params, double *y, double *x, double *p){
   //in : y,x
   //out: p
 }

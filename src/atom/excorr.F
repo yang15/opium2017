@@ -18,7 +18,7 @@ c
 c
       subroutine excorr(maxim,ixc,exccut,rsatom,
      $                  rvxc,rexc,rvx,rex,rvc,rec,
-     $                  irelxc,h,r,npdm)
+     $                  irelxc,h,r)
       implicit double precision (a-h,o-z)
       
 #include "fortdim.h"
@@ -27,7 +27,10 @@ c
       parameter(pi=3.1415926535897932384626433832795d0)
       parameter(alpha=1.91915829267751300662482032624669d0)
 
-      dimension rsatom(npdm),rvxc(npdm),rexc(npdm),r(npdm)
+      !common /grid/ h,r1,z,r(npdm),np
+
+      dimension r(npdm)
+      dimension rsatom(npdm),rvxc(npdm),rexc(npdm)
       dimension agde(npdm),agdc(npdm),ggagde(npdm),ggagdc(npdm),
      $     rlape(npdm),rlapc(npdm),dens(npdm),
      $     rex(npdm),rec(npdm),rvx(npdm),rvc(npdm),tau(npdm)
@@ -79,7 +82,7 @@ c     ictype=1  : smoothing at origin is done by polynomial fit when descreening
 
       if ( (ixc.ge.2.and.ixc.lt.6) .or. ixc.eq.7) then
          call grad(dens,agde,
-     $        ggagde,rlape,agdc,ggagdc,rlapc,tau,inxc)
+     $        ggagde,rlape,agdc,ggagdc,rlapc,tau,inxc,h,r)
          if (irelxc.eq.1) then
             a1l=2.21259
             a2l=.669152
@@ -314,7 +317,7 @@ c     This is PBEsol GGA C
 
 
       subroutine grad(dens,agde,ggagde,rlape,agdc,ggagdc,
-     $     rlapc,tau,inxc,h,r,npdm)
+     $     rlapc,tau,inxc,h,r)
       implicit double precision(a-h,o-z)
       
 #include "fortdim.h"
@@ -324,8 +327,10 @@ c     This is PBEsol GGA C
 c     -------------------------------------------------------------------------
 c     External (shared between C and Fortran) common blocks
 c     -------------------------------------------------------------------------
+      !common /grid/ h,r1,z,r(npdm),np
 c     -------------------------------------------------------------------------
 
+      dimension r(npdm)
       dimension dens(npdm),agrd(npdm),grd(npdm)
       dimension agde(npdm),agdc(npdm),ggagde(npdm),ggagdc(npdm),
      $     rlape(npdm),rlapc(npdm),rgrd(npdm),tau(npdm)
@@ -418,9 +423,12 @@ c     prepare the various gradient terms
 
       subroutine smoothen(rv,icut,r)
         implicit double precision(a-h,o-z)
+#include "fortdim.h"
+        !common /grid/ h,r1,z,r(npdm),np
 
         dimension bb(3,3),vcc(3)
         dimension ipvt(3)
+        dimension rv(npdm),r(npdm)
 
         rvx1=rv(icut-1)/r(icut-1)
         rvx2=rv(icut)/r(icut)
