@@ -15,7 +15,7 @@
      Atoms'',Wiley Interscience, 1977, by Charlotte FROESE FISCHER.
 */
 
-void de(params_t *params, double *y, double *x, double *p){
-  //in : y,x
+void de(params_t *params, double *y, double *x,double *t, double *p){
+  //in : y,x,t
   //out: p
 }
