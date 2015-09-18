@@ -211,6 +211,13 @@ int read_param(param_t *param, FILE *fp, FILE *fp_log){
   }
 
   if (flexi_gather_keys(fp)) return 1;
+
+  param->no = (int *)malloc(param->norb*sizeof(int));
+  param->lo = (int *)malloc(param->norb*sizeof(int));
+  for (i=0; i < param->norb; i++){
+    param->no[i] = nlm_label(param->nlm[i]).n;
+    param->lo[i] = nlm_label(param->nlm[i]).l;
+  }
   
   /* Prepare for 3rd flexi_gather_keys() */
   flexi_clear_keys();
