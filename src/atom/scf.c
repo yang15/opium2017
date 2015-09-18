@@ -19,11 +19,7 @@ void scf(params_t *param){
   for(int j=0; j<norb; j++){
     for(int jj=0; jj<norb; j++){
       e[jj][j] = 0.0;
-<<<<<<< Updated upstream
-      if (lo[j]==lo[jj]) e[jj,j]=1.0e-5;
-=======
       if (lo[j]==lo[jj]) e[jj][j]=1.0e-5;
->>>>>>> Stashed changes
     }
     e[j][j] = param->en[j];
   }
