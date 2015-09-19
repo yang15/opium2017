@@ -1,12 +1,12 @@
-CC=gcc
-CFLAGS=-I../include -I../FlexiLib -I../uniPPlib -g -O2 -DCSYS=\"'Linux 3.10.3-1-ARCH unknown'\" -DCHOST=\"hoponpop\" -DCDATE=\"'Fri Aug 28 18:14:24 EDT 2015'\" 
-CPP=gcc -E
-FC=gfortran
-FFLAGS=-g -O2
-FPP=/usr/bin/cpp
+CC=icc
+CFLAGS=-I../include -I../FlexiLib -I../uniPPlib -g -O2 -DCSYS=\"'Darwin 14.4.0 i386'\" -DCHOST=\"seas1435.wireless-pennnet.upenn.edu\" -DCDATE=\"'Sat Aug 29 12:51:02 EDT 2015'\" 
+CPP=icc -E
+FC=ifort
+FFLAGS=-O3 -save -r8 -fp-model strict
+FPP=/usr/local/bin/cpp
 FPPFLAGS=
-LD=gfortran
-LDFLAGS=-lm -fdefault-real-8 -fno-automatic  -lm  -L/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.1 -L/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.1/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-unknown-linux-gnu/4.8.1/../../.. -lgfortran -lm -lgcc_s -lquadmath
+LD=ifort
+LDFLAGS= -lm -Vaxlib -L -static-libcxa -nofor_main  -L/usr/bin/ifort-15.0-base/compiler/lib -L/usr/lib /usr/bin/ifort-15.0-base/compiler/lib/libifport.a /usr/bin/ifort-15.0-base/compiler/lib/libifcore.a /usr/bin/ifort-15.0-base/compiler/lib/libimf.a /usr/bin/ifort-15.0-base/compiler/lib/libsvml.a /usr/bin/ifort-15.0-base/compiler/lib/libipgo.a -lSystem /usr/bin/ifort-15.0-base/compiler/lib/libirc.a -lpthread /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/6.1.0/lib/darwin/libclang_rt.osx.a
 RANLIB=ranlib
 AR=/usr/bin/ar
 NOOPT=-O0
