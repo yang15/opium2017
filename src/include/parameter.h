@@ -76,6 +76,8 @@ typedef struct param_t{
   int  
     norb,         /* number of orbitals */
     *nlm,         /* orbital index */
+    *no,          /* principal quantum number */
+    *lo,          /*orbital angular momentum */
     *ibound;
   double
     z,            /* atomic number Z */  
