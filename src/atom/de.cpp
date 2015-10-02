@@ -56,11 +56,11 @@ void de(params_t *params, double *y, double *x,double *t, double e,int n, int l,
   double pp[m]; // scratch array for temperory storage
   // m is the angular quantum number for each orbital
   // kk is imeth or meth(m)
-  double p2[ngrid], hq[ngrid], xx[ngrid];
+  double p2[np], hq[np], xx[np];
   double v, b4, cn, c, xy, xp, azz, pp, fn, em, fm, eu,fu, delta_e;
 
   double ed2 = e;
-  kk = max(1,meth_i);
+  kk = max(1,meth_i); //kk = 1 or 2 universally
   if (norb == 1){kk = 2;} 
   int node = n - m - 1; 
 // local variables
