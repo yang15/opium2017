@@ -7,8 +7,6 @@ void scf(params_t *param){
   int ngrid = param->ngrid;
   double *wnl = param->wnl;
 
-  //We need no[i] and lo[i]
-  
   //Initialize energy matrix
   double **e;
   e = (double **)malloc(norb*sizeof(double *));
@@ -94,5 +92,9 @@ void scf(params_t *param){
 
   //begin SCF loop
   //
+  for (int niter=0; niter < param->maxit; niter++){
+  }
+
+  //end SCF loop
 
 }
