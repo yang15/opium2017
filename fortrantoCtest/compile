@@ -1,3 +1,0 @@
-gcc -c cnew.c
-gfortran -c new.f
-gfortran -o ftest main.f new.o cnew.o
