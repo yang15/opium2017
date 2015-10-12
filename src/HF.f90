@@ -3692,9 +3692,9 @@
 !
    27 CONTINUE 
       WRITE (6, 28) KK, EL(I), NC, NJ, ED, EM, EU 
-   28 FORMAT(10X,'METHOD',I2,' UNABLE TO SOLVE EQUATION FOR ELECTRON',A3,/,10X,&
-         'NC = ',I3,3X,'NJ = ',I3,3X,'ED = ',F10.6,3X,'EL = ',F10.6,3X,'EU = ',&
-         F10.6) 
+   28 FORMAT(10X,'METHOD',I2,' UNABLE TO SOLVE EQUATION FOR ELECTRON',
+     &   A3,/,10X,'NC = ',I3,3X,'NJ = ',I3,3X,'ED = ',F10.6,3X,'EL = ',
+     &   F10.6,3X,'EU = ',F10.6) 
       FAIL = .TRUE. 
       RETURN  
       END SUBROUTINE METHD1 
@@ -5072,9 +5072,10 @@
          M = MIN0(MAX(I),NO-1) 
          DO J = 2, M 
             FNUM = P(J+1,I) - P(J,I) - P(J,I) + P(J-1,I) 
-            FNUM = FNUM - CH*(YK(J+1)*P(J+1,I)+D10*YK(J)*P(J,I)+YK(J-1)*P(J-1,I&
-               )) - X(J) 
-            DEL1 = RR(J+1)*P(J+1,I) + D10*RR(J)*P(J,I) + RR(J-1)*P(J-1,I) 
+            FNUM = FNUM - CH*(YK(J+1)*P(J+1,I)+D10*YK(J)*P(J,I)+YK(J-1)*
+     &          P(J-1,I)) - X(J) 
+            DEL1 = RR(J+1)*P(J+1,I) + D10*RR(J)*P(J,I) + RR(J-1)*
+     &          P(J-1,I) 
             F1 = F1 + P(J,I)*FNUM 
             C11 = C11 + P(J,I)*DEL1 
          END DO 
@@ -5085,7 +5086,8 @@
 !  *****  TOO SMALL FOR THE RANGE OF THE FUNCTION
 !
             WRITE (6, 24) ED 
-   24       FORMAT(10X,'ED = ',F10.6,'; ADJUSTED TO ALLOWED MINIMUM ENERGY') 
+   24       FORMAT(10X,'ED = ',F10.6,
+     &      '; ADJUSTED TO ALLOWED MINIMUM ENERGY') 
             ED = EM 
             IF (DABS(FM - E(I,I))<=1.D-6 .AND. KK/=3) THEN 
 !
