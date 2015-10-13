@@ -16,7 +16,9 @@ c along with this program; if not, write to the Free Software
 c Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 c
 c
-      subroutine excorr(maxim,ixc,exccut,rsatom,rvxc,rexc,irelxc)
+      subroutine excorr(maxim,ixc,exccut,rsatom,
+     $                  rvxc,rexc,rvx,rex,rvc,rec,
+     $                  irelxc,h,r)
       implicit double precision (a-h,o-z)
       
 #include "fortdim.h"
@@ -30,7 +32,7 @@ c
       dimension rsatom(npdm),rvxc(npdm),rexc(npdm)
       dimension agde(npdm),agdc(npdm),ggagde(npdm),ggagdc(npdm),
      $     rlape(npdm),rlapc(npdm),dens(npdm),
-     $     rex(npdm),rec(npdm),tau(npdm)
+     $     rex(npdm),rec(npdm),rvx(npdm),rvc(npdm),tau(npdm)
       
       dimension bb(3,3),vcc(3)
       dimension ipvt(3)
@@ -63,6 +65,10 @@ c     ictype=1  : smoothing at origin is done by polynomial fit when descreening
       do 10 i=1,maxim
          rvxc(i)=0.0
          rexc(i)=0.0
+         rvx(i)=0.0
+         rvc(i)=0.0
+         rex(i)=0.0
+         rec(i)=0.0
 
          dens(i) = rsatom(i)/(4.0*pi*r(i)*r(i))
          if (iset.eq.0) then
@@ -218,6 +224,7 @@ c     This is PW92LDA X - just for terms needed in rel correction
          rexc(i)=2.d0*r(i)*(ex*rwgt+(1.d0-rwgt)*exlda)
          rvxc(i)=2.d0*r(i)*(vx*rwgt+(1.d0-rwgt)*vxlda)
          rex(i)=rexc(i)
+         rvx(i)=rvxc(i)
 
          if (ixc.eq.0) then
 c     This is PZ LDA C
@@ -256,6 +263,7 @@ c     This is PBEsol GGA C
          endif
 
          rec(i)=r(i)*ec*2.d0
+         rvc(i)=r(i)*vc*2.d0
 
          rexc(i)=rexc(i)+r(i)*ec*2.d0
          rvxc(i)=rvxc(i)+r(i)*vc*2.d0
@@ -270,70 +278,13 @@ c     This is PBEsol GGA C
          enddo
  922     continue
 
-         rvx1=rvxc(icut-1)/r(icut-1)
-         rvx2=rvxc(icut)/r(icut)
-         rvx3=rvxc(icut+1)/r(icut+1)
-         rr1=r(icut-1)
-         rr2=r(icut)
-         rr3=r(icut+1)
-
-         bb(1,1)=rr1**2
-         bb(1,2)=rr1
-         bb(1,3)=1.d0
-
-         bb(2,1)=rr2**2
-         bb(2,2)=rr2
-         bb(2,3)=1.d0
-
-         bb(3,1)=rr3**2
-         bb(3,2)=rr3
-         bb(3,3)=1.d0
-
-         vcc(1)=rvx1
-         vcc(2)=rvx2
-         vcc(3)=rvx3
-
-         call dgesv(3,1,bb,3,ipvt,vcc,3,ierr)
-         if (ierr.ne.0) stop
-
-         a=vcc(1)
-         b=vcc(2)
-         c=vcc(3)
-
-         rvx1=rexc(icut-1)/r(icut-1)
-         rvx2=rexc(icut)/r(icut)
-         rvx3=rexc(icut+1)/r(icut+1)
-         rr1=r(icut-1)
-         rr2=r(icut)
-         rr3=r(icut+1)
-
-         bb(1,1)=rr1**2
-         bb(1,2)=rr1
-         bb(1,3)=1.d0
-
-         bb(2,1)=rr2**2
-         bb(2,2)=rr2
-         bb(2,3)=1.d0
-
-         bb(3,1)=rr3**2
-         bb(3,2)=rr3
-         bb(3,3)=1.d0
-
-         vcc(1)=rex1
-         vcc(2)=rex2
-         vcc(3)=rex3
-
-         call dgesv(3,1,bb,3,ipvt,vcc,3,ierr)
-         if (ierr.ne.0) stop
-
-         a2=vcc(1)
-         b2=vcc(2)
-         c2=vcc(3)
-         
-         do i=1,icut
-            rvxc(i)=r(i)*(a*r(i)**2+b*r(i)+c)
-            rexc(i)=r(i)*(a2*r(i)**2+b2*r(i)+c2)
-         enddo
+         !smoothen 
+         call smoothen(rvxc,icut,r)
+         call smoothen(rexc,icut,r)
+         call smoothen(rvx,icut,r)
+         call smoothen(rex,icut,r)
+         call smoothen(rvc,icut,r)
+         call smoothen(rec,icut,r)
 
       endif
 
@@ -445,3 +396,51 @@ c     prepare the various gradient terms
 
       return
       end
+
+      subroutine smoothen(rv,icut,r)
+        implicit double precision(a-h,o-z)
+#include "fortdim.h"
+        !common /grid/ h,r1,z,r(npdm),np
+
+        dimension bb(3,3),vcc(3)
+        dimension ipvt(3)
+        dimension rv(npdm),r(npdm)
+
+        rvx1=rv(icut-1)/r(icut-1)
+        rvx2=rv(icut)/r(icut)
+        rvx3=rv(icut+1)/r(icut+1)
+        rr1=r(icut-1)
+        rr2=r(icut)
+        rr3=r(icut+1)
+
+        bb(1,1)=rr1**2
+        bb(1,2)=rr1
+        bb(1,3)=1.d0
+
+        bb(2,1)=rr2**2
+        bb(2,2)=rr2
+        bb(2,3)=1.d0
+
+        bb(3,1)=rr3**2
+        bb(3,2)=rr3
+        bb(3,3)=1.d0
+
+        vcc(1)=rvx1
+        vcc(2)=rvx2
+        vcc(3)=rvx3
+
+        call dgesv(3,1,bb,3,ipvt,vcc,3,ierr)
+        if (ierr.ne.0) stop
+
+        a=vcc(1)
+        b=vcc(2)
+        c=vcc(3)
+
+        do i=1,icut
+          rv(i)=r(i)*(a*r(i)**2+b*r(i)+c)
+        enddo
+
+
+        return
+        end
+
