@@ -95,6 +95,10 @@ c -------------------------------------------------------------------------
       
       do i=1,np
          yk(i)=-2.d0*(rvcore(i,m)-yr(i))*r(i)+cd
+         ! LZT says:
+         ! Here, rvcore = Z
+         ! For hybrid functionals, we want to add to yk the exchange
+         ! correlation potential
       enddo
 
       zinf=max(0.05d0,rvcore(nmax(m),m)-yr(nmax(m)))
