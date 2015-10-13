@@ -148,7 +148,10 @@ extern struct{
   int nr;
 }nrgrid_;
 
-
+extern struct{
+  double exxw; //weight of exact exchange
+  //double rvdft[NPDM]; // (1-exxw)*(mu_H + mu_X) + mu_C
+}hybrid_;
 
 
 #endif

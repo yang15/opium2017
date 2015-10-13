@@ -18,7 +18,7 @@ c
 c
       subroutine excorr(maxim,ixc,exccut,rsatom,
      $                  rvxc,rexc,rvx,rex,rvc,rec,
-     $                  irelxc,h,r)
+     $                  irelxc)
       implicit double precision (a-h,o-z)
       
 #include "fortdim.h"

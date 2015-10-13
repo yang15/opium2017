@@ -63,11 +63,14 @@ c -------------------------------------------------------------------------
       common /grid/ h,r1,z,r(npdm),np
       common /edi/ e(n0,n0)
       common /ahf/ s(n0),az(n0),acc(n0)
+      common /hybrid/ exxw
 
 c -------------------------------------------------------------------------
 c     Internal (Fortran only) common blocks                
 c -------------------------------------------------------------------------
       common /totpot/ rvcore(npdm,n0),rvps(npdm,n0),rvcoul(npdm)
+      common /partpot/ rvh(npdm),rvxc(npdm),rexc(npdm),
+     $     rvx(npdm),rex(npdm),rvc(npdm),rec(npdm),rvdft(npdm)
       common /iterm/ iterm
       common /elim/ emore,eless,elim
       common /ipos/ ipos(n0),itermcount

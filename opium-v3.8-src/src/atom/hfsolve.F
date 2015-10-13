@@ -85,12 +85,14 @@ c     -------------------------------------------------------------------------
       common /aval/ rcall(n0),rvap(n0),rnorm(n0),ibd(n0),etot
       common /edi/ e(n0,n0)
       common /ahf/ s(n0),az(n0),acc(n0),dpm(n0)
+      common /hybrid/ exxw
 
 c     -------------------------------------------------------------------------
 c     Internal (Fortran only) common blocks                
 c     -------------------------------------------------------------------------
       common /nlpot1/ Flstar(npdm),phipsref(npdm,n0),phiguess(npdm,n0)
-      common /partpot/ rvh(npdm),rvxc(npdm),rexc(npdm)
+      common /partpot/ rvh(npdm),rvxc(npdm),rexc(npdm),
+     $     rvx(npdm),rex(npdm),rvc(npdm),rec(npdm),rvdft(npdm)
       common /nlcore/ rvloc(npdm)
       common /ipos/ ipos(n0),itermcount
       common /vdir/ vdir(npdm),pold(npdm)
@@ -265,6 +267,20 @@ c     ***********************************************************************
             rsold(i)=rsatom(i)
             rsatom(i) = 0
          enddo
+
+         !set up dft potentials for hybrid calculations
+
+         maxim = 0 
+         do m=1,norb
+           do i = 1,nmax(m)
+             rsatom(i) = rsatom(i) + wnl(m) * rnl(i,m)**2 * r(i)
+           enddo
+           maxim = max(maxim,nmax(m))
+         enddo
+
+         call hrtree(maxim,h,r,rsatom,rvh)
+
+         call excorr(maxim,ixc,exccut,rsatom,rvxc,rexc,rvx,rex,rvc,rec,irel)
 
          dp1=0.d0
 c         nfails=0
