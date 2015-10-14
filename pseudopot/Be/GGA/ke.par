@@ -1,0 +1,42 @@
+# KE param file for xmgrace
+g0 on
+with g0
+world xmin 0
+world xmax 200
+title "Kinetic energy convergence for Be"
+world ymin 0
+world ymax 0.1
+title font 0
+title size 1.500000
+title color 1
+subtitle "Optimized Pseudopotential Method"
+subtitle font 0
+subtitle size 1.000000
+subtitle color 1
+xaxis on
+xaxis tick major 25
+xaxis tick minor 10
+xaxis label "E\scut\N (Ry) "
+yaxis on
+yaxis tick major 0.05 
+yaxis tick minor 0.01 
+yaxis label "Kinetic energy error per electron (eV) "
+legend on
+legend loctype view
+legend 0.85, 0.8
+ s0 hidden false 
+ s0 type xy 
+ s0 symbol 0 
+ s0 line type 1 
+ s0 line linestyle 1 
+ s0 line linewidth 2.0 
+ s0 line color 1 
+ s0 legend "s" 
+ s1 hidden false 
+ s1 type xy 
+ s1 symbol 0 
+ s1 line type 1 
+ s1 line linestyle 1 
+ s1 line linewidth 2.0 
+ s1 line color 2 
+ s1 legend "p" 

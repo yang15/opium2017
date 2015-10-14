@@ -1,0 +1,1166 @@
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+           OPIUM  Version:        3.8                             
+           =====================================            
+ See http://opium.sourceforge.net for help and information                 
+ Copyright 2009 : The OPIUM project                         
+
+ Compile host     : vagvlan567.217.wlan.design.upenn.edu
+ Compile OS       : Darwin 14.1.0 i386
+ Compile date     : Wed Mar 18 18:57:27 EDT 2015
+
+ Execution host   : vagvlan567.0723.wlan.wireless-pennnet.upenn.edu
+ time of execution: Wed Oct 14 17:12:56 2015
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Reading parameter file:  <ar.param> ... 
+ File prefix             : ar 
+ Element                 : Argon      (Ar) 
+ Z                       : 18 
+ 
+ Number of all-electron orbitals   : 7 
+ Number of pseudo       orbitals   : 4 
+ 
+ Pseudopotential is non-relativistic 
+ Using Hartree-Fock Exchange (Beta!!)                
+ HF pseudopotential NOT being smoothed! 
+ The s potential is used for the KB construction 
+ Optimized (RRKJ) pseudopotential method will be used 
+
+ nl    cutoff radii    q-max      # bessel functions
+ 3s       1.580        7.070              10 
+ 3p       1.350        7.070              10 
+ 3d       3.070        7.070              10 
+ 4s       1.050        7.070              10 
+
+ Reference Configuration: core  <-/-> valence 
+ 1s2  2s2  2p6  <-/-> 3s2  3p5  3d0  4s0 
+
+ Grid definitions: 
+ a_grid=1.00e-04    b_grid=1.30e-02    # points=1150 
+ r(1)=3.82e-05      r(np)=1.17e+02    
+
+ dEmax tolerance:  1.00e-08      dVmax tolerance:  1.00e-06     
+
+ Starting calculation...
+
+ ======================================================================== 
+ Begin AE calculation
+ ======================================================================== 
+ Performing non-relativistic AE calculation...  
+ Rotation needed            1           2   1.0000000000000001E-005
+ Rotation needed            1           4   1.0000000000000001E-005
+ Rotation needed            1           7   1.0000000000000001E-005
+ Rotation needed            2           4   1.0000000000000001E-005
+ Rotation needed            2           7   1.0000000000000001E-005
+ Rotation needed            3           5   1.0000000000000001E-005
+ Rotation needed            4           7   1.0000000000000001E-005
+  7            117.1203894456-0.194E-06-0.252E-06 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456 0.320E-06 0.416E-06 0.100E-06  : function truncated in nmrvs
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1    -1093.1107772     705.9734627     398.6006285 0.95E+00 0.22E+00
+ Rotation needed            3           5  -3.7655815640925895E-003
+   2    -1052.5057322     666.0502820     397.8287631 0.45E+00 0.16E-01
+ Rotation needed            3           5   3.4136219080738966E-002
+ Solve for HF wfn failed, orthogonalizing...
+ Rotation needed            3           5   3.3499478399581652E-002
+ Solve for HF wfn failed, orthogonalizing...
+ Rotation needed            3           5   3.3355331469016265E-002
+   3    -1052.5326690     666.1564959     397.7467170 0.64E-01 0.52E-03
+ Rotation needed            3           5   3.3355331469016404E-002
+   4    -1052.5498070     666.1749499     397.7452788 0.36E+00 0.24E-04
+ Rotation needed            3           5   3.3431375134030362E-002
+   5    -1052.5489702     666.1744262     397.7449547 0.10E-01 0.12E-05
+ Rotation needed            3           5   3.3431020874182760E-002
+   6    -1052.5490697     666.1745236     397.7449565 0.26E-01 0.21E-06
+ Rotation needed            3           5   3.3430592088104782E-002
+   7    -1052.5490682     666.1745226     397.7449559 0.12E-01 0.65E-07
+ Rotation needed            3           5   3.3430593022978093E-002
+   8    -1052.5490686     666.1745230     397.7449559 0.18E-02 0.52E-07
+ Rotation needed            3           5   3.3430592718962371E-002
+   9    -1052.5490685     666.1745230     397.7449559 0.36E-03 0.92E-07
+ Rotation needed            3           5   3.3430592771167951E-002
+  10    -1052.5490685     666.1745230     397.7449559 0.10E-03 0.10E-07
+ Rotation needed            3           5   3.3430592743039798E-002
+  11    -1052.5490685     666.1745230     397.7449559 0.89E-05 0.56E-08
+ Rotation needed            3           5   3.3430592746282330E-002
+  12    -1052.5490685     666.1745230     397.7449559 0.76E-06 0.54E-07
+ Rotation needed            3           5   3.3430592726132469E-002
+  13    -1052.5490685     666.1745230     397.7449559 0.22E-06 0.60E-07
+
+ Hartree-Fock converged!
+      {100|200}= 2.7D-12
+      {100|300}= 1.3D-17
+      {200|300}=-7.9D-17
+      {210|310}= 1.5D-11
+
+   13 iterations: (units are Ry and bohr)
+ Energy:   -1052.54906854    Ebs:    -666.17452303
+ Eh:         397.74495586    Ex :     -11.37041034
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000        -238.266548
+    |200>      2.000         -25.671614
+    |210>      6.000         -20.166693
+    |300>      2.000          -3.422329      0.317121      1.174923
+    |310>      5.000          -2.090676      0.591810      1.270236
+    |320>      0.000          -0.117026      0.971640      8.151503
+    |400>      0.000          -0.280628      0.989894      4.600672
+
+ ======================================================================== 
+ End AE calculation
+ ======================================================================== 
+
+ ======================================================================== 
+ Begin PS construction
+ ======================================================================== 
+ Optimized Pseudopotential Generation ...
+
+ ==================
+ zeff=   8.0000000000000000     
+ Pseudizing state : |300>
+ eigenvalue       : -3.422329
+ qc               :  7.070000
+ # bessel fxns    : 10
+ point nearest rc :  819
+ rc               :  1.580000
+ actual rc        :  1.584395
+
+ Psi(rc)          :     0.4961565706
+ Slope at rc      :    -0.6837518431
+ Curvature at rc  :     0.6133585642
+ Del^2 Psi at rc  :    -0.2497494586
+ Log Deriv at rc  :    -1.3780969226
+
+ Starting KE minimization...
+  step #    theta       slope       curv       KEresid    coeffsum
+     1    0.003029   -0.901975  148.889778    0.000615    0.258823
+     2   -0.001259    0.292503  116.150332    0.000430    0.289587
+     3   -0.002221    0.194947   43.891141    0.000214    0.322335
+     4   -0.000794    0.136603   86.020801    0.000160    0.318794
+    11   -0.000057    0.016048  141.132020    0.000018    0.322019
+
+ # steps:    20
+ Final KE error:    0.0000169163
+ Sum of coeffs :    0.3237607098
+ ---------------------------------------------------------------
+ Coeff:      1.108900 -0.410383 -0.369713 -0.001917 -0.007033  0.004771 -0.003495  0.002833 -0.002489  0.002288
+ ---------------------------------------------------------------
+ Resid KE (Ry)     :        0.0000169163
+ Norm error        :    -0.133E-14
+ Continuity error  :    -0.111E-15
+ Curvature error   :    -0.952E-14
+ ---------------------------------------------------------------
+ Bessel wavevectors and final coefficients
+   1        1.3170345495        1.1089002545
+   2        3.1224499604       -0.4103834848
+   3        5.0497727142       -0.3697132522
+   4        7.0069497167       -0.0019169951
+   5        8.9751623517       -0.0070331524
+   6       10.9485835890        0.0047713198
+   7       12.9248604710       -0.0034952937
+   8       14.9028680686        0.0028330467
+   9       16.8820025098       -0.0024894976
+  10       18.8619111155        0.0022877646
+
+ Total KE           (Ry) :     1.2851575647
+ 0  -> qc contribution   :     1.2851406485
+ qc -> oo contribution   :     0.0000169163   (=Convergence term)
+ Occupancy of this state :     2.0000000000
+ Convergence term (Ry/e) :     0.0000169163
+ Convergence error (mRy) :     0.0338325073
+ Convergence error (meV) :     0.4603183283
+
+
+ ==================
+ zeff=   8.0000000000000000     
+ Pseudizing state : |310>
+ eigenvalue       : -2.090676
+ qc               :  7.070000
+ # bessel fxns    : 10
+ point nearest rc :  807
+ rc               :  1.350000
+ actual rc        :  1.355543
+
+ Psi(rc)          :     0.6266608214
+ Slope at rc      :    -0.5615541064
+ Curvature at rc  :    -0.1664308625
+ Del^2 Psi at rc  :    -1.6770413955
+ Log Deriv at rc  :    -0.8961053367
+
+ Starting KE minimization...
+  step #    theta       slope       curv       KEresid    coeffsum
+     1    0.003681   -0.802120  108.967789    0.002198    1.667398
+     2   -0.001558    0.374185  120.074087    0.001906    1.700641
+     3   -0.004090    0.258754   31.631075    0.001377    1.760866
+     4   -0.004439    0.231714   26.101235    0.000862    1.786003
+    11   -0.000327    0.092823  142.026967    0.000408    1.769099
+    21   -0.000077    0.017504  113.383782    0.000118    1.834551
+    31   -0.000001    0.000116   63.420168    0.000117    1.835596
+
+ # steps:    31
+ Final KE error:    0.0001166073
+ Sum of coeffs :    1.8355964341
+ ---------------------------------------------------------------
+ Coeff:      1.761240  0.121374 -0.059354  0.014161 -0.007447  0.005362 -0.004695  0.004618 -0.004795  0.005131
+ ---------------------------------------------------------------
+ Resid KE (Ry)     :        0.0001166073
+ Norm error        :    -0.278E-15
+ Continuity error  :    -0.444E-15
+ Curvature error   :    -0.318E-13
+ ---------------------------------------------------------------
+ Bessel wavevectors and final coefficients
+   1        2.0987314866        1.7612397036
+   2        4.5395805153        0.1213744632
+   3        6.8903292189       -0.0593539055
+   4        9.2238515394        0.0141614873
+   5       11.5508594881       -0.0074473982
+   6       13.8746826045        0.0053624278
+   7       16.1967064983       -0.0046949312
+   8       18.5176133318        0.0046180577
+   9       20.8377785975       -0.0047949038
+  10       23.1574262459        0.0051314333
+
+ Total KE           (Ry) :     2.3618607101
+ 0  -> qc contribution   :     2.3617441027
+ qc -> oo contribution   :     0.0001166073   (=Convergence term)
+ Occupancy of this state :     5.0000000000
+ Convergence term (Ry/e) :     0.0001166073
+ Convergence error (mRy) :     0.5830367119
+ Convergence error (meV) :     7.9326808946
+
+
+ ==================
+ zeff=   8.0000000000000000     
+ Pseudizing state : |320>
+ eigenvalue       : -0.117026
+ qc               :  7.070000
+ # bessel fxns    : 10
+ point nearest rc :  870
+ rc               :  3.070000
+ actual rc        :  3.074685
+
+ Psi(rc)          :     0.0525464092
+ Slope at rc      :    -0.0004788832
+ Curvature at rc  :     0.0022316814
+ Del^2 Psi at rc  :    -0.0314296095
+ Log Deriv at rc  :    -0.0091135288
+
+ Starting KE minimization...
+  step #    theta       slope       curv       KEresid    coeffsum
+     1    0.012967   -0.039978    1.541559    0.000032    0.432744
+     2   -0.002812    0.009807    1.743812    0.000019    0.435775
+     3   -0.003613    0.004802    0.664516    0.000010    0.431956
+     4   -0.002977    0.003207    0.538548    0.000005    0.428454
+
+ # steps:     4
+ Final KE error:    0.0000052292
+ Sum of coeffs :    0.4284535582
+ ---------------------------------------------------------------
+ Coeff:      0.203577  0.097984  0.057963  0.036623  0.024819  0.010162 -0.001330 -0.000188 -0.000347 -0.000809
+ ---------------------------------------------------------------
+ Resid KE (Ry)     :        0.0000052292
+ Norm error        :     0.173E-16
+ Continuity error  :     0.694E-17
+ Curvature error   :     0.611E-15
+ ---------------------------------------------------------------
+ Bessel wavevectors and final coefficients
+   1        1.0928261541        0.2035770036
+   2        2.3723619116        0.0979835902
+   3        3.4529210124        0.0579626689
+   4        4.5039417496        0.0366231027
+   5        5.5435215044        0.0248189326
+   6        6.5773451696        0.0101622557
+   7        7.6078373399       -0.0013296728
+   8        8.6362198921       -0.0001884793
+   9        9.6631791372       -0.0003468071
+  10       10.6891315065       -0.0008090364
+
+ Total KE           (Ry) :     0.1774639197
+ 0  -> qc contribution   :     0.1774586905
+ qc -> oo contribution   :     0.0000052292   (=Convergence term)
+ Occupancy of this state :     0.0000000000
+ Convergence term (Ry/e) :     0.0000052292
+ Convergence error (mRy) :     0.0000000000
+ Convergence error (meV) :     0.0000000000
+
+
+ Running HF solver for raw psp...
+ Results of HF psp solve...
+ State: 1s  AE eigenvalue =  -3.422329  PS eigenvalue =  -3.422329
+ State: 2p  AE eigenvalue =  -2.090676  PS eigenvalue =  -2.090676
+ State: 3d  AE eigenvalue =  -0.117026  PS eigenvalue =  -0.117028
+
+ ======================================================================== 
+ End PS construction
+ ======================================================================== 
+
+ ======================================================================== 
+ Begin SL calculation
+ ======================================================================== 
+ Rotation needed            1           4   1.0000000000000001E-005
+  4            117.1203894456 0.513E-01 0.558E-01 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.690E-01 0.751E-01 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 780   ed =   0.304929   el =   0.110655   eu =   1.280628
+ HF solver failed:  #fails=           1
+ Solve for HF wfn failed, orthogonalizing...
+  4            117.1203894456 0.513E-01 0.558E-01 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.690E-01 0.751E-01 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 780   ed =   0.304929   el =   0.110655   eu =   1.280628
+ HF solver failed:  #fails=           2
+  4            117.1203894456 0.513E-01 0.558E-01 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.690E-01 0.751E-01 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.133E+00-0.144E+00 0.100E-06  : function truncated in nmrvs
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1      -40.4894741      17.2980786      24.6000661 0.13E+01 0.26E-05
+   2      -40.4894315      17.2980398      24.6000623 0.53E-01 0.26E-06
+   3      -40.4894317      17.2980397      24.6000626 0.55E-02 0.55E-07
+   4      -40.4894313      17.2980394      24.6000626 0.17E-04 0.14E-07
+   5      -40.4894314      17.2980394      24.6000626 0.38E-06 0.34E-08
+   6      -40.4894314      17.2980394      24.6000626 0.15E-07 0.67E-09
+
+ Hartree-Fock converged!
+
+    6 iterations: (units are Ry and bohr)
+ Energy:     -40.48943136    Ebs:     -17.29803941
+ Eh:          24.60006257    Ex :      -1.40867062
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000          -3.422329      0.317121      1.190296
+    |210>      5.000          -2.090676      0.591810      1.270236
+    |320>      0.000          -0.117028      0.971642      8.151503
+    |200>      0.000          -0.278360      0.989150      4.600672
+
+ ======================================================================== 
+ End SL calculation
+ ======================================================================== 
+<<<do_tc>>>
+
+
+ ===============Configuration 1 AE Calc=============== 
+ Rotation needed            1           2   1.0000000000000001E-005
+ Rotation needed            1           4   1.0000000000000001E-005
+ Rotation needed            1           7   1.0000000000000001E-005
+ Rotation needed            2           4   1.0000000000000001E-005
+ Rotation needed            2           7   1.0000000000000001E-005
+ Rotation needed            3           5   1.0000000000000001E-005
+ Rotation needed            4           7   1.0000000000000001E-005
+  6            117.1203894456-0.509E-01-0.546E-01 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.503E-01-0.540E-01 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.162E-06-0.210E-06 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.244E-06-0.200E-06 0.100E-06  : function truncated in nmrvs
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1    -1095.3047484     698.1685131     408.6383538 0.72E+01 0.25E+00
+ Rotation needed            1           7  -2.5932755455210264E-007
+ Rotation needed            2           7   2.3553469410820835E-004
+ Rotation needed            3           5  -1.7381068619275717E-003
+ Rotation needed            4           7   6.7083906247802126E-003
+  6            117.1203894456-0.295E+00-0.316E+00 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.107E+00-0.115E+00 0.100E-06  : function truncated in nmrvs
+ Solve for HF wfn failed, orthogonalizing...
+ Rotation needed            1           7   1.1423905479968373E-004
+ Rotation needed            2           7   8.4776524434720035E-004
+ Rotation needed            3           5   1.4448748388916341E-002
+ Rotation needed            4           7   8.0629232324416402E-003
+  6            117.1203894456-0.294E+00-0.316E+00 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.277E+00-0.298E+00 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.119E+00-0.127E+00 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.274E-01-0.294E-01 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.786E-02-0.844E-02 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.122E+00-0.131E+00 0.100E-06  : function truncated in nmrvs
+   2    -1053.8138552     654.7908827     410.5108827 0.22E+00 0.22E-01
+ Rotation needed            1           7   1.1279463821321816E-004
+ Rotation needed            2           7   6.0184215485872643E-004
+ Rotation needed            3           5   1.5353207349881883E-002
+ Rotation needed            4           7   8.0994313673033707E-003
+  6            117.1203894456-0.302E-01-0.324E-01 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.122E-01-0.131E-01 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.125E+00-0.134E+00 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.264E-01-0.283E-01 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.105E-01-0.113E-01 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.125E+00-0.135E+00 0.100E-06  : function truncated in nmrvs
+   3    -1053.2333320     654.2636145     410.4599756 0.39E-01 0.87E-03
+ Rotation needed            1           7   3.4249174136706881E-004
+ Rotation needed            2           7   1.5992637568953817E-003
+ Rotation needed            3           5   1.6255577584159631E-002
+ Rotation needed            4           7   1.7616735321762909E-002
+  6            117.1203894456-0.242E-01-0.259E-01 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.920E-02-0.988E-02 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.125E+00-0.135E+00 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.232E-01-0.249E-01 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.860E-02-0.923E-02 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.125E+00-0.135E+00 0.100E-06  : function truncated in nmrvs
+   4    -1053.2414566     654.2628116     410.4692231 0.46E-03 0.52E-04
+ Rotation needed            1           7   3.5146272056917950E-004
+ Rotation needed            2           7   1.6492804070513745E-003
+ Rotation needed            3           5   1.6317213661786175E-002
+ Rotation needed            4           7   1.7987661997483795E-002
+  6            117.1203894456-0.229E-01-0.246E-01 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.837E-02-0.899E-02 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.125E+00-0.135E+00 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.228E-01-0.244E-01 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.830E-02-0.890E-02 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.125E+00-0.135E+00 0.100E-06  : function truncated in nmrvs
+   5    -1053.2396404     654.2611071     410.4691147 0.28E-04 0.20E-05
+ Rotation needed            1           7   3.5154961817564912E-004
+ Rotation needed            2           7   1.6492619338046978E-003
+ Rotation needed            3           5   1.6323275683657712E-002
+ Rotation needed            4           7   1.7996514517914845E-002
+  6            117.1203894456-0.227E-01-0.244E-01 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.827E-02-0.888E-02 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.125E+00-0.135E+00 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.227E-01-0.244E-01 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.826E-02-0.887E-02 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.125E+00-0.135E+00 0.100E-06  : function truncated in nmrvs
+   6    -1053.2397091     654.2611502     410.4691411 0.12E-05 0.57E-06
+ Rotation needed            1           7   3.5157501499431186E-004
+ Rotation needed            2           7   1.6493898053266632E-003
+ Rotation needed            3           5   1.6323467647879179E-002
+ Rotation needed            4           7   1.7997480300526995E-002
+  6            117.1203894456-0.227E-01-0.244E-01 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.826E-02-0.886E-02 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.125E+00-0.135E+00 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.227E-01-0.244E-01 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.826E-02-0.886E-02 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.125E+00-0.135E+00 0.100E-06  : function truncated in nmrvs
+   7    -1053.2396648     654.2611204     410.4691261 0.31E-06 0.55E-06
+ Rotation needed            1           7   3.5157437716097130E-004
+ Rotation needed            2           7   1.6493858660151504E-003
+ Rotation needed            3           5   1.6323483144793944E-002
+ Rotation needed            4           7   1.7997451393433391E-002
+  6            117.1203894456-0.227E-01-0.244E-01 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.826E-02-0.886E-02 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.125E+00-0.135E+00 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.227E-01-0.244E-01 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.826E-02-0.886E-02 0.100E-06  : function truncated in nmrvs
+  6            117.1203894456-0.125E+00-0.135E+00 0.100E-06  : function truncated in nmrvs
+   8    -1053.2396842     654.2611341     410.4691323 0.17E-06 0.55E-06
+
+ Hartree-Fock converged!
+      {100|200}=-2.3D-17
+      {100|300}= 7.0D-18
+      {200|300}= 4.4D-19
+      {210|310}=-3.7D-17
+      {100|400}= 1.8D-11
+      {200|400}=-3.3D-17
+      {300|400}=-2.0D-17
+
+    8 iterations: (units are Ry and bohr)
+ Energy:   -1053.23968419    Ebs:    -654.26113414
+ Eh:         410.46913229    Ex :     -11.49058224
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000        -237.487457
+    |200>      2.000         -24.902540
+    |210>      6.000         -19.398421
+    |300>      2.000          -2.735197      0.331744      1.174923
+    |310>      5.500          -1.353887      0.616468      1.286856
+    |320>      0.000          -0.000204      0.999361     14.442892
+    |400>      0.600          -0.289733      0.985884      4.482596
+!!NOTE!!: All Hartree-Fock tests are done with the semi-local form of the potential 
+!!NOTE!!: Use the 'sl' command instead of the 'nl' command to remove this warning...
+
+
+ ===============Configuration 1 SL: Calc ===============
+ Rotation needed            1           4   1.0000000000000001E-005
+  3            117.1203894456-0.274E-06-0.293E-06 0.100E-06  : function truncated in nmrvs
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1      -41.0932542      13.0037351      29.6085390 0.10E+01 0.19E-01
+ Rotation needed            1           4   4.0263543392181954E-003
+ Solve for HF wfn failed, orthogonalizing...
+ Rotation needed            1           4   1.8108791874920413E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+   2      -41.1886417      13.1002803      29.6082794 0.14E-01 0.30E-02
+ Rotation needed            1           4   1.8122562959056142E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+   3      -41.1821659      13.0926964      29.6092362 0.10E-02 0.43E-03
+ Rotation needed            1           4   1.8132928566776004E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+   4      -41.1828269      13.0954911      29.6072031 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108504452748881E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+   5      -41.1822811      13.0927124      29.6093419 0.71E-03 0.43E-03
+ Rotation needed            1           4   1.8128674410844359E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+   6      -41.1827218      13.0954011      29.6071873 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108622698600918E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+   7      -41.1824073      13.0927703      29.6094146 0.70E-03 0.43E-03
+ Rotation needed            1           4   1.8128652107116065E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+   8      -41.1826396      13.0953407      29.6071641 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108709332984963E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+   9      -41.1824521      13.0927884      29.6094432 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128630942587039E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  10      -41.1826062      13.0953169      29.6071541 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108739346869098E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  11      -41.1824706      13.0927957      29.6094552 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128622685724256E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  12      -41.1825920      13.0953068      29.6071496 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108751685185439E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  13      -41.1824783      13.0927986      29.6094602 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128619176375715E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  14      -41.1825859      13.0953026      29.6071477 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108756779545411E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  15      -41.1824815      13.0927998      29.6094623 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128617704617930E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  16      -41.1825834      13.0953008      29.6071469 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108758914782089E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  17      -41.1824828      13.0928003      29.6094632 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128617084202828E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  18      -41.1825823      13.0953000      29.6071466 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108759812676508E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  19      -41.1824834      13.0928005      29.6094636 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616822734731E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  20      -41.1825819      13.0952997      29.6071464 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760191073537E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  21      -41.1824836      13.0928006      29.6094637 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616712530337E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  22      -41.1825817      13.0952996      29.6071464 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760350695349E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  23      -41.1824837      13.0928007      29.6094638 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616666125297E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  24      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760418099088E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  25      -41.1824838      13.0928007      29.6094638 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616646629708E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  26      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760446610733E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  27      -41.1824838      13.0928007      29.6094638 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616638487680E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  28      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760458717548E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  29      -41.1824838      13.0928007      29.6094638 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616635135684E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  30      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760463904666E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  31      -41.1824838      13.0928007      29.6094638 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616633805002E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  32      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760466173074E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  33      -41.1824838      13.0928007      29.6094638 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616633327151E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  34      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760467210442E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  35      -41.1824838      13.0928007      29.6094638 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616633209863E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  36      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760467728309E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  37      -41.1824838      13.0928007      29.6094639 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616633244356E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  38      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760468027962E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  39      -41.1824838      13.0928007      29.6094639 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616633345470E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  40      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760468236489E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  41      -41.1824838      13.0928007      29.6094639 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616633472400E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  42      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760468406628E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  43      -41.1824838      13.0928007      29.6094639 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616633611479E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  44      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760468560723E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  45      -41.1824838      13.0928007      29.6094639 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616633756717E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  46      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760468707744E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  47      -41.1824838      13.0928007      29.6094639 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616633904533E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  48      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760468853364E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  49      -41.1824838      13.0928007      29.6094639 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616634053133E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  50      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760468997825E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  51      -41.1824838      13.0928007      29.6094639 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616634202923E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  52      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760469141644E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  53      -41.1824838      13.0928007      29.6094639 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616634352852E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  54      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760469286656E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  55      -41.1824838      13.0928007      29.6094639 0.69E-03 0.43E-03
+ Rotation needed            1           4   1.8128616634504147E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  56      -41.1825816      13.0952995      29.6071463 0.11E-02 0.30E-02
+ Rotation needed            1           4   1.8108760469431280E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  57      -41.1781891      13.0898446      29.6080297 0.69E-03 0.21E-03
+ Rotation needed            1           4   1.8128616634654496E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  58      -41.1845748      13.0965428      29.6079441 0.96E-03 0.30E-02
+ Rotation needed            1           4   1.8110790236616419E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  59      -41.1832428      13.0931284      29.6099181 0.85E-03 0.20E-03
+ Rotation needed            1           4   1.8129289235388989E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  60      -41.1820611      13.0949054      29.6070121 0.99E-03 0.30E-02
+ Rotation needed            1           4   1.8114270631456125E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  61      -41.1782835      13.0898918      29.6080803 0.64E-03 0.19E-03
+ Rotation needed            1           4   1.8128487090749729E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  62      -41.1845020      13.0964955      29.6079169 0.97E-03 0.30E-02
+ Rotation needed            1           4   1.8110841006382151E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  63      -41.1777811      13.0895447      29.6079094 0.85E-03 0.36E-03
+ Rotation needed            1           4   1.8129263359565499E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  64      -41.1848161      13.0966739      29.6080622 0.10E-02 0.29E-02
+ Rotation needed            1           4   1.8114099508373487E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  65      -41.1787325      13.0903295      29.6080946 0.77E-03 0.32E-03
+ Rotation needed            1           4   1.8129130485955977E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  66      -41.1843992      13.0963916      29.6079192 0.82E-03 0.30E-02
+ Rotation needed            1           4   1.8116312782819843E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  67      -41.1788262      13.0906414      29.6078752 0.69E-03 0.42E-03
+ Rotation needed            1           4   1.8128908590478342E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  68      -41.1844818      13.0965057      29.6078851 0.98E-03 0.30E-02
+ Rotation needed            1           4   1.8110842450426167E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  69      -41.1784726      13.0900618      29.6080984 0.79E-03 0.28E-03
+ Rotation needed            1           4   1.8128956890596990E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  70      -41.1844883      13.0964531      29.6079484 0.90E-03 0.30E-02
+ Rotation needed            1           4   1.8115571787490049E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  71      -41.1790654      13.0905881      29.6081781 0.72E-03 0.47E-03
+ Rotation needed            1           4   1.8128966887388430E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  72      -41.1842024      13.0962604      29.6078494 0.78E-03 0.30E-02
+ Rotation needed            1           4   1.8116947944204553E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  73      -41.1793636      13.0907927      29.6082817 0.67E-03 0.64E-03
+ Rotation needed            1           4   1.8128830063804374E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  74      -41.1824621      13.0928003      29.6094670 0.41E-03 0.10E-02
+ Rotation needed            1           4   1.8117797006011963E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  75      -41.1811032      13.0924038      29.6084565 0.41E-03 0.76E-03
+ Rotation needed            1           4   1.8117089868307363E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  76      -41.1830931      13.0956011      29.6073701 0.91E-03 0.30E-02
+ Rotation needed            1           4   1.8112249368239661E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  77      -41.1793700      13.0906797      29.6084033 0.62E-03 0.37E-03
+ Rotation needed            1           4   1.8128627664132951E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  78      -41.1839398      13.0960936      29.6077474 0.83E-03 0.30E-02
+ Rotation needed            1           4   1.8116649336284700E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  79      -41.1780464      13.0902782      29.6074827 0.65E-03 0.16E-02
+ Rotation needed            1           4   1.8128768124390984E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  80      -41.1815849      13.0925883      29.6087764 0.45E-03 0.16E-02
+ Rotation needed            1           4   1.8117471265056296E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  81      -41.1826556      13.0952764      29.6072497 0.90E-03 0.30E-02
+ Rotation needed            1           4   1.8114594679551208E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  82      -41.1782768      13.0900199      29.6079637 0.63E-03 0.16E-02
+ Rotation needed            1           4   1.8128754708819035E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  83      -41.1841103      13.0961990      29.6078162 0.92E-03 0.30E-02
+ Rotation needed            1           4   1.8115528533388558E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  84      -41.1774322      13.0893465      29.6077689 0.78E-03 0.16E-02
+ Rotation needed            1           4   1.8129086124930645E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  85      -41.1844476      13.0965084      29.6078482 0.95E-03 0.29E-02
+ Rotation needed            1           4   1.8114577220324394E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  86      -41.1770967      13.0892238      29.6075394 0.82E-03 0.16E-02
+ Rotation needed            1           4   1.8126636059496794E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  87      -41.1848809      13.0968040      29.6079935 0.98E-03 0.28E-02
+ Rotation needed            1           4   1.8110205311698990E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  88      -41.1776887      13.0891335      29.6082474 0.87E-03 0.34E-02
+ Rotation needed            1           4   1.8127655424861885E-002
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  3            117.1203894456 0.196E-03 0.210E-03 0.100E-06  : function truncated in nmrvs
+  89      -41.1821227      13.0919426      29.6099739 0.25E-03 0.34E-02
+
+ Hartree-Fock converged!
+      {100|200}=-5.5D-17
+
+   89 iterations: (units are Ry and bohr)
+ Energy:     -41.18212267    Ebs:     -13.09194262
+ Eh:          29.60997393    Ex :      -1.51979388
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000          -2.735823      0.331718      1.190296
+    |210>      5.500          -1.354136      0.616285      1.286856
+    |320>      0.000          -0.000100      0.999363     14.442892
+    |200>      0.600          -0.287578      0.984865      4.482596
+
+
+ ===============Configuration 2 AE Calc=============== 
+ Rotation needed            1           2   1.0000000000000001E-005
+ Rotation needed            1           4   1.0000000000000001E-005
+ Rotation needed            1           7   1.0000000000000001E-005
+ Rotation needed            2           4   1.0000000000000001E-005
+ Rotation needed            2           7   1.0000000000000001E-005
+ Rotation needed            3           5   1.0000000000000001E-005
+ Rotation needed            4           7   1.0000000000000001E-005
+  7            117.1203894456-0.277E-03-0.281E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.341E-03-0.339E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.221E-03-0.225E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.279E-03-0.277E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.145E-03-0.149E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.194E-03-0.193E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.791E-04-0.817E-04 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.116E-03-0.114E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.275E-04-0.287E-04 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.516E-04-0.473E-04 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.236E-05-0.251E-05 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.156E-04-0.977E-05 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.222E-03-0.226E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.279E-03-0.278E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.146E-03-0.149E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.195E-03-0.193E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.796E-04-0.823E-04 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.117E-03-0.114E-03 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 4 0
+          nc =   4   nj = 487   ed =   0.001141   el =   0.000123   eu =   5.347656
+ Rotation needed            3           5  -3.7668043819453294E-003
+ HF solver failed:  #fails=           1
+ Solve for HF wfn failed, orthogonalizing...
+ Rotation needed            3           5   5.5537171371203398E-002
+  7            117.1203894456-0.281E-03-0.285E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.345E-03-0.343E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.224E-03-0.228E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.282E-03-0.281E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.148E-03-0.151E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.197E-03-0.195E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.809E-04-0.836E-04 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.118E-03-0.115E-03 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.284E-04-0.297E-04 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.525E-04-0.482E-04 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.274E-05-0.291E-05 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.159E-04-0.101E-04 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456 0.244E-05 0.265E-05 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.426E-05 0.230E-05 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456 0.230E-06 0.265E-06 0.100E-06  : function truncated in nmrvs
+  7            117.1203894456-0.361E-05 0.318E-05 0.100E-06  : function truncated in nmrvs
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1    -1091.1734860     702.6103090     399.9608212 0.73E+01 0.20E+00
+ Rotation needed            3           5   5.5459206281245087E-002
+   2    -1052.5155060     662.0969533     401.7834929 0.10E+01 0.24E-01
+ Rotation needed            3           5   3.0964400438290806E-002
+   3    -1052.7623776     662.0062352     402.1322792 0.87E-01 0.16E-02
+ Rotation needed            3           5   3.3122812165736752E-002
+   4    -1052.6854954     661.9044078     402.1581731 0.79E-02 0.13E-03
+ Rotation needed            3           5   3.3302257682905213E-002
+   5    -1052.6655728     661.8856355     402.1570803 0.11E-03 0.32E-05
+ Rotation needed            3           5   3.3343371649067421E-002
+   6    -1052.6661871     661.8862013     402.1571279 0.21E-05 0.84E-06
+ Rotation needed            3           5   3.3341875064164132E-002
+   7    -1052.6661290     661.8861565     402.1571141 0.68E-06 0.21E-06
+ Rotation needed            3           5   3.3341937482091411E-002
+   8    -1052.6661439     661.8861684     402.1571171 0.86E-07 0.11E-06
+
+ Hartree-Fock converged!
+      {100|200}=-4.5D-18
+      {100|300}=-9.7D-18
+      {200|300}= 8.9D-18
+      {210|310}= 2.9D-17
+
+    8 iterations: (units are Ry and bohr)
+ Energy:   -1052.66614385    Ebs:    -661.88616844
+ Eh:         402.15711715    Ex :     -11.37714173
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000        -238.008523
+    |200>      2.000         -25.412389
+    |210>      6.000         -19.907579
+    |300>      2.000          -3.162238      0.317485      1.174923
+    |310>      5.000          -1.831455      0.592530      1.270236
+    |320>      1.000          -0.117120      0.971230      8.151503
+    |400>      0.000          -0.059800      0.992621      4.909649
+
+
+ ===============Configuration 2 SL: Calc ===============
+ Rotation needed            1           4   1.0000000000000001E-005
+  4            117.1203894456-0.217E-02-0.220E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.228E-02-0.231E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.147E-02-0.150E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.154E-02-0.157E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.584E-03-0.605E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.604E-03-0.626E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.779E-04-0.829E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.778E-04-0.828E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.163E-05 0.181E-05 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.215E-05 0.240E-05 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 777   ed =   0.010352   el =   0.000100   eu =   1.280628
+ HF solver failed:  #fails=           1
+ Solve for HF wfn failed, orthogonalizing...
+  4            117.1203894456-0.217E-02-0.220E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.228E-02-0.231E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.147E-02-0.150E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.154E-02-0.157E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.584E-03-0.605E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.604E-03-0.626E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.779E-04-0.829E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.778E-04-0.828E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.163E-05 0.181E-05 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.215E-05 0.240E-05 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 777   ed =   0.010352   el =   0.000100   eu =   1.280628
+ HF solver failed:  #fails=           2
+  4            117.1203894456-0.217E-02-0.220E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.228E-02-0.231E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.535E-02-0.542E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.147E-02-0.150E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.154E-02-0.157E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.696E-02-0.711E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.584E-03-0.605E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.604E-03-0.626E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.657E-02-0.681E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.779E-04-0.829E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.778E-04-0.828E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.274E-02-0.292E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.163E-05 0.181E-05 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.215E-05 0.240E-05 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.324E-03-0.361E-03 0.100E-06  : function truncated in nmrvs
+ method 2  unable to solve equation for electron 2 0
+          nc =   2   nj = 782   ed =   0.010352   el =   0.000100   eu =   1.280628
+ HF solver failed:  #fails=           3
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1      -40.6069376      15.5995803      26.4242794 0.12E+00 0.25E-03
+  4            117.1203894456-0.217E-02-0.220E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.228E-02-0.231E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.148E-02-0.151E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.154E-02-0.157E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.584E-03-0.605E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.604E-03-0.626E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.780E-04-0.830E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.778E-04-0.828E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.162E-05 0.181E-05 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.215E-05 0.239E-05 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 778   ed =   0.010345   el =   0.000100   eu =   1.280628
+ HF solver failed:  #fails=           4
+ Solve for HF wfn failed, orthogonalizing...
+  4            117.1203894456-0.217E-02-0.220E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.228E-02-0.231E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.148E-02-0.151E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.154E-02-0.157E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.584E-03-0.605E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.604E-03-0.626E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.780E-04-0.830E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.778E-04-0.828E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.162E-05 0.181E-05 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.215E-05 0.239E-05 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 778   ed =   0.010345   el =   0.000100   eu =   1.280628
+ HF solver failed:  #fails=           5
+  4            117.1203894456-0.217E-02-0.220E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.228E-02-0.231E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.535E-02-0.543E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.148E-02-0.151E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.154E-02-0.157E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.697E-02-0.711E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.584E-03-0.605E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.604E-03-0.626E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.658E-02-0.681E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.780E-04-0.830E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.778E-04-0.828E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.274E-02-0.292E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.162E-05 0.181E-05 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.215E-05 0.239E-05 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.324E-03-0.361E-03 0.100E-06  : function truncated in nmrvs
+ method 2  unable to solve equation for electron 2 0
+          nc =   2   nj = 782   ed =   0.010345   el =   0.000100   eu =   1.280628
+ HF solver failed:  #fails=           6
+   2      -40.6065102      15.5990854      26.4243406 0.52E-04 0.68E-06
+  4            117.1203894456-0.217E-02-0.220E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.228E-02-0.231E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.148E-02-0.151E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.154E-02-0.157E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.584E-03-0.605E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.604E-03-0.626E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.780E-04-0.830E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.778E-04-0.828E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.162E-05 0.181E-05 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.215E-05 0.239E-05 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 778   ed =   0.010345   el =   0.000100   eu =   1.280628
+ HF solver failed:  #fails=           7
+ Solve for HF wfn failed, orthogonalizing...
+  4            117.1203894456-0.217E-02-0.220E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.228E-02-0.231E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.148E-02-0.151E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.154E-02-0.157E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.584E-03-0.605E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.604E-03-0.626E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.780E-04-0.830E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.778E-04-0.828E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.162E-05 0.181E-05 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.215E-05 0.239E-05 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 778   ed =   0.010345   el =   0.000100   eu =   1.280628
+ HF solver failed:  #fails=           8
+  4            117.1203894456-0.217E-02-0.220E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.228E-02-0.231E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.535E-02-0.543E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.148E-02-0.151E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.154E-02-0.157E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.697E-02-0.711E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.584E-03-0.605E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.604E-03-0.626E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.658E-02-0.681E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.780E-04-0.830E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.778E-04-0.828E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.274E-02-0.292E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.162E-05 0.181E-05 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.215E-05 0.239E-05 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.324E-03-0.361E-03 0.100E-06  : function truncated in nmrvs
+ method 2  unable to solve equation for electron 2 0
+          nc =   2   nj = 782   ed =   0.010345   el =   0.000100   eu =   1.280628
+ HF solver failed:  #fails=           9
+   3      -40.6065047      15.5990718      26.4243489 0.16E-05 0.51E-06
+  4            117.1203894456-0.217E-02-0.220E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.228E-02-0.231E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.148E-02-0.151E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.154E-02-0.157E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.584E-03-0.605E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.604E-03-0.626E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.780E-04-0.830E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.778E-04-0.828E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.162E-05 0.181E-05 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.215E-05 0.239E-05 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 778   ed =   0.010345   el =   0.000100   eu =   1.280628
+ HF solver failed:  #fails=          10
+ Solve for HF wfn failed, orthogonalizing...
+  4            117.1203894456-0.217E-02-0.220E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.228E-02-0.231E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.148E-02-0.151E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.154E-02-0.157E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.584E-03-0.605E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.604E-03-0.626E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.780E-04-0.830E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.778E-04-0.828E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.162E-05 0.181E-05 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.215E-05 0.239E-05 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 778   ed =   0.010345   el =   0.000100   eu =   1.280628
+ HF solver failed:  #fails=          11
+  4            117.1203894456-0.217E-02-0.220E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.228E-02-0.231E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.535E-02-0.543E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.148E-02-0.151E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.154E-02-0.157E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.697E-02-0.711E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.584E-03-0.605E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.604E-03-0.626E-03 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.658E-02-0.681E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.780E-04-0.830E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.778E-04-0.828E-04 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.274E-02-0.292E-02 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.162E-05 0.181E-05 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456 0.215E-05 0.239E-05 0.100E-06  : function truncated in nmrvs
+  4            117.1203894456-0.324E-03-0.361E-03 0.100E-06  : function truncated in nmrvs
+ method 2  unable to solve equation for electron 2 0
+          nc =   2   nj = 782   ed =   0.010345   el =   0.000100   eu =   1.280628
+ HF solver failed:  #fails=          12
+   4      -40.6065039      15.5990718      26.4243480 0.54E-07 0.12E-06
+
+ Hartree-Fock converged!
+
+    4 iterations: (units are Ry and bohr)
+ Energy:     -40.60650395    Ebs:     -15.59907184
+ Eh:          26.42434800    Ex :      -1.41691590
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000          -3.162249      0.317485      1.190296
+    |210>      5.000          -1.831491      0.592526      1.270236
+    |320>      1.000          -0.117121      0.971211      8.151503
+    |200>      0.000          -0.280628      0.999236     10.435384
+   ------------------------------------------------
+   ================================================
+
+ ======================================================================== 
+ Begin KE convergence testing
+ ======================================================================== 
+ ----------------------------------------------------------------------
+                     Kinetic energy convergence
+      ==============================|100>==============================
+      Ecut(Ry)  KE/electron(Ry)         KE error/electron (mRy,meV)
+        20       1.215858500                69.297823     942.845395
+        30       1.278279370                 6.876953      93.565765
+        38       1.284459295                 0.697029       9.483561
+        45       1.285083582                 0.072742       0.989700
+      ==============================|210>==============================
+      Ecut(Ry)  KE/electron(Ry)         KE error/electron (mRy,meV)
+        10       2.291506178                70.334673     956.952460
+        16       2.354978450                 6.862402      93.367777
+        39       2.361135267                 0.705584       9.599968
+        52       2.361769151                 0.071700       0.975533
+      ==============================|320>==============================
+      Ecut(Ry)  KE/electron(Ry)         KE error/electron (mRy,meV)
+       397       1.495559039                68.163148     927.407338
+       398       1.558201998                 5.520189      75.106038
+      ==============================|200>==============================
+      Ecut(Ry)  KE/electron(Ry)         KE error/electron (mRy,meV)
+        20       1.215858500                69.297823     942.845395
+        30       1.278279370                 6.876953      93.565765
+        38       1.284459295                 0.697029       9.483561
+        45       1.285083582                 0.072742       0.989700
+
+ ======================================================================== 
+ End KE convergence testing
+ ======================================================================== 
+<<<do_rpt>>>
+<<<do_upf>>>
+------------- closing opium session ------------

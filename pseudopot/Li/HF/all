@@ -1,0 +1,49 @@
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+           OPIUM  Version:        3.8                             
+           =====================================            
+ See http://opium.sourceforge.net for help and information                 
+ Copyright 2009 : The OPIUM project                         
+
+ Compile host     : vagvlan567.217.wlan.design.upenn.edu
+ Compile OS       : Darwin 14.1.0 i386
+ Compile date     : Wed Mar 18 18:57:27 EDT 2015
+
+ Execution host   : vagvlan567.215.wlan.design.upenn.edu
+ time of execution: Wed Oct 14 12:14:36 2015
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Reading parameter file:  <li.param> ... 
+ File prefix             : li 
+ Element                 : Lithium    (Li) 
+ Z                       : 3 
+ 
+ Number of all-electron orbitals   : 3 
+ Number of pseudo       orbitals   : 3 
+ 
+ Pseudopotential is non-relativistic 
+ Using Hartree-Fock Exchange (Beta!!)                
+ HF pseudopotential NOT being smoothed! 
+ The p potential is used for the KB construction 
+ Optimized (RRKJ) pseudopotential method will be used 
+
+ nl    cutoff radii    q-max      # bessel functions
+ 1s       1.550        7.070              10 
+ 2p       1.600        7.070              10 
+ 2s       1.200        7.070              10 
+
+ Reference Configuration: core  <-/-> valence 
+ <-/-> 1s2  2p0  2s0 
+
+ Grid definitions: 
+ a_grid=1.00e-04    b_grid=1.30e-02    # points=1104 
+ r(1)=6.93e-05      r(np)=1.17e+02    
+
+ dEmax tolerance:  1.00e-08      dVmax tolerance:  1.00e-06     
+
+ Box 1  0.0100765 --> 1.64618  height: -0.22 
+ Starting calculation...
+
+ ======================================================================== 
+ Begin KE convergence testing
+ ======================================================================== 

@@ -1,0 +1,37 @@
+[Atom]
+Si
+6
+100 2.00  -13.0   # reference configuration
+200 2.00   -1.4   # reference configuration
+210 6.00   -0.4   # reference configuration
+300 2.00   -0.1   # reference configuration
+310 1.05  -13.0   # reference configuration
+320 0.00   -1.4   # reference configuration
+
+
+[Pseudo]
+3 1.85 1.85 1.97
+opt
+
+[Optinfo]
+7.07 10    # rc[a.u.] qc[sqrt(Ry)] Nb
+7.07 10
+7.07 10
+
+[XC]
+hf
+
+[Configs]
+3                 # number of valence configurations
+#
+300  2.00  -13.0   # nlm occ eigen(- means auto-generate)
+310  1.00   -6.0
+320  0.00   -6.0
+#
+300  1.00  -13.0
+310  2.00   -6.0
+320  0.00   -6.0
+#
+300  2.00  -13.0
+310  0.00   -6.0
+320  0.00   -6.0

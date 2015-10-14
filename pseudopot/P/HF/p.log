@@ -1,0 +1,882 @@
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+           OPIUM  Version:        3.8                             
+           =====================================            
+ See http://opium.sourceforge.net for help and information                 
+ Copyright 2009 : The OPIUM project                         
+
+ Compile host     : vagvlan567.217.wlan.design.upenn.edu
+ Compile OS       : Darwin 14.1.0 i386
+ Compile date     : Wed Mar 18 18:57:27 EDT 2015
+
+ Execution host   : vagvlan567.0723.wlan.wireless-pennnet.upenn.edu
+ time of execution: Wed Oct 14 16:54:43 2015
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Reading parameter file:  <p.param> ... 
+ File prefix             : p 
+ Element                 : Phosphorus (P) 
+ Z                       : 15 
+ 
+ Number of all-electron orbitals   : 7 
+ Number of pseudo       orbitals   : 4 
+ 
+ Pseudopotential is non-relativistic 
+ Using Hartree-Fock Exchange (Beta!!)                
+ HF pseudopotential NOT being smoothed! 
+ The s potential is used for the KB construction 
+ Optimized (RRKJ) pseudopotential method will be used 
+
+ nl    cutoff radii    q-max      # bessel functions
+ 3s       1.630        7.070              10 
+ 3p       1.630        7.070              10 
+ 3d       1.820        7.070              10 
+ 4s       1.620        7.070              10 
+
+ Reference Configuration: core  <-/-> valence 
+ 1s2  2s2  2p6  <-/-> 3s2  3p1  3d0  4s0 
+
+ Grid definitions: 
+ a_grid=1.00e-04    b_grid=1.30e-02    # points=1146 
+ r(1)=4.05e-05      r(np)=1.18e+02    
+
+ dEmax tolerance:  1.00e-08      dVmax tolerance:  1.00e-06     
+
+ Starting calculation...
+
+ ======================================================================== 
+ Begin AE calculation
+ ======================================================================== 
+ Performing non-relativistic AE calculation...  
+ Rotation needed            1           2   1.0000000000000001E-005
+ Rotation needed            1           4   1.0000000000000001E-005
+ Rotation needed            1           7   1.0000000000000001E-005
+ Rotation needed            2           4   1.0000000000000001E-005
+ Rotation needed            2           7   1.0000000000000001E-005
+ Rotation needed            3           5   1.0000000000000001E-005
+ Rotation needed            4           7   1.0000000000000001E-005
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1     -699.4389580     460.1887252     246.6592887 0.41E+02 0.15E+00
+ Rotation needed            3           5  -8.0682604280927876E-004
+   2     -679.3715077     440.3176769     246.4346115 0.56E-01 0.23E-02
+ Rotation needed            3           5   5.1111407945862953E-003
+   3     -679.2817434     440.2483044     246.4136850 0.50E-02 0.43E-04
+ Rotation needed            3           5   5.0416283097397081E-003
+   4     -679.2899520     440.2563494     246.4138248 0.14E-03 0.12E-05
+ Rotation needed            3           5   5.0380133722606234E-003
+   5     -679.2900009     440.2563847     246.4138389 0.16E-05 0.22E-06
+ Rotation needed            3           5   5.0380956526764184E-003
+   6     -679.2899886     440.2563747     246.4138366 0.50E-07 0.86E-07
+
+ Hartree-Fock converged!
+      {100|200}=-6.9D-17
+      {100|300}=-7.8D-18
+      {200|300}=-4.8D-17
+      {210|310}=-5.6D-18
+
+    6 iterations: (units are Ry and bohr)
+ Energy:    -679.28998863    Ebs:    -440.25637470
+ Eh:         246.41383658    Ex :      -7.38022266
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000        -161.751102
+    |200>      2.000         -16.786814
+    |210>      6.000         -12.556884
+    |300>      2.000          -2.829168      0.551863      1.517366
+    |310>      1.000          -2.180906      0.661454      1.683670
+    |320>      0.000          -0.535920      0.907065      3.101780
+    |400>      0.000          -0.626574      0.955952      4.463692
+
+ ======================================================================== 
+ End AE calculation
+ ======================================================================== 
+
+ ======================================================================== 
+ Begin PS construction
+ ======================================================================== 
+ Optimized Pseudopotential Generation ...
+
+ ==================
+ zeff=   5.0000000000000000     
+ Pseudizing state : |300>
+ eigenvalue       : -2.829168
+ qc               :  7.070000
+ # bessel fxns    : 10
+ point nearest rc :  817
+ rc               :  1.630000
+ actual rc        :  1.640459
+
+ Psi(rc)          :     0.5030882340
+ Slope at rc      :    -0.4022788427
+ Curvature at rc  :    -0.1786930051
+ Del^2 Psi at rc  :    -0.6691396223
+ Log Deriv at rc  :    -0.7996188649
+
+ Starting KE minimization...
+  step #    theta       slope       curv       KEresid    coeffsum
+     1    0.002681   -0.509371   95.000517    0.000039    0.081528
+     2   -0.000569    0.046740   41.068544    0.000026    0.089988
+     3   -0.000157    0.019956   63.507717    0.000024    0.089164
+     4   -0.000069    0.005267   37.948864    0.000024    0.088834
+    11   -0.000007    0.001004   71.234506    0.000024    0.089137
+
+ # steps:    12
+ Final KE error:    0.0000238130
+ Sum of coeffs :    0.0891192673
+ ---------------------------------------------------------------
+ Coeff:      0.740143 -0.520644 -0.151058  0.024263 -0.007942  0.004732 -0.003509  0.002979 -0.002739  0.002895
+ ---------------------------------------------------------------
+ Resid KE (Ry)     :        0.0000238130
+ Norm error        :    -0.278E-15
+ Continuity error  :     0.000E+00
+ Curvature error   :     0.105E-13
+ ---------------------------------------------------------------
+ Bessel wavevectors and final coefficients
+   1        1.0651575593        0.7401426770
+   2        2.9123235637       -0.5206444768
+   3        4.8117348332       -0.1510576495
+   4        6.7199753403        0.0242629763
+   5        8.6312295935       -0.0079424393
+   6       10.5438649999        0.0047317351
+   7       12.4572469749       -0.0035091695
+   8       14.3710778475        0.0029787762
+   9       16.2851995637       -0.0027385646
+  10       18.1995204497        0.0028954023
+
+ Total KE           (Ry) :     0.8591200021
+ 0  -> qc contribution   :     0.8590961891
+ qc -> oo contribution   :     0.0000238130   (=Convergence term)
+ Occupancy of this state :     2.0000000000
+ Convergence term (Ry/e) :     0.0000238130
+ Convergence error (mRy) :     0.0476260875
+ Convergence error (meV) :     0.6479910212
+
+
+ ==================
+ zeff=   5.0000000000000000     
+ Pseudizing state : |310>
+ eigenvalue       : -2.180906
+ qc               :  7.070000
+ # bessel fxns    : 10
+ point nearest rc :  817
+ rc               :  1.630000
+ actual rc        :  1.640459
+
+ Psi(rc)          :     0.4677991036
+ Slope at rc      :    -0.2580776816
+ Curvature at rc  :    -0.3066509737
+ Del^2 Psi at rc  :    -0.9689547615
+ Log Deriv at rc  :    -0.5516848570
+
+ Starting KE minimization...
+  step #    theta       slope       curv       KEresid    coeffsum
+     1    0.002199   -0.318767   72.484106    0.000154    1.076022
+     2   -0.001107    0.086696   39.162925    0.000106    1.092306
+     3   -0.002057    0.062801   15.264863    0.000041    1.106104
+     4   -0.000649    0.043145   33.262005    0.000027    1.102308
+
+ # steps:     6
+ Final KE error:    0.0000050709
+ Sum of coeffs :    1.0985172702
+ ---------------------------------------------------------------
+ Coeff:      1.198176 -0.028767 -0.074144  0.007585 -0.003928  0.001242 -0.002462  0.001049 -0.000903  0.000670
+ ---------------------------------------------------------------
+ Resid KE (Ry)     :        0.0000050709
+ Norm error        :     0.000E+00
+ Continuity error  :    -0.167E-15
+ Curvature error   :    -0.450E-13
+ ---------------------------------------------------------------
+ Bessel wavevectors and final coefficients
+   1        1.6430970799        1.1981762043
+   2        3.7186620926       -0.0287674329
+   3        5.6729044292       -0.0741441229
+   4        7.6065447323        0.0075845746
+   5        9.5325392640       -0.0039279468
+   6       11.4548228053        0.0012420491
+   7       13.3750174852       -0.0024619112
+   8       15.2939180021        0.0010485929
+   9       17.2119605218       -0.0009025026
+  10       19.1294046924        0.0006697655
+
+ Total KE           (Ry) :     1.4330192036
+ 0  -> qc contribution   :     1.4330141327
+ qc -> oo contribution   :     0.0000050709   (=Convergence term)
+ Occupancy of this state :     1.0000000000
+ Convergence term (Ry/e) :     0.0000050709
+ Convergence error (mRy) :     0.0050708552
+ Convergence error (meV) :     0.0689930416
+
+
+ ==================
+ zeff=   5.0000000000000000     
+ Pseudizing state : |320>
+ eigenvalue       : -0.535920
+ qc               :  7.070000
+ # bessel fxns    : 10
+ point nearest rc :  825
+ rc               :  1.820000
+ actual rc        :  1.820254
+
+ Psi(rc)          :     0.2212833876
+ Slope at rc      :    -0.0312872561
+ Curvature at rc  :    -0.0552021869
+ Del^2 Psi at rc  :    -0.4902942795
+ Log Deriv at rc  :    -0.1413899905
+
+ Starting KE minimization...
+  step #    theta       slope       curv       KEresid    coeffsum
+     1    0.011613   -0.204462    8.803344    0.000755    1.165789
+     2   -0.003124    0.114784   18.370453    0.000575    1.191440
+     3   -0.003929    0.065264    8.305027    0.000447    1.198953
+     4   -0.008048    0.055900    3.473019    0.000222    1.176325
+    11   -0.000211    0.007402   17.515093    0.000067    1.155261
+    21   -0.000257    0.008586   16.694741    0.000011    1.113640
+
+ # steps:    22
+ Final KE error:    0.0000098561
+ Sum of coeffs :    1.1125791454
+ ---------------------------------------------------------------
+ Coeff:      0.821585  0.240902  0.048784  0.002003 -0.000666  0.000729 -0.000729  0.001000 -0.001596  0.000566
+ ---------------------------------------------------------------
+ Resid KE (Ry)     :        0.0000098561
+ Norm error        :    -0.833E-16
+ Continuity error  :     0.278E-16
+ Curvature error   :     0.722E-15
+ ---------------------------------------------------------------
+ Bessel wavevectors and final coefficients
+   1        1.9224823899        0.8215847000
+   2        4.0267359114        0.2409024130
+   3        5.8450395260        0.0487844251
+   4        7.6172305587        0.0020030069
+   5        9.3713939213       -0.0006664355
+   6       11.1164534173        0.0007289631
+   7       12.8562335631       -0.0007291330
+   8       14.5926667856        0.0010003121
+   9       16.3268402396       -0.0015955937
+  10       18.0594142719        0.0005664875
+
+ Total KE           (Ry) :     0.9894781629
+ 0  -> qc contribution   :     0.9894683068
+ qc -> oo contribution   :     0.0000098561   (=Convergence term)
+ Occupancy of this state :     0.0000000000
+ Convergence term (Ry/e) :     0.0000098561
+ Convergence error (mRy) :     0.0000000000
+ Convergence error (meV) :     0.0000000000
+
+
+ Running HF solver for raw psp...
+ Results of HF psp solve...
+ State: 1s  AE eigenvalue =  -2.829168  PS eigenvalue =  -2.829168
+ State: 2p  AE eigenvalue =  -2.180906  PS eigenvalue =  -2.180906
+ State: 3d  AE eigenvalue =  -0.535920  PS eigenvalue =  -0.535920
+
+ ======================================================================== 
+ End PS construction
+ ======================================================================== 
+
+ ======================================================================== 
+ Begin SL calculation
+ ======================================================================== 
+ Rotation needed            1           4   1.0000000000000001E-005
+  4            118.1525076450-0.558E+01-0.543E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.559E+01-0.544E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.468E+01 0.489E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.467E+01 0.489E+01 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 787   ed =   0.304865   el =   0.000100   eu =   1.626574
+ HF solver failed:  #fails=           1
+ Solve for HF wfn failed, orthogonalizing...
+  4            118.1525076450-0.558E+01-0.543E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.559E+01-0.544E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.468E+01 0.489E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.467E+01 0.489E+01 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 787   ed =   0.304865   el =   0.000100   eu =   1.626574
+ HF solver failed:  #fails=           2
+  4            118.1525076450-0.558E+01-0.543E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.559E+01-0.544E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.229E-01-0.223E-01 0.100E-06  : function truncated in nmrvs
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1      -10.5389476       7.8392509       2.9226821 0.30E+00 0.18E-05
+   2      -10.5389385       7.8392417       2.9226822 0.56E-01 0.13E-06
+   3      -10.5389385       7.8392416       2.9226823 0.11E-02 0.36E-07
+   4      -10.5389384       7.8392416       2.9226823 0.18E-05 0.71E-08
+   5      -10.5389384       7.8392416       2.9226823 0.48E-07 0.99E-09
+
+ Hartree-Fock converged!
+
+    5 iterations: (units are Ry and bohr)
+ Energy:     -10.53893844    Ebs:      -7.83924156
+ Eh:           2.92268226    Ex :      -0.22298539
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000          -2.829168      0.551863      1.517366
+    |210>      1.000          -2.180906      0.661454      1.683670
+    |320>      0.000          -0.535920      0.907065      3.101780
+    |200>      0.000          -0.626508      0.955304      4.463692
+
+ ======================================================================== 
+ End SL calculation
+ ======================================================================== 
+<<<do_tc>>>
+
+
+ ===============Configuration 1 AE Calc=============== 
+ Rotation needed            1           2   1.0000000000000001E-005
+ Rotation needed            1           4   1.0000000000000001E-005
+ Rotation needed            1           7   1.0000000000000001E-005
+ Rotation needed            2           4   1.0000000000000001E-005
+ Rotation needed            2           7   1.0000000000000001E-005
+ Rotation needed            3           5   1.0000000000000001E-005
+ Rotation needed            4           7   1.0000000000000001E-005
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1     -699.4524555     460.1282230     246.7337412 0.41E+02 0.15E+00
+ Rotation needed            3           5  -8.0697671951446249E-004
+   2     -679.3772074     440.2473856     246.5110598 0.56E-01 0.34E-02
+ Rotation needed            3           5   5.1047621465438861E-003
+   3     -679.2873976     440.1773308     246.4907851 0.50E-02 0.67E-04
+ Rotation needed            3           5   5.0381710659742601E-003
+   4     -679.2953359     440.1853280     246.4906913 0.28E-04 0.55E-05
+ Rotation needed            3           5   5.0345974312427638E-003
+   5     -679.2953522     440.1853396     246.4906961 0.13E-06 0.63E-06
+
+ Hartree-Fock converged!
+      {100|200}= 6.1D-17
+      {100|300}= 1.4D-17
+      {200|300}= 1.0D-17
+      {210|310}=-5.8D-17
+
+    5 iterations: (units are Ry and bohr)
+ Energy:    -679.29535221    Ebs:    -440.18533957
+ Eh:         246.49069615    Ex :      -7.38068351
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000        -161.745240
+    |200>      2.000         -16.780846
+    |210>      6.000         -12.550937
+    |300>      2.000          -2.823439      0.551979      1.517366
+    |310>      1.000          -2.175309      0.661634      1.683670
+    |320>      0.010          -0.536000      0.907004      3.101780
+    |400>      0.000          -0.622751      0.956109      4.463692
+!!NOTE!!: All Hartree-Fock tests are done with the semi-local form of the potential 
+!!NOTE!!: Use the 'sl' command instead of the 'nl' command to remove this warning...
+
+
+ ===============Configuration 1 SL: Calc ===============
+ Rotation needed            1           4   1.0000000000000001E-005
+  4            118.1525076450-0.522E+01-0.509E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.523E+01-0.510E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.488E+01 0.511E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.488E+01 0.510E+01 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 788   ed =   0.302997   el =   0.000100   eu =   1.626574
+ HF solver failed:  #fails=           1
+ Solve for HF wfn failed, orthogonalizing...
+  4            118.1525076450-0.522E+01-0.509E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.523E+01-0.510E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.488E+01 0.511E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.488E+01 0.510E+01 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 788   ed =   0.302997   el =   0.000100   eu =   1.626574
+ HF solver failed:  #fails=           2
+  4            118.1525076450-0.522E+01-0.509E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.523E+01-0.510E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.896E-02-0.874E-02 0.100E-06  : function truncated in nmrvs
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1      -10.5443015       7.8275570       2.9402789 0.30E+00 0.37E-05
+   2      -10.5442976       7.8275535       2.9402784 0.57E-01 0.46E-06
+   3      -10.5442980       7.8275539       2.9402784 0.12E-02 0.42E-07
+   4      -10.5442980       7.8275539       2.9402784 0.19E-05 0.59E-08
+   5      -10.5442980       7.8275539       2.9402784 0.51E-07 0.47E-09
+
+ Hartree-Fock converged!
+
+    5 iterations: (units are Ry and bohr)
+ Energy:     -10.54429803    Ebs:      -7.82755389
+ Eh:           2.94027840    Ex :      -0.22353426
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000          -2.823440      0.551980      1.517366
+    |210>      1.000          -2.175314      0.661634      1.683670
+    |320>      0.010          -0.536000      0.907005      3.101780
+    |200>      0.000          -0.622682      0.955467      4.463692
+
+
+ ===============Configuration 2 AE Calc=============== 
+ Rotation needed            1           2   1.0000000000000001E-005
+ Rotation needed            1           4   1.0000000000000001E-005
+ Rotation needed            1           7   1.0000000000000001E-005
+ Rotation needed            2           4   1.0000000000000001E-005
+ Rotation needed            2           7   1.0000000000000001E-005
+ Rotation needed            3           5   1.0000000000000001E-005
+ Rotation needed            4           7   1.0000000000000001E-005
+ method 1  unable to solve equation for electron 4 0
+          nc =   3   nj = 510   ed =   0.215792   el =   0.098461   eu =   4.248752
+ Rotation needed            3           5  -1.3636473124616028E-003
+ HF solver failed:  #fails=           1
+ Solve for HF wfn failed, orthogonalizing...
+ Rotation needed            3           5   6.1936315140398669E-003
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1     -680.5152230     430.1075111     257.9877406 0.40E+02 0.12E+00
+ Rotation needed            3           5   6.1263497226132892E-003
+   2     -680.7188244     429.8818840     258.4586727 0.30E+00 0.21E-02
+ Rotation needed            3           5   7.5859129975595118E-003
+ Solve for HF wfn failed, orthogonalizing...
+ Rotation needed            3           5   7.9654853902454224E-003
+   3     -680.6512069     429.8117820     258.4607067 0.25E+00 0.83E-04
+ Rotation needed            3           5   7.9690218930534434E-003
+   4     -680.6489194     429.8095673     258.4606027 0.11E-01 0.17E-05
+ Rotation needed            3           5   7.9691878030653529E-003
+   5     -680.6488875     429.8095440     258.4605935 0.22E-01 0.26E-06
+ Rotation needed            3           5   7.9691207653152032E-003
+   6     -680.6488953     429.8095502     258.4605952 0.13E-01 0.28E-07
+ Rotation needed            3           5   7.9691176146854600E-003
+   7     -680.6488938     429.8095489     258.4605949 0.26E-02 0.58E-08
+ Rotation needed            3           5   7.9691180861146526E-003
+   8     -680.6488941     429.8095491     258.4605950 0.27E-03 0.37E-08
+ Rotation needed            3           5   7.9691180098769940E-003
+   9     -680.6488940     429.8095491     258.4605950 0.20E-04 0.40E-08
+ Rotation needed            3           5   7.9691180243175765E-003
+  10     -680.6488940     429.8095491     258.4605950 0.12E-05 0.39E-08
+ Rotation needed            3           5   7.9691180214728485E-003
+  11     -680.6488940     429.8095491     258.4605950 0.68E-07 0.40E-08
+
+ Hartree-Fock converged!
+      {100|200}=-2.5D-17
+      {100|300}=-2.5D-18
+      {200|300}= 3.8D-17
+      {210|310}=-7.6D-17
+
+   11 iterations: (units are Ry and bohr)
+ Energy:    -680.64889401    Ebs:    -429.80954911
+ Eh:         258.46059496    Ex :      -7.62125006
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000        -160.770930
+    |200>      2.000         -15.837468
+    |210>      6.000         -11.612475
+    |300>      2.000          -2.070622      0.588477      1.557335
+    |310>      2.000          -1.387736      0.713721      1.773538
+    |320>      0.010          -0.118677      0.995044      7.908801
+    |400>      0.000          -0.232012      0.980406      5.640520
+
+
+ ===============Configuration 2 SL: Calc ===============
+ Rotation needed            1           4   1.0000000000000001E-005
+  3            118.1525076450-0.104E+00-0.119E+00 0.100E-06  : function truncated in nmrvs
+  3            118.1525076450-0.584E-01-0.663E-01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.647E+00-0.704E+00 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.631E+00-0.687E+00 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   0   nj = 805   ed =   0.464737   el =   0.000100   eu =   0.929373
+ HF solver failed:  #fails=           1
+ Solve for HF wfn failed, orthogonalizing...
+  4            118.1525076450-0.647E+00-0.704E+00 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.631E+00-0.687E+00 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   0   nj = 805   ed =   0.464737   el =   0.000100   eu =   0.929373
+ HF solver failed:  #fails=           2
+  4            118.1525076450-0.647E+00-0.704E+00 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.631E+00-0.687E+00 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.149E+00-0.162E+00 0.100E-06  : function truncated in nmrvs
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1      -11.8978558       6.9259128       5.3845868 0.79E+00 0.77E-02
+   2      -11.9010869       6.9277730       5.3861138 0.27E+00 0.39E-04
+   3      -11.9011412       6.9278270       5.3861154 0.27E-02 0.48E-06
+   4      -11.9011423       6.9278280       5.3861155 0.21E-03 0.91E-07
+   5      -11.9011421       6.9278279       5.3861155 0.77E-05 0.18E-07
+   6      -11.9011421       6.9278279       5.3861155 0.32E-06 0.83E-09
+   7      -11.9011421       6.9278279       5.3861155 0.17E-07 0.99E-10
+
+ Hartree-Fock converged!
+
+    7 iterations: (units are Ry and bohr)
+ Energy:     -11.90114209    Ebs:      -6.92782789
+ Eh:           5.38611549    Ex :      -0.41280129
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000          -2.074078      0.587628      1.557335
+    |210>      2.000          -1.389242      0.713024      1.750631
+    |320>      0.010          -0.118654      0.995030      7.908801
+    |200>      0.000          -0.231726      0.980280      5.640520
+
+
+ ===============Configuration 3 AE Calc=============== 
+ Rotation needed            1           2   1.0000000000000001E-005
+ Rotation needed            1           4   1.0000000000000001E-005
+ Rotation needed            1           7   1.0000000000000001E-005
+ Rotation needed            2           4   1.0000000000000001E-005
+ Rotation needed            2           7   1.0000000000000001E-005
+ Rotation needed            3           5   1.0000000000000001E-005
+ Rotation needed            4           7   1.0000000000000001E-005
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1     -700.3522355     452.1960825     255.6855865 0.40E+02 0.15E+00
+ Rotation needed            3           5  -1.0772269746480568E-003
+   2     -680.8145213     431.9342000     256.4078329 0.10E+00 0.13E-01
+ Rotation needed            3           5   5.2901594103147891E-003
+   3     -680.2392626     431.3872395     256.3780604 0.17E-01 0.38E-03
+ Rotation needed            3           5   5.2449215491365024E-003
+   4     -680.2349492     431.3857108     256.3751630 0.45E-03 0.18E-04
+ Rotation needed            3           5   5.1760073294322704E-003
+   5     -680.2355730     431.3864670     256.3750244 0.55E-05 0.11E-05
+ Rotation needed            3           5   5.1750266792418356E-003
+   6     -680.2356892     431.3865719     256.3750360 0.74E-06 0.26E-06
+ Rotation needed            3           5   5.1749724033520409E-003
+   7     -680.2356808     431.3865658     256.3750336 0.73E-07 0.51E-07
+
+ Hartree-Fock converged!
+      {100|200}= 3.6D-11
+      {100|300}=-9.0D-18
+      {200|300}=-6.8D-17
+      {210|310}= 3.5D-18
+
+    7 iterations: (units are Ry and bohr)
+ Energy:    -680.23568078    Ebs:    -431.38656576
+ Eh:         256.37503362    Ex :      -7.52591859
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000        -160.961552
+    |200>      2.000         -16.006248
+    |210>      6.000         -11.780002
+    |300>      2.000          -2.156242      0.576763      1.537221
+    |310>      1.500          -1.453959      0.704443      1.750631
+    |320>      0.500          -0.555060      0.892610      2.906577
+    |400>      0.000          -0.246749      0.977619      5.424774
+
+
+ ===============Configuration 3 SL: Calc ===============
+ Rotation needed            1           4   1.0000000000000001E-005
+  4            118.1525076450-0.284E+00-0.309E+00 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.268E+00-0.292E+00 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   0   nj = 805   ed =   0.518761   el =   0.000100   eu =   1.037422
+ HF solver failed:  #fails=           1
+ Solve for HF wfn failed, orthogonalizing...
+  4            118.1525076450-0.284E+00-0.309E+00 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.268E+00-0.292E+00 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   0   nj = 805   ed =   0.518761   el =   0.000100   eu =   1.037422
+ HF solver failed:  #fails=           2
+  4            118.1525076450-0.284E+00-0.309E+00 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.268E+00-0.292E+00 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.150E+00-0.163E+00 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   1   nj = 827   ed =   0.324429   el =   0.000100   eu =   2.074038
+ HF solver failed:  #fails=           3
+ Solve for HF wfn failed, orthogonalizing...
+ method 1  unable to solve equation for electron 2 0
+          nc =   1   nj = 827   ed =   0.324429   el =   0.000100   eu =   2.074038
+ HF solver failed:  #fails=           4
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1      -11.4847298       6.7762776       5.0574008 0.74E+00 0.80E-03
+   2      -11.4865593       6.7776186       5.0579278 0.18E+00 0.44E-05
+   3      -11.4865711       6.7776199       5.0579395 0.28E-04 0.24E-06
+   4      -11.4865596       6.7776095       5.0579382 0.22E-05 0.46E-06
+   5      -11.4865603       6.7776102       5.0579383 0.14E-06 0.57E-07
+
+ Hartree-Fock converged!
+
+    5 iterations: (units are Ry and bohr)
+ Energy:     -11.48656030    Ebs:      -6.77761018
+ Eh:           5.05793832    Ex :      -0.34898820
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000          -2.158259      0.576380      1.537221
+    |210>      1.500          -1.455874      0.703751      1.750631
+    |320>      0.500          -0.554562      0.893231      2.906577
+    |200>      0.000          -0.246485      0.977415      5.424774
+
+
+ ===============Configuration 4 AE Calc=============== 
+ Rotation needed            1           2   1.0000000000000001E-005
+ Rotation needed            1           4   1.0000000000000001E-005
+ Rotation needed            1           7   1.0000000000000001E-005
+ Rotation needed            2           4   1.0000000000000001E-005
+ Rotation needed            2           7   1.0000000000000001E-005
+ Rotation needed            3           5   1.0000000000000001E-005
+ Rotation needed            4           7   1.0000000000000001E-005
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1     -700.2089862     454.5657925     253.1672379 0.41E+02 0.15E+00
+ Rotation needed            3           5  -9.2694056373696175E-004
+   2     -680.0872553     434.3341938     253.2593222 0.94E-01 0.55E-02
+ Rotation needed            3           5   5.2180136423510383E-003
+   3     -680.0025577     434.2826990     253.2247638 0.30E-02 0.12E-03
+ Rotation needed            3           5   5.0469148235290622E-003
+   4     -680.0143515     434.2928398     253.2264572 0.12E-02 0.59E-05
+ Rotation needed            3           5   5.0232504061487500E-003
+   5     -680.0144999     434.2929084     253.2265397 0.37E-05 0.11E-05
+ Rotation needed            3           5   5.0226757063443553E-003
+   6     -680.0144813     434.2928836     253.2265460 0.32E-06 0.19E-06
+ Rotation needed            3           5   5.0227061699622743E-003
+   7     -680.0144731     434.2928774     253.2265441 0.47E-07 0.43E-07
+
+ Hartree-Fock converged!
+      {100|200}=-1.0D-16
+      {100|300}=-3.0D-18
+      {200|300}=-7.0D-17
+      {210|310}= 1.4D-17
+
+    7 iterations: (units are Ry and bohr)
+ Energy:    -680.01447314    Ebs:    -434.29287738
+ Eh:         253.22654411    Ex :      -7.50494835
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000        -161.202125
+    |200>      2.000         -16.251800
+    |210>      6.000         -12.024555
+    |300>      2.000          -2.390679      0.571081      1.537221
+    |310>      1.500          -1.600822      0.698847      1.750631
+    |320>      0.100          -0.551058      0.895518      2.944610
+    |400>      0.000          -0.382976      0.969586      4.952915
+
+
+ ===============Configuration 4 SL: Calc ===============
+ Rotation needed            1           4   1.0000000000000001E-005
+  4            118.1525076450-0.266E+01-0.278E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.267E+01-0.279E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.707E+00 0.768E+00 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.691E+00 0.751E+00 0.100E-06  : function truncated in nmrvs
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1      -11.2637593       7.2422807       4.3457151 0.37E+00 0.82E-03
+ method 1  unable to solve equation for electron 2 0
+          nc =   0   nj = 859   ed =   0.341058   el =   0.178573   eu =   6.640728
+ HF solver failed:  #fails=           1
+ Solve for HF wfn failed, orthogonalizing...
+ method 1  unable to solve equation for electron 2 0
+          nc =   0   nj = 859   ed =   0.341058   el =   0.178573   eu =   6.640728
+ HF solver failed:  #fails=           2
+   2      -11.2655405       7.2437845       4.3460115 0.12E+01 0.28E-05
+   3      -11.2655394       7.2437836       4.3460114 0.78E-01 0.11E-06
+   4      -11.2655395       7.2437836       4.3460114 0.79E-02 0.66E-08
+   5      -11.2655395       7.2437836       4.3460114 0.47E-03 0.31E-09
+   6      -11.2655395       7.2437836       4.3460114 0.22E-04 0.11E-10
+   7      -11.2655395       7.2437836       4.3460114 0.11E-05 0.70E-11
+   8      -11.2655395       7.2437836       4.3460114 0.66E-07 0.70E-11
+
+ Hartree-Fock converged!
+
+    8 iterations: (units are Ry and bohr)
+ Energy:     -11.26553948    Ebs:      -7.24378364
+ Eh:           4.34601141    Ex :      -0.32425557
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000          -2.392396      0.570695      1.537221
+    |210>      1.500          -1.602620      0.698128      1.728020
+    |320>      0.100          -0.550618      0.896055      2.944610
+    |200>      0.000          -0.382743      0.969279      4.952915
+
+
+ ===============Configuration 5 AE Calc=============== 
+ Rotation needed            1           2   1.0000000000000001E-005
+ Rotation needed            1           4   1.0000000000000001E-005
+ Rotation needed            1           7   1.0000000000000001E-005
+ Rotation needed            2           4   1.0000000000000001E-005
+ Rotation needed            2           7   1.0000000000000001E-005
+ Rotation needed            3           5   1.0000000000000001E-005
+ Rotation needed            4           7   1.0000000000000001E-005
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1     -677.1621201     451.1448634     233.0634353 0.43E+02 0.81E-01
+ Solve for HF wfn failed, orthogonalizing...
+   2     -677.2033527     450.8298449     233.4429482 0.23E+00 0.37E-03
+   3     -677.1284112     450.7492705     233.4490197 0.25E-01 0.16E-04
+   4     -677.1268219     450.7476338     233.4490723 0.52E-02 0.11E-05
+   5     -677.1267856     450.7476025     233.4490671 0.81E-03 0.27E-06
+   6     -677.1267912     450.7476074     233.4490679 0.11E-03 0.41E-07
+   7     -677.1267905     450.7476069     233.4490677 0.14E-04 0.39E-07
+   8     -677.1267906     450.7476070     233.4490678 0.19E-05 0.40E-07
+   9     -677.1267906     450.7476069     233.4490677 0.69E-06 0.40E-07
+  10     -677.1267906     450.7476069     233.4490677 0.94E-07 0.40E-07
+
+ Hartree-Fock converged!
+      {100|200}= 1.1D-16
+      {100|300}=-2.1D-17
+      {200|300}=-5.1D-17
+
+   10 iterations: (units are Ry and bohr)
+ Energy:    -677.12679061    Ebs:    -450.74760695
+ Eh:         233.44906775    Ex :      -7.06988409
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000        -162.895639
+    |200>      2.000         -17.879201
+    |210>      6.000         -13.644203
+    |300>      2.000          -3.666354      0.512512      1.478423
+    |310>      0.000          -2.146538      0.666756      1.683670
+    |320>      0.000          -1.171315      0.782760      2.270446
+    |400>      0.000          -1.110085      0.933124      3.868923
+
+
+ ===============Configuration 5 SL: Calc ===============
+ Rotation needed            1           4   1.0000000000000001E-005
+  4            118.1525076450 0.225E+01 0.187E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.225E+01 0.187E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.600E+01-0.586E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.600E+01-0.586E+01 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 785   ed =   1.113718   el =   0.600862   eu =   1.626574
+ HF solver failed:  #fails=           1
+ Solve for HF wfn failed, orthogonalizing...
+  4            118.1525076450 0.225E+01 0.187E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.225E+01 0.187E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.600E+01-0.586E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.600E+01-0.586E+01 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 785   ed =   1.113718   el =   0.600862   eu =   1.626574
+ HF solver failed:  #fails=           2
+  4            118.1525076450 0.225E+01 0.187E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.225E+01 0.187E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.119E-01 0.992E-02 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.600E+01-0.586E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.600E+01-0.586E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.556E-01-0.543E-01 0.100E-06  : function truncated in nmrvs
+ method 2  unable to solve equation for electron 2 0
+          nc =   2   nj = 783   ed =   1.113718   el =   0.600862   eu =   1.626574
+ HF solver failed:  #fails=           3
+ method 1  unable to solve equation for electron 1 0
+          nc =   3   nj = 814   ed =  26.069664   el =  22.765058   eu =  29.374269
+ HF solver failed:  #fails=           4
+ Solve for HF wfn failed, orthogonalizing...
+ method 1  unable to solve equation for electron 1 0
+          nc =   3   nj = 814   ed =  26.069663   el =  22.765058   eu =  29.374269
+ HF solver failed:  #fails=           5
+ Solve for HF wfn failed, orthogonalizing...
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1       -8.3738829       7.3193639       1.0545190 0.12E+01 0.41E-04
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.600E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.601E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 785   ed =   1.113648   el =   0.600721   eu =   1.626574
+ HF solver failed:  #fails=           6
+ Solve for HF wfn failed, orthogonalizing...
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.600E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.601E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 785   ed =   1.113648   el =   0.600721   eu =   1.626574
+ HF solver failed:  #fails=           7
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.121E-01 0.100E-01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.600E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.601E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.557E-01-0.544E-01 0.100E-06  : function truncated in nmrvs
+ method 2  unable to solve equation for electron 2 0
+          nc =   2   nj = 784   ed =   1.113648   el =   0.600721   eu =   1.626574
+ HF solver failed:  #fails=           8
+   2       -8.3738825       7.3193631       1.0545194 0.43E-03 0.49E-05
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.600E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.601E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 785   ed =   1.113648   el =   0.600722   eu =   1.626574
+ HF solver failed:  #fails=           9
+ Solve for HF wfn failed, orthogonalizing...
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.600E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.601E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 785   ed =   1.113648   el =   0.600722   eu =   1.626574
+ HF solver failed:  #fails=          10
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.121E-01 0.100E-01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.600E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.601E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.557E-01-0.544E-01 0.100E-06  : function truncated in nmrvs
+ method 2  unable to solve equation for electron 2 0
+          nc =   2   nj = 784   ed =   1.113648   el =   0.600722   eu =   1.626574
+ HF solver failed:  #fails=          11
+   3       -8.3738825       7.3193631       1.0545194 0.59E-06 0.13E-05
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.600E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.601E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 785   ed =   1.113648   el =   0.600722   eu =   1.626574
+ HF solver failed:  #fails=          12
+ Solve for HF wfn failed, orthogonalizing...
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.600E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.601E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+ method 1  unable to solve equation for electron 2 0
+          nc =   2   nj = 785   ed =   1.113648   el =   0.600722   eu =   1.626574
+ HF solver failed:  #fails=          13
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.227E+01 0.188E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450 0.121E-01 0.100E-01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.600E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.601E+01-0.587E+01 0.100E-06  : function truncated in nmrvs
+  4            118.1525076450-0.557E-01-0.544E-01 0.100E-06  : function truncated in nmrvs
+ method 2  unable to solve equation for electron 2 0
+          nc =   2   nj = 784   ed =   1.113648   el =   0.600722   eu =   1.626574
+ HF solver failed:  #fails=          14
+   4       -8.3738825       7.3193631       1.0545194 0.60E-07 0.12E-05
+
+ Hartree-Fock converged!
+
+    4 iterations: (units are Ry and bohr)
+ Energy:      -8.37388251    Ebs:      -7.31936312
+ Eh:           1.05451939    Ex :       0.00000000
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000          -3.659682      0.513672      1.478423
+    |210>      0.000          -2.150063      0.665457      1.683670
+    |320>      0.000          -1.170202      0.784623      2.270446
+    |200>      0.000          -0.626574      0.001386      4.763469
+   ------------------------------------------------
+   ================================================
+
+ ======================================================================== 
+ Begin KE convergence testing
+ ======================================================================== 
+ ----------------------------------------------------------------------
+                     Kinetic energy convergence
+      ==============================|100>==============================
+      Ecut(Ry)  KE/electron(Ry)         KE error/electron (mRy,meV)
+        12       0.789778132                69.341237     943.436065
+        19       0.852438993                 6.680376      90.891190
+        25       0.858461709                 0.657660       8.947928
+        41       0.859046931                 0.072438       0.985573
+      ==============================|210>==============================
+      Ecut(Ry)  KE/electron(Ry)         KE error/electron (mRy,meV)
+         5       1.363771127                69.247770     942.164379
+        17       1.425714190                 7.304706      99.385643
+        30       1.432316049                 0.702848       9.562738
+        40       1.432954585                 0.064311       0.874998
+      ==============================|320>==============================
+      Ecut(Ry)  KE/electron(Ry)         KE error/electron (mRy,meV)
+         8       0.916903453                72.574878     987.432011
+        21       0.982342957                 7.135374      97.081756
+        33       0.988812435                 0.665896       9.059974
+        43       0.989413220                 0.065111       0.885880
+      ==============================|200>==============================
+      Ecut(Ry)  KE/electron(Ry)         KE error/electron (mRy,meV)
+        12       0.789778132                69.341237     943.436065
+        19       0.852438993                 6.680376      90.891190
+        25       0.858461709                 0.657660       8.947928
+        41       0.859046931                 0.072438       0.985573
+
+ ======================================================================== 
+ End KE convergence testing
+ ======================================================================== 
+<<<do_rpt>>>
+<<<do_upf>>>
+------------- closing opium session ------------

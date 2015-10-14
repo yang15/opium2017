@@ -1,0 +1,32 @@
+[Atom]
+Li
+3
+100   2.00   -
+200   0.00   -1.355456
+210   0.091   -
+
+[Pseudo]
+3 1.55 2.20 1.60
+opt
+
+[Optinfo]
+7.07  10
+10.0  10
+7.07  10
+conmax
+
+[Configs]
+1
+#
+100  2.00  -
+200  0.00  -
+210  0.00  -
+
+[XC]
+hf
+
+[KBdesign]
+s                 # local orbital
+1                 # number of aug. operators
+au -15.0 2.5 6.5  # unit(gp or au)  left  right  height(Ry)
+
