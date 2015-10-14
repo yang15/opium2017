@@ -278,9 +278,21 @@ c     ***********************************************************************
            maxim = max(maxim,nmax(m))
          enddo
 
+         do i=1,np
+           rvxc(i) = 0
+           rvx(i) = 0
+           rvc(i) = 0
+           rvdft(i) = 0
+         enddo
+
          call hrtree(maxim,h,r,rsatom,rvh)
 
-         call excorr(maxim,ixc,exccut,rsatom,rvxc,rexc,rvx,rex,rvc,rec,irel)
+         call excorr(maxim,ixc,exccut,rsatom,
+     $        rvxc,rexc,rvx,rex,rvc,rec,irel)
+
+         do i=1,np
+           rvdft(i) = (1.0-exxw)*(rvh(i)+rvx(i)) + rvc(i)
+         enddo
 
          dp1=0.d0
 c         nfails=0

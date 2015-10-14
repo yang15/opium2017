@@ -166,13 +166,13 @@ int read_param(param_t *param, FILE *fp, FILE *fp_log){
   if (streq(param->xcparam, "hy")) param->ixc = 7;
 
   if (param->ixc == 7) {
-    hybrids_.exxw = 0.25;
+    hybrid_.exxw = 0.25;
   }
   else if(param->ixc == -1){
-    hybrids_.exxw = 1.0;
+    hybrid_.exxw = 1.0;
   }
   else{
-    hybrids_.exxw = 0.0;
+    hybrid_.exxw = 0.0;
   }
 
 

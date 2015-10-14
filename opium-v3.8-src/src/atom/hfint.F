@@ -95,9 +95,18 @@ c -------------------------------------------------------------------------
 
       cd=(lo(m)+1.d0/2.d0)**2
       mk=0
+
+      !scale the exx parts
+      do i=1,np
+        yr(i) = yr(i)*exxw
+        x(i) = x(i)*exxw
+      enddo
       
       do i=1,np
-         yk(i)=-2.d0*(rvcore(i,m)-yr(i))*r(i)+cd
+         yk(i)= -2.d0*r(i)*rvcore(i,m)
+     $          +2.d0*r(i)*yr(i)
+     $          +cd
+     $          +rvdft(i)*r(i)*r(i)
          ! LZT says:
          ! Here, rvcore = Z
          ! For hybrid functionals, we want to add to yk the exchange

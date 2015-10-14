@@ -62,7 +62,8 @@ c     -------------------------------------------------------------------------
 c     Internal (Fortran only) common blocks                
 c     -------------------------------------------------------------------------
       common /nlpot1/ Flstar(npdm),phipsref(npdm,n0),phiguess(npdm,n0)
-      common /partpot/ rvh(npdm),rvxc(npdm),rexc(npdm)
+      common /partpot/ rvh(npdm),rvxc(npdm),rexc(npdm),
+     $     rvx(npdm),rex(npdm),rvc(npdm),rec(npdm),rvdft(npdm)
       common /nlcore/ rvloc(npdm)
       common /ipos/ ipos(n0),itermcount
       common /vdir/ vdir(npdm),pold(npdm)
@@ -383,7 +384,8 @@ c     ***********************************************************************
             do i=1,maxim
                rsatom2(i)=rsatom(i)+rscore(i)
             enddo
-            call excorr(maxim,ixc,exccut,rsatom2,rvxc,rexc,irelxc)
+            call excorr(maxim,ixc,exccut,rsatom2,
+     $           rvxc,rexc,rvx,rex,rvc,rec,irelxc)
             
             do i = 1,maxim
                f(i) = 0.5d0 * rvh(i)*rsatom(i)/r(i)
@@ -391,7 +393,8 @@ c     ***********************************************************************
      $              - (rvxc(i)*rsatom(i)+rvh(i)*rsatom(i))/r(i)
             enddo
          else
-            call excorr(maxim,ixc,exccut,rsatom,rvxc,rexc,irelxc)
+            call excorr(maxim,ixc,exccut,rsatom,
+     $           rvxc,rexc,rvx,rex,rvc,rec,irelxc)
             
             do i = 1,maxim
                f(i) = (0.5d0 * rvh(i) + rexc(i) - (rvxc(i)+rvh(i)) ) 
