@@ -117,6 +117,9 @@ c     *************************************************************************
       character*80 file_log
       logical ilast,first
 
+
+      write(*,*) 'starting hfsolve'
+
       vtl=vtol
       etl=etol*10.d0
       ilast=.false.
@@ -239,6 +242,8 @@ c     starting guess for channels which don't have a psp-wfn guess
  33      continue
       enddo
 
+      write(*,*) 'starting iterations'
+
       do niter = 1,maxit
 
 C          if (ipsp.ne.0) then
@@ -289,10 +294,12 @@ c     ***********************************************************************
 
          call excorr(maxim,ixc,exccut,rsatom,
      $        rvxc,rexc,rvx,rex,rvc,rec,irel)
+         
 
          do i=1,np
            rvdft(i) = (1.0-exxw)*(rvh(i)+rvx(i)) + rvc(i)
          enddo
+         
 
          dp1=0.d0
 c         nfails=0
@@ -314,6 +321,7 @@ c            write(7,*) 'NFAILS', nfails
             eold(m) = en(m)
             edmax = max(edif,edmax)
          enddo
+            
 
 c     ***********************************************************************
 c      m loop
@@ -362,16 +370,18 @@ c     ***********************************************************************
  8       format(6x,'least self-consistent function is ',i3,
      $        ' weighted maximum change =',1pd10.2,1pd10.2)
 
-         call hfenergy(ipsp,etot,ehart,exx,ekn)      
+         call hfenergy(ipsp,ixc,exccut,etot,ehart,exx,ekn,irel)      
 
          evir=(etot-ekn)/ekn
          ekn=ekn*2.d0
          etot=etot*2.d0
          ehart=ehart*2.d0
          exx=exx*2.d0
+
+         write(*,*) "etot = ", etot
          
          etot2=etot
-         etot=-ebs-ehart-exx
+         !etot=-ebs-ehart-exx
 
 c         etot2=-ebs-ehart-exx
          edf=etot-etot2
@@ -400,8 +410,8 @@ c     ***********************************************************************
  490        format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7)
  491        format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7,1x,e8.2,1x,e8.2)
          endif
-c         write(7,*) 'CONVV', dvmax,vtl
-c         write(7,*) 'CONVE', edmax,etl
+         write(*,*) 'CONVV', dvmax,vtl
+         write(*,*) 'CONVE', edmax,etl
          if (dvmax.lt.vtl.and.edmax.lt.etl) goto 1000
          
 c     ***********************************************************************

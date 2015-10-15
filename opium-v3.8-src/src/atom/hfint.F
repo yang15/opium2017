@@ -96,12 +96,14 @@ c -------------------------------------------------------------------------
       cd=(lo(m)+1.d0/2.d0)**2
       mk=0
 
+      !write(*,*) 'scaling exx'
       !scale the exx parts
       do i=1,np
         yr(i) = yr(i)*exxw
         x(i) = x(i)*exxw
       enddo
       
+      !write(*,*) 'making yk'
       do i=1,np
          yk(i)= -2.d0*r(i)*rvcore(i,m)
      $          +2.d0*r(i)*yr(i)

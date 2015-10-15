@@ -87,6 +87,7 @@ c -------------------------------------------------------------------------
       fu=eu
       mk=0
       
+      !write(*,*) 'calling hfint'
  17   call hfint(m,ipsp,p,pp,zeff,ed,ntp,azd,deltae,first,eu,em,iprint)
 
       if (imeth.eq.3) goto 111
