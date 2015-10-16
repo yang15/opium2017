@@ -5,11 +5,11 @@ Ca                 # chemical symbol (max. 2 characters)
 200 2.00   -      # reference configuration
 210 6.00   -      # reference configuration
 300 2.00   -      # reference configuration
-310 4.00   -       # reference configuration
-320 1.00   -   
-400 1.00   -      # reference configuration
+310 6.00   -       # reference configuration
+320 0.00   -   
+400 0.10   -      # reference configuration
 [Pseudo]
-4  2.42 2.72 2.80 3.74
+4  2.42 2.72 2.80 5.74
 opt
 [XC]
 hf
@@ -21,17 +21,17 @@ hf
 [Configs]
 3                 # number of valence configurations
 #
-300 2.00   -1.4   # test configuration
-310 6.00   -0.4   # test configuration
-320 0.00   -0.4   # test configuration     
-400 0.00   -0.4   # test configuration 
+300 2.00   -      # test configuration
+310 5.50   -      # test configuration
+320 0.00   -      # test configuration     
+400 0.00   -      # test configuration 
 #
-300 2.00   -1.4   # test configuration
-310 6.00   -0.4   # test configuration
-320 0.00   -0.4   # test configuration
-400 1.00   -0.4   # test configuration    
+300 2.00   -      # test configuration
+310 6.00   -      # test configuration
+320 0.00   -      # test configuration
+400 0.50   -      # test configuration    
 #
-300 2.00   -1.4   # test configuration
-310 6.00   -0.4   # test configuration
-320 0.00   -0.4   # test configuration
-400 2.00   -0.4   # test configuration    
+300 2.00   -      # test configuration
+310 6.00   -      # test configuration
+320 0.00   -      # test configuration
+400 2.00   -      # test configuration    
