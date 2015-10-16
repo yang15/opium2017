@@ -78,6 +78,11 @@ c
       eloc = 0.d0
 
       !set up charge density
+
+      do i = 1,np
+         rsatom(i) = 0
+      enddo
+
       maxim = 0 
       do m=1,norb
         do i = 1,nmax(m)
@@ -95,7 +100,7 @@ c
       do i=1,maxim
         fx(i) = rex(i) * rsatom(i)/r(i)
         fc(i) = rec(i) * rsatom(i)/r(i)
-        fh(i) = -0.5 * rvh(i) * rsatom(i)/r(i)
+        fh(i) = 0.5 * rvh(i) * rsatom(i)/r(i) !rvh = mu_H 
       enddo
 
       exdft = 2
@@ -104,6 +109,11 @@ c
       call radin(r,fc,0,maxim,h,ecdft)
       ehdft = 2
       call radin(r,fh,0,maxim,h,ehdft)
+
+
+      write(*,*) "exdft = ", exdft
+      write(*,*) "ecdft = ", ecdft
+      write(*,*) "ehdft = ", ehdft
 
       etotal = (1.0-exxw)*(exdft+ehdft) + ecdft
       etotal = 0.5*etotal ! units

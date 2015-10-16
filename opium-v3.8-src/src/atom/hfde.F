@@ -86,6 +86,7 @@ c -------------------------------------------------------------------------
          imeth=2
       endif
 
+      !write(*,*) 'calling hfmethd'
       call hfmethd(m,ipsp,p,zeff,azz,fail,iprint)
 
       if (fail) goto 25
