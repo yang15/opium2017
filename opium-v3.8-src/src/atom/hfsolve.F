@@ -120,6 +120,10 @@ c     *************************************************************************
 
       write(*,*) 'starting hfsolve'
 
+
+      open(29,FILE='rnllog.dat')
+      open(30,FILE='rnllog1.dat')
+
       vtl=vtol
       etl=etol*10.d0
       ilast=.false.
@@ -242,9 +246,28 @@ c     starting guess for channels which don't have a psp-wfn guess
  33      continue
       enddo
 
+      !initialize charge density
+      maxim = 0 
+      do m=1,norb
+        do i = 1,nmax(m)
+          rsatom(i) = rsatom(i) + wnl(m) * rnl(i,m)**2 * r(i)
+        enddo
+        maxim = max(maxim,nmax(m))
+      enddo
+
       write(*,*) 'starting iterations'
+      write(*,*) 'np = ', np
 
       do niter = 1,maxit
+      
+        !write(*,*) 'iteration ', niter
+
+        
+         do m=1,norb
+           do i = 1,np
+             write(29,*) rnl(i,m)
+           enddo
+         enddo
 
 C          if (ipsp.ne.0) then
 C             do i=1,norb
@@ -261,6 +284,14 @@ C          endif
 
          call grange
 
+        !do m=1,norb
+        !   do i = 1,np
+        !     write(30,*) rnl(i,m)
+        !   enddo
+        ! enddo
+
+
+
 c     ***********************************************************************
 c     ***********************************************************************
          dp1= 0
@@ -273,8 +304,7 @@ c     ***********************************************************************
             rsatom(i) = 0
          enddo
 
-         !set up dft potentials for hybrid calculations
-
+         !mix charge density
          maxim = 0 
          do m=1,norb
            do i = 1,nmax(m)
@@ -283,6 +313,14 @@ c     ***********************************************************************
            maxim = max(maxim,nmax(m))
          enddo
 
+         alpha = 0.5
+         if (niter.gt.3) then
+            do i = 1,np
+               rsatom(i) = alpha * rsatom(i) + (1.0-alpha) * rsold(i)
+            enddo
+         endif
+ 
+         !set up dft potentials for hybrid calculations
          do i=1,np
            rvxc(i) = 0
            rvx(i) = 0
@@ -323,11 +361,18 @@ c            write(7,*) 'NFAILS', nfails
          enddo
             
 
+         !do m=1,norb
+         !  do i = 1,np
+         !    write(30,*) rnl(i,m)
+         !  enddo
+         !enddo
+
 c     ***********************************************************************
 c      m loop
 c     ***********************************************************************
          
-         if (dp1.lt.vtl) goto 66
+         !if (dp1.lt.vtl) goto 66
+         goto 66
 
          dp1=0.d0
          do mm=1,6
@@ -357,7 +402,15 @@ c     ***********************************************************************
          enddo
  66      continue
 
+         !do m=1,norb
+         !  do i = 1,np
+         !    write(30,*) rnl(i,m)
+         !  enddo
+         !enddo
+
          call orthog(ilast)
+
+
 
          ebs=0.d0
          do m = 1,norb
@@ -378,7 +431,7 @@ c     ***********************************************************************
          ehart=ehart*2.d0
          exx=exx*2.d0
 
-         write(*,*) "etot = ", etot
+         !write(*,*) "etot = ", etot
          
          etot2=etot
          !etot=-ebs-ehart-exx
@@ -410,8 +463,8 @@ c     ***********************************************************************
  490        format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7)
  491        format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7,1x,e8.2,1x,e8.2)
          endif
-         write(*,*) 'CONVV', dvmax,vtl
-         write(*,*) 'CONVE', edmax,etl
+         !write(*,*) 'CONVV', dvmax,vtl
+         !write(*,*) 'CONVE', edmax,etl
          if (dvmax.lt.vtl.and.edmax.lt.etl) goto 1000
          
 c     ***********************************************************************
@@ -421,6 +474,9 @@ c     ***********************************************************************
       enddo
 
  1000 continue
+
+      close(unit=29)
+      close(unit=30)
 
       if (iprint.gt.0)  then
          write(7,*) 

@@ -111,9 +111,10 @@ c
       call radin(r,fh,0,maxim,h,ehdft)
 
 
-      write(*,*) "exdft = ", exdft
-      write(*,*) "ecdft = ", ecdft
-      write(*,*) "ehdft = ", ehdft
+      !write(*,*) "exdft = ", exdft
+      !write(*,*) "ecdft = ", ecdft
+      !write(*,*) "ehdft = ", ehdft
+      !write(*,*) exdft,ecdft,ehdft
 
       etotal = (1.0-exxw)*(exdft+ehdft) + ecdft
       etotal = 0.5*etotal ! units

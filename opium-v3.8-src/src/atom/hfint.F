@@ -86,6 +86,9 @@ c -------------------------------------------------------------------------
       dimension yr(npdm),hq(npdm),xx(npdm)
       logical v2,first
 
+
+      !write(*,*) 'imeth = ', imeth
+
       if (.not.first) goto 17
 
       if (ighost*ighost2.gt.1) goto 17
