@@ -7,9 +7,9 @@ Ca                 # chemical symbol (max. 2 characters)
 300 2.00   -      # reference configuration
 310 6.00   -       # reference configuration
 320 0.00   -   
-400 0.10   -      # reference configuration
+400 0.50   -      # reference configuration
 [Pseudo]
-4  2.42 2.72 2.80 5.74
+3  2.72 2.80 4.44
 opt
 [XC]
 hf
@@ -17,25 +17,17 @@ hf
 7.07  10    # rc[a.u.]  Qc[sqrt(Ry)]  Nb
 7.07  10    # rc[a.u.]  Qc[sqrt(Ry)]  Nb
 7.07  10    # rc[a.u.]  Qc[sqrt(Ry)]  Nb
-7.07  10    # rc[a.u.]  Qc[sqrt(Ry)]  Nb
 [Configs]
-3                 # number of valence configurations
+2                 # number of valence configurations
 #
-300 2.00   -      # test configuration
-310 5.50   -      # test configuration
+310 6.00   -       # reference configuration
 320 0.00   -      # test configuration     
-400 0.00   -      # test configuration 
+400 0.51   -      # test configuration 
 #
-300 2.00   -      # test configuration
-310 6.00   -      # test configuration
+310 6.00   -       # reference configuration
 320 0.00   -      # test configuration
-400 0.50   -      # test configuration    
+400 0.80   -      # test configuration    
 #
-300 2.00   -      # test configuration
-310 6.00   -      # test configuration
+310 6.00   -       # reference configuration
 320 0.00   -      # test configuration
 400 2.00   -      # test configuration    
-[KBdesign]
-s                 # local orbital
-1                 # number of aug. operators
-au -105.01 3.375  15.52  # unit(gp or au)  left  right  height(Ry)

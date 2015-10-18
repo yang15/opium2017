@@ -28,7 +28,7 @@ legend 0.85, 0.8
  s0 line linestyle 1 
  s0 line linewidth 2.0 
  s0 line color 1 
- s0 legend "\xy\f{}\s3s\N\S\-AE\N" 
+ s0 legend "\xy\f{}\s4s\N\S\-AE\N" 
  s1 hidden false 
  s1 type xy 
  s1 symbol 0 
@@ -46,24 +46,31 @@ legend 0.85, 0.8
  s2 line color 3 
  s2 legend "\xy\f{}\s3d\N\S\-AE\N" 
  s3 hidden false 
- s3 type xy 
+ s3 type xydx 
  s3 symbol 0 
  s3 line type 1 
- s3 line linestyle 2 
+ s3 line linestyle 4
  s3 line linewidth 2.0 
  s3 line color 1 
- s3 legend "\xy\f{}\s4s\N\S\-AE\N" 
+ s3 legend "\xy\f{}\s4s\N\S\-NL\N" 
+ s3 errorbar on
+ s3 errorbar place both
+ s3 errorbar color 1
+ s3 errorbar pattern 1
+ s3 errorbar size 10.000000
+ s3 errorbar linewidth 2.0
+ s3 errorbar linestyle 1
  s4 hidden false 
  s4 type xydx 
  s4 symbol 0 
  s4 line type 1 
  s4 line linestyle 4
  s4 line linewidth 2.0 
- s4 line color 1 
- s4 legend "\xy\f{}\s3s\N\S\-NL\N" 
+ s4 line color 2 
+ s4 legend "\xy\f{}\s3p\N\S\-NL\N" 
  s4 errorbar on
  s4 errorbar place both
- s4 errorbar color 1
+ s4 errorbar color 2
  s4 errorbar pattern 1
  s4 errorbar size 10.000000
  s4 errorbar linewidth 2.0
@@ -74,42 +81,12 @@ legend 0.85, 0.8
  s5 line type 1 
  s5 line linestyle 4
  s5 line linewidth 2.0 
- s5 line color 2 
- s5 legend "\xy\f{}\s3p\N\S\-NL\N" 
+ s5 line color 3 
+ s5 legend "\xy\f{}\s3d\N\S\-NL\N" 
  s5 errorbar on
  s5 errorbar place both
- s5 errorbar color 2
+ s5 errorbar color 3
  s5 errorbar pattern 1
  s5 errorbar size 10.000000
  s5 errorbar linewidth 2.0
  s5 errorbar linestyle 1
- s6 hidden false 
- s6 type xydx 
- s6 symbol 0 
- s6 line type 1 
- s6 line linestyle 4
- s6 line linewidth 2.0 
- s6 line color 3 
- s6 legend "\xy\f{}\s3d\N\S\-NL\N" 
- s6 errorbar on
- s6 errorbar place both
- s6 errorbar color 3
- s6 errorbar pattern 1
- s6 errorbar size 10.000000
- s6 errorbar linewidth 2.0
- s6 errorbar linestyle 1
- s7 hidden false 
- s7 type xydx 
- s7 symbol 0 
- s7 line type 1 
- s7 line linestyle 4
- s7 line linewidth 2.0 
- s7 line color 1 
- s7 legend "\xy\f{}\s4s\N\S\-NL\N" 
- s7 errorbar on
- s7 errorbar place both
- s7 errorbar color 1
- s7 errorbar pattern 1
- s7 errorbar size 10.000000
- s7 errorbar linewidth 2.0
- s7 errorbar linestyle 1
