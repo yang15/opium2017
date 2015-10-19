@@ -351,7 +351,8 @@ c     ***********************************************************************
 
          do i=1,np
            rvdft(i) = (1.0-exxw)*(rvh(i)+rvx(i)) + rvc(i)
-           rvdft(i) = 0.5*rvdft(i) !units
+           !rvdft(i) = 0.5*rvdft(i) !units
+           !write(77,*) rvdft(i)
          enddo
 
 

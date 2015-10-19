@@ -118,8 +118,9 @@ c -------------------------------------------------------------------------
          ! Here, rvcore = Z
          ! For hybrid functionals, we want to add to yk the exchange
          ! correlation potential
-         write(77,*) yk(i)
+         write(77,*) -2.0*rvcore(i,m)+2.0*yr(i)
       enddo
+      write(*,*) rvcore(1,m)
 
       zinf=max(0.05d0,rvcore(nmax(m),m)-yr(nmax(m)))
       v=yr(1)/r(1)

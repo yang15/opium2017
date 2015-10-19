@@ -273,6 +273,7 @@ c     ***********************************************************************
                write(77,*) rvps(i,m)
                write(78,*) rnl(i,m)/sqrt(r(i))
             enddo
+            write(*,*) rvcore(1,m)
   
 
             if (m.le.ncore) then
