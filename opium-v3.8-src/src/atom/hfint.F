@@ -80,7 +80,7 @@ c -------------------------------------------------------------------------
       common /ighost/ ighost,ighost2
 
 c -------------------------------------------------------------------------
-      dimension p(npdm), yk(npdm)
+      dimension p(npdm), yk(npdm), yr1(npdm)
       dimension x(npdm)
       dimension xz(npdm),w(npdm),p1(npdm),p2(npdm)
       dimension yr(npdm),hq(npdm),xx(npdm)
@@ -104,18 +104,21 @@ c -------------------------------------------------------------------------
       do i=1,np
         yr(i) = yr(i)*exxw
         x(i) = x(i)*exxw
+
+        yr(i) = yr(i) + 0.5*rvdft(i)
       enddo
       
       !write(*,*) 'making yk'
       do i=1,np
-         yk(i)= -2.d0*r(i)*rvcore(i,m)
-     $          +2.d0*r(i)*yr(i)
+         yk(i)= -2*r(i)*rvcore(i,m)
+     $          +2*r(i)*yr(i)
      $          +cd
-     $          +rvdft(i)*r(i)*r(i)
+     $          +rvdft(i)*r(i)*0
          ! LZT says:
          ! Here, rvcore = Z
          ! For hybrid functionals, we want to add to yk the exchange
          ! correlation potential
+         write(77,*) yk(i)
       enddo
 
       zinf=max(0.05d0,rvcore(nmax(m),m)-yr(nmax(m)))

@@ -177,6 +177,11 @@ c      endif
         rvcoul(i) = rvps(i,1) - rvcore(i,1)
       enddo
 
+      write(*,*) "np = " , np
+      !print potential
+      open(unit=77,file="rvps.dat")
+      open(unit=78,file="rnl.dat")
+
       if (inl.ne.0) then
         write(7,*)"Performing non-local pseudopotential calculation"
       else
@@ -263,6 +268,13 @@ c     Section 3:  call schsl for each orbital & compile charge density.
 c     ***********************************************************************
 
          do m = 1,norb
+
+            do i = 1,np
+               write(77,*) rvps(i,m)
+               write(78,*) rnl(i,m)/sqrt(r(i))
+            enddo
+  
+
             if (m.le.ncore) then
                ibound=1
             else
@@ -523,6 +535,9 @@ c     911 = terminal error - exit scpot
          enddo
 
       enddo
+
+      close(77)
+      close(78)
 
  505  format(1x,'!WARNING! positive eigenvalue predicted',
      $     ' in scpot  nlm=',i4,5x,'new e =',e13.7)

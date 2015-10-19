@@ -122,7 +122,6 @@ c     count the number of nodes
      :     d10.2,' ed =',d10.2,' eu =',d10.2,' em =',d10.2,
      :     ' deltae =',d10.2)
 
-      
       if (iabs(ncc-node).eq.1.and.dabs(deltae/ed).gt.0.02d0) goto 46
 
       if ((ncc-node).gt.0) then
@@ -157,6 +156,7 @@ c     count the number of nodes
             p(j)=-p(j)
          enddo
          pp=-2.d0-pp
+
  51      continue
       endif
       goto 111

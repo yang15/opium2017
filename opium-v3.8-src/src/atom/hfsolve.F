@@ -121,8 +121,12 @@ c     *************************************************************************
       write(*,*) 'starting hfsolve'
 
 
-      open(29,FILE='rnllog.dat')
-      open(30,FILE='rnllog1.dat')
+      open(27,FILE='rnllog27.dat')
+      open(28,FILE='rnllog28.dat')
+      open(29,FILE='rnllog29.dat')
+      open(30,FILE='rnllog30.dat')
+      open(31,FILE='rnllog31.dat')
+      open(32,FILE='rnllog32.dat')
 
       vtl=vtol
       etl=etol*10.d0
@@ -258,14 +262,17 @@ c     starting guess for channels which don't have a psp-wfn guess
       write(*,*) 'starting iterations'
       write(*,*) 'np = ', np
 
+      open(unit=77,file="rvps.dat")
+      open(unit=78,file="rnl.dat")
+
       do niter = 1,maxit
       
-        !write(*,*) 'iteration ', niter
+        write(*,*) 'iteration ', niter
 
         
          do m=1,norb
            do i = 1,np
-             write(29,*) rnl(i,m)
+             write(78,*) rnl(i,m)
            enddo
          enddo
 
@@ -284,11 +291,11 @@ C          endif
 
          call grange
 
-        !do m=1,norb
-        !   do i = 1,np
-        !     write(30,*) rnl(i,m)
-        !   enddo
-        ! enddo
+        do m=1,norb
+           do i = 1,np
+             write(27,*) rnl(i,m)
+           enddo
+         enddo
 
 
 
@@ -332,12 +339,22 @@ c     ***********************************************************************
 
          call excorr(maxim,ixc,exccut,rsatom,
      $        rvxc,rexc,rvx,rex,rvc,rec,irel)
+
+         do m=1,norb
+           do i = 1,np
+             write(28,*) rnl(i,m)
+           enddo
+         enddo
+
+
          
 
          do i=1,np
            rvdft(i) = (1.0-exxw)*(rvh(i)+rvx(i)) + rvc(i)
+           rvdft(i) = 0.5*rvdft(i) !units
          enddo
-         
+
+
 
          dp1=0.d0
 c         nfails=0
@@ -475,8 +492,14 @@ c     ***********************************************************************
 
  1000 continue
 
+      close(unit=27)
+      close(unit=28)
       close(unit=29)
       close(unit=30)
+      close(unit=31)
+      close(unit=32)
+      close(unit=77)
+      close(unit=78)
 
       if (iprint.gt.0)  then
          write(7,*) 

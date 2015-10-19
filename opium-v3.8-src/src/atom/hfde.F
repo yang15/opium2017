@@ -86,8 +86,24 @@ c -------------------------------------------------------------------------
          imeth=2
       endif
 
+      do mm=1,norb
+        do i = 1,np
+          write(29,*) rnl(i,mm)
+        enddo
+      enddo
+
+
+
       !write(*,*) 'calling hfmethd'
       call hfmethd(m,ipsp,p,zeff,azz,fail,iprint)
+
+      do mm=1,norb
+        do i = 1,np
+          write(30,*) rnl(i,mm)
+        enddo
+      enddo
+
+
 
       if (fail) goto 25
 
@@ -132,11 +148,11 @@ c      write(7,*) 'ACC', m,acc(m),c,ipr
 
       if (acc(m).gt.0.99999) acc(m)=0.50
 
-      !do mm=1,norb
-      !  do i = 1,np
-      !    write(29,*) rnl(i,mm)
-      !  enddo
-      !enddo
+      do mm=1,norb
+        do i = 1,np
+          write(31,*) rnl(i,mm)
+        enddo
+      enddo
 
 
       dp=0.d0
@@ -151,11 +167,11 @@ c      do j=1,np
       enddo
 
       !different in 4th decimal
-      !do mm=1,norb
-      !  do i = 1,np
-      !    write(30,*) rnl(i,mm)
-      !  enddo
-      !enddo
+      do mm=1,norb
+        do i = 1,np
+          write(32,*) rnl(i,mm)
+        enddo
+      enddo
 
 
 c      write(7,*) 'before de adj', m,az(m),azz
@@ -163,17 +179,17 @@ c      write(7,*) 'before de adj', m,az(m),azz
       az(m)=cd*azz+c*az(m)
       azz=az(m)
 
-      !different in 4th deicmal
-      do mm=1,norb
-         do i = 1,np
-            write(30,*) rnl(i,mm)
-         enddo
-      enddo
+      !same
+      !do mm=1,norb
+      !   do i = 1,np
+      !      write(30,*) rnl(i,mm)
+      !   enddo
+      !enddo
 
 
 
       if (wnl(m).lt.1e-6) then
-         !dpw=dp/0.001
+         dpw=dp/0.001
       else
          dpw=dp/sqrt(wnl(m))
       endif
@@ -204,7 +220,7 @@ c               write(7,*) 'orth', j,azz,az(j),rx
 
  63   format(6x,'<',i3,'|',i3,'>=',1pd8.1)      
 
-      !different in 4th decimal
+      !same
       !do mm=1,norb
       !  do i = 1,np
       !    write(30,*) rnl(i,mm)
