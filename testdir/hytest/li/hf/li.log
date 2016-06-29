@@ -1,0 +1,77 @@
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+           OPIUM  Version:        3.8                             
+           =====================================            
+ See http://opium.sourceforge.net for help and information                 
+ Copyright 2009 : The OPIUM project                         
+
+ Compile host     : hopper11
+ Compile OS       : Linux 3.0.101-0.46-default x86_64
+ Compile date     : Fri Aug 14 13:03:36 PDT 2015
+
+ Execution host   : hopper11
+ time of execution: Fri Aug 14 13:24:35 2015
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Reading parameter file:  <li.param> ... 
+ File prefix             : li 
+ Element                 : Lithium    (Li) 
+ Z                       : 3 
+ 
+ Number of all-electron orbitals   : 2 
+ Number of pseudo       orbitals   : 1 
+ 
+ Pseudopotential is non-relativistic 
+ Using Hartree-Fock Exchange (Beta!!)                
+ HF pseudopotential NOT being smoothed! 
+ The s potential is used for the KB construction 
+ Optimized (RRKJ) pseudopotential method will be used 
+
+ nl    cutoff radii    q-max      # bessel functions
+ 2s       0.800        7.000              10 
+
+ Reference Configuration: core  <-/-> valence 
+ 1s2  <-/-> 2s1 
+
+ Grid definitions: 
+ a_grid=1.00e-04    b_grid=6.50e-03    # points=2209 
+ r(1)=6.93e-05      r(np)=1.19e+02    
+
+ dEmax tolerance:  1.00e-08      dVmax tolerance:  1.00e-06     
+
+ Starting calculation...
+
+ ======================================================================== 
+ Begin AE calculation
+ ======================================================================== 
+ Performing non-relativistic AE calculation...  
+ is make clean necessary?  
+ Rotation needed            1           2  1.000000000000000E-005
+ 
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1      -14.9124486      10.3480528       4.5923031 0.39E+00 0.11E-01
+ Rotation needed            1           2 -5.268904327375887E-004
+   2      -14.8654715      10.3036315       4.5904290 0.47E-02 0.70E-05
+ Rotation needed            1           2  2.864000687806493E-003
+   3      -14.8654560      10.3036140       4.5904316 0.18E-05 0.11E-05
+ Rotation needed            1           2  2.863503121241626E-003
+   4      -14.8654539      10.3036118       4.5904317 0.22E-06 0.28E-06
+ Rotation needed            1           2  2.863559756913663E-003
+   5      -14.8654540      10.3036118       4.5904318 0.55E-08 0.96E-07
+ 
+ Hartree-Fock converged!
+      {100|200}=-4.6D-17
+ 
+    5 iterations: (units are Ry and bohr)
+ Energy:     -14.86545399    Ebs:     -10.30361179
+ Eh:           4.59043182    Ex :      -0.02858962
+ Ehardft:           0.00000000
+ 
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000          -4.955483
+    |200>      1.000          -0.392646      0.987861      3.092425
+
+ ======================================================================== 
+ End AE calculation
+ ======================================================================== 
+------------- closing opium session ------------

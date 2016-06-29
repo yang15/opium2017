@@ -1,0 +1,97 @@
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+           OPIUM  Version:        3.8                             
+           =====================================            
+ See http://opium.sourceforge.net for help and information                 
+ Copyright 2009 : The OPIUM project                         
+
+ Compile host     : hopper11
+ Compile OS       : Linux 3.0.101-0.46-default x86_64
+ Compile date     : Fri Aug 14 12:06:20 PDT 2015
+
+ Execution host   : hopper11
+ time of execution: Fri Aug 14 12:57:45 2015
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Reading parameter file:  <al.param> ... 
+ File prefix             : al 
+ Element                 : Aluminum   (Al) 
+ Z                       : 13 
+ 
+ Number of all-electron orbitals   : 5 
+ Number of pseudo       orbitals   : 2 
+ 
+ Pseudopotential is non-relativistic 
+ Using Hartree-Fock Exchange (Beta!!)                
+ HF pseudopotential NOT being smoothed! 
+ The s potential is used for the KB construction 
+ Optimized (RRKJ) pseudopotential method will be used 
+
+ nl    cutoff radii    q-max      # bessel functions
+ 3s       1.000        7.000              10 
+ 3p       1.000        0.000              0 
+
+ Reference Configuration: core  <-/-> valence 
+ 1s2  2s2  2p6  <-/-> 3s2  3p1 
+
+ Grid definitions: 
+ a_grid=1.00e-04    b_grid=6.50e-03    # points=2285 
+ r(1)=4.25e-05      r(np)=1.19e+02    
+
+ dEmax tolerance:  1.00e-08      dVmax tolerance:  1.00e-06     
+
+ Starting calculation...
+
+ ======================================================================== 
+ Begin AE calculation
+ ======================================================================== 
+ Performing non-relativistic AE calculation...  
+ is make clean necessary?  
+ Rotation needed            1           2  1.000000000000000E-005
+ Rotation needed            1           4  1.000000000000000E-005
+ Rotation needed            2           4  1.000000000000000E-005
+ Rotation needed            3           5  1.000000000000000E-005
+ 
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1     -503.0659093     315.1204539     193.6603153 0.88E+00 0.20E+00
+ Rotation needed            3           5 -2.512701825914835E-004
+   2     -484.5376047     295.0758985     195.1794499 0.17E+00 0.17E-01
+ Rotation needed            3           5  4.254168764455593E-004
+   3     -483.7610335     294.2730342     195.2081134 0.19E-01 0.41E-03
+ Rotation needed            3           5  1.276764286102331E-003
+   4     -483.7551539     294.2620625     195.2134445 0.84E-03 0.45E-04
+ Rotation needed            3           5  1.336063411074588E-003
+   5     -483.7534146     294.2600905     195.2136840 0.45E-04 0.62E-05
+ Rotation needed            3           5  1.340348428387056E-003
+   6     -483.7534842     294.2600852     195.2137622 0.16E-05 0.34E-05
+ Rotation needed            3           5  1.340615080022139E-003
+   7     -483.7534041     294.2600193     195.2137476 0.78E-06 0.33E-05
+ Rotation needed            3           5  1.340656317606147E-003
+   8     -483.7534227     294.2600285     195.2137574 0.19E-06 0.33E-05
+ Rotation needed            3           5  1.340661331092310E-003
+   9     -483.7534146     294.2600206     195.2137572 0.95E-07 0.33E-05
+ Rotation needed            3           5  1.340666542930717E-003
+  10     -483.7534158     294.2600205     195.2137585 0.20E-07 0.23E-05
+ 
+ Hartree-Fock converged!
+      {100|200}=-6.1D-18
+      {100|300}=-2.9D-17
+      {200|300}=-3.9D-17
+      {210|310}=-5.7D-17
+ 
+   10 iterations: (units are Ry and bohr)
+ Energy:    -483.75341578    Ebs:    -294.26002048
+ Eh:         195.21375854    Ex :      -5.72036325
+ Ehardft:           0.00000000
+ 
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000        -117.002054
+    |200>      2.000          -9.821344
+    |210>      6.000          -6.436607
+    |300>      2.000          -0.786841      0.972617      2.091071
+    |310>      1.000          -0.419902      0.984614      2.694403
+
+ ======================================================================== 
+ End AE calculation
+ ======================================================================== 
+------------- closing opium session ------------

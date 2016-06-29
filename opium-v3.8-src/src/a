@@ -1,5 +1,0 @@
-main/opium.c:#include "do_ae.h"
-main/opium.c:    do_ae(param, logfile);
-main/opium.c:    if (verbosity) do_ae_report(stdout);
-main/opium.c:    do_ae_report(fp);
-main/opium.c:    do_ae(param, logfile); if (verbosity) do_ae_report(stdout);

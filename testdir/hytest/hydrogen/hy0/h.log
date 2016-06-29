@@ -1,0 +1,73 @@
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+           OPIUM  Version:        3.8                             
+           =====================================            
+ See http://opium.sourceforge.net for help and information                 
+ Copyright 2009 : The OPIUM project                         
+
+ Compile host     : hopper11
+ Compile OS       : Linux 3.0.101-0.46-default x86_64
+ Compile date     : Fri Aug 14 12:06:20 PDT 2015
+
+ Execution host   : hopper11
+ time of execution: Fri Aug 14 12:21:26 2015
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Reading parameter file:  <h.param> ... 
+ File prefix             : h 
+ Element                 : Hydrogen   (H) 
+ Z                       : 1 
+ 
+ Number of all-electron orbitals   : 1 
+ Number of pseudo       orbitals   : 1 
+ 
+ Pseudopotential is non-relativistic 
+ The s potential is used for the KB construction 
+ Optimized (RRKJ) pseudopotential method will be used 
+
+ nl    cutoff radii    q-max      # bessel functions
+ 1s       0.800        7.000              10 
+
+ Reference Configuration: core  <-/-> valence 
+ <-/-> 1s1 
+
+ Grid definitions: 
+ a_grid=1.00e-04    b_grid=6.50e-03    # points=2153 
+ r(1)=1.00e-04      r(np)=1.19e+02    
+
+ dEmax tolerance:  1.00e-08      dVmax tolerance:  1.00e-06     
+
+ Starting calculation...
+
+ ======================================================================== 
+ Begin AE calculation
+ ======================================================================== 
+ Performing non-relativistic AE calculation...  
+ is make clean necessary?  
+ ---------Eigenvalue guesses---------
+ 1s            -1.00000000
+ 
+ iter       Etot             Ebs             Ehxc       Ehart       Excdft       de_max   dv_max
+   1       -1.0000000      -1.0000000      -0.4859162      -0.6250000       0.1390838 0.00E+00 0.20E+01
+ etothf =   0.999999999992803     
+ eharhf =  -0.625000000032354     
+ exx =   0.625000000032354     
+ eknhf =   -1.00000000008538     
+   2       -1.0000000      -1.0000000      -0.4859162      -0.6250000       0.1390838 0.25E+00 0.10E+01
+ etothf =   0.999999999992796     
+ eharhf =  -0.625000000008556     
+ exx =   0.625000000008556     
+ eknhf =   -1.00000000002744     
+ 
+    2 iterations: (units are Ry and bohr)
+ Energy:      -1.00000000  Ebs:      -1.00000000  Ehxc:      -0.48591617
+ Eh    :       0.62500000  Exc:      -0.54774127
+ Ehardft :      -0.62500000  Excdft:       0.13908383
+ 
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      1.000          -0.747647      0.785089      1.000160
+
+ ======================================================================== 
+ End AE calculation
+ ======================================================================== 
+------------- closing opium session ------------

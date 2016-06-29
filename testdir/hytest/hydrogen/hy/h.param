@@ -1,0 +1,18 @@
+[Atom]
+H
+1
+100   1.00   -
+
+[Pseudo]
+1  0.80
+opt
+
+[Optinfo]
+7.0  10
+conmax
+
+[XC]
+hy
+
+[Grid]
+2402 .0001 .0065  

@@ -1,0 +1,107 @@
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+           OPIUM  Version:        3.8                             
+           =====================================            
+ See http://opium.sourceforge.net for help and information                 
+ Copyright 2009 : The OPIUM project                         
+
+ Compile host     : hopper11
+ Compile OS       : Linux 3.0.101-0.46-default x86_64
+ Compile date     : Fri Aug 14 13:26:12 PDT 2015
+
+ Execution host   : hopper11
+ time of execution: Fri Aug 14 13:29:32 2015
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Reading parameter file:  <li.param> ... 
+ File prefix             : li 
+ Element                 : Lithium    (Li) 
+ Z                       : 3 
+ 
+ Number of all-electron orbitals   : 2 
+ Number of pseudo       orbitals   : 1 
+ 
+ Pseudopotential is non-relativistic 
+ The s potential is used for the KB construction 
+ Optimized (RRKJ) pseudopotential method will be used 
+
+ nl    cutoff radii    q-max      # bessel functions
+ 2s       0.800        7.000              10 
+
+ Reference Configuration: core  <-/-> valence 
+ 1s2  <-/-> 2s1 
+
+ Grid definitions: 
+ a_grid=1.00e-04    b_grid=6.50e-03    # points=2209 
+ r(1)=6.93e-05      r(np)=1.19e+02    
+
+ dEmax tolerance:  1.00e-08      dVmax tolerance:  1.00e-06     
+
+ Starting calculation...
+
+ ======================================================================== 
+ Begin AE calculation
+ ======================================================================== 
+ Performing non-relativistic AE calculation...  
+ is make clean necessary?  
+ ---------Eigenvalue guesses---------
+ 1s            -9.00000000
+ 2s            -0.56250000
+ Rotation needed            1           2  1.000000000000000E-005
+ 
+ iter       Etot             Ebs             Ehxc       Ehart       Excdft       de_max   dv_max
+   1      -14.9124480     -10.3480524      -7.1664845      -8.1305767       0.9640922 0.44E+00 0.20E+01
+ etothf =    14.8654298047392     
+ eharhf =   -8.13057672814088     
+ exx =    3.56618104364925     
+ eknhf =   -14.8957516112335     
+ Rotation needed            1           2 -5.268904327375887E-004
+   2      -14.8654715     -10.3036315      -7.1611208      -8.1242137       0.9630929 0.25E+00 0.10E+01
+ etothf =    14.8654538618629     
+ eharhf =   -8.12421369629195     
+ exx =    3.56237376586747     
+ eknhf =   -14.8654666908451     
+ Rotation needed            1           2  2.863999922389467E-003
+   3      -14.8654535     -10.3036118      -7.1611216      -8.1242141       0.9630925 0.35E+00 0.27E-02
+ etothf =    14.8654538618811     
+ eharhf =   -8.12421414681057     
+ exx =    3.56237246261892     
+ eknhf =   -14.8654532910361     
+ Rotation needed            1           2  2.863503120986533E-003
+   4      -14.8654542     -10.3036122      -7.1611221      -8.1242146       0.9630925 0.53E-01 0.28E-04
+ etothf =    14.8654538618816     
+ eharhf =   -8.12421460673852     
+ exx =    3.56237254696831     
+ eknhf =   -14.8654536878097     
+ Rotation needed            1           2  2.863557105987283E-003
+   5      -14.8654540     -10.3036118      -7.1611222      -8.1242148       0.9630926 0.56E-02 0.14E-04
+ etothf =    14.8654538618803     
+ eharhf =   -8.12421477756007     
+ exx =    3.56237257581972     
+ eknhf =   -14.8654538168498     
+ Rotation needed            1           2  2.863563456848453E-003
+   6      -14.8654539     -10.3036117      -7.1611223      -8.1242148       0.9630926 0.56E-03 0.70E-05
+ etothf =    14.8654538618797     
+ eharhf =   -8.12421482347501     
+ exx =    3.56237258284705     
+ eknhf =   -14.8654538467415     
+ Rotation needed            1           2  2.863565908483391E-003
+   7      -14.8654539     -10.3036116      -7.1611223      -8.1242148       0.9630926 0.56E-04 0.35E-05
+ etothf =    14.8654538618794     
+ eharhf =   -8.12421483273548     
+ exx =    3.56237258417254     
+ eknhf =   -14.8654538524512     
+ 
+    7 iterations: (units are Ry and bohr)
+ Energy:     -14.86545387  Ebs:     -10.30361162  Ehxc:      -7.16112228
+ Eh    :       8.12421483  Exc:      -3.63425756
+ Ehardft :      -8.12421483  Excdft:       0.96309256
+ 
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100>      2.000          -3.785404
+    |200>      1.000          -0.209404      0.987861      3.092425
+
+ ======================================================================== 
+ End AE calculation
+ ======================================================================== 
+------------- closing opium session ------------
