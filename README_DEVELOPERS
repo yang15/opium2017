@@ -1,0 +1,4 @@
+Rules for developers:
+
+* Do not track object, config, and testing files as this clutters git diff between commits
+* Developers may freely branch from the master version, but if they want their changes to be included in the public release, they must carefully test and debug their code before merging into master.  
