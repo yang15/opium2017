@@ -1,16 +1,16 @@
 *.o
 
-opium-v3.8-src/config.log
-opium-v3.8-src/config.status
-opium-v3.8-src/makevars
-opium-v3.8-src/opium
-opium-v3.8-src/src/FlexiLib/objects
-opium-v3.8-src/src/atom/objects
-opium-v3.8-src/src/lapack/objects
-opium-v3.8-src/src/main/objects
-opium-v3.8-src/src/output/objects
-opium-v3.8-src/src/plot/objects
-opium-v3.8-src/src/pseudo/objects
-opium-v3.8-src/src/uniPPlib/objects
+config.log
+config.status
+makevars
+opium
+src/FlexiLib/objects
+src/atom/objects
+src/lapack/objects
+src/main/objects
+src/output/objects
+src/plot/objects
+src/pseudo/objects
+src/uniPPlib/objects
 
-pseudopot/
+psp/
