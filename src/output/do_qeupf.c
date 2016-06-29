@@ -179,7 +179,7 @@ int do_qeupf(param_t *param, FILE *fp_param, char *logfile){
     fprintf(fp,"SLA  PZ   NOGX NOGC    PZ   Exchange-Correlation functional\n");
   } else if (param->ixc == 2) {
     fprintf(fp,"SLA  PW   PBE  PBE     PBE  Exchange-Correlation functional\n");
-  } else if (param->ixc == 2) {
+  } else if (param->ixc == 5) {
     fprintf(fp,"SLA  PW   PSX  PSC     PBESOL  Exchange-Correlation functional\n");
   } else if (param->ixc == -1) {
     fprintf(fp,"HF  NOC   NOGX  NOGC     HF  Exchange-Correlation functional\n"); //will change later
