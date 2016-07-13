@@ -439,7 +439,7 @@ void writeNL(param_t *param) {
   }
   fclose(fp);
 
-  if (param->ixc >= 0) {
+  if (param->ixc >= 0 && param->ixc != 7) {
     sprintf(filename, "%s.vi_plt", param->name);
     fp = fopen(filename, "a");
     for (j=0;j<param->ngrid;j++){
@@ -512,7 +512,7 @@ void writeSL(param_t *param) {
   }
   fclose(fp);
 
-  if (param->ixc >= 0) {
+  if (param->ixc >= 0 && param->ixc != 7) {
     sprintf(filename, "%s.vi_plt", param->name);
     fp = fopen(filename, "a");
     for (j=0;j<param->ngrid;j++){
