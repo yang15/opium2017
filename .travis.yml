@@ -1,5 +1,3 @@
-# After changing this file, check it on:
-#   http://lint.travis-ci.org/
 language: c
 
 sudo: required
@@ -9,11 +7,11 @@ sudo: required
 # Run jobs on container-based infrastructure, can be overridden per job
 #sudo: required 
 
-env:
-    matrix:
-        BUILD_SCRIPT="make clean ; ./configure ; make"
-        CODE_COVERAGE="no"
-        DEPLOY_DOCUMENTATION="no"
+#env:
+#    matrix:
+#        BUILD_SCRIPT="make clean ; ./configure ; make"
+#        CODE_COVERAGE="no"
+#        DEPLOY_DOCUMENTATION="no"
 
 before_install:
     - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
@@ -26,8 +24,8 @@ before_install:
     fi
 
 script:
-    - echo $BUILD_SCRIPT
-    - bash <<<$BUILD_SCRIPT
+    #    - echo $BUILD_SCRIPT
+    - make clean && ./configure && make
     - opium testdir/C/GGA/c.param testdir/C/GGA/c.log ae
 
 notifications:
