@@ -1,14 +1,16 @@
 # After changing this file, check it on:
 #   http://lint.travis-ci.org/
-
-language: fortran 
+matrix:
+  include:
+    - language: fortran
+    - language: c
 
 # Run jobs on container-based infrastructure, can be overridden per job
 sudo: required 
 
 env:
     matrix:
-        BUILD_SCRIPT="make clean; ./configure; make"
+        BUILD_SCRIPT="make clean ; ./configure ; make"
         CODE_COVERAGE="no"
         DEPLOY_DOCUMENTATION="no"
 
