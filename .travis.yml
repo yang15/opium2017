@@ -7,6 +7,7 @@ before_install:
 
 script:
     - ./configure && make
+    - opium testdir/C/GGA/c.param testdir/C/GGA/c.log ae
 
 notifications:
   email: false
