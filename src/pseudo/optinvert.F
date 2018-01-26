@@ -83,7 +83,7 @@ c Invert the Numerov difference equivalent of the Schrodinger equation.
 c Make j loop go for more than 20 iterations if the potential does not
 c give the proper eigenvalue out of scheq.
 
-      do j = 1,20
+      do j = 1,100
 
          do i = 2,i0-1,2
             pv(i) = (d0(i-1) - pv(i-1) - pv(i+1))/10.0

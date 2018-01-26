@@ -142,6 +142,7 @@ c      endif
       endif
 
       if (inl.ne.0) then
+          write(*,*) 'ipsp=',ipsp
          do i=1,np
             do j=1,norb
                phipsref(i,j)=rnl(i,j)
@@ -182,130 +183,6 @@ c      endif
         rvcoul(i) = rvps(i,1) - rvcore(i,1)
       enddo
 
-      !initialize to hydrogenic wfn
-c     if (ixc.eq.7) then
-c         write(*,*) "initialize to hydrogenic wfn"
-c     do i=1,norb        
-c        !en(i)=-en(i)
-c        meth(i)=1
-c        do j=1,norb
-c           emattest(i,j)=0.d0
-c           if (lo(i).eq.lo(j)) emattest(i,j)=1e-5
-c        enddo
-
-c        emattest(i,i)=en(i)
-c        
-c        nmax(i)=np
-c     enddo
-
-c     if (ipsp.eq.0) then
-c        do j=1,norb
-c           do jj=1,norb
-c              emattest(j,jj)=0.d0
-c              if (lo(j).eq.lo(jj)) emattest(j,jj)=1e-5
-c           enddo
-c           emattest(j,j)=en(j)
-c           do i = 1,np
-c              rnla(i,j) = 0
-c              rnlb(i,j) = 0
-c              rnl(i,j) = 0
-c           enddo
-c        enddo
-c     endif
-
-
-c     ss=0.d0
-c     do i=1,ncore
-c        imf=4*lo(i)+2
-c        s(i)=ss+imf/2.d0
-c        ss=ss+imf
-c     enddo
-c     do i=ncore+1,norb
-c        s(i)=ss+(wnl(i)-1.d0)/2
-c        ss=ss+wnl(i)
-c     enddo
-
-c     if (ipsp.eq.0) then
-c        do i=1,norb
-c           pnf=hnorm(no(i),lo(i),z-s(i))
-c           do k=1,np
-c              rnl(k,i)=pnf*hwf(no(i),lo(i),z-s(i),r(k))/sqrt(r(k))
-c           enddo
-c           az(i)=pnf*(2.d0*(z-s(i)/2)/no(i))**(lo(i)+1.d0)
-c        enddo
-c     else
-c        do i=1,norb
-c           lcount(lo(i)+1)=lcount(lo(i)+1)+1
-c           pnf=hnorm(no(i),lo(i),zeff-s(i))
-
-c           if (lcount(lo(i)+1).gt.1) then
-c              do k=1,np
-c                rnl(k,i)=pnf*hwf(no(i),lo(i),zeff-s(i),r(k))/sqrt(r(k))
-c              enddo
-c           endif
-c           az(i)=1.d0
-c        enddo
-c     endif
-
-c     do i=1,norb
-c        if (no(i).eq.0.and.lo(i).eq.0) goto 33
-c        do j=1,i-1
-c           if (emattest(i,j).gt.0.d0) then
-c              rx=quadr(i,j,0)
-c              if (abs(rx).gt.1e-8) then
-c                 rx2=sqrt(1.d0-rx**2)
-c                 if (rnl(50,i)-rx*rnl(50,j).lt.0.d0) rx2=-rx2
-c                 do k=1,np
-c                    rnl(k,i)=(rnl(k,i)-rx*rnl(k,j))/rx2
-c                 enddo
-c              endif
-c           endif
-c        enddo
-c33      continue
-c     enddo
-
-c     do j=1,norb
-c        do i = 1,np
-c         rnl(i,j)=rnl(i,j)*sqrt(r(i))
-c        enddo
-c     enddo
-
-
-c     !initialize charge density
-c     maxim = 0 
-c     do m=1,norb
-c       do i = 1,nmax(m)
-c         rsatom(i) = rsatom(i) + wnl(m) * rnl(i,m)**2
-c       enddo
-c       maxim = max(maxim,nmax(m))
-c     enddo
-
-c     !initialize potential
-
-c     call hrtree(maxim,h,r,rsatom,rvh)
-c     write(*,*) "dftsolve excorr 1"
-c     call excorr(maxim,ixc,exccut,rsatom,
-c    $           rvxc,rexc,rvx,rex,rvc,rec,irelxc)
-
-c     do i = 1,np
-c        do iorb = 1,norb
-c           !rvps(i,iorb)=rvcore(i,iorb)+rvh(i)+rvxc(i)
-c           rvps(i,iorb)=rvcore(i,iorb)+rvh(i)+rvx(i)+rvc(i)
-c        enddo
-c     enddo
-
-
-c      write(*,*) "np = " , np
-c     write(*,*) "initialized to hydrogenic wfc ends!"
-c     endif
-
-
-c      write(*,*) "np = " , np
-      !print potential
-c      open(unit=77,file="rvps.dat")
-c      open(unit=78,file="rnl.dat")
-c      open(unit=79,file="p.dat")
-c      open(unit=80,file="rsatom.dat")
 
       if (inl.ne.0) then
         write(7,*)"Performing non-local pseudopotential calculation"
@@ -396,22 +273,31 @@ c         enddo
 c     ***********************************************************************
 c     Section 3:  call schsl for each orbital & compile charge density.
 c     ***********************************************************************
-
+      
+c       open(unit=39,file="dft_nl_rnl",form="formatted")
          do m = 1,norb
-
-c            do i = 1,np
-c               write(77,*) rvps(i,m)
-c               write(78,*) rnl(i,m)/sqrt(r(i))
-c            enddo
-            !write(*,*) rvcore(1,m)
-  
+c   ------------------------------------------------------------------
+c   test for wavefunction modification
+c   ------------------------------------------------------------------
+            if (ipsp.ne.0.and.inl.ne.0) then
+c               if (no(iloc).ne.no(m).and.lo(iloc).eq.lo(m)) then
+                    write(*,*) 'dftnl=',no(m),lo(m)
+                    do i=1,np
+                      write(45,*) r(i),phipsref(i,m) 
+                    enddo
+                    write(45,*) '@'
+c               endif
+            endif
+c   ------------------------------------------------------------------
+c   end test for wavefunction modification
+c   ------------------------------------------------------------------
 
             if (m.le.ncore) then
                ibound=1
             else
                ibound=ibd(m-ncore)               
             endif
-
+c           write(7,*)"ifc=",ifc
             if (ifc.eq.0.or.m.gt.ncore) then
 
 c     if not a frozen core calc or if valence
@@ -421,6 +307,13 @@ c     if non-rel
                   if (inl.ne.0) then
 c     if non-local
                      call applyaug(rvloc,rvps(1,iloc))
+                     if (no(m).eq.no(iloc).and.lo(m).eq.lo(iloc)) then
+                     do i=1,np
+                        write(39,*) r(i),rvloc(i)/r(i),m
+                     enddo
+                     write(39,*) '@'
+                     endif
+                     
                      do i=1,np
                         Flstar(i) = (rvps(i,m) - rvloc(i))
      $                       *phipsref(i,m)/r(i)
@@ -439,14 +332,23 @@ c     911 = terminal error - exit scpot
                      do i = 1, np
                         phiguess(i,m) = p(i)
                      enddo
-                     
+c                     write(39,*)'norb=',norb
+c                     write(39,*)'m=',m
+           do i = 1,np
+c            if (rnl(i,m).lt.0.0) then
+c            write(39,*) r(i),-rnl(i,m)*sqrt(r(i))
+c            else
+c             write(39,*) r(i),rnl(i,m)*sqrt(r(i))
+c            endif
+           enddo
+c          write(39,*)'@'
+                    
                   else
 c     if AE or local 
                      call schsl(m,no(m),lo(m),en(m),nmax(m),
      $                    rvps(1,m),p,igh,ibound)
 
                      if (itermcount.gt.50) then
-                         write(7,*) "line 445"
                          goto 911
                      endif
 c     911 = terminal error - exit scpot
@@ -468,7 +370,6 @@ c     911 = terminal error - exit scpot
                   edif = abs((en(m) - eold(m))/eold(m))
                   eold(m) = en(m)
                   edmax = max(edif,edmax)
-                  
                else
 c     if relativistic
                   
@@ -1078,6 +979,7 @@ c     911 = terminal error - exit scpot
       
       call flush(7)
       close(unit=7)
+c     close(unit=39)
 
 
  370  format(1x,i2,2i5,2f6.1,f10.4)

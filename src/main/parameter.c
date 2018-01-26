@@ -163,10 +163,11 @@ int read_param(param_t *param, FILE *fp, FILE *fp_log){
   /*  if (streq(param->xcparam, "vwn5lda")) param->ixc = 6;
       if (streq(param->xcparam, "vwn5")) param->ixc = 6;*/
   if (streq(param->xcparam, "hf")) param->ixc = -1;
-  if (streq(param->xcparam, "hy")) param->ixc = 7;
+  if (streq(param->xcparam, "pbe0")) param->ixc = 7;
 
   if (param->ixc == 7) {
     hybrid_.exxw = 0.25;
+//    hybrid_.exxw = 0.0;
     hybrid_.ecw = 1.0;
 
     //hybrid_.exxw = 1.0;

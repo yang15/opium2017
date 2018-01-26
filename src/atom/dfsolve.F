@@ -33,7 +33,8 @@ c
       subroutine dfsolve(zeff,ixc,exccut,ipsp,ifc,iexit,irel,iprint)
      
 c     *************************************************************************
-c     determine the self-consistent solution
+c     determine the self-consistent solution for relativistic
+c     calculations
 c     *************************************************************************
      
       implicit double precision (a-h,o-z)

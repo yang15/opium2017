@@ -24,7 +24,7 @@
 *                                                                           *
 ****************************************************************************/
 
-#define VERSION "3.9"
+#define VERSION "4.0"
 #ifndef CHOST
 #define CHOST "unknown"
 #endif

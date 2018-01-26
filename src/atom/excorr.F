@@ -222,13 +222,9 @@ c     This is PW92LDA X - just for terms needed in rel correction
      $              +phi2*(g-1.5*v*dg-1.5*d2g*u))
             endif
          endif
-c         write(*,*) "compute rexc"
          rexc(i)=2.d0*r(i)*(ex*rwgt+(1.d0-rwgt)*exlda)
-c         write(*,*) "compute rvxc"
          rvxc(i)=2.d0*r(i)*(vx*rwgt+(1.d0-rwgt)*vxlda)
-c         write(*,*) "rex(i)=rexc(i)"
          rex(i)=rexc(i) 
-c         write(*,*) "rvx(i)=rvxc(i)"
          rvx(i)=rvxc(i) 
 
          if (ixc.eq.0) then
@@ -271,15 +267,11 @@ c     This is PBEsol GGA C
          rvc(i)=r(i)*vc*2.d0 
 
          rexc(i)=rexc(i)+r(i)*ec*2.d0 
-c         write(*,*) "rexc=", r(i),ec,rexc(i)
          rvxc(i)=rvxc(i)+r(i)*vc*2.d0 
-c         write(*,*) "rvxc=", r(i),vc,rvxc(i)
       enddo
-      !write(*,*) "ictype=",ictype
       if (ictype.eq.1) then
          do i=1,maxim
             if (r(i).gt.-exccut) then 
-                write(*,*) "-exccut",excut
                icut=i
                goto 922
             endif
@@ -288,9 +280,7 @@ c         write(*,*) "rvxc=", r(i),vc,rvxc(i)
 
          !smoothen 
          call smoothen(rvxc,icut,r)
-c         write(*,*)  "smoothen rvxc"
          call smoothen(rexc,icut,r)
-c         write(*,*)  "smoothen rexc"
          call smoothen(rvx,icut,r)
          call smoothen(rex,icut,r)
          call smoothen(rvc,icut,r)

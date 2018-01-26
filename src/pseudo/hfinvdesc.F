@@ -326,6 +326,12 @@ c      endif
 
       close(7)
 
+      do j=1,norb
+         do i=1,np
+            write(55,*) r(i),rvcore(i,j),rvps(i,j)
+         enddo
+      enddo
+      !rvcore == descreened rvps at this point
       call hfsolve(zeff,ixc,exccut,ipsp,ifc,iexit,irel,iprint)
 
       open(unit=7,file=file_log,form='formatted',access='append')

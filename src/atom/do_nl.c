@@ -105,6 +105,9 @@ int do_nl(param_t *param, char *logfile, int insl ){
   irelxc=0;
   iprint=1;
   if (param->ixc < 0 || param->ixc == 7) {
+    if (param->ixc == 7) {
+        hfsolve_(&zeff,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&iprint);
+    } else {
     nlpot2_.inl = 0;  
     if (insl != 0 ){
       printf("!!NOTE!!: All Hartree-Fock and hybrid functional tests are done with the semi-local form of the potential \n");
@@ -121,6 +124,7 @@ int do_nl(param_t *param, char *logfile, int insl ){
     insl=0;
     //printf("zeff=%lf ixc=%i exccut_temp=%lf ipsp=%i ifc=%i iexit=%i irel=%i iprint=%i",zeff,param->ixc,exccut_temp,ipsp,ifc,iexit,irel,iprint);
     hfsolve_(&zeff,&param->ixc,&exccut_temp,&ipsp,&ifc,&iexit,&irel,&iprint);
+    }
   }else {
     //printf("do nonlocal \n");
     //printf("zeff=%lf ixc=%i exccut_temp=%lf ipsp=%i ifc=%i iexit=%i irel=%i irelxc=%i iprint=%i",zeff,param->ixc,exccut_temp,ipsp,ifc,iexit,irel,irelxc,iprint);
@@ -439,7 +443,7 @@ void writeNL(param_t *param) {
   }
   fclose(fp);
 
-  if (param->ixc >= 0 && param->ixc != 7) {
+  if (param->ixc >= 0 ) {
     sprintf(filename, "%s.vi_plt", param->name);
     fp = fopen(filename, "a");
     for (j=0;j<param->ngrid;j++){
@@ -451,7 +455,11 @@ void writeNL(param_t *param) {
     sprintf(filename, "%s.vs_plt", param->name);
     fp = fopen(filename, "a");
     for (j=0;j<param->ngrid;j++){
-      fprintf(fp,"%20.10lg %20.10lg 0.0\n",grid_.r[j],(nlcore_.rvloc[j]+totpot_.rvcoul[j])/grid_.r[j]);
+        if (param->ixc == 7) {
+            fprintf(fp,"%20.10lg %20.10lg 0.0\n",grid_.r[j],(totpot_.rvcore[i][j])/grid_.r[j]);
+        } else {
+            fprintf(fp,"%20.10lg %20.10lg 0.0\n",grid_.r[j],(nlcore_.rvloc[j]+totpot_.rvcoul[j])/grid_.r[j]);
+        }
     }
     fprintf(fp,"@ \n");
     fclose(fp);
@@ -462,13 +470,21 @@ void writeSL(param_t *param) {
   int i,j;
   int iset=0;
   FILE *fp;
+  FILE *fpa;
   char filename[160];
+  char filenamea[160];
 
   if (param->nboxes == 0) {
     sprintf(filename, "%s.loc", param->name);
+    sprintf(filenamea, "%s.loca", param->name);
     fp = fopen(filename, "wb");
+    fpa = fopen(filenamea, "w");
     fwrite(nlcore_.rvloc, sizeof(double), param->ngrid, fp);
+    for (j=0;j<param->ngrid;j++){
+            fprintf(fpa,"%20.10lg %20.10lg\n",grid_.r[j],nlcore_.rvloc[j]);
+    }
     fclose(fp);
+    fclose(fpa);
   } 
 
   sprintf(filename, "%s.psi_sl", param->name);

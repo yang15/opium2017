@@ -74,17 +74,18 @@ c     *************************************************************************
       dimension iwork(7*7 + 7*numfn0 +3)
       dimension work(2*numfn0**2+4*7*numfn0+11*7+27*numfn0+13)
       dimension error(10),fun(1),pttbl(1,1),icntyp(7),confun(7,numfn0+1)
-
+      !initialization potential and charge density
       do i = 1,np
-        rv(i) = -z-z+rvcoul(i)
-        if (i.gt.maxim) rv(i) = -xion-xion
+        rv(i) = -z-z+rvcoul(i) !coulomb potential
+        if (i.gt.maxim) rv(i) = -xion-xion !coulomb potential
         if (nnn.eq.1) rsval(i)=0.0
       enddo
 
       do j = 1,numfn
         do i = 1,np
-          x = xroot(j) * r(i)
-          bir(j,i) = besfn(x,ll)
+          x = xroot(j) * r(i) ! xroot(j) is wavevector q_i founded by
+                              ! xroots.F
+          bir(j,i) = besfn(x,ll) !bessel function at each r_grid
         enddo
       enddo
  
@@ -92,7 +93,8 @@ c     *************************************************************************
         xguess(i) = 0.0
       enddo
 
-      call guess(xguess)
+      call guess(xguess)! guess for what? eigenvalue or trial
+                        ! wavefunction
 
 cEJW added this for internal debugging (lets you load bessel functions)
 
@@ -112,7 +114,7 @@ cEJW added this for internal debugging (lets you load bessel functions)
       if (meth.eq.0) then
         call conmaxdriver(xguess)
       else if(meth.gt.0) then
-        call newmin(numfn,xguess,sumt)
+        call newmin(numfn,xguess,sumt)  !minimization method
         call fnset(numfn,numgr,pttbl,iptb,indm,xguess,7,1,icntyp,confun)
       endif
  912  continue

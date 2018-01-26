@@ -324,7 +324,6 @@ c     is the same as it is for the initial j-averaged wavefunctions
          enddo
 
 c     3a: Find new xc and hartree potentials since rho has changed
-         write(*,*) "average excorr 1"
          call excorr (np,ixc,exccut,rsatom,rvxct,rexct,
      $        rvxt,rext,rvct,rect,irelxc)
          call hrtree (np,h,r,rsatom,rvh)
@@ -560,7 +559,6 @@ c     compute new v_xc and v_h
       call radin(r,rsatom,0,maxim,h,pow)
       pow = 2.0
       call radin(r,rscore,0,maxim,h,pow)
-         write(*,*) "average excorr 2"
       call excorr (maxim,ixc,exccut,rsatom,rvxct,rexct,
      $     rvxt,rext,rvct,rect,irelxc)
       call hrtree (maxim,h,r,rsatom,rvh)

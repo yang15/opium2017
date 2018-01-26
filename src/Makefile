@@ -2,7 +2,7 @@ SHELL=/bin/sh
 
 include ../makevars
 
-subdirs=main atom pseudo output plot FlexiLib uniPPlib lapack
+subdirs=main atom pseudo output plot FlexiLib uniPPlib lapack 
 
 .PHONEY=all-subdirs
 

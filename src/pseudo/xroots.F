@@ -39,7 +39,10 @@ c     internal common block
       common /xcon1/ xcon1
 
       irtgr = numfn * 10
-      xlder = slope/wavrc
+      xlder = slope/wavrc ! slope is the 1st derivative of
+                          ! AE-wavefunction at rc
+                          ! wavrc = rnl(rc) 
+                          ! xlder=1/phi*(dphi/drc)
       xcon1 = xlder * rc
       pi = 3.14159265358979323d0
       j = 0

@@ -24,9 +24,14 @@ c
 c -------------------------------------------------------------------------
 c     External (shared between C and Fortran) common blocks
 c -------------------------------------------------------------------------
+      common /aorb/ ncore,nval,norb,nlm(n0),
+     $     no(n0),lo(n0),nmax(n0),maxim
       common /consts/ etol,vtol,maxit,isoft
       common /grid/ h,r1,z,r(npdm),np
       common /nlpot2/ inl,indrc(n0),IB,ID,IG
+      common /local/ nlghost(n0),iloc,idesign
+      common /nlcore/ rvloc(npdm)
+      common /totpot/ rvcore(npdm,n0),rvps(npdm,n0),rvcoul(npdm)
 
       common /etrial/ etrial(n0)
 c -------------------------------------------------------------------------
@@ -71,6 +76,14 @@ c -------------------------------------------------------------------------
       
       if (inl.ne.0) call nlcont(lang,phiguess(1,iorb),phipsref(1,iorb),
      $     flstar,wnlfract)
+      if (inl.ne.0) then
+         if (lo(iorb).eq.lo(iloc).and.no(iorb).eq.no(iloc)) then
+             do i=1,np
+          write(50,*)r(i),rvps(i,iorb),rvloc(i)+wnlfract(i)*r(i)**2
+             enddo
+             write(50,*) '@'
+         endif
+      endif
 
       if (bound) call coarseadj(nqn,lang,ei,rv,wnlfract)
 
@@ -89,9 +102,7 @@ c         endif
 
          iskip=0
          if (bound.and.iclose.eq.0) then
-            !write(*,*) "newmatch",ei
             call newmatch(nqn,lang,ei,imax,imat,rv,wnlfract,iskip)
-            !write(*,*) "after newmatch",ei,iskip
             if (iskip.eq.1) then 
                iskipcount=iskipcount+1
                if (iskipcount.eq.itmax) then 
@@ -105,10 +116,8 @@ c         endif
             imat=np-200
             imax=np-200
          endif            
-         !write(*,*) "before outward"
          call outward(ei,lang,rv,p,phom,pinhom,
      $        flstar,phipsref(1,iorb),imat,xt,wt)
-         !write(*,*) "after outward", ei
 
          if (bound) call cntnodes(nqn,lang,ei,p,imat,node,iskip,iclose)
          if (iterm.eq.1) goto 912
@@ -342,21 +351,17 @@ c     if (ei.ge.-etol.or.ncross.gt.node) then
       enddo
       nr=4
       ider=0
-      !write(*,*) "logder 1", ei
       call logder(ei,z,lang,isoft,rv,a,r,np,h,r(imat),dl,npl0,nr,
      $     phom,wfld,ider,de,qp,dld)
       
-      !write(*,*) "after logder 1", ei
       if (inl.ne.0) then
 
          do i=1,np
             g(i)=-fs(i)*sqrt(r(i))*r(i)
          enddo
 
-         !write(*,*) "logder 2", ei
          call logder(ei,z,lang,isoft,rv,g,r,np,h,r(imat),dl,npl0,nr,
      $        pinhom,wfld,ider,de,qp,dld)
-         !write(*,*) "after logder 2", ei
       endif
 
       do i = 1, imat

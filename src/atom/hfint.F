@@ -64,6 +64,9 @@ c -------------------------------------------------------------------------
       common /edi/ e(n0,n0)
       common /ahf/ s(n0),az(n0),acc(n0)
       common /hybrid/ exxw,ecw
+      common /nlcore/ rvloc(npdm)
+      common /nlpot2/ inl,indrc(n0),IB,ID,IG
+      common /local/ nlghost(n0),iloc,idesign
 
 c -------------------------------------------------------------------------
 c     Internal (Fortran only) common blocks                
@@ -78,16 +81,16 @@ c -------------------------------------------------------------------------
       common /iskip/ iskip
       common /ameth/ meth(n0),imeth
       common /ighost/ ighost,ighost2
+      common /nlpot1/ Flstar(npdm),phipsref(npdm,n0),phiguess(npdm,n0)
 
 c -------------------------------------------------------------------------
-      dimension p(npdm), yk(npdm), yr1(npdm)
+      dimension p(npdm), yk(npdm), yr1(npdm),wnlfract(npdm)
       dimension x(npdm)
       dimension xz(npdm),w(npdm),p1(npdm),p2(npdm)
       dimension yr(npdm),hq(npdm),xx(npdm)
       logical v2,first
 
 
-      !write(*,*) 'imeth = ', imeth
 
       if (.not.first) goto 17
 
@@ -99,16 +102,56 @@ c -------------------------------------------------------------------------
       cd=(lo(m)+1.d0/2.d0)**2
       mk=0
 
+      do i = 1,np
+        wnlfract(i)=0.0
+      enddo
+       open(unit=40,file="hfint_rvloc",form="formatted")
       ! X is scaled in xch.F
       ! Y is scaled in potl.F
-            
-      !write(*,*) 'making yk'
-      do i=1,np
+c     adding nonlocal potential      
+      if(ipsp.ne.0) then
+          if(inl.ne.0) then
+              call nlcont(lo(m),phiguess(1,m),phipsref(1,m),
+     $         Flstar,wnlfract)
+c         if(inl.ne.0.and.lo(m).eq.lo(iloc).and.no(m).eq.no(iloc)) then
+c             write(*,*)'hfint,iloc=',iloc
+          do i=1,np
+         yk(i)=-2.d0*r(i)*rvloc(i)
+     $    -2.d0*wnlfract(i)*(r(i)**2)
+c        yk(i)= -2.d0*r(i)*rvcore(i,m)
+     $          +2.d0*r(i)*yr(i)
+     $          +cd
+          enddo
+c    -------------------------------------------------------------------             
+c    test print start 
+         if (lo(m).eq.lo(iloc).and.no(m).ne.no(iloc)) then
+             do i=1,np
+          write(40,*)r(i),rvloc(i)+wnlfract(i)*r(i)**2
+             enddo
+          write(40,*)'@'
+         endif
+c    test print end
+c    -------------------------------------------------------------------             
+          else
+          do i=1,np
          yk(i)= -2.d0*r(i)*rvcore(i,m)
      $          +2.d0*r(i)*yr(i)
      $          +cd
          ! Here, rvcore = Z
+          enddo
+          endif
+      else          
+      do i=1,np
+         yk(i)= -2.d0*r(i)*rvcore(i,m)
+     $          +2.d0*r(i)*yr(i)
+     $          +cd
+c        if(ipsp.ne.0.and.inl.ne.0) then
+c        write(40,*)r(i),yk(i)
+c        endif
+         ! Here, rvcore = Z
       enddo
+c     write(40,*)'@'
+      endif
 
 
       zinf=max(0.05d0,rvcore(nmax(m),m)-yr(nmax(m)))
@@ -185,7 +228,6 @@ c -------------------------------------------------------------------------
       enddo
       ed=fl/(cden*ch)
 
-      !write(*,*) 'rnl(100,1)=' , rnl(100,1)
 
       if (ed.lt.em) then
          ed=em
@@ -407,6 +449,7 @@ c      write(7,9955) m,pp,del1,delh
       delta = delta - pdef(i)
       mm = m
 
+c     close(unit=40)
       return
 23    if (iprint.gt.0) write (7,24) morb,r(np),pdef(np)+pdef(np-1),
      $     pdef(np-1)+pdef(np-2),tol

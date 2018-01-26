@@ -103,9 +103,11 @@ int do_ps(param_t *param, char *logfile){
   psdat_.nll = param->nll;    
 
   
-  if ( (streq(param->xcparam,"hf") || streq(param->xcparam,"hy")) && (param->qpopt > 0)) 
-    hfsmooth_(&param->qpopt,param->rlocalr,&param->ixc,&param->qptol);
-      
+  if ( (streq(param->xcparam,"hf") || streq(param->xcparam,"pbe0")) && (param->qpopt > 0)) 
+  {  
+      hfsmooth_(&param->qpopt,param->rlocalr,&param->ixc,&param->qptol);
+      printf("enter here\n");
+  }
   rp=write_reportps(param,rp);
   writePS(param);
 

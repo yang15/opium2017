@@ -292,6 +292,7 @@ int do_qeupf(param_t *param, FILE *fp_param, char *logfile){
       for (i=0;i<param->ngrid;i++){  
         //nlcore not initialized for HY or HF here
         if (param->ixc == 7 || param->ixc == -1){
+//        if (param->ixc == -1){
             beta[i]=rnl[j][i]*(rvcore[j][i]-rvcore[param->localind][i])/rr[i];
         } else {
 	beta[i]=rnl[j][i]*(rvcore[j][i]-nlcore[i])/rr[i];

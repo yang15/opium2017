@@ -89,7 +89,6 @@ c -------------------------------------------------------------------------
 
       
  17   call hfint(m,ipsp,p,pp,zeff,ed,ntp,azd,deltae,first,eu,em,iprint)
-      !write(*,*) 'called hfint, m=', m
 
       if (imeth.eq.3) goto 111
 
@@ -123,7 +122,6 @@ c     count the number of nodes
      :     d10.2,' ed =',d10.2,' eu =',d10.2,' em =',d10.2,
      :     ' deltae =',d10.2)
 
-      !write(*,*) node, ncc, eu,em
 
       if (iabs(ncc-node).eq.1.and.dabs(deltae/ed).gt.0.02d0) goto 46
 
