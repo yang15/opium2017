@@ -10,6 +10,8 @@ script:
       #    - ./opium testdir/C/GGA/c.param testdir/C/GGA/c.log ae
     - cd testdir/C/GGA
     - ../../../opium c c.log ae
+    - grep points c.log > testpoints
+    - diff testpoints points 
 
 notifications:
   email: false
