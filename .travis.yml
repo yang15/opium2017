@@ -6,8 +6,10 @@ before_install:
          sudo apt-get install gfortran
 
 script:
-    - ./configure && make
-    - ./opium testdir/C/GGA/c.param testdir/C/GGA/c.log ae
+    #    - ./configure && make
+    #    - ./opium testdir/C/GGA/c.param testdir/C/GGA/c.log ae
+    - cd testdir/C/GGA
+    - ../../../opium c c.log ae
 
 notifications:
   email: false
