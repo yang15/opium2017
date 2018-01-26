@@ -2,8 +2,12 @@
 #   http://lint.travis-ci.org/
 language: c
 
+sudo: required
+
+   #language: c
+
 # Run jobs on container-based infrastructure, can be overridden per job
-sudo: required 
+#sudo: required 
 
 env:
     matrix:
@@ -14,7 +18,8 @@ env:
 before_install:
     - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
          sudo apt-get update -qq;
-         sudo apt-get install -y gfortran libblas-dev liblapack-dev;
+         sudo apt-get install gfortran
+         # sudo apt-get install -y gfortran libblas-dev liblapack-dev;
          sudo ln -s /usr/lib/gcc/x86_64-linux-gnu/$(gfortran -dumpversion | cut -f1,2 -d.)/libgfortran.so /usr/local/lib;
       else
         brew install gcc;
