@@ -1,8 +1,12 @@
 language: c
 
+sudo: required
+
+before_install:
+         sudo apt-get install gfortran
+
 script:
     - make clean && ./configure && make
-    - ./opium testdir/C/GGA/c.param testdir/C/GGA/c.log ae
 
 notifications:
   email: false
