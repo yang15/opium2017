@@ -1,15 +1,5 @@
 language: c
 
-matrix:
-  include:
-    - os: osx
-      osx_image: xcode8
-      env:
-        - MATRIX_EVAL="brew install gcc && CC=gcc-7 && CXX=g++-7"
-
-before_install:
-    - eval "${MATRIX_EVAL}"
-
 script:
     - make clean && ./configure && make
     - ./opium testdir/C/GGA/c.param testdir/C/GGA/c.log ae
