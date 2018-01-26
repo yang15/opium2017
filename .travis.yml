@@ -1,33 +1,24 @@
-language: c
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode8
+      env:
+        - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
 
-sudo: required
+    - os: osx
+      osx_image: xcode8
+      env:
+        - MATRIX_EVAL="brew install gcc5 && CC=gcc-5 && CXX=g++-5"
 
-   #language: c
+    - os: osx
+      osx_image: xcode8
+      env:
+        - MATRIX_EVAL="brew install gcc6 && CC=gcc-6 && CXX=g++-6"
 
-# Run jobs on container-based infrastructure, can be overridden per job
-#sudo: required 
-
-#env:
-#    matrix:
-#        BUILD_SCRIPT="make clean ; ./configure ; make"
-#        CODE_COVERAGE="no"
-#        DEPLOY_DOCUMENTATION="no"
+    - os: osx
+      osx_image: xcode8
+      env:
+        - MATRIX_EVAL="brew install gcc && CC=gcc-7 && CXX=g++-7"
 
 before_install:
-    - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-         sudo apt-get update -qq;
-         sudo apt-get install gfortran
-         # sudo apt-get install -y gfortran libblas-dev liblapack-dev;
-         sudo ln -s /usr/lib/gcc/x86_64-linux-gnu/$(gfortran -dumpversion | cut -f1,2 -d.)/libgfortran.so /usr/local/lib;
-      else
-        brew install gcc;
-    fi
-
-script:
-    #    - echo $BUILD_SCRIPT
-    - make clean && ./configure && make
-    - opium testdir/C/GGA/c.param testdir/C/GGA/c.log ae
-
-notifications:
-  email: false
-
+    - eval "${MATRIX_EVAL}"
