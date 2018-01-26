@@ -6,7 +6,7 @@ before_install:
          sudo apt-get install gfortran
 
 script:
-    - make clean && ./configure && make
+    - ./configure && make
 
 notifications:
   email: false
