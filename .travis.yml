@@ -1,12 +1,10 @@
-matrix:
-    - language: c
-    - langrage: python
-      python: 3.6
+language: c
 
 sudo: required
 
 before_install:
          sudo apt-get install gfortran
+         sudo apt-get install python 
 
 script:
     - ./configure && make
