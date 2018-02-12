@@ -10,10 +10,9 @@ script:
     - cp opium testdir/O/GGA/
       # - ./opium testdir/O/GGA/o.param testdir/O/GGA/o.log ae
     - cd testdir/O/GGA
-    - ls reference
-      #    - ./opium o o.log ae
-      #    - grep -B6 'End AE calculation' o.log > alleEng
-      #    - diff alleEng refence/alleEng 
+    - ./opium o o.log ae
+    - grep -B6 'End AE calculation' o.log > alleEng
+    - diff alleEng refence/alleEng 
 
 notifications:
   email: false
