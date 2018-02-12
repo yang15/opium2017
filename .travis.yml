@@ -4,8 +4,9 @@ sudo: required
 
 before_install:
     - sudo apt-get install gfortran
-    - sudo apt-get install python 
-    - sudo apt-get install numpy 
+    - sudo apt-get install anaconda
+    - conda install python
+    - conda install numpy
 
 script:
     - ./configure && make
