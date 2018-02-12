@@ -12,7 +12,7 @@ script:
     - cd testdir/O/GGA
     - ./opium o o.log ae
     - grep -B6 'End AE calculation' o.log > alleEng
-    - diff alleEng refence/alleEng 
+    - diff alleEng reference/alleEng 
 
 notifications:
   email: false
