@@ -1,0 +1,1102 @@
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+           OPIUM  Version:        3.7                             
+           =====================================            
+ See http://opium.sourceforge.net for help and information                 
+ Copyright 2009 : The OPIUM project                         
+
+ Compile host     : vagvlan567.0906.wlan.wireless-pennnet.upenn.edu
+ Compile OS       : Darwin 14.4.0 i386
+ Compile date     : Wed Aug  5 13:43:13 EDT 2015
+
+ Execution host   : modv-ve509-0611.apn.wlan.upenn.edu
+ time of execution: Thu Dec 14 11:51:05 2017
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Reading parameter file:  <pt.param> ... 
+ File prefix             : pt 
+ Element                 : Platinum   (Pt) 
+ Z                       : 78 
+ 
+ Number of all-electron orbitals   : 15 
+ Number of pseudo       orbitals   : 3 
+ 
+ Fully relativistic pseudopotential 
+ Relativistic corrections applied to XC potential 
+ GGA smoothed from 0 to 0.001000 bohr using switch to LDA 
+ The s potential is used for the KB construction 
+ Optimized (RRKJ) pseudopotential method will be used 
+
+ nl    cutoff radii    q-max      # bessel functions
+ 6s       2.250        5.500              10 
+ 6p       2.300        3.000              10 
+ 5d       2.200        5.800              10 
+
+ Reference Configuration: core  <-/-> valence 
+ 1s2  2s2  2p6  3s2  3p6  3d10  4s2  4p6  5s2  5p6  4d10  4f14  <-/-> 6s0.25  6p0  5d9.75 
+
+ Grid definitions: 
+ a_grid=1.00e-04    b_grid=6.50e-03    # points=2376 
+ r(1)=2.34e-05      r(np)=1.19e+02    
+
+ dEmax tolerance:  1.00e-08      dVmax tolerance:  1.00e-06     
+
+ Starting calculation...
+
+ ======================================================================== 
+ Begin AE calculation
+ ======================================================================== 
+ Performing relativistic AE calculation...  
+ ---------Eigenvalue guesses---------
+ 1s         -6084.00000000
+ 2s         -1521.00000000
+ 2p         -1521.00000000
+ 2p         -1521.00000000
+ 3s          -676.00000000
+ 3p          -676.00000000
+ 3p          -676.00000000
+ 3d          -676.00000000
+ 3d          -676.00000000
+ 4s          -380.25000000
+ 4p          -380.25000000
+ 4p          -380.25000000
+ 5s          -243.36000000
+ 5p          -243.36000000
+ 5p          -243.36000000
+ 4d          -380.25000000
+ 4d          -380.25000000
+ 4f          -380.25000000
+ 4f          -380.25000000
+ 6s          -169.00000000
+ 6p          -169.00000000
+ 6p          -169.00000000
+ 5d          -243.36000000
+ 5d          -243.36000000
+
+ iter       Etot             Ebs             Ehxc       de_max   dv_max
+   1   -38623.4837236  -23666.5377123  -14956.9460113 0.10E+01 0.55E+01
+ !WARNING! positive eigenvalue predicted in scpot  nlm= 520     new e =-.1855219E+03
+ !WARNING! positive eigenvalue predicted in scpot  nlm= 520     new e =-.1855219E+03
+   2   -36844.1317029  -22863.8325561  -13980.2991468 0.93E+00 0.35E+01
+   3   -37089.8577813  -22776.8804671  -14312.9773141 0.79E+01 0.19E+01
+   4   -36873.9308236  -22624.8313672  -14249.0994565 0.56E+00 0.52E+00
+   5   -36797.3874002  -22602.5390584  -14194.8483418 0.70E+00 0.37E+00
+   6   -36815.8523404  -22625.0709230  -14190.7814175 0.34E+00 0.26E+00
+   7   -36864.4646682  -22647.5560629  -14216.9086053 0.51E+00 0.22E+00
+   8   -36857.5081258  -22637.8790739  -14219.6290518 0.13E+00 0.13E+00
+   9   -36841.9955908  -22629.8813410  -14212.1142498 0.13E+00 0.17E-01
+  10   -36836.0455539  -22628.9281746  -14207.1173794 0.47E-01 0.33E-01
+  11   -36837.8240346  -22631.0236730  -14206.8003616 0.25E-01 0.19E-01
+  12   -36843.1632205  -22633.7094946  -14209.4537259 0.33E-01 0.20E-01
+  13   -36842.5168842  -22632.7545542  -14209.7623300 0.15E-01 0.12E-01
+  14   -36839.4414549  -22631.2184334  -14208.2230216 0.24E-01 0.12E-01
+  15   -36839.8345962  -22631.7717266  -14208.0628696 0.86E-02 0.70E-02
+  16   -36840.7316003  -22632.2376868  -14208.4939135 0.71E-02 0.29E-03
+  17   -36841.0694435  -22632.2959612  -14208.7734822 0.81E-03 0.21E-02
+  18   -36840.9696457  -22632.1814857  -14208.7881600 0.19E-02 0.11E-02
+  19   -36840.6803269  -22632.0424305  -14208.6378964 0.24E-02 0.12E-02
+  20   -36840.7141425  -22632.0931916  -14208.6209509 0.83E-03 0.71E-03
+  21   -36840.8784896  -22632.1710606  -14208.7074290 0.13E-02 0.68E-03
+  22   -36840.8593833  -22632.1426206  -14208.7167626 0.47E-03 0.40E-03
+  23   -36840.8111367  -22632.1183371  -14208.6927996 0.40E-03 0.16E-04
+  24   -36840.7931604  -22632.1159491  -14208.6772113 0.49E-04 0.12E-03
+  25   -36840.7992687  -22632.1227683  -14208.6765004 0.11E-03 0.66E-04
+  26   -36840.8082844  -22632.1272992  -14208.6809851 0.73E-04 0.22E-05
+  27   -36840.8112522  -22632.1276587  -14208.6835935 0.76E-05 0.20E-04
+  28   -36840.8100735  -22632.1264740  -14208.6835995 0.17E-04 0.10E-04
+  29   -36840.8085484  -22632.1257426  -14208.6828058 0.11E-04 0.85E-06
+  30   -36840.8081086  -22632.1257201  -14208.6823885 0.28E-06 0.36E-05
+  31   -36840.8083449  -22632.1259310  -14208.6824139 0.34E-05 0.16E-05
+  32   -36840.8086031  -22632.1260472  -14208.6825559 0.19E-05 0.25E-06
+  33   -36840.8086653  -22632.1260425  -14208.6826228 0.38E-07 0.63E-06
+  34   -36840.8086182  -22632.1260037  -14208.6826144 0.55E-06 0.25E-06
+  35   -36840.8085739  -22632.1259845  -14208.6825894 0.27E-06 0.65E-07
+  36   -36840.8085649  -22632.1259861  -14208.6825788 0.37E-07 0.11E-06
+  37   -36840.8085737  -22632.1259929  -14208.6825808 0.11E-06 0.40E-07
+  38   -36840.8085810  -22632.1259959  -14208.6825851 0.47E-07 0.14E-07
+  39   -36840.8085822  -22632.1259955  -14208.6825868 0.79E-08 0.19E-07
+
+   39 iterations: (units are Ry and bohr)
+ Energy:  -36840.80858222  Ebs:  -22632.12599547  Ehxc:  -14208.68258675
+ Eh    :   14369.32021429  Exc:    -662.38638395
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100 >      2.000       -5728.028707
+    |200 >      2.000       -1006.056817
+    |210->      2.000        -963.692353
+    |210+>      4.000        -837.997125
+    |300 >      2.000        -236.318659
+    |310->      2.000        -217.444992
+    |310+>      4.000        -189.779791
+    |320->      4.000        -158.680562
+    |320+>      6.000        -152.696952
+    |400 >      2.000         -50.669881
+    |410->      2.000         -42.677595
+    |410+>      4.000         -36.087221
+    |500 >      2.000          -7.302375
+    |510->      2.000          -4.763552
+    |510+>      4.000          -3.682423
+    |420->      4.000         -23.067064
+    |420+>      6.000         -21.836982
+    |430->      6.000          -5.160662
+    |430+>      8.000          -4.907114
+    |600 >      0.250          -0.372234      0.734991      2.430078
+    |610->      0.000          -0.068191      0.924857      3.451895
+    |610+>      0.000          -0.039481      0.962794      4.140942
+    |520->      3.900          -0.416818      0.208523      1.244114
+    |520+>      5.850          -0.324146      0.249394      1.293593
+
+ ======================================================================== 
+ End AE calculation
+ ======================================================================== 
+
+ ======================================================================== 
+ Begin PS construction
+ ======================================================================== 
+ Optimized Pseudopotential Generation ...
+
+ ==================
+ zeff=   10.000000000000000     
+ Pseudizing state : |600>
+ eigenvalue       : -0.372234
+ qc               :  5.500000
+ # bessel fxns    : 10
+ point nearest rc : 1766
+ rc               :  2.250000
+ actual rc        :  2.247736
+
+ Psi(rc)          :     0.2818310105
+ Slope at rc      :    -0.0857318318
+ Curvature at rc  :    -0.1759729773
+ Del^2 Psi at rc  :    -0.2522558178
+ Log Deriv at rc  :    -0.3041958783
+
+ Starting KE minimization...
+  step #    theta       slope       curv       KEresid    coeffsum
+     1    0.002881   -0.148442   25.766725    0.000007    0.011763
+
+ # steps:     1
+ Final KE error:    0.0000066315
+ Sum of coeffs :    0.0117631668
+ ---------------------------------------------------------------
+ Coeff:      0.302076 -0.305638 -0.005409  0.023054 -0.003763  0.001505 -0.001657  0.001532 -0.001584  0.001648
+ ---------------------------------------------------------------
+ Resid KE (Ry)     :        0.0000066315
+ Norm error        :    -0.555E-16
+ Continuity error  :    -0.555E-16
+ Curvature error   :     0.120E-13
+ ---------------------------------------------------------------
+ Bessel wavevectors and final coefficients
+   1        0.5956381055        0.3020757798
+   2        2.0662578865       -0.3056381391
+   3        3.4761779623       -0.0054093516
+   4        4.8790190458        0.0230541206
+   5        6.2795484504       -0.0037633493
+   6        7.6790342999        0.0015046919
+   7        9.0779600340       -0.0016565533
+   8       10.4765502925        0.0015322298
+   9       11.8749237133       -0.0015842136
+  10       13.2731488769        0.0016479516
+
+ Total KE           (Ry) :     0.3243137029
+ 0  -> qc contribution   :     0.3243070714
+ qc -> oo contribution   :     0.0000066315   (=Convergence term)
+ Occupancy of this state :     0.2500000000
+ Convergence term (Ry/e) :     0.0000066315
+ Convergence error (mRy) :     0.0016578659
+ Convergence error (meV) :     0.0225565918
+
+
+ ==================
+ zeff=   10.000000000000000     
+ Pseudizing state : |610>
+ eigenvalue       : -0.068191
+ qc               :  3.000000
+ # bessel fxns    : 10
+ point nearest rc : 1770
+ rc               :  2.300000
+ actual rc        :  2.306943
+
+ Psi(rc)          :     0.1650158288
+ Slope at rc      :     0.0119133755
+ Curvature at rc  :    -0.1320981174
+ Del^2 Psi at rc  :    -0.1837827051
+ Log Deriv at rc  :     0.0721953496
+
+ Starting KE minimization...
+  step #    theta       slope       curv       KEresid    coeffsum
+     1    0.001795   -0.025941    7.227617    0.000215    0.316167
+     2   -0.000527    0.003627    3.440336    0.000214    0.315888
+     3   -0.000545    0.002372    2.178227    0.000214    0.316835
+     4   -0.000112    0.000665    2.968919    0.000213    0.317077
+
+ # steps:     4
+ Final KE error:    0.0002134938
+ Sum of coeffs :    0.3170772010
+ ---------------------------------------------------------------
+ Coeff:      0.361248 -0.046310  0.003127 -0.002142  0.001725 -0.001246  0.000907 -0.000314 -0.000049  0.000133
+ ---------------------------------------------------------------
+ Resid KE (Ry)     :        0.0002134938
+ Norm error        :     0.278E-16
+ Continuity error  :     0.555E-16
+ Curvature error   :     0.749E-14
+ ---------------------------------------------------------------
+ Bessel wavevectors and final coefficients
+   1        0.8336108148        0.3612483420
+   2        2.5621125046       -0.0463104627
+   3        3.9824614130        0.0031269934
+   4        5.3711084990       -0.0021424984
+   5        6.7485222356        0.0017246365
+   6        8.1205765449       -0.0012463279
+   7        9.4896396841        0.0009073852
+   8       10.8568586734       -0.0003142724
+   9       12.2228588032       -0.0000493829
+  10       13.5880106886        0.0001327882
+
+ Total KE           (Ry) :     0.2712281994
+ 0  -> qc contribution   :     0.2710147056
+ qc -> oo contribution   :     0.0002134938   (=Convergence term)
+ Occupancy of this state :     0.0000000000
+ Convergence term (Ry/e) :     0.0002134938
+ Convergence error (mRy) :     0.0000000000
+ Convergence error (meV) :     0.0000000000
+
+
+ ==================
+ zeff=   10.000000000000000     
+ Pseudizing state : |610>
+ eigenvalue       : -0.039481
+ qc               :  3.000000
+ # bessel fxns    : 10
+ point nearest rc : 1770
+ rc               :  2.300000
+ actual rc        :  2.306943
+
+ Psi(rc)          :     0.1213569290
+ Slope at rc      :     0.0390899515
+ Curvature at rc  :    -0.1269236230
+ Del^2 Psi at rc  :    -0.1386405371
+ Log Deriv at rc  :     0.3221072902
+
+ Starting KE minimization...
+  step #    theta       slope       curv       KEresid    coeffsum
+     1    0.062121   -0.166952    1.343772    0.005643    0.465586
+     2   -0.017183    0.100101    2.912828    0.004782    0.468335
+     3   -0.024248    0.059671    1.230443    0.004056    0.451286
+     4   -0.062132    0.052468    0.422225    0.002424    0.407097
+    11   -0.001932    0.011365    2.940796    0.000506    0.350526
+    21   -0.000089    0.000611    3.414214    0.000487    0.352746
+
+ # steps:    21
+ Final KE error:    0.0004872755
+ Sum of coeffs :    0.3527455013
+ ---------------------------------------------------------------
+ Coeff:      0.368299 -0.006357 -0.006604  0.003466 -0.001072 -0.001550  0.003344 -0.005208  0.006568 -0.008141
+ ---------------------------------------------------------------
+ Resid KE (Ry)     :        0.0004872755
+ Norm error        :    -0.278E-16
+ Continuity error  :    -0.139E-16
+ Curvature error   :     0.369E-14
+ ---------------------------------------------------------------
+ Bessel wavevectors and final coefficients
+   1        0.4823488087        0.3682990689
+   2        2.5177693393       -0.0063569432
+   3        3.9547309439       -0.0066040429
+   4        5.3507264252        0.0034664301
+   5        6.7323629523       -0.0010718869
+   6        8.1071751709       -0.0015495286
+   7        9.4781857872        0.0033437273
+   8       10.8468550992       -0.0052083377
+   9       12.2139780028        0.0065677246
+  10       13.5800251934       -0.0081407103
+
+ Total KE           (Ry) :     0.1932211291
+ 0  -> qc contribution   :     0.1927338536
+ qc -> oo contribution   :     0.0004872755   (=Convergence term)
+ Occupancy of this state :     0.0000000000
+ Convergence term (Ry/e) :     0.0004872755
+ Convergence error (mRy) :     0.0000000000
+ Convergence error (meV) :     0.0000000000
+
+
+ ==================
+ zeff=   10.000000000000000     
+ Pseudizing state : |520>
+ eigenvalue       : -0.416818
+ qc               :  5.800000
+ # bessel fxns    : 10
+ point nearest rc : 1763
+ rc               :  2.200000
+ actual rc        :  2.204329
+
+ Psi(rc)          :     0.2411755778
+ Slope at rc      :    -0.2697230691
+ Curvature at rc  :     0.3208999169
+ Del^2 Psi at rc  :    -0.2216260004
+ Log Deriv at rc  :    -1.1183680849
+
+ Starting KE minimization...
+  step #    theta       slope       curv       KEresid    coeffsum
+     1    0.048000   -4.451651   46.371597    0.043561    3.408843
+     2   -0.010746    2.315276  107.726454    0.031127    3.644972
+     3   -0.015622    1.219855   39.041720    0.021615    3.735565
+     4   -0.020719    1.030979   24.880319    0.010958    3.580388
+    11   -0.000749    0.192894  128.734723    0.005071    3.436416
+    21   -0.000355    0.088739  124.862061    0.000164    3.036801
+    31   -0.000066    0.010339   78.602750    0.000127    3.041840
+    41   -0.000005    0.001202  132.606308    0.000105    3.065021
+
+ # steps:    42
+ Final KE error:    0.0001047727
+ Sum of coeffs :    3.0650532289
+ ---------------------------------------------------------------
+ Coeff:      1.597902  1.212638  0.259300 -0.005392  0.003184 -0.002312  0.002165 -0.002261  0.002430 -0.002600
+ ---------------------------------------------------------------
+ Resid KE (Ry)     :        0.0001047727
+ Norm error        :    -0.444E-15
+ Continuity error  :     0.833E-16
+ Curvature error   :     0.114E-14
+ ---------------------------------------------------------------
+ Bessel wavevectors and final coefficients
+   1        1.9798484712        1.5979022208
+   2        3.4723508261        1.2126382275
+   3        4.9241483652        0.2592999155
+   4        6.3637873460       -0.0053923619
+   5        7.7980827707        0.0031838739
+   6        9.2295446061       -0.0023118777
+   7       10.6593204174        0.0021645210
+   8       12.0880107971       -0.0022614910
+   9       13.5159609804        0.0024297671
+  10       14.9433836683       -0.0025995663
+
+ Total KE           (Ry) :     4.3181387492
+ 0  -> qc contribution   :     4.3180339765
+ qc -> oo contribution   :     0.0001047727   (=Convergence term)
+ Occupancy of this state :     3.9000000000
+ Convergence term (Ry/e) :     0.0001047727
+ Convergence error (mRy) :     0.4086134107
+ Convergence error (meV) :     5.5595123438
+
+
+ ==================
+ zeff=   10.000000000000000     
+ Pseudizing state : |520>
+ eigenvalue       : -0.324146
+ qc               :  5.800000
+ # bessel fxns    : 10
+ point nearest rc : 1763
+ rc               :  2.200000
+ actual rc        :  2.204329
+
+ Psi(rc)          :     0.2502788550
+ Slope at rc      :    -0.2622346751
+ Curvature at rc  :     0.2937984902
+ Del^2 Psi at rc  :    -0.2531739356
+ Log Deriv at rc  :    -1.0477699969
+
+ Starting KE minimization...
+  step #    theta       slope       curv       KEresid    coeffsum
+     1    0.041624   -3.648115   43.822249    0.032420    3.226939
+     2   -0.009342    1.937508  103.694046    0.023374    3.426331
+     3   -0.013155    1.019551   38.751381    0.016677    3.507062
+     4   -0.019148    0.866451   22.625256    0.008400    3.381964
+    11   -0.000707    0.154390  109.245150    0.003867    3.247322
+    21   -0.000241    0.049949  103.424345    0.000111    2.899270
+    31   -0.000055    0.009069   82.019727    0.000086    2.900307
+    41   -0.000009    0.001311   71.711969    0.000076    2.916283
+
+ # steps:    42
+ Final KE error:    0.0000756896
+ Sum of coeffs :    2.9161867258
+ ---------------------------------------------------------------
+ Coeff:      1.566548  1.123282  0.230197 -0.004094  0.002431 -0.001779  0.001608 -0.001778  0.001945 -0.002173
+ ---------------------------------------------------------------
+ Resid KE (Ry)     :        0.0000756896
+ Norm error        :    -0.333E-15
+ Continuity error  :     0.111E-15
+ Curvature error   :     0.000E+00
+ ---------------------------------------------------------------
+ Bessel wavevectors and final coefficients
+   1        1.9608927374        1.5665480203
+   2        3.4626693518        1.1232815501
+   3        4.9174878456        0.2301971041
+   4        6.3586829058       -0.0040937937
+   5        7.7939369392        0.0024313432
+   6        9.2260512207       -0.0017792473
+   7       10.6563006965        0.0016079860
+   8       12.0853509566       -0.0017780906
+   9       13.5135840095        0.0019448333
+  10       14.9412349716       -0.0021729796
+
+ Total KE           (Ry) :     3.9712318929
+ 0  -> qc contribution   :     3.9711562033
+ qc -> oo contribution   :     0.0000756896   (=Convergence term)
+ Occupancy of this state :     5.8500000000
+ Convergence term (Ry/e) :     0.0000756896
+ Convergence error (mRy) :     0.4427838876
+ Convergence error (meV) :     6.0244290182
+
+ ------------------------------
+ Descreening potential
+ valence charge          :  10.000000
+ core    charge          :   0.000000
+
+ ----Solving the Schrodinger equation for all states----
+ State: 6s  AE eigenvalue =  -0.372234  PS eigenvalue =  -0.372234
+ State: 6p  AE eigenvalue =  -0.068191  PS eigenvalue =  -0.068190
+ State: 6p  AE eigenvalue =  -0.039481  PS eigenvalue =  -0.039481
+ State: 5d  AE eigenvalue =  -0.416818  PS eigenvalue =  -0.416818
+ State: 5d  AE eigenvalue =  -0.324146  PS eigenvalue =  -0.324146
+
+ ---Semilocal ghost testing---
+ Local state: 6s
+
+ Test  state: 6p
+ KB energy :   3.159488  KB strength:   0.280762  KB cosine:   0.088863
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   1
+    !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ el0       :  -0.105426  el1        :   0.000000  eig      :  -0.068191
+ No ghosts!  Ekb>0  and el0 < eig < el1
+
+ Test  state: 6p
+ KB energy :   3.351702  KB strength:   0.324441  KB cosine:   0.096799
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   1
+    !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ el0       :  -0.105426  el1        :   0.000000  eig      :  -0.039481
+ No ghosts!  Ekb>0  and el0 < eig < el1
+
+ Test  state: 5d
+ KB energy : -12.372952  KB strength:   7.993392  KB cosine:  -0.646038
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+    !WARNING! No solution for ground state of local potential.  Setting e=0.0
+ !WARNING! : schsl found too few nodes   n,l=   4   2  e= -.7517E-08
+    !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ el0       :   0.000000  el1        :   0.000000  eig      :  -0.416818
+ No ghosts!  Ekb<0  and eig < el0
+
+ Test  state: 5d
+ KB energy : -11.917018  KB strength:   7.376888  KB cosine:  -0.619021
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+    !WARNING! No solution for ground state of local potential.  Setting e=0.0
+ !WARNING! : schsl found too few nodes   n,l=   4   2  e= -.7517E-08
+    !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ el0       :   0.000000  el1        :   0.000000  eig      :  -0.324146
+ No ghosts!  Ekb<0  and eig < el0
+
+ No ghosts for local potential: 6s
+ ------------------------------
+
+ Local state: 6p
+
+ Test  state: 6s
+ KB energy :  -2.332866  KB strength:   0.489366  KB cosine:  -0.209770
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   2   0
+    !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ el0       :  -0.305464  el1        :   0.000000  eig      :  -0.372234
+ No ghosts!  Ekb<0  and eig < el0
+
+ Test  state: 6p
+ KB energy :   2.146733  KB strength:   0.205585  KB cosine:   0.095766
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   1
+    !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ el0       :  -0.068190  el1        :   0.000000  eig      :  -0.039481
+ No ghosts!  Ekb>0  and el0 < eig < el1
+
+ Test  state: 5d
+ KB energy :  -8.306155  KB strength:   6.104893  KB cosine:  -0.734984
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+    !WARNING! No solution for ground state of local potential.  Setting e=0.0
+ !WARNING! : schsl found too few nodes   n,l=   4   2  e= -.7517E-08
+    !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ el0       :   0.000000  el1        :   0.000000  eig      :  -0.416818
+ No ghosts!  Ekb<0  and eig < el0
+
+ Test  state: 5d
+ KB energy :  -7.925676  KB strength:   5.631182  KB cosine:  -0.710499
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+    !WARNING! No solution for ground state of local potential.  Setting e=0.0
+ !WARNING! : schsl found too few nodes   n,l=   4   2  e= -.7517E-08
+    !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ el0       :   0.000000  el1        :   0.000000  eig      :  -0.324146
+ No ghosts!  Ekb<0  and eig < el0
+
+ No ghosts for local potential: 6p
+ ------------------------------
+
+ Local state: 6p
+
+ Test  state: 6s
+ KB energy :  -2.876681  KB strength:   0.827866  KB cosine:  -0.287785
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   2   0
+    !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ el0       :  -0.220842  el1        :   0.000000  eig      :  -0.372234
+ No ghosts!  Ekb<0  and eig < el0
+
+ Test  state: 6p
+ KB energy :  -2.145325  KB strength:   0.294375  KB cosine:  -0.137217
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   1
+    !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ el0       :  -0.039481  el1        :   0.000000  eig      :  -0.068191
+ No ghosts!  Ekb<0  and eig < el0
+
+ Test  state: 5d
+ KB energy :  -8.053485  KB strength:   6.047948  KB cosine:  -0.750973
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+    !WARNING! No solution for ground state of local potential.  Setting e=0.0
+ !WARNING! : schsl found too few nodes   n,l=   4   2  e= -.7517E-08
+    !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ el0       :   0.000000  el1        :   0.000000  eig      :  -0.416818
+ No ghosts!  Ekb<0  and eig < el0
+
+ Test  state: 5d
+ KB energy :  -7.670217  KB strength:   5.588291  KB cosine:  -0.728570
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+    !WARNING! No solution for ground state of local potential.  Setting e=0.0
+ !WARNING! : schsl found too few nodes   n,l=   4   2  e= -.7517E-08
+    !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ el0       :   0.000000  el1        :   0.000000  eig      :  -0.324146
+ No ghosts!  Ekb<0  and eig < el0
+
+ No ghosts for local potential: 6p
+ ------------------------------
+
+ Local state: 5d
+
+ Test  state: 6s
+ KB energy :   7.763634  KB strength:   1.812242  KB cosine:   0.233427
+ el0       :  -7.520683  el1        :  -0.900886  eig      :  -0.372234
+     !GHOST! : 6s  -0.372234  Should be lower than   -0.900886
+
+ Test  state: 6p
+ KB energy :   5.275221  KB strength:   0.799446  KB cosine:   0.151547
+ el0       :  -3.773665  el1        :  -0.040293  eig      :  -0.068191
+ No ghosts!  Ekb>0  and el0 < eig < el1
+
+ Test  state: 6p
+ KB energy :   4.551584  KB strength:   0.602951  KB cosine:   0.132471
+ el0       :  -3.773665  el1        :  -0.040293  eig      :  -0.039481
+     !GHOST! : 6p  -0.039481  Should be lower than   -0.040293
+
+ Test  state: 5d
+ KB energy :   0.295109  KB strength:   0.160238  KB cosine:   0.542979
+ !WARNING! : schsl found too few nodes   n,l=   4   2  e= -.9970E-08
+    !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ el0       :  -0.416818  el1        :   0.000000  eig      :  -0.324146
+ No ghosts!  Ekb>0  and el0 < eig < el1
+
+  !WARNING! Ghosts for local potential: 5d
+ ------------------------------
+
+ Local state: 5d
+
+ Test  state: 6s
+ KB energy :   7.382439  KB strength:   1.771323  KB cosine:   0.239937
+ el0       :  -7.234431  el1        :  -0.843148  eig      :  -0.372234
+     !GHOST! : 6s  -0.372234  Should be lower than   -0.843148
+
+ Test  state: 6p
+ KB energy :   5.016685  KB strength:   0.782516  KB cosine:   0.155983
+ el0       :  -3.555156  el1        :  -0.037599  eig      :  -0.068191
+ No ghosts!  Ekb>0  and el0 < eig < el1
+
+ Test  state: 6p
+ KB energy :   4.388991  KB strength:   0.593558  KB cosine:   0.135238
+ el0       :  -3.555156  el1        :  -0.037599  eig      :  -0.039481
+ No ghosts!  Ekb>0  and el0 < eig < el1
+
+ Test  state: 5d
+ KB energy :  -0.289572  KB strength:   0.168703  KB cosine:  -0.582597
+ !WARNING! : schsl found too few nodes   n,l=   4   2  e= -.7753E-08
+    !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ el0       :  -0.324146  el1        :   0.000000  eig      :  -0.416818
+ No ghosts!  Ekb<0  and eig < el0
+
+  !WARNING! Ghosts for local potential: 5d
+ ------------------------------
+
+
+ ======================================================================== 
+ End PS construction
+ ======================================================================== 
+
+ ======================================================================== 
+ Begin NL calculation
+ ======================================================================== 
+ ---------Eigenvalue guesses---------
+ 1s            -0.37223381
+ 2p            -0.06819100
+ 2p            -0.03948081
+ 3d            -0.41681822
+ 3d            -0.32414573
+ Performing non-local pseudopotential calculation
+ Using the s potential as the local potential
+
+ iter       Etot             Ebs             Ehxc       de_max   dv_max
+   1      -51.7428367      -3.6149045     -48.1279322 0.77E-05 0.37E-05
+   2      -51.7428603      -3.6149142     -48.1279461 0.36E-05 0.94E-06
+   3      -51.7428590      -3.6149137     -48.1279453 0.45E-06 0.45E-06
+   4      -51.7428583      -3.6149133     -48.1279449 0.31E-06 0.22E-06
+   5      -51.7428580      -3.6149132     -48.1279447 0.11E-06 0.11E-06
+   6      -51.7428580      -3.6149133     -48.1279447 0.29E-07 0.57E-07
+   7      -51.7428581      -3.6149134     -48.1279447 0.24E-07 0.35E-07
+   8      -51.7428582      -3.6149134     -48.1279447 0.84E-08 0.22E-07
+
+    8 iterations: (units are Ry and bohr)
+ Energy:     -51.74285817  Ebs:      -3.61491344  Ehxc:     -48.12794473
+ Eh    :      50.75067249  Exc:      -8.86614130
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |600>      0.250          -0.372235      0.734987      2.430078
+    |610>      0.000          -0.068191      0.924856      3.451895
+    |610>      0.000          -0.039481      0.962791      4.140942
+    |520>      3.900          -0.416819      0.208523      1.327667
+    |520>      5.850          -0.324147      0.249385      1.362639
+
+ ---Non-local ghost testing---
+ Local state: 6s
+
+ Test  state: 6s
+ ...seems like this angular momentum is the local part!
+
+ Test  state: 6p
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   1
+ !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ KB energy :   3.159488  KB strength:   0.280762  KB cosine:   0.088863
+ el0       :  -0.105427  el1        :   0.000000  eig      :  -0.068191
+ No ghosts!  Ekb>0  and el0 < eig < el1
+
+ Test  state: 6p
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   1
+ !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ KB energy :   3.351702  KB strength:   0.324441  KB cosine:   0.096799
+ el0       :  -0.105427  el1        :   0.000000  eig      :  -0.039481
+ No ghosts!  Ekb>0  and el0 < eig < el1
+
+ Test  state: 5d
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+ !WARNING! No solution for ground state of local potential.  Setting e=0.0
+ !WARNING! : schsl found too few nodes   n,l=   4   2  e= -.7517E-08
+ !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ KB energy : -12.372952  KB strength:   7.993392  KB cosine:  -0.646038
+ el0       :   0.000000  el1        :   0.000000  eig      :  -0.416819
+ No ghosts!  Ekb<0  and eig < el0
+
+ Test  state: 5d
+ !WARNING! : schsl found a positive eigenvalue. n,l=:   3   2
+ !WARNING! No solution for ground state of local potential.  Setting e=0.0
+ !WARNING! : schsl found too few nodes   n,l=   4   2  e= -.7517E-08
+ !WARNING! No solution for 1st excited state of local potential.  Setting e=0.0
+ KB energy : -11.917018  KB strength:   7.376888  KB cosine:  -0.619021
+ el0       :   0.000000  el1        :   0.000000  eig      :  -0.324147
+ No ghosts!  Ekb<0  and eig < el0
+ ------------------------------
+
+ No ghosts present for local potential
+
+
+ ======================================================================== 
+ End NL calculation
+ ======================================================================== 
+<<<do_tc>>>
+
+
+ ===============Configuration 1 AE Calc=============== 
+ ---------Eigenvalue guesses---------
+ 1s         -6084.00000000
+ 2s         -1521.00000000
+ 2p         -1521.00000000
+ 2p         -1521.00000000
+ 3s          -676.00000000
+ 3p          -676.00000000
+ 3p          -676.00000000
+ 3d          -676.00000000
+ 3d          -676.00000000
+ 4s          -380.25000000
+ 4p          -380.25000000
+ 4p          -380.25000000
+ 5s          -243.36000000
+ 5p          -243.36000000
+ 5p          -243.36000000
+ 4d          -380.25000000
+ 4d          -380.25000000
+ 4f          -380.25000000
+ 4f          -380.25000000
+ 6s          -169.00000000
+ 6p          -169.00000000
+ 6p          -169.00000000
+ 5d          -243.36000000
+ 5d          -243.36000000
+
+ iter       Etot             Ebs             Ehxc       de_max   dv_max
+   1   -39790.2342096  -24511.9885823  -15278.2456273 0.99E+00 0.96E+01
+   2   -37310.9777933  -23179.1341618  -14131.8436315 0.57E+00 0.12E+01
+   3   -36814.1682793  -22838.7832127  -13975.3850666 0.10E+00 0.77E+00
+   4   -36829.5307263  -22820.5495543  -14008.9811719 0.86E-01 0.20E+00
+   5   -36863.4079935  -22822.1224729  -14041.2855206 0.33E-01 0.14E+00
+   6   -36860.1226914  -22809.1548975  -14050.9677939 0.14E-01 0.13E+00
+   7   -36837.1204613  -22792.6713418  -14044.4491196 0.28E-01 0.39E-01
+   8   -36831.9611371  -22792.5947945  -14039.3663427 0.23E-02 0.28E-01
+   9   -36833.2513573  -22795.2684608  -14037.9828965 0.30E-02 0.20E-01
+  10   -36838.2975844  -22799.1170227  -14039.1805617 0.42E-02 0.75E-02
+  11   -36838.6635040  -22798.9172882  -14039.7462158 0.68E-03 0.54E-02
+  12   -36838.0267386  -22798.2952132  -14039.7315254 0.14E-02 0.12E-02
+  13   -36837.8125108  -22798.1910384  -14039.6214724 0.14E-03 0.70E-03
+  14   -36837.8325942  -22798.2380463  -14039.5945480 0.17E-03 0.46E-03
+  15   -36837.9165237  -22798.2939330  -14039.6225908 0.11E-03 0.16E-03
+  16   -36837.9286098  -22798.2943628  -14039.6342470 0.86E-05 0.14E-03
+  17   -36837.9194591  -22798.2865810  -14039.6328781 0.19E-04 0.60E-04
+  18   -36837.9109948  -22798.2825064  -14039.6284885 0.96E-05 0.14E-04
+  19   -36837.9083112  -22798.2824260  -14039.6258852 0.14E-05 0.14E-04
+  20   -36837.9091518  -22798.2837530  -14039.6253988 0.18E-05 0.11E-04
+  21   -36837.9106259  -22798.2847721  -14039.6258539 0.16E-05 0.38E-05
+  22   -36837.9114492  -22798.2851124  -14039.6263368 0.66E-06 0.13E-05
+  23   -36837.9116034  -22798.2850483  -14039.6265551 0.12E-06 0.13E-05
+  24   -36837.9114682  -22798.2848946  -14039.6265737 0.16E-06 0.70E-06
+  25   -36837.9113229  -22798.2847972  -14039.6265257 0.11E-06 0.19E-06
+  26   -36837.9112554  -22798.2847681  -14039.6264874 0.25E-07 0.16E-06
+  27   -36837.9112471  -22798.2847727  -14039.6264744 0.15E-07 0.14E-06
+  28   -36837.9112590  -22798.2847827  -14039.6264763 0.18E-07 0.56E-07
+  29   -36837.9112688  -22798.2847877  -14039.6264811 0.85E-08 0.15E-07
+
+   29 iterations: (units are Ry and bohr)
+ Energy:  -36837.91126884  Ebs:  -22798.28478771  Ehxc:  -14039.62648114
+ Eh    :   14199.51775150  Exc:    -660.05459884
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100 >      2.000       -5730.260682
+    |200 >      2.000       -1008.322695
+    |210->      2.000        -965.956069
+    |210+>      4.000        -840.263055
+    |300 >      2.000        -238.573519
+    |310->      2.000        -219.700362
+    |310+>      4.000        -192.034399
+    |320->      4.000        -160.939077
+    |320+>      6.000        -154.955007
+    |400 >      2.000         -52.917881
+    |410->      2.000         -44.925751
+    |410+>      4.000         -38.335171
+    |500 >      2.000          -9.505553
+    |510->      2.000          -6.938547
+    |510+>      4.000          -5.820415
+    |420->      4.000         -25.315828
+    |420+>      6.000         -24.085685
+    |430->      6.000          -7.406319
+    |430+>      8.000          -7.152411
+    |600 >      2.000          -1.818121      0.542534      2.133840
+    |610->      0.000          -1.278167      0.704566      2.477930
+    |610+>      0.000          -1.150063      0.787642      2.696416
+    |520->      2.400          -2.359046      0.104750      1.196527
+    |520+>      3.600          -2.236552      0.121615      1.236053
+
+
+ ===============Configuration 1 NL: Calc ===============
+ ---------Eigenvalue guesses---------
+ 1s            -0.37223381
+ 2p            -0.06819100
+ 2p            -0.03948081
+ 3d            -0.41681822
+ 3d            -0.32414573
+ Performing non-local pseudopotential calculation
+ Using the s potential as the local potential
+
+ iter       Etot             Ebs             Ehxc       de_max   dv_max
+   1      -29.4790551      -2.9117586     -26.5672965 0.77E-05 0.44E+01
+   2      -41.9307083     -11.5302235     -30.4004849 0.14E+02 0.20E+01
+   3      -47.2890104     -16.1989230     -31.0900873 0.76E+00 0.25E+00
+   4      -48.6121540     -17.4292248     -31.1829292 0.11E+00 0.13E-01
+   5      -48.8384539     -17.5916607     -31.2467932 0.11E-01 0.13E-01
+   6      -48.8574563     -17.5814759     -31.2759804 0.66E-03 0.13E-01
+   7      -48.8363646     -17.5490636     -31.2873010 0.23E-02 0.87E-02
+   8      -48.7990125     -17.5143144     -31.2846980 0.22E-02 0.78E-03
+   9      -48.7948996     -17.5120119     -31.2828877 0.15E-03 0.84E-03
+  10      -48.7954793     -17.5131817     -31.2822976 0.75E-04 0.70E-03
+  11      -48.7977718     -17.5152252     -31.2825466 0.13E-03 0.51E-03
+  12      -48.7979388     -17.5152418     -31.2826970 0.71E-05 0.37E-03
+  13      -48.7979305     -17.5151600     -31.2827705 0.85E-05 0.28E-03
+  14      -48.7978781     -17.5150769     -31.2828011 0.71E-05 0.21E-03
+  15      -48.7978288     -17.5150174     -31.2828114 0.49E-05 0.15E-03
+  16      -48.7977949     -17.5149813     -31.2828137 0.30E-05 0.11E-03
+  17      -48.7977749     -17.5149615     -31.2828134 0.17E-05 0.79E-04
+  18      -48.7977644     -17.5149516     -31.2828129 0.94E-06 0.58E-04
+  19      -48.7977594     -17.5149468     -31.2828125 0.50E-06 0.43E-04
+  20      -48.7977571     -17.5149447     -31.2828124 0.26E-06 0.31E-04
+  21      -48.7977562     -17.5149438     -31.2828124 0.14E-06 0.23E-04
+  22      -48.7977557     -17.5149432     -31.2828125 0.67E-07 0.17E-04
+  23      -48.7977555     -17.5149429     -31.2828126 0.49E-07 0.12E-04
+  24      -48.7977553     -17.5149427     -31.2828126 0.31E-07 0.89E-05
+  25      -48.7977552     -17.5149426     -31.2828127 0.13E-07 0.65E-05
+  26      -48.7977552     -17.5149425     -31.2828127 0.76E-08 0.48E-05
+  27      -48.7977551     -17.5149425     -31.2828127 0.42E-08 0.35E-05
+  28      -48.7977551     -17.5149425     -31.2828127 0.23E-08 0.25E-05
+  29      -48.7977551     -17.5149424     -31.2828127 0.12E-08 0.19E-05
+  30      -48.7977551     -17.5149424     -31.2828127 0.64E-09 0.14E-05
+  31      -48.7977551     -17.5149424     -31.2828127 0.34E-09 0.99E-06
+
+   31 iterations: (units are Ry and bohr)
+ Energy:     -48.79775510  Ebs:     -17.51494244  Ehxc:     -31.28281266
+ Eh    :      33.28245923  Exc:      -6.78860938
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |600>      2.000          -1.820763      0.535205      2.120015
+    |610>      0.000          -1.278846      0.690759      2.461875
+    |610>      0.000          -1.152894      0.758671      2.696416
+    |520>      2.400          -2.385971      0.105919      1.302028
+    |520>      3.600          -2.263080      0.122789      1.319065
+
+ ---Non-local ghost testing---
+ Local state: 6s
+
+ Test  state: 6s
+ ...seems like this angular momentum is the local part!
+
+ Test  state: 6p
+ KB energy :   3.159488  KB strength:   0.280762  KB cosine:   0.088863
+ el0       :  -1.394211  el1        :  -0.507353  eig      :  -1.278846
+ No ghosts!  Ekb>0  and el0 < eig < el1
+
+ Test  state: 6p
+ KB energy :   3.351702  KB strength:   0.324441  KB cosine:   0.096799
+ el0       :  -1.394211  el1        :  -0.507353  eig      :  -1.152894
+ No ghosts!  Ekb>0  and el0 < eig < el1
+
+ Test  state: 5d
+ KB energy : -12.372952  KB strength:   7.993392  KB cosine:  -0.646038
+ el0       :  -0.777900  el1        :  -0.326799  eig      :  -2.385971
+ No ghosts!  Ekb<0  and eig < el0
+
+ Test  state: 5d
+ KB energy : -11.917018  KB strength:   7.376888  KB cosine:  -0.619021
+ el0       :  -0.777900  el1        :  -0.326799  eig      :  -2.263080
+ No ghosts!  Ekb<0  and eig < el0
+ ------------------------------
+
+ No ghosts present for local potential
+
+
+
+ ===============Configuration 2 AE Calc=============== 
+ ---------Eigenvalue guesses---------
+ 1s         -6084.00000000
+ 2s         -1521.00000000
+ 2p         -1521.00000000
+ 2p         -1521.00000000
+ 3s          -676.00000000
+ 3p          -676.00000000
+ 3p          -676.00000000
+ 3d          -676.00000000
+ 3d          -676.00000000
+ 4s          -380.25000000
+ 4p          -380.25000000
+ 4p          -380.25000000
+ 5s          -243.36000000
+ 5p          -243.36000000
+ 5p          -243.36000000
+ 4d          -380.25000000
+ 4d          -380.25000000
+ 4f          -380.25000000
+ 4f          -380.25000000
+ 6s          -169.00000000
+ 6p          -169.00000000
+ 6p          -169.00000000
+ 5d          -243.36000000
+ 5d          -243.36000000
+
+ iter       Etot             Ebs             Ehxc       de_max   dv_max
+   1   -39855.3920785  -24514.2564759  -15341.1356027 0.99E+00 0.10E+02
+   2   -37294.3414903  -23152.3891779  -14141.9523125 0.59E+00 0.12E+01
+   3   -36814.2663024  -22820.6856551  -13993.5806473 0.12E+00 0.78E+00
+   4   -36832.0593091  -22802.2916392  -14029.7676699 0.94E-01 0.19E+00
+   5   -36865.3797714  -22802.2488670  -14063.1309044 0.33E-01 0.15E+00
+   6   -36861.1483034  -22788.4610986  -14072.6872048 0.16E-01 0.14E+00
+   7   -36832.5229028  -22769.9658948  -14062.5570080 0.34E-01 0.48E-01
+   8   -36831.8926252  -22772.8392605  -14059.0533647 0.50E-02 0.28E-01
+   9   -36834.9086628  -22775.8795305  -14059.0291322 0.38E-02 0.13E-01
+  10   -36839.5583715  -22778.8839576  -14060.6744139 0.32E-02 0.75E-02
+  11   -36839.3790165  -22778.2989626  -14061.0800539 0.88E-03 0.56E-02
+  12   -36837.9521232  -22777.3555899  -14060.5965333 0.16E-02 0.25E-02
+  13   -36838.0517312  -22777.5511863  -14060.5005448 0.32E-03 0.14E-02
+  14   -36838.4360847  -22777.7962829  -14060.6398018 0.40E-03 0.69E-03
+  15   -36838.4122240  -22777.7430416  -14060.6691824 0.86E-04 0.37E-03
+  16   -36838.3583986  -22777.7032788  -14060.6551197 0.61E-04 0.11E-03
+  17   -36838.3188827  -22777.6846240  -14060.6342587 0.28E-04 0.74E-04
+  18   -36838.3156073  -22777.6885954  -14060.6270119 0.76E-05 0.74E-04
+  19   -36838.3235170  -22777.6951708  -14060.6283462 0.11E-04 0.30E-04
+  20   -36838.3297028  -22777.6983170  -14060.6313858 0.53E-05 0.36E-05
+  21   -36838.3315918  -22777.6985082  -14060.6330836 0.42E-06 0.94E-05
+  22   -36838.3310633  -22777.6977016  -14060.6333617 0.12E-05 0.62E-05
+  23   -36838.3301375  -22777.6970829  -14060.6330547 0.97E-06 0.16E-05
+  24   -36838.3296496  -22777.6968902  -14060.6327594 0.31E-06 0.70E-06
+  25   -36838.3295823  -22777.6969383  -14060.6326440 0.72E-07 0.93E-06
+  26   -36838.3296785  -22777.6970288  -14060.6326496 0.14E-06 0.43E-06
+  27   -36838.3297651  -22777.6970782  -14060.6326869 0.76E-07 0.60E-07
+  28   -36838.3297974  -22777.6970864  -14060.6327109 0.12E-07 0.11E-06
+  29   -36838.3297948  -22777.6970782  -14060.6327166 0.14E-07 0.83E-07
+  30   -36838.3297838  -22777.6970702  -14060.6327136 0.13E-07 0.26E-07
+  31   -36838.3297771  -22777.6970672  -14060.6327098 0.48E-08 0.65E-08
+
+   31 iterations: (units are Ry and bohr)
+ Energy:  -36838.32977705  Ebs:  -22777.69706723  Ehxc:  -14060.63270983
+ Eh    :   14220.67038393  Exc:    -660.50396362
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |100 >      2.000       -5729.977925
+    |200 >      2.000       -1008.023501
+    |210->      2.000        -965.657836
+    |210+>      4.000        -839.963773
+    |300 >      2.000        -238.279603
+    |310->      2.000        -219.406187
+    |310+>      4.000        -191.740597
+    |320->      4.000        -160.643406
+    |320+>      6.000        -154.659557
+    |400 >      2.000         -52.627506
+    |410->      2.000         -44.635302
+    |410+>      4.000         -38.044863
+    |500 >      2.000          -9.234726
+    |510->      2.000          -6.678088
+    |510+>      4.000          -5.573051
+    |420->      4.000         -25.025152
+    |420+>      6.000         -23.795055
+    |430->      6.000          -7.117063
+    |430+>      8.000          -6.863314
+    |600 >      1.000          -1.719949      0.567549      2.161761
+    |610->      0.000          -1.205270      0.730903      2.543201
+    |610+>      0.000          -1.088045      0.809529      2.767442
+    |520->      2.800          -2.160587      0.118894      1.212184
+    |520+>      4.200          -2.044333      0.137973      1.244114
+
+
+ ===============Configuration 2 NL: Calc ===============
+ ---------Eigenvalue guesses---------
+ 1s            -0.37223381
+ 2p            -0.06819100
+ 2p            -0.03948081
+ 3d            -0.41681822
+ 3d            -0.32414573
+ Performing non-local pseudopotential calculation
+ Using the s potential as the local potential
+
+ iter       Etot             Ebs             Ehxc       de_max   dv_max
+   1      -31.5914604      -2.9007392     -28.6907212 0.77E-05 0.41E+01
+   2      -42.8473748     -10.7975596     -32.0498152 0.13E+02 0.20E+01
+   3      -47.7219401     -15.1932201     -32.5287199 0.81E+00 0.24E+00
+   4      -49.0882465     -16.4549534     -32.6332931 0.11E+00 0.20E-01
+   5      -49.2892458     -16.5893750     -32.6998708 0.97E-02 0.14E-01
+   6      -49.3021995     -16.5733659     -32.7288336 0.10E-02 0.13E-01
+   7      -49.2481350     -16.5162390     -32.7318960 0.36E-02 0.66E-02
+   8      -49.2397400     -16.5077720     -32.7319680 0.53E-03 0.23E-02
+   9      -49.2388171     -16.5068927     -32.7319244 0.73E-04 0.26E-02
+  10      -49.2387769     -16.5068083     -32.7319685 0.32E-04 0.23E-02
+  11      -49.2388329     -16.5067808     -32.7320521 0.27E-04 0.11E-02
+  12      -49.2388564     -16.5067316     -32.7321248 0.15E-04 0.97E-03
+  13      -49.2388439     -16.5066710     -32.7321729 0.99E-05 0.56E-03
+  14      -49.2388152     -16.5066154     -32.7321998 0.68E-05 0.49E-03
+  15      -49.2387857     -16.5065730     -32.7322127 0.44E-05 0.39E-03
+  16      -49.2387623     -16.5065445     -32.7322178 0.27E-05 0.30E-03
+  17      -49.2387466     -16.5065272     -32.7322193 0.16E-05 0.23E-03
+  18      -49.2387371     -16.5065176     -32.7322195 0.87E-06 0.18E-03
+  19      -49.2387319     -16.5065126     -32.7322193 0.46E-06 0.13E-03
+  20      -49.2387293     -16.5065102     -32.7322191 0.24E-06 0.10E-03
+  21      -49.2387281     -16.5065092     -32.7322189 0.12E-06 0.81E-04
+  22      -49.2387275     -16.5065086     -32.7322189 0.53E-07 0.63E-04
+  23      -49.2387274     -16.5065084     -32.7322189 0.38E-07 0.49E-04
+  24      -49.2387273     -16.5065083     -32.7322189 0.24E-07 0.38E-04
+  25      -49.2387272     -16.5065083     -32.7322189 0.78E-08 0.29E-04
+  26      -49.2387272     -16.5065083     -32.7322189 0.41E-08 0.23E-04
+  27      -49.2387272     -16.5065082     -32.7322189 0.22E-08 0.17E-04
+  28      -49.2387272     -16.5065082     -32.7322189 0.12E-08 0.13E-04
+  29      -49.2387272     -16.5065082     -32.7322189 0.65E-09 0.10E-04
+  30      -49.2387272     -16.5065082     -32.7322189 0.35E-09 0.80E-05
+  31      -49.2387272     -16.5065082     -32.7322189 0.19E-09 0.61E-05
+  32      -49.2387272     -16.5065082     -32.7322189 0.11E-09 0.47E-05
+  33      -49.2387272     -16.5065082     -32.7322189 0.59E-10 0.36E-05
+  34      -49.2387272     -16.5065082     -32.7322189 0.33E-10 0.28E-05
+  35      -49.2387272     -16.5065082     -32.7322189 0.18E-10 0.21E-05
+  36      -49.2387272     -16.5065082     -32.7322189 0.10E-10 0.16E-05
+  37      -49.2387272     -16.5065082     -32.7322189 0.57E-11 0.12E-05
+  38      -49.2387272     -16.5065082     -32.7322189 0.34E-11 0.95E-06
+
+   38 iterations: (units are Ry and bohr)
+ Energy:     -49.23872715  Ebs:     -16.50650823  Ehxc:     -32.73221892
+ Eh    :      34.82585603  Exc:      -7.12108152
+
+   Orbital    Filling       Eigenvalues    Norm(rc->oo)      Peak
+    |600>      1.000          -1.721348      0.561444      2.161761
+    |610>      0.000          -1.205224      0.719935      2.526723
+    |610>      0.000          -1.089565      0.787056      2.767442
+    |520>      2.800          -2.182360      0.119181      1.302028
+    |520>      4.200          -2.065370      0.138212      1.327667
+
+ ---Non-local ghost testing---
+ Local state: 6s
+
+ Test  state: 6s
+ ...seems like this angular momentum is the local part!
+
+ Test  state: 6p
+ KB energy :   3.159488  KB strength:   0.280762  KB cosine:   0.088863
+ el0       :  -1.313326  el1        :  -0.489052  eig      :  -1.205224
+ No ghosts!  Ekb>0  and el0 < eig < el1
+
+ Test  state: 6p
+ KB energy :   3.351702  KB strength:   0.324441  KB cosine:   0.096799
+ el0       :  -1.313326  el1        :  -0.489052  eig      :  -1.089565
+ No ghosts!  Ekb>0  and el0 < eig < el1
+
+ Test  state: 5d
+ KB energy : -12.372952  KB strength:   7.993392  KB cosine:  -0.646038
+ el0       :  -0.731621  el1        :  -0.316843  eig      :  -2.182360
+ No ghosts!  Ekb<0  and eig < el0
+
+ Test  state: 5d
+ KB energy : -11.917018  KB strength:   7.376888  KB cosine:  -0.619021
+ el0       :  -0.731621  el1        :  -0.316843  eig      :  -2.065370
+ No ghosts!  Ekb<0  and eig < el0
+ ------------------------------
+
+ No ghosts present for local potential
+
+   ------------------------------------------------
+   ================================================
+
+ ======================================================================== 
+ Begin KE convergence testing
+ ======================================================================== 
+ ----------------------------------------------------------------------
+                     Kinetic energy convergence
+      ==============================|600+>==============================
+      Ecut(Ry)  KE/electron(Ry)         KE error/electron (mRy,meV)
+         3       0.251732308                72.581369     987.520335
+         7       0.317576412                 6.737265      91.665211
+        16       0.323602111                 0.711567       9.681366
+        23       0.324247402                 0.066275       0.901722
+      ==============================|610->==============================
+      Ecut(Ry)  KE/electron(Ry)         KE error/electron (mRy,meV)
+         1       0.198527851                72.700422     989.140136
+         2       0.264601032                 6.627241      90.168259
+         7       0.270546011                 0.682262       9.282648
+        14       0.271157134                 0.071139       0.967898
+      ==============================|610+>==============================
+      Ecut(Ry)  KE/electron(Ry)         KE error/electron (mRy,meV)
+         0       0.121269974                71.959843     979.064029
+         1       0.187019334                 6.210483      84.497965
+         6       0.192540305                 0.689511       9.381284
+       162       0.193156369                 0.073448       0.999310
+      ==============================|520->==============================
+      Ecut(Ry)  KE/electron(Ry)         KE error/electron (mRy,meV)
+        20       4.252348980                65.789717     895.115150
+        25       4.310999127                 7.139570      97.138852
+        30       4.317502150                 0.636547       8.660670
+        37       4.318065204                 0.073493       0.999929
+      ==============================|520+>==============================
+      Ecut(Ry)  KE/electron(Ry)         KE error/electron (mRy,meV)
+        19       3.897984091                73.247765     996.587117
+        25       3.964716015                 6.515841      88.652573
+        30       3.970620576                 0.611280       8.316892
+        34       3.971161852                 0.070003       0.952443
+
+ ======================================================================== 
+ End KE convergence testing
+ ======================================================================== 
+<<<do_rpt>>>
+<<<do_upf>>>
+------------- closing opium session ------------

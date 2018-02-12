@@ -1,0 +1,288 @@
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+           OPIUM  Version:        4.0                             
+           =====================================            
+ See http://opium.sourceforge.net for help and information                 
+ Copyright 2009 : The OPIUM project                         
+
+ Compile host     : modv-ve503-1446.apn.wlan.upenn.edu
+ Compile OS       : Darwin 16.7.0 i386
+ Compile date     : Wed Sep 13 12:19:10 EDT 2017
+
+ Execution host   : modv-ve503-0699.apn.wlan.upenn.edu
+ time of execution: Tue Sep 19 12:00:42 2017
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Reading parameter file:  <Ga.param> ... 
+ File prefix             : Ga 
+ Element                 : Gallium    (Ga) 
+ Z                       : 31 
+ 
+ Number of all-electron orbitals   : 8 
+ Number of pseudo       orbitals   : 3 
+ 
+ Pseudopotential is non-relativistic 
+ The s potential is used for the KB construction 
+ Optimized (RRKJ) pseudopotential method will be used 
+
+ nl    cutoff radii    q-max      # bessel functions
+ 4s       1.870        7.070              10 
+ 4p       2.020        7.070              10 
+ 3d       2.010        7.070              10 
+
+ Reference Configuration: core  <-/-> valence 
+ 1s2  2s2  2p6  3s2  3p6  <-/-> 4s0.9  4p0.2  3d10 
+
+ Grid definitions: 
+ a_grid=1.00e-04    b_grid=1.30e-02    # points=1164 
+ r(1)=3.18e-05      r(np)=1.17e+02    
+
+ dEmax tolerance:  1.00e-08      dVmax tolerance:  1.00e-06     
+
+ Starting calculation...
+
+ ======================================================================== 
+ Begin AE calculation
+ ======================================================================== 
+ Performing non-relativistic AE calculation...  
+ Rotation needed            1           2   9.9999997473787516E-006
+ Rotation needed            1           4   9.9999997473787516E-006
+ Rotation needed            1           6   9.9999997473787516E-006
+ Rotation needed            2           4   9.9999997473787516E-006
+ Rotation needed            2           6   9.9999997473787516E-006
+ Rotation needed            3           5   9.9999997473787516E-006
+ Rotation needed            3           7   9.9999997473787516E-006
+ Rotation needed            4           6   9.9999997473787516E-006
+ Rotation needed            5           7   9.9999997473787516E-006
+
+ iter       Etot             Eeig             Ehart    de_max   dv_max
+   1    -3847.3395483    2293.7119907     381.0111000 0.13E+00 0.14E-01
+ Rotation needed            1           2  -3.6206954603057895E-002
+ Rotation needed            1           4   1.4274265993881485E-002
+ Rotation needed            1           6   7.6282282123973908E-005
+ Rotation needed            2           4   5.2018163593757549E-002
+ Rotation needed            2           6   3.7901453057061343E-004
+ Rotation needed            3           5   2.1670191315941167E-003
+ Rotation needed            3           7   2.6316968298234109E-005
+ Rotation needed            4           6   2.4165517406396345E-003
+ Rotation needed            5           7   2.6982345577172931E-004
+   2    -3847.3315702    2286.5551913     378.4128693 0.53E-01 0.15E-01
+ Rotation needed            1           2  -3.8436614957213067E-002
+ Rotation needed            1           4   1.3615812568680941E-002
+ Rotation needed            1           6   7.6763364040731801E-005
+ Rotation needed            2           4   3.1277769915064368E-002
+ Rotation needed            2           6   3.8933299641310333E-004
+ Rotation needed            3           5  -1.7658429105420481E-002
+ Rotation needed            3           7   2.6750117356249911E-005
+ Rotation needed            4           6   2.4719171416816006E-003
+ Rotation needed            5           7   2.7518729671594736E-004
+   3    -3847.3175164    2296.6222981     382.0912697 0.71E-01 0.20E-01
+ Rotation needed            1           2  -3.2201522515869385E-002
+ Rotation needed            1           4   1.5703214373471219E-002
+ Rotation needed            1           6   7.0851896136001820E-005
+ Rotation needed            2           4   7.0456925879119225E-002
+ Rotation needed            2           6   3.5179340139586526E-004
+ Rotation needed            3           5   1.8875691380905835E-002
+ Rotation needed            3           7   2.4683918604355855E-005
+ Rotation needed            4           6   2.2922165946686461E-003
+ Rotation needed            5           7   2.6062173835188652E-004
+   4    -3847.3414619    2287.8663382     379.0232274 0.55E-01 0.17E-01
+ Rotation needed            1           2  -3.8970109541839548E-002
+ Rotation needed            1           4   1.3327047843867845E-002
+ Rotation needed            1           6   7.3781567698802142E-005
+ Rotation needed            2           4   3.3538800534206104E-002
+ Rotation needed            2           6   3.6348383965185087E-004
+ Rotation needed            3           5  -1.5822014642179028E-002
+ Rotation needed            3           7   2.5403709739327168E-005
+ Rotation needed            4           6   2.3499570955190759E-003
+ Rotation needed            5           7   2.6379744589283846E-004
+   5    -3847.3447454    2292.4445351     380.5753414 0.29E-01 0.85E-02
+ Rotation needed            1           2  -3.4986854322168526E-002
+ Rotation needed            1           4   1.4771151701012730E-002
+ Rotation needed            1           6   7.1457864385761973E-005
+ Rotation needed            2           4   5.3884004429789911E-002
+ Rotation needed            2           6   3.5447656419580878E-004
+ Rotation needed            3           5   3.3348409121476408E-003
+ Rotation needed            3           7   2.4861319231111439E-005
+ Rotation needed            4           6   2.3040343314839618E-003
+ Rotation needed            5           7   2.6144426746763197E-004
+   6    -3847.3464718    2289.6638703     379.6269392 0.17E-01 0.52E-02
+ Rotation needed            1           2  -3.7320085181347551E-002
+ Rotation needed            1           4   1.3931777262472078E-002
+ Rotation needed            1           6   7.2632024713455273E-005
+ Rotation needed            2           4   4.1888870224081387E-002
+ Rotation needed            2           6   3.5898328581569896E-004
+ Rotation needed            3           5  -7.9476518764298731E-003
+ Rotation needed            3           7   2.5131071646106749E-005
+ Rotation needed            4           6   2.3276189611252107E-003
+ Rotation needed            5           7   2.6267763954566399E-004
+   7    -3847.3469512    2291.2232081     380.1582979 0.97E-02 0.29E-02
+ Rotation needed            1           2  -3.5980065092564573E-002
+ Rotation needed            1           4   1.4415358911372245E-002
+ Rotation needed            1           6   7.1918340917939439E-005
+ Rotation needed            2           4   4.8738143375576470E-002
+ Rotation needed            2           6   3.5623134392133562E-004
+ Rotation needed            3           5  -1.5038943588425724E-003
+ Rotation needed            3           7   2.4966058886267340E-005
+ Rotation needed            4           6   2.3133162268104842E-003
+ Rotation needed            5           7   2.6193688113081105E-004
+   8    -3847.3471203    2290.3143390     379.8490169 0.56E-02 0.17E-02
+ Rotation needed            1           2  -3.6749868199159152E-002
+ Rotation needed            1           4   1.4137740270122379E-002
+ Rotation needed            1           6   7.2315051671550435E-005
+ Rotation needed            2           4   4.4796214634533982E-002
+ Rotation needed            2           6   3.5775322105437786E-004
+ Rotation needed            3           5  -5.2123830584491770E-003
+ Rotation needed            3           7   2.5057064852800119E-005
+ Rotation needed            4           6   2.3212468303879645E-003
+ Rotation needed            5           7   2.6234468232760687E-004
+   9    -3847.3471764    2290.8332003     380.0258742 0.32E-02 0.97E-03
+ Rotation needed            1           2  -3.6306435623682631E-002
+ Rotation needed            1           4   1.4297624312712642E-002
+ Rotation needed            1           6   7.2081695281248323E-005
+ Rotation needed            2           4   4.7066923214128309E-002
+ Rotation needed            2           6   3.5685349375916525E-004
+ Rotation needed            3           5  -3.0763700312554931E-003
+ Rotation needed            3           7   2.5003117371788993E-005
+ Rotation needed            4           6   2.3165622870441830E-003
+ Rotation needed            5           7   2.6210093322648917E-004
+  10    -3847.3471939    2290.5335561     379.9238902 0.19E-02 0.56E-03
+ Rotation needed            1           2  -3.6561130889204208E-002
+ Rotation needed            1           4   1.4205731827481749E-002
+ Rotation needed            1           6   7.2213632673623351E-005
+ Rotation needed            2           4   4.5764216673424229E-002
+ Rotation needed            2           6   3.5736035101242462E-004
+ Rotation needed            3           5  -4.3020029194629217E-003
+ Rotation needed            3           7   2.5033399613055268E-005
+ Rotation needed            4           6   2.3191995670719993E-003
+ Rotation needed            5           7   2.6223638996191145E-004
+  11    -3847.3472005    2290.7054293     379.9824568 0.11E-02 0.32E-03
+ Rotation needed            1           2  -3.6414590417553683E-002
+ Rotation needed            1           4   1.4258550090882061E-002
+ Rotation needed            1           6   7.2136768971947142E-005
+ Rotation needed            2           4   4.6515088553849893E-002
+ Rotation needed            2           6   3.5706377812254206E-004
+ Rotation needed            3           5  -3.5957093211820279E-003
+ Rotation needed            3           7   2.5015646427727319E-005
+ Rotation needed            4           6   2.3176571198940169E-003
+ Rotation needed            5           7   2.6215620693259176E-004
+  12    -3847.3472022    2290.6064289     379.9487525 0.61E-03 0.18E-03
+ Rotation needed            1           2  -3.6498870069902267E-002
+ Rotation needed            1           4   1.4228126908896854E-002
+ Rotation needed            1           6   7.2180525028270822E-005
+ Rotation needed            2           4   4.6084149531512963E-002
+ Rotation needed            2           6   3.5723239364154386E-004
+ Rotation needed            3           5  -4.0011778109469986E-003
+ Rotation needed            3           7   2.5025699228970106E-005
+ Rotation needed            4           6   2.3185321875792394E-003
+ Rotation needed            5           7   2.6220122187048389E-004
+  13    -3847.3472030    2290.6632995     379.9681270 0.35E-03 0.11E-03
+ Rotation needed            1           2  -3.6450430219961305E-002
+ Rotation needed            1           4   1.4245570361706594E-002
+ Rotation needed            1           6   7.2155158063378551E-005
+ Rotation needed            2           4   4.6332387663614583E-002
+ Rotation needed            2           6   3.5713414227195821E-004
+ Rotation needed            3           5  -3.7677009179208909E-003
+ Rotation needed            3           7   2.5019845898858313E-005
+ Rotation needed            4           6   2.3180235002629697E-003
+ Rotation needed            5           7   2.6217482250003943E-004
+  14    -3847.3472031    2290.6305711     379.9569827 0.20E-03 0.61E-04
+ Rotation needed            1           2  -3.6478309482820492E-002
+ Rotation needed            1           4   1.4235490083942981E-002
+ Rotation needed            1           6   7.2169656692494023E-005
+ Rotation needed            2           4   4.6189845515110406E-002
+ Rotation needed            2           6   3.5719046310431966E-004
+ Rotation needed            3           5  -3.9018405786439558E-003
+ Rotation needed            3           7   2.5023179704166757E-005
+ Rotation needed            4           6   2.3183135396983479E-003
+ Rotation needed            5           7   2.6218976603209108E-004
+  15    -3847.3472032    2290.6493826     379.9633905 0.12E-03 0.35E-04
+ Rotation needed            1           2  -3.6462292369790816E-002
+ Rotation needed            1           4   1.4241241168513774E-002
+ Rotation needed            1           6   7.2161275471322391E-005
+ Rotation needed            2           4   4.6271938549033109E-002
+ Rotation needed            2           6   3.5715758695887726E-004
+ Rotation needed            3           5  -3.8246524037788276E-003
+ Rotation needed            3           7   2.5021247192713211E-005
+ Rotation needed            4           6   2.3181456124785815E-003
+ Rotation needed            5           7   2.6218106299548551E-004
+  16    -3847.3472032    2290.6385609     379.9597053 0.67E-04 0.20E-04
+ Rotation needed            1           2  -3.6471512534971495E-002
+ Rotation needed            1           4   1.4237890539339659E-002
+ Rotation needed            1           6   7.2166079118257166E-005
+ Rotation needed            2           4   4.6224812094429524E-002
+ Rotation needed            2           6   3.5717667686744031E-004
+ Rotation needed            3           5  -3.8690236970992942E-003
+ Rotation needed            3           7   2.5022352339859419E-005
+ Rotation needed            4           6   2.3182416737887609E-003
+ Rotation needed            5           7   2.6218601782783071E-004
+  17    -3847.3472033    2290.6447826     379.9618244 0.39E-04 0.12E-04
+ Rotation needed            1           2  -3.6466215377284783E-002
+ Rotation needed            1           4   1.4239775559715895E-002
+ Rotation needed            1           6   7.2163306089178086E-005
+ Rotation needed            2           4   4.6251980748195365E-002
+ Rotation needed            2           6   3.5716537593815707E-004
+ Rotation needed            3           5  -3.8435020191780467E-003
+ Rotation needed            3           7   2.5021713280188338E-005
+ Rotation needed            4           6   2.3181861971458451E-003
+ Rotation needed            5           7   2.6218314547116396E-004
+  18    -3847.3472032    2290.6412040     379.9606057 0.22E-04 0.67E-05
+ Rotation needed            1           2  -3.6469264412851032E-002
+ Rotation needed            1           4   1.4238650542322873E-002
+ Rotation needed            1           6   7.2164899487500456E-005
+ Rotation needed            2           4   4.6236417842461464E-002
+ Rotation needed            2           6   3.5717213317837897E-004
+ Rotation needed            3           5  -3.8581782457942637E-003
+ Rotation needed            3           7   2.5022079947957287E-005
+ Rotation needed            4           6   2.3182179995174901E-003
+ Rotation needed            5           7   2.6218478692120506E-004
+  19    -3847.3472033    2290.6432617     379.9613065 0.13E-04 0.38E-05
+ Rotation needed            1           2  -3.6467512388696832E-002
+ Rotation needed            1           4   1.4239257005723260E-002
+ Rotation needed            1           6   7.2163979243437687E-005
+ Rotation needed            2           4   4.6245426838126491E-002
+ Rotation needed            2           6   3.5716795797019978E-004
+ Rotation needed            3           5  -3.8497392906968741E-003
+ Rotation needed            3           7   2.5021867968848684E-005
+ Rotation needed            4           6   2.3181996603313204E-003
+ Rotation needed            5           7   2.6218383809303191E-004
+  20    -3847.3472033    2290.6420783     379.9609035 0.73E-05 0.22E-05
+ Rotation needed            1           2  -3.6468520667352067E-002
+ Rotation needed            1           4   1.4238867972960811E-002
+ Rotation needed            1           6   7.2164510171375667E-005
+ Rotation needed            2           4   4.6240303813064543E-002
+ Rotation needed            2           6   3.5717063257183088E-004
+ Rotation needed            3           5  -3.8545937781986339E-003
+ Rotation needed            3           7   2.5021990117101886E-005
+ Rotation needed            4           6   2.3182101892399742E-003
+ Rotation needed            5           7   2.6218438164726034E-004
+  21    -3847.3472033    2290.6427588     379.9611353 0.42E-05 0.13E-05
+ Rotation needed            1           2  -3.6467941066380405E-002
+ Rotation needed            1           4   1.4239051596984353E-002
+ Rotation needed            1           6   7.2164202269580692E-005
+ Rotation needed            2           4   4.6243308051513665E-002
+ Rotation needed            2           6   3.5716881197979004E-004
+ Rotation needed            3           5  -3.8518035556691643E-003
+ Rotation needed            3           7   2.5021919239376743E-005
+ Rotation needed            4           6   2.3182041212531342E-003
+ Rotation needed            5           7   2.6218406795660833E-004
+  22    -3847.3472033    2290.6423674     379.9610020 0.24E-05 0.73E-06
+ Rotation needed            1           2  -3.6468274552202473E-002
+ Rotation needed            1           4   1.4238905922943079E-002
+ Rotation needed            1           6   7.2164381658266415E-005
+ Rotation needed            2           4   4.6241637818290826E-002
+ Rotation needed            2           6   3.5717013559482586E-004
+ Rotation needed            3           5  -3.8534097366174080E-003
+ Rotation needed            3           7   2.5021960463305222E-005
+ Rotation needed            4           6   2.3182076103283448E-003
+ Rotation needed            5           7   2.6218424798853639E-004
+  23    -3847.3472033    2290.6425925     379.9610786 0.14E-05 0.79E-06
+ Rotation needed            1           2  -3.6468082804749002E-002
+ Rotation needed            1           4   1.4238949666210310E-002
+ Rotation needed            1           6   7.2164276187361673E-005
+ Rotation needed            2           4   4.6242656369035018E-002
+ Rotation needed            2           6   3.5716909330493508E-004
+ Rotation needed            3           5  -3.8524874853660407E-003
+ Rotation needed            3           7   2.5021936220888724E-005
+ Rotation needed            4           6   2.3182055984017195E-003
+ Rotation needed            5           7   2.6218414413949976E-004

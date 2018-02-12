@@ -1,0 +1,61 @@
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+           OPIUM  Version:        3.8                             
+           =====================================            
+ See http://opium.sourceforge.net for help and information                 
+ Copyright 2009 : The OPIUM project                         
+
+ Compile host     : vagvlan567.0785.wlan.wireless-pennnet.upenn.edu
+ Compile OS       : Darwin 14.5.0 i386
+ Compile date     : Fri Jan  8 17:08:07 EST 2016
+
+ Execution host   : vagvlan567.0785.wlan.wireless-pennnet.upenn.edu
+ time of execution: Fri Jan  8 17:48:06 2016
+
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Reading parameter file:  <h.param> ... 
+ File prefix             : h 
+ Element                 : Hydrogen   (H) 
+ Z                       : 1 
+ 
+ Number of all-electron orbitals   : 1 
+ Number of pseudo       orbitals   : 1 
+ 
+ Pseudopotential is non-relativistic 
+ Exchage-correlation functional is : Perdew, Burke, Ernzerhof GGA 
+ GGA smoothed from 0 to 0.001000 bohr using switch to LDA 
+ The s potential is used for the KB construction 
+ Optimized (RRKJ) pseudopotential method will be used 
+
+ nl    cutoff radii    q-max      # bessel functions
+ 1s       0.770        7.070              10 
+
+ Reference Configuration: core  <-/-> valence 
+ <-/-> 1s1 
+
+ Grid definitions: 
+ a_grid=1.00e-04    b_grid=1.30e-02    # points=1076 
+ r(1)=1.00e-04      r(np)=1.17e+02    
+
+ dEmax tolerance:  1.00e-08      dVmax tolerance:  1.00e-06     
+
+ Starting calculation...
+
+ ======================================================================== 
+ Begin KE convergence testing
+ ======================================================================== 
+ ----------------------------------------------------------------------
+                     Kinetic energy convergence
+      ==============================|100>==============================
+      Ecut(Ry)  KE/electron(Ry)         KE error/electron (mRy,meV)
+         9       0.806726984                72.622651     988.082001
+        29       0.872152484                 7.197151      97.922276
+        52       0.878649525                 0.700111       9.525493
+       213       0.879276891                 0.072744       0.989738
+
+ ======================================================================== 
+ End KE convergence testing
+ ======================================================================== 
+<<<do_rpt>>>
+<<<do_upf>>>
+------------- closing opium session ------------

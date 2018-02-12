@@ -1,0 +1,1361 @@
+ starting hfsolve
+ newmatch  -1.00000000000000     
+ after newmatch  -1.00000000000000                0
+ before outward
+ logder 1  -1.00000000000000     
+ after logder 1  -1.00000000000000     
+ after outward  -1.00000000000000     
+ newmatch -0.441742774935599     
+ after newmatch -0.441742774935599                0
+ before outward
+ logder 1 -0.441742774935599     
+ after logder 1 -0.441742774935599     
+ after outward -0.441742774935599     
+ newmatch -0.213869709316286     
+ after newmatch -0.213869709316286                0
+ before outward
+ logder 1 -0.213869709316286     
+ after logder 1 -0.213869709316286     
+ after outward -0.213869709316286     
+ newmatch -0.103271499034441     
+ after newmatch -0.103271499034441                0
+ before outward
+ logder 1 -0.103271499034441     
+ after logder 1 -0.103271499034441     
+ after outward -0.103271499034441     
+ newmatch -4.698247094760749E-002
+ after newmatch -4.698247094760749E-002           0
+ before outward
+ logder 1 -4.698247094760749E-002
+ after logder 1 -4.698247094760749E-002
+ after outward -4.698247094760749E-002
+ newmatch -1.864509139995421E-002
+ after newmatch -1.864509139995421E-002           0
+ before outward
+ logder 1 -1.864509139995421E-002
+ after logder 1 -1.864509139995421E-002
+ after outward -1.864509139995421E-002
+ newmatch -5.218725096105705E-003
+ after newmatch -5.218725096105705E-003           0
+ before outward
+ logder 1 -5.218725096105705E-003
+ after logder 1 -5.218725096105705E-003
+ after outward -5.218725096105705E-003
+ newmatch -2.578697444453770E-003
+ after newmatch -2.578697444453770E-003           0
+ before outward
+ logder 1 -2.578697444453770E-003
+ after logder 1 -2.578697444453770E-003
+ after outward -2.578697444453770E-003
+ newmatch -9.403280610985854E-004
+ after newmatch -9.403280610985854E-004           0
+ before outward
+ logder 1 -9.403280610985854E-004
+ after logder 1 -9.403280610985854E-004
+ after outward -9.403280610985854E-004
+ newmatch -7.110957243757540E-005
+ after newmatch -7.110957243757540E-005           0
+ before outward
+ logder 1 -7.110957243757540E-005
+ after logder 1 -7.110957243757540E-005
+ after outward -7.110957243757540E-005
+ newmatch -2.361861623845627E-005
+ after newmatch -2.361861623845627E-005           0
+ before outward
+ logder 1 -2.361861623845627E-005
+ after logder 1 -2.361861623845627E-005
+ after outward -2.361861623845627E-005
+ newmatch -9.991796694177540E-006
+ after newmatch -9.991796694177540E-006           0
+ before outward
+ logder 1 -9.991796694177540E-006
+ after logder 1 -9.991796694177540E-006
+ after outward -9.991796694177540E-006
+ newmatch -4.944350825929701E-006
+ after newmatch -4.944350825929701E-006           0
+ before outward
+ logder 1 -4.944350825929701E-006
+ after logder 1 -4.944350825929701E-006
+ after outward -4.944350825929701E-006
+ newmatch -2.775100345760921E-006
+ after newmatch -2.775100345760921E-006           0
+ before outward
+ logder 1 -2.775100345760921E-006
+ after logder 1 -2.775100345760921E-006
+ after outward -2.775100345760921E-006
+ newmatch -1.769421852584385E-006
+ after newmatch -1.769421852584385E-006           0
+ before outward
+ logder 1 -1.769421852584385E-006
+ after logder 1 -1.769421852584385E-006
+ after outward -1.769421852584385E-006
+ newmatch -1.285194377737879E-006
+ after newmatch -1.285194377737879E-006           0
+ before outward
+ logder 1 -1.285194377737879E-006
+ after logder 1 -1.285194377737879E-006
+ after outward -1.285194377737879E-006
+ newmatch -1.047598293943717E-006
+ after newmatch -1.047598293943717E-006           0
+ before outward
+ logder 1 -1.047598293943717E-006
+ after logder 1 -1.047598293943717E-006
+ after outward -1.047598293943717E-006
+ before outward
+ logder 1 -1.018176992187547E-006
+ after logder 1 -1.018176992187547E-006
+ after outward -1.018176992187547E-006
+ before outward
+ logder 1 -1.003483592487985E-006
+ after logder 1 -1.003483592487985E-006
+ after outward -1.003483592487985E-006
+ before outward
+ logder 1 -1.001647994729192E-006
+ after logder 1 -1.001647994729192E-006
+ after outward -1.001647994729192E-006
+ before outward
+ logder 1 -1.000730263141845E-006
+ after logder 1 -1.000730263141845E-006
+ after outward -1.000730263141845E-006
+ before outward
+ logder 1 -1.000271414170213E-006
+ after logder 1 -1.000271414170213E-006
+ after outward -1.000271414170213E-006
+ before outward
+ logder 1 -1.000041993889787E-006
+ after logder 1 -1.000041993889787E-006
+ after outward -1.000041993889787E-006
+ before outward
+ logder 1 -1.000013316617566E-006
+ after logder 1 -1.000013316617566E-006
+ after outward -1.000013316617566E-006
+ before outward
+ logder 1 -1.000006147307725E-006
+ after logder 1 -1.000006147307725E-006
+ after outward -1.000006147307725E-006
+ before outward
+ logder 1 -1.000002562653831E-006
+ after logder 1 -1.000002562653831E-006
+ after outward -1.000002562653831E-006
+ before outward
+ logder 1 -1.000000770327140E-006
+ after logder 1 -1.000000770327140E-006
+ after outward -1.000000770327140E-006
+ before outward
+ logder 1 -1.000000322245500E-006
+ after logder 1 -1.000000322245500E-006
+ after outward -1.000000322245500E-006
+ before outward
+ logder 1 -1.000000098204684E-006
+ after logder 1 -1.000000098204684E-006
+ after outward -1.000000098204684E-006
+ before outward
+ logder 1 -1.000000042194480E-006
+ after logder 1 -1.000000042194480E-006
+ after outward -1.000000042194480E-006
+ before outward
+ logder 1 -1.000000014189378E-006
+ after logder 1 -1.000000014189378E-006
+ after outward -1.000000014189378E-006
+ before outward
+ logder 1 -1.000000000186827E-006
+ after logder 1 -1.000000000186827E-006
+ after outward -1.000000000186827E-006
+ newmatch -7.712800750240762E-003
+ after newmatch -7.712800750240762E-003           0
+ before outward
+ logder 1 -7.712800750240762E-003
+ after logder 1 -7.712800750240762E-003
+ after outward -7.712800750240762E-003
+ newmatch -9.641000937800952E-003
+ after newmatch -9.641000937800952E-003           0
+ before outward
+ logder 1 -9.641000937800952E-003
+ after logder 1 -9.641000937800952E-003
+ after outward -9.641000937800952E-003
+ newmatch -1.205125117225119E-002
+ after newmatch -1.205125117225119E-002           0
+ before outward
+ logder 1 -1.205125117225119E-002
+ after logder 1 -1.205125117225119E-002
+ after outward -1.205125117225119E-002
+ newmatch -1.506406396531399E-002
+ after newmatch -1.506406396531399E-002           0
+ before outward
+ logder 1 -1.506406396531399E-002
+ after logder 1 -1.506406396531399E-002
+ after outward -1.506406396531399E-002
+ newmatch -1.883007995664248E-002
+ after newmatch -1.883007995664248E-002           0
+ before outward
+ logder 1 -1.883007995664248E-002
+ after logder 1 -1.883007995664248E-002
+ after outward -1.883007995664248E-002
+ newmatch -2.353759994580311E-002
+ after newmatch -2.353759994580311E-002           0
+ before outward
+ logder 1 -2.353759994580311E-002
+ after logder 1 -2.353759994580311E-002
+ after outward -2.353759994580311E-002
+ newmatch -2.942199993225388E-002
+ after newmatch -2.942199993225388E-002           0
+ before outward
+ logder 1 -2.942199993225388E-002
+ after logder 1 -2.942199993225388E-002
+ after outward -2.942199993225388E-002
+ newmatch -3.677749991531735E-002
+ after newmatch -3.677749991531735E-002           0
+ before outward
+ logder 1 -3.677749991531735E-002
+ after logder 1 -3.677749991531735E-002
+ after outward -3.677749991531735E-002
+ newmatch -4.597187489414670E-002
+ after newmatch -4.597187489414670E-002           0
+ before outward
+ logder 1 -4.597187489414670E-002
+ after logder 1 -4.597187489414670E-002
+ after outward -4.597187489414670E-002
+ newmatch -5.746484361768337E-002
+ after newmatch -5.746484361768337E-002           0
+ before outward
+ logder 1 -5.746484361768337E-002
+ after logder 1 -5.746484361768337E-002
+ after outward -5.746484361768337E-002
+ newmatch -7.183105452210421E-002
+ after newmatch -7.183105452210421E-002           0
+ before outward
+ logder 1 -7.183105452210421E-002
+ after logder 1 -7.183105452210421E-002
+ after outward -7.183105452210421E-002
+ newmatch -8.978881815263026E-002
+ after newmatch -8.978881815263026E-002           0
+ before outward
+ logder 1 -8.978881815263026E-002
+ after logder 1 -8.978881815263026E-002
+ after outward -8.978881815263026E-002
+ newmatch -0.112236022690788     
+ after newmatch -0.112236022690788                0
+ before outward
+ logder 1 -0.112236022690788     
+ after logder 1 -0.112236022690788     
+ after outward -0.112236022690788     
+ newmatch -0.140295028363485     
+ after newmatch -0.140295028363485                0
+ before outward
+ logder 1 -0.140295028363485     
+ after logder 1 -0.140295028363485     
+ after outward -0.140295028363485     
+ newmatch -0.175368785454356     
+ after newmatch -0.175368785454356                0
+ before outward
+ logder 1 -0.175368785454356     
+ after logder 1 -0.175368785454356     
+ after outward -0.175368785454356     
+ newmatch -0.219210981817945     
+ after newmatch -0.219210981817945                0
+ before outward
+ logder 1 -0.219210981817945     
+ after logder 1 -0.219210981817945     
+ after outward -0.219210981817945     
+ newmatch -0.274013727272431     
+ after newmatch -0.274013727272431                0
+ before outward
+ logder 1 -0.274013727272431     
+ after logder 1 -0.274013727272431     
+ after outward -0.274013727272431     
+ newmatch -0.342517159090539     
+ after newmatch -0.342517159090539                0
+ before outward
+ logder 1 -0.342517159090539     
+ after logder 1 -0.342517159090539     
+ after outward -0.342517159090539     
+ before outward
+ logder 1 -0.354489920413416     
+ after logder 1 -0.354489920413416     
+ after outward -0.354489920413416     
+ before outward
+ logder 1 -0.376689492779814     
+ after logder 1 -0.376689492779814     
+ after outward -0.376689492779814     
+ before outward
+ logder 1 -0.414435859330851     
+ after logder 1 -0.414435859330851     
+ after outward -0.414435859330851     
+ before outward
+ logder 1 -0.467358907067816     
+ after logder 1 -0.467358907067816     
+ after outward -0.467358907067816     
+ before outward
+ logder 1 -0.516413997513115     
+ after logder 1 -0.516413997513115     
+ after outward -0.516413997513115     
+ before outward
+ logder 1 -0.536791032313064     
+ after logder 1 -0.536791032313064     
+ after outward -0.536791032313064     
+ before outward
+ logder 1 -0.538862751684451     
+ after logder 1 -0.538862751684451     
+ after outward -0.538862751684451     
+ before outward
+ logder 1 -0.538880290969112     
+ after logder 1 -0.538880290969112     
+ after outward -0.538880290969112     
+ newmatch -0.538880290969112     
+ after newmatch -0.538880290969112                0
+ before outward
+ logder 1 -0.538880290969112     
+ after logder 1 -0.538880290969112     
+ after outward -0.538880290969112     
+ newmatch -8.197288512419260E-002
+ after newmatch -8.197288512419260E-002           0
+ before outward
+ logder 1 -8.197288512419260E-002
+ after logder 1 -8.197288512419260E-002
+ after outward -8.197288512419260E-002
+ newmatch -0.153844556152799     
+ after newmatch -0.153844556152799                0
+ before outward
+ logder 1 -0.153844556152799     
+ after logder 1 -0.153844556152799     
+ after outward -0.153844556152799     
+ newmatch -0.165431498993678     
+ after newmatch -0.165431498993678                0
+ before outward
+ logder 1 -0.165431498993678     
+ after logder 1 -0.165431498993678     
+ after outward -0.165431498993678     
+ before outward
+ logder 1 -0.165600349887218     
+ after logder 1 -0.165600349887218     
+ after outward -0.165600349887218     
+ before outward
+ logder 1 -0.165600385246854     
+ after logder 1 -0.165600385246854     
+ after outward -0.165600385246854     
+ newmatch -0.165600385246854     
+ after newmatch -0.165600385246854                0
+ before outward
+ logder 1 -0.165600385246854     
+ after logder 1 -0.165600385246854     
+ after outward -0.165600385246854     
+ newmatch -3.159140683507686E-002
+ after newmatch -3.159140683507686E-002           0
+ before outward
+ logder 1 -3.159140683507686E-002
+ after logder 1 -3.159140683507686E-002
+ after outward -3.159140683507686E-002
+ newmatch -5.118829848881621E-002
+ after newmatch -5.118829848881621E-002           0
+ before outward
+ logder 1 -5.118829848881621E-002
+ after logder 1 -5.118829848881621E-002
+ after outward -5.118829848881621E-002
+ before outward
+ logder 1 -5.311421424720500E-002
+ after logder 1 -5.311421424720500E-002
+ after outward -5.311421424720500E-002
+ before outward
+ logder 1 -5.312668135727609E-002
+ after logder 1 -5.312668135727609E-002
+ after outward -5.312668135727609E-002
+ newmatch -5.312668135727609E-002
+ after newmatch -5.312668135727609E-002           0
+ before outward
+ logder 1 -5.312668135727609E-002
+ after logder 1 -5.312668135727609E-002
+ after outward -5.312668135727609E-002
+ newmatch -6.559658766595113E-002
+ after newmatch -6.559658766595113E-002           0
+ before outward
+ logder 1 -6.559658766595113E-002
+ after logder 1 -6.559658766595113E-002
+ after outward -6.559658766595113E-002
+ before outward
+ logder 1 -6.607907634419305E-002
+ after logder 1 -6.607907634419305E-002
+ after outward -6.607907634419305E-002
+ before outward
+ logder 1 -6.607968463716009E-002
+ after logder 1 -6.607968463716009E-002
+ after outward -6.607968463716009E-002
+ newmatch -6.607968463716009E-002
+ after newmatch -6.607968463716009E-002           0
+ before outward
+ logder 1 -6.607968463716009E-002
+ after logder 1 -6.607968463716009E-002
+ after outward -6.607968463716009E-002
+ newmatch -9.670754371911766E-002
+ after newmatch -9.670754371911766E-002           0
+ before outward
+ logder 1 -9.670754371911766E-002
+ after logder 1 -9.670754371911766E-002
+ after outward -9.670754371911766E-002
+ before outward
+ logder 1 -9.932166921275923E-002
+ after logder 1 -9.932166921275923E-002
+ after outward -9.932166921275923E-002
+ before outward
+ logder 1 -9.933490786645002E-002
+ after logder 1 -9.933490786645002E-002
+ after outward -9.933490786645002E-002
+ newmatch -9.933490786645002E-002
+ after newmatch -9.933490786645002E-002           0
+ before outward
+ logder 1 -9.933490786645002E-002
+ after logder 1 -9.933490786645002E-002
+ after outward -9.933490786645002E-002
+ before outward
+ logder 1 -9.913309017408328E-002
+ after logder 1 -9.913309017408328E-002
+ after outward -9.913309017408328E-002
+ before outward
+ logder 1 -9.913316665129390E-002
+ after logder 1 -9.913316665129390E-002
+ after outward -9.913316665129390E-002
+ newmatch -9.913316665129390E-002
+ after newmatch -9.913316665129390E-002           0
+ before outward
+ logder 1 -9.913316665129390E-002
+ after logder 1 -9.913316665129390E-002
+ after outward -9.913316665129390E-002
+ newmatch -9.369782236191718E-002
+ after newmatch -9.369782236191718E-002           0
+ before outward
+ logder 1 -9.369782236191718E-002
+ after logder 1 -9.369782236191718E-002
+ after outward -9.369782236191718E-002
+ before outward
+ logder 1 -9.375243575107640E-002
+ after logder 1 -9.375243575107640E-002
+ after outward -9.375243575107640E-002
+ before outward
+ logder 1 -9.375244156863845E-002
+ after logder 1 -9.375244156863845E-002
+ after outward -9.375244156863845E-002
+ newmatch -9.375244156863845E-002
+ after newmatch -9.375244156863845E-002           0
+ before outward
+ logder 1 -9.375244156863845E-002
+ after logder 1 -9.375244156863845E-002
+ after outward -9.375244156863845E-002
+ before outward
+ logder 1 -9.275187421999692E-002
+ after logder 1 -9.275187421999692E-002
+ after outward -9.275187421999692E-002
+ before outward
+ logder 1 -9.275381331795485E-002
+ after logder 1 -9.275381331795485E-002
+ after outward -9.275381331795485E-002
+ newmatch -9.275381331795485E-002
+ after newmatch -9.275381331795485E-002           0
+ before outward
+ logder 1 -9.275381331795485E-002
+ after logder 1 -9.275381331795485E-002
+ after outward -9.275381331795485E-002
+ before outward
+ logder 1 -9.234880358599834E-002
+ after logder 1 -9.234880358599834E-002
+ after outward -9.234880358599834E-002
+ before outward
+ logder 1 -9.234912352919129E-002
+ after logder 1 -9.234912352919129E-002
+ after outward -9.234912352919129E-002
+ starting iterations
+ np =         1076
+ HF iteration            1
+ rnl(100,1)=  2.650605658009344E-002
+ HF iteration l550           1
+ HF iteration            2
+ rnl(100,1)=  3.927794055896842E-002
+ HF iteration l550           2
+ HF iteration            3
+ rnl(100,1)=  3.835075751266567E-002
+ HF iteration l550           3
+ HF iteration            4
+ rnl(100,1)=  3.818085892701289E-002
+ HF iteration l550           4
+ HF iteration            5
+ rnl(100,1)=  3.812515149565776E-002
+ HF iteration l550           5
+ HF iteration            6
+ rnl(100,1)=  3.810099933427543E-002
+ HF iteration l550           6
+ HF iteration            7
+ rnl(100,1)=  3.808861690662518E-002
+ HF iteration l550           7
+ HF iteration            8
+ rnl(100,1)=  3.808153394519887E-002
+ HF iteration l550           8
+ HF iteration            9
+ rnl(100,1)=  3.807716719947231E-002
+ HF iteration l550           9
+ HF iteration           10
+ rnl(100,1)=  3.807432931243692E-002
+ HF iteration l550          10
+ HF iteration           11
+ rnl(100,1)=  3.807241398076509E-002
+ HF iteration l550          11
+ HF iteration           12
+ rnl(100,1)=  3.807108534180382E-002
+ HF iteration l550          12
+ HF iteration           13
+ rnl(100,1)=  3.807014497816220E-002
+ HF iteration l550          13
+ HF iteration           14
+ rnl(100,1)=  3.806946949288027E-002
+ HF iteration l550          14
+ HF iteration           15
+ rnl(100,1)=  3.806897892668063E-002
+ HF iteration l550          15
+ HF iteration           16
+ rnl(100,1)=  3.806861974295497E-002
+ HF iteration l550          16
+ HF iteration           17
+ rnl(100,1)=  3.806835515511992E-002
+ HF iteration l550          17
+ HF iteration           18
+ rnl(100,1)=  3.806815936611207E-002
+ HF iteration l550          18
+ HF iteration           19
+ rnl(100,1)=  3.806801399609805E-002
+ HF iteration l550          19
+ HF iteration           20
+ rnl(100,1)=  3.806790578814497E-002
+ HF iteration l550          20
+ HF iteration           21
+ rnl(100,1)=  3.806782508971585E-002
+ HF iteration l550          21
+ HF iteration           22
+ rnl(100,1)=  3.806776482180689E-002
+ HF iteration l550          22
+ HF iteration           23
+ rnl(100,1)=  3.806771976421745E-002
+ HF iteration l550          23
+ HF iteration           24
+ rnl(100,1)=  3.806768605139972E-002
+ HF iteration l550          24
+ HF iteration           25
+ rnl(100,1)=  3.806766081188949E-002
+ HF iteration l550          25
+ HF iteration           26
+ rnl(100,1)=  3.806764190758201E-002
+ HF iteration l550          26
+ HF iteration           27
+ rnl(100,1)=  3.806762774357777E-002
+ HF iteration l550          27
+ HF iteration           28
+ rnl(100,1)=  3.806761712856890E-002
+ HF iteration l550          28
+ HF iteration           29
+ rnl(100,1)=  3.806760917180566E-002
+ HF iteration l550          29
+ HF iteration           30
+ rnl(100,1)=  3.806760320675934E-002
+ HF iteration l550          30
+ HF iteration           31
+ rnl(100,1)=  3.806759873439494E-002
+ HF iteration l550          31
+ HF iteration           32
+ rnl(100,1)=  3.806759538092033E-002
+ HF iteration l550          32
+ HF iteration           33
+ rnl(100,1)=  3.806759286626352E-002
+ HF iteration l550          33
+ HF iteration           34
+ rnl(100,1)=  3.806759098052353E-002
+ HF iteration l550          34
+ HF iteration           35
+ rnl(100,1)=  3.806758956636060E-002
+ HF iteration l550          35
+ HF iteration           36
+ rnl(100,1)=  3.806758850581832E-002
+ HF iteration l550          36
+ HF iteration           37
+ rnl(100,1)=  3.806758771045655E-002
+ HF iteration l550          37
+ HF iteration           38
+ rnl(100,1)=  3.806758711396050E-002
+ HF iteration l550          38
+ HF iteration           39
+ rnl(100,1)=  3.806758666660268E-002
+ HF iteration l550          39
+ HF iteration           40
+ rnl(100,1)=  3.806758633109232E-002
+ HF iteration l550          40
+ HF iteration           41
+ rnl(100,1)=  3.806758607946405E-002
+ HF iteration l550          41
+ HF iteration           42
+ rnl(100,1)=  3.806758589074537E-002
+ HF iteration l550          42
+ HF iteration           43
+ rnl(100,1)=  3.806758574920779E-002
+ HF iteration l550          43
+ HF iteration           44
+ rnl(100,1)=  3.806054874242377E-002
+ HF iteration l550          44
+ HF iteration           45
+ rnl(100,1)=  3.805725015073803E-002
+ HF iteration l550          45
+ HF iteration           46
+ rnl(100,1)=  3.805547200445215E-002
+ HF iteration l550          46
+ HF iteration           47
+ rnl(100,1)=  3.805441970321188E-002
+ HF iteration l550          47
+ HF iteration           48
+ rnl(100,1)=  3.805375533534083E-002
+ HF iteration l550          48
+ HF iteration           49
+ rnl(100,1)=  3.805331618105950E-002
+ HF iteration l550          49
+ HF iteration           50
+ rnl(100,1)=  3.805301612536530E-002
+ HF iteration l550          50
+ HF iteration           51
+ rnl(100,1)=  3.805280610332307E-002
+ HF iteration l550          51
+ HF iteration l767          51
+ HF iteration l832          51
+ HF iteration l913          51
+ HF iteration l940          51
+ before descreen
+ starting hfsolve
+ starting iterations
+ np =         1076
+ HF iteration            1
+ rnl(100,1)=  3.070573818051077E-002
+ HF iteration l550           1
+ HF iteration            2
+ rnl(100,1)=  3.070417748800946E-002
+ HF iteration l550           2
+ HF iteration            3
+ rnl(100,1)=  3.070388485822066E-002
+ HF iteration l550           3
+ HF iteration            4
+ rnl(100,1)=  3.070378883907575E-002
+ HF iteration l550           4
+ HF iteration            5
+ rnl(100,1)=  3.070374720577371E-002
+ HF iteration l550           5
+ HF iteration            6
+ rnl(100,1)=  3.070372586057644E-002
+ HF iteration l550           6
+ HF iteration            7
+ rnl(100,1)=  3.070371365066298E-002
+ HF iteration l550           7
+ HF iteration            8
+ rnl(100,1)=  3.070370612305526E-002
+ HF iteration l550           8
+ HF iteration            9
+ rnl(100,1)=  3.070370123095908E-002
+ HF iteration l550           9
+ HF iteration l767           9
+ HF iteration l832           9
+ HF iteration l913           9
+ HF iteration l940           9
+ rvcore compare
+ starting hfsolve
+ starting iterations
+ np =         1076
+ HF iteration            1
+ rnl(100,1)=  3.070369792920909E-002
+ HF iteration l550           1
+ HF iteration            2
+ rnl(100,1)=  3.070366742526571E-002
+ HF iteration l550           2
+ HF iteration l767           2
+ HF iteration l832           2
+ HF iteration l913           2
+ HF iteration l940           2
+ starting hfsolve
+ starting iterations
+ np =         1076
+ HF iteration            1
+ rnl(100,1)=  3.070366170577140E-002
+ HF iteration l550           1
+ HF iteration            2
+ rnl(100,1)=  3.070365836940454E-002
+ HF iteration l550           2
+ HF iteration l767           2
+ HF iteration l832           2
+ HF iteration l913           2
+ HF iteration l940           2
+ starting hfsolve
+ newmatch  -1.00000000000000     
+ after newmatch  -1.00000000000000                0
+ before outward
+ logder 1  -1.00000000000000     
+ after logder 1  -1.00000000000000     
+ after outward  -1.00000000000000     
+ newmatch -0.441742774935599     
+ after newmatch -0.441742774935599                0
+ before outward
+ logder 1 -0.441742774935599     
+ after logder 1 -0.441742774935599     
+ after outward -0.441742774935599     
+ newmatch -0.213869709316286     
+ after newmatch -0.213869709316286                0
+ before outward
+ logder 1 -0.213869709316286     
+ after logder 1 -0.213869709316286     
+ after outward -0.213869709316286     
+ newmatch -0.103271499034441     
+ after newmatch -0.103271499034441                0
+ before outward
+ logder 1 -0.103271499034441     
+ after logder 1 -0.103271499034441     
+ after outward -0.103271499034441     
+ newmatch -4.698247094760749E-002
+ after newmatch -4.698247094760749E-002           0
+ before outward
+ logder 1 -4.698247094760749E-002
+ after logder 1 -4.698247094760749E-002
+ after outward -4.698247094760749E-002
+ newmatch -1.864509139995421E-002
+ after newmatch -1.864509139995421E-002           0
+ before outward
+ logder 1 -1.864509139995421E-002
+ after logder 1 -1.864509139995421E-002
+ after outward -1.864509139995421E-002
+ newmatch -5.218725096105705E-003
+ after newmatch -5.218725096105705E-003           0
+ before outward
+ logder 1 -5.218725096105705E-003
+ after logder 1 -5.218725096105705E-003
+ after outward -5.218725096105705E-003
+ newmatch -2.578697444453770E-003
+ after newmatch -2.578697444453770E-003           0
+ before outward
+ logder 1 -2.578697444453770E-003
+ after logder 1 -2.578697444453770E-003
+ after outward -2.578697444453770E-003
+ newmatch -9.403280610985854E-004
+ after newmatch -9.403280610985854E-004           0
+ before outward
+ logder 1 -9.403280610985854E-004
+ after logder 1 -9.403280610985854E-004
+ after outward -9.403280610985854E-004
+ newmatch -7.110957243757540E-005
+ after newmatch -7.110957243757540E-005           0
+ before outward
+ logder 1 -7.110957243757540E-005
+ after logder 1 -7.110957243757540E-005
+ after outward -7.110957243757540E-005
+ newmatch -2.361861623845627E-005
+ after newmatch -2.361861623845627E-005           0
+ before outward
+ logder 1 -2.361861623845627E-005
+ after logder 1 -2.361861623845627E-005
+ after outward -2.361861623845627E-005
+ newmatch -9.991796694177540E-006
+ after newmatch -9.991796694177540E-006           0
+ before outward
+ logder 1 -9.991796694177540E-006
+ after logder 1 -9.991796694177540E-006
+ after outward -9.991796694177540E-006
+ newmatch -4.944350825929701E-006
+ after newmatch -4.944350825929701E-006           0
+ before outward
+ logder 1 -4.944350825929701E-006
+ after logder 1 -4.944350825929701E-006
+ after outward -4.944350825929701E-006
+ newmatch -2.775100345760921E-006
+ after newmatch -2.775100345760921E-006           0
+ before outward
+ logder 1 -2.775100345760921E-006
+ after logder 1 -2.775100345760921E-006
+ after outward -2.775100345760921E-006
+ newmatch -1.769421852584385E-006
+ after newmatch -1.769421852584385E-006           0
+ before outward
+ logder 1 -1.769421852584385E-006
+ after logder 1 -1.769421852584385E-006
+ after outward -1.769421852584385E-006
+ newmatch -1.285194377737879E-006
+ after newmatch -1.285194377737879E-006           0
+ before outward
+ logder 1 -1.285194377737879E-006
+ after logder 1 -1.285194377737879E-006
+ after outward -1.285194377737879E-006
+ newmatch -1.047598293943717E-006
+ after newmatch -1.047598293943717E-006           0
+ before outward
+ logder 1 -1.047598293943717E-006
+ after logder 1 -1.047598293943717E-006
+ after outward -1.047598293943717E-006
+ before outward
+ logder 1 -1.018176992187547E-006
+ after logder 1 -1.018176992187547E-006
+ after outward -1.018176992187547E-006
+ before outward
+ logder 1 -1.003483592487985E-006
+ after logder 1 -1.003483592487985E-006
+ after outward -1.003483592487985E-006
+ before outward
+ logder 1 -1.001647994729192E-006
+ after logder 1 -1.001647994729192E-006
+ after outward -1.001647994729192E-006
+ before outward
+ logder 1 -1.000730263141845E-006
+ after logder 1 -1.000730263141845E-006
+ after outward -1.000730263141845E-006
+ before outward
+ logder 1 -1.000271414170213E-006
+ after logder 1 -1.000271414170213E-006
+ after outward -1.000271414170213E-006
+ before outward
+ logder 1 -1.000041993889787E-006
+ after logder 1 -1.000041993889787E-006
+ after outward -1.000041993889787E-006
+ before outward
+ logder 1 -1.000013316617566E-006
+ after logder 1 -1.000013316617566E-006
+ after outward -1.000013316617566E-006
+ before outward
+ logder 1 -1.000006147307725E-006
+ after logder 1 -1.000006147307725E-006
+ after outward -1.000006147307725E-006
+ before outward
+ logder 1 -1.000002562653831E-006
+ after logder 1 -1.000002562653831E-006
+ after outward -1.000002562653831E-006
+ before outward
+ logder 1 -1.000000770327140E-006
+ after logder 1 -1.000000770327140E-006
+ after outward -1.000000770327140E-006
+ before outward
+ logder 1 -1.000000322245500E-006
+ after logder 1 -1.000000322245500E-006
+ after outward -1.000000322245500E-006
+ before outward
+ logder 1 -1.000000098204684E-006
+ after logder 1 -1.000000098204684E-006
+ after outward -1.000000098204684E-006
+ before outward
+ logder 1 -1.000000042194480E-006
+ after logder 1 -1.000000042194480E-006
+ after outward -1.000000042194480E-006
+ before outward
+ logder 1 -1.000000014189378E-006
+ after logder 1 -1.000000014189378E-006
+ after outward -1.000000014189378E-006
+ before outward
+ logder 1 -1.000000000186827E-006
+ after logder 1 -1.000000000186827E-006
+ after outward -1.000000000186827E-006
+ newmatch -7.712800750240762E-003
+ after newmatch -7.712800750240762E-003           0
+ before outward
+ logder 1 -7.712800750240762E-003
+ after logder 1 -7.712800750240762E-003
+ after outward -7.712800750240762E-003
+ newmatch -9.641000937800952E-003
+ after newmatch -9.641000937800952E-003           0
+ before outward
+ logder 1 -9.641000937800952E-003
+ after logder 1 -9.641000937800952E-003
+ after outward -9.641000937800952E-003
+ newmatch -1.205125117225119E-002
+ after newmatch -1.205125117225119E-002           0
+ before outward
+ logder 1 -1.205125117225119E-002
+ after logder 1 -1.205125117225119E-002
+ after outward -1.205125117225119E-002
+ newmatch -1.506406396531399E-002
+ after newmatch -1.506406396531399E-002           0
+ before outward
+ logder 1 -1.506406396531399E-002
+ after logder 1 -1.506406396531399E-002
+ after outward -1.506406396531399E-002
+ newmatch -1.883007995664248E-002
+ after newmatch -1.883007995664248E-002           0
+ before outward
+ logder 1 -1.883007995664248E-002
+ after logder 1 -1.883007995664248E-002
+ after outward -1.883007995664248E-002
+ newmatch -2.353759994580311E-002
+ after newmatch -2.353759994580311E-002           0
+ before outward
+ logder 1 -2.353759994580311E-002
+ after logder 1 -2.353759994580311E-002
+ after outward -2.353759994580311E-002
+ newmatch -2.942199993225388E-002
+ after newmatch -2.942199993225388E-002           0
+ before outward
+ logder 1 -2.942199993225388E-002
+ after logder 1 -2.942199993225388E-002
+ after outward -2.942199993225388E-002
+ newmatch -3.677749991531735E-002
+ after newmatch -3.677749991531735E-002           0
+ before outward
+ logder 1 -3.677749991531735E-002
+ after logder 1 -3.677749991531735E-002
+ after outward -3.677749991531735E-002
+ newmatch -4.597187489414670E-002
+ after newmatch -4.597187489414670E-002           0
+ before outward
+ logder 1 -4.597187489414670E-002
+ after logder 1 -4.597187489414670E-002
+ after outward -4.597187489414670E-002
+ newmatch -5.746484361768337E-002
+ after newmatch -5.746484361768337E-002           0
+ before outward
+ logder 1 -5.746484361768337E-002
+ after logder 1 -5.746484361768337E-002
+ after outward -5.746484361768337E-002
+ newmatch -7.183105452210421E-002
+ after newmatch -7.183105452210421E-002           0
+ before outward
+ logder 1 -7.183105452210421E-002
+ after logder 1 -7.183105452210421E-002
+ after outward -7.183105452210421E-002
+ newmatch -8.978881815263026E-002
+ after newmatch -8.978881815263026E-002           0
+ before outward
+ logder 1 -8.978881815263026E-002
+ after logder 1 -8.978881815263026E-002
+ after outward -8.978881815263026E-002
+ newmatch -0.112236022690788     
+ after newmatch -0.112236022690788                0
+ before outward
+ logder 1 -0.112236022690788     
+ after logder 1 -0.112236022690788     
+ after outward -0.112236022690788     
+ newmatch -0.140295028363485     
+ after newmatch -0.140295028363485                0
+ before outward
+ logder 1 -0.140295028363485     
+ after logder 1 -0.140295028363485     
+ after outward -0.140295028363485     
+ newmatch -0.175368785454356     
+ after newmatch -0.175368785454356                0
+ before outward
+ logder 1 -0.175368785454356     
+ after logder 1 -0.175368785454356     
+ after outward -0.175368785454356     
+ newmatch -0.219210981817945     
+ after newmatch -0.219210981817945                0
+ before outward
+ logder 1 -0.219210981817945     
+ after logder 1 -0.219210981817945     
+ after outward -0.219210981817945     
+ newmatch -0.274013727272431     
+ after newmatch -0.274013727272431                0
+ before outward
+ logder 1 -0.274013727272431     
+ after logder 1 -0.274013727272431     
+ after outward -0.274013727272431     
+ newmatch -0.342517159090539     
+ after newmatch -0.342517159090539                0
+ before outward
+ logder 1 -0.342517159090539     
+ after logder 1 -0.342517159090539     
+ after outward -0.342517159090539     
+ before outward
+ logder 1 -0.354489920413416     
+ after logder 1 -0.354489920413416     
+ after outward -0.354489920413416     
+ before outward
+ logder 1 -0.376689492779814     
+ after logder 1 -0.376689492779814     
+ after outward -0.376689492779814     
+ before outward
+ logder 1 -0.414435859330851     
+ after logder 1 -0.414435859330851     
+ after outward -0.414435859330851     
+ before outward
+ logder 1 -0.467358907067816     
+ after logder 1 -0.467358907067816     
+ after outward -0.467358907067816     
+ before outward
+ logder 1 -0.516413997513115     
+ after logder 1 -0.516413997513115     
+ after outward -0.516413997513115     
+ before outward
+ logder 1 -0.536791032313064     
+ after logder 1 -0.536791032313064     
+ after outward -0.536791032313064     
+ before outward
+ logder 1 -0.538862751684451     
+ after logder 1 -0.538862751684451     
+ after outward -0.538862751684451     
+ before outward
+ logder 1 -0.538880290969112     
+ after logder 1 -0.538880290969112     
+ after outward -0.538880290969112     
+ newmatch -0.538880290969112     
+ after newmatch -0.538880290969112                0
+ before outward
+ logder 1 -0.538880290969112     
+ after logder 1 -0.538880290969112     
+ after outward -0.538880290969112     
+ newmatch -8.197288512419260E-002
+ after newmatch -8.197288512419260E-002           0
+ before outward
+ logder 1 -8.197288512419260E-002
+ after logder 1 -8.197288512419260E-002
+ after outward -8.197288512419260E-002
+ newmatch -0.153844556152799     
+ after newmatch -0.153844556152799                0
+ before outward
+ logder 1 -0.153844556152799     
+ after logder 1 -0.153844556152799     
+ after outward -0.153844556152799     
+ newmatch -0.165431498993678     
+ after newmatch -0.165431498993678                0
+ before outward
+ logder 1 -0.165431498993678     
+ after logder 1 -0.165431498993678     
+ after outward -0.165431498993678     
+ before outward
+ logder 1 -0.165600349887218     
+ after logder 1 -0.165600349887218     
+ after outward -0.165600349887218     
+ before outward
+ logder 1 -0.165600385246854     
+ after logder 1 -0.165600385246854     
+ after outward -0.165600385246854     
+ newmatch -0.165600385246854     
+ after newmatch -0.165600385246854                0
+ before outward
+ logder 1 -0.165600385246854     
+ after logder 1 -0.165600385246854     
+ after outward -0.165600385246854     
+ newmatch -3.159140683507686E-002
+ after newmatch -3.159140683507686E-002           0
+ before outward
+ logder 1 -3.159140683507686E-002
+ after logder 1 -3.159140683507686E-002
+ after outward -3.159140683507686E-002
+ newmatch -5.118829848881621E-002
+ after newmatch -5.118829848881621E-002           0
+ before outward
+ logder 1 -5.118829848881621E-002
+ after logder 1 -5.118829848881621E-002
+ after outward -5.118829848881621E-002
+ before outward
+ logder 1 -5.311421424720500E-002
+ after logder 1 -5.311421424720500E-002
+ after outward -5.311421424720500E-002
+ before outward
+ logder 1 -5.312668135727609E-002
+ after logder 1 -5.312668135727609E-002
+ after outward -5.312668135727609E-002
+ newmatch -5.312668135727609E-002
+ after newmatch -5.312668135727609E-002           0
+ before outward
+ logder 1 -5.312668135727609E-002
+ after logder 1 -5.312668135727609E-002
+ after outward -5.312668135727609E-002
+ newmatch -6.559658766595113E-002
+ after newmatch -6.559658766595113E-002           0
+ before outward
+ logder 1 -6.559658766595113E-002
+ after logder 1 -6.559658766595113E-002
+ after outward -6.559658766595113E-002
+ before outward
+ logder 1 -6.607907634419305E-002
+ after logder 1 -6.607907634419305E-002
+ after outward -6.607907634419305E-002
+ before outward
+ logder 1 -6.607968463716009E-002
+ after logder 1 -6.607968463716009E-002
+ after outward -6.607968463716009E-002
+ newmatch -6.607968463716009E-002
+ after newmatch -6.607968463716009E-002           0
+ before outward
+ logder 1 -6.607968463716009E-002
+ after logder 1 -6.607968463716009E-002
+ after outward -6.607968463716009E-002
+ newmatch -9.670754371911766E-002
+ after newmatch -9.670754371911766E-002           0
+ before outward
+ logder 1 -9.670754371911766E-002
+ after logder 1 -9.670754371911766E-002
+ after outward -9.670754371911766E-002
+ before outward
+ logder 1 -9.932166921275923E-002
+ after logder 1 -9.932166921275923E-002
+ after outward -9.932166921275923E-002
+ before outward
+ logder 1 -9.933490786645002E-002
+ after logder 1 -9.933490786645002E-002
+ after outward -9.933490786645002E-002
+ newmatch -9.933490786645002E-002
+ after newmatch -9.933490786645002E-002           0
+ before outward
+ logder 1 -9.933490786645002E-002
+ after logder 1 -9.933490786645002E-002
+ after outward -9.933490786645002E-002
+ before outward
+ logder 1 -9.913309017408328E-002
+ after logder 1 -9.913309017408328E-002
+ after outward -9.913309017408328E-002
+ before outward
+ logder 1 -9.913316665129390E-002
+ after logder 1 -9.913316665129390E-002
+ after outward -9.913316665129390E-002
+ newmatch -9.913316665129390E-002
+ after newmatch -9.913316665129390E-002           0
+ before outward
+ logder 1 -9.913316665129390E-002
+ after logder 1 -9.913316665129390E-002
+ after outward -9.913316665129390E-002
+ newmatch -9.369782236191718E-002
+ after newmatch -9.369782236191718E-002           0
+ before outward
+ logder 1 -9.369782236191718E-002
+ after logder 1 -9.369782236191718E-002
+ after outward -9.369782236191718E-002
+ before outward
+ logder 1 -9.375243575107640E-002
+ after logder 1 -9.375243575107640E-002
+ after outward -9.375243575107640E-002
+ before outward
+ logder 1 -9.375244156863845E-002
+ after logder 1 -9.375244156863845E-002
+ after outward -9.375244156863845E-002
+ newmatch -9.375244156863845E-002
+ after newmatch -9.375244156863845E-002           0
+ before outward
+ logder 1 -9.375244156863845E-002
+ after logder 1 -9.375244156863845E-002
+ after outward -9.375244156863845E-002
+ before outward
+ logder 1 -9.275187421999692E-002
+ after logder 1 -9.275187421999692E-002
+ after outward -9.275187421999692E-002
+ before outward
+ logder 1 -9.275381331795485E-002
+ after logder 1 -9.275381331795485E-002
+ after outward -9.275381331795485E-002
+ newmatch -9.275381331795485E-002
+ after newmatch -9.275381331795485E-002           0
+ before outward
+ logder 1 -9.275381331795485E-002
+ after logder 1 -9.275381331795485E-002
+ after outward -9.275381331795485E-002
+ before outward
+ logder 1 -9.234880358599834E-002
+ after logder 1 -9.234880358599834E-002
+ after outward -9.234880358599834E-002
+ before outward
+ logder 1 -9.234912352919129E-002
+ after logder 1 -9.234912352919129E-002
+ after outward -9.234912352919129E-002
+ starting iterations
+ np =         1076
+ HF iteration            1
+ rnl(100,1)=  2.650605658009344E-002
+ HF iteration l550           1
+ HF iteration            2
+ rnl(100,1)=  3.608496956424968E-002
+ HF iteration l550           2
+ HF iteration            3
+ rnl(100,1)=  3.719050869970755E-002
+ HF iteration l550           3
+ HF iteration            4
+ rnl(100,1)=  3.755266148988728E-002
+ HF iteration l550           4
+ HF iteration            5
+ rnl(100,1)=  3.770965680172299E-002
+ HF iteration l550           5
+ HF iteration            6
+ rnl(100,1)=  3.779014371401914E-002
+ HF iteration l550           6
+ HF iteration            7
+ rnl(100,1)=  3.783618320706430E-002
+ HF iteration l550           7
+ HF iteration            8
+ rnl(100,1)=  3.786456709739529E-002
+ HF iteration l550           8
+ HF iteration            9
+ rnl(100,1)=  3.788301335606084E-002
+ HF iteration l550           9
+ HF iteration           10
+ rnl(100,1)=  3.789546299386978E-002
+ HF iteration l550          10
+ HF iteration           11
+ rnl(100,1)=  3.790409912900013E-002
+ HF iteration l550          11
+ HF iteration           12
+ rnl(100,1)=  3.791021147730370E-002
+ HF iteration l550          12
+ HF iteration           13
+ rnl(100,1)=  3.791460211938014E-002
+ HF iteration l550          13
+ HF iteration           14
+ rnl(100,1)=  3.791779079016874E-002
+ HF iteration l550          14
+ HF iteration           15
+ rnl(100,1)=  3.792012547710979E-002
+ HF iteration l550          15
+ HF iteration           16
+ rnl(100,1)=  3.792184529251258E-002
+ HF iteration l550          16
+ HF iteration           17
+ rnl(100,1)=  3.792311791688663E-002
+ HF iteration l550          17
+ HF iteration           18
+ rnl(100,1)=  3.792406281882880E-002
+ HF iteration l550          18
+ HF iteration           19
+ rnl(100,1)=  3.792476616815369E-002
+ HF iteration l550          19
+ HF iteration           20
+ rnl(100,1)=  3.792529070616100E-002
+ HF iteration l550          20
+ HF iteration           21
+ rnl(100,1)=  3.792568244623048E-002
+ HF iteration l550          21
+ HF iteration           22
+ rnl(100,1)=  3.792597531955628E-002
+ HF iteration l550          22
+ HF iteration           23
+ rnl(100,1)=  3.792619445211665E-002
+ HF iteration l550          23
+ HF iteration           24
+ rnl(100,1)=  3.792635850836676E-002
+ HF iteration l550          24
+ HF iteration           25
+ rnl(100,1)=  3.792648138594031E-002
+ HF iteration l550          25
+ HF iteration           26
+ rnl(100,1)=  3.792657345164895E-002
+ HF iteration l550          26
+ HF iteration           27
+ rnl(100,1)=  3.792664244896739E-002
+ HF iteration l550          27
+ HF iteration           28
+ rnl(100,1)=  3.792669416774901E-002
+ HF iteration l550          28
+ HF iteration           29
+ rnl(100,1)=  3.792673294041544E-002
+ HF iteration l550          29
+ HF iteration           30
+ rnl(100,1)=  3.792676201068304E-002
+ HF iteration l550          30
+ HF iteration           31
+ rnl(100,1)=  3.792678380819227E-002
+ HF iteration l550          31
+ HF iteration           32
+ rnl(100,1)=  3.792680015340468E-002
+ HF iteration l550          32
+ HF iteration           33
+ rnl(100,1)=  3.792681241067206E-002
+ HF iteration l550          33
+ HF iteration           34
+ rnl(100,1)=  3.792682160269913E-002
+ HF iteration l550          34
+ HF iteration           35
+ rnl(100,1)=  3.792682849620004E-002
+ HF iteration l550          35
+ HF iteration           36
+ rnl(100,1)=  3.792683366603359E-002
+ HF iteration l550          36
+ HF iteration           37
+ rnl(100,1)=  3.792683754324443E-002
+ HF iteration l550          37
+ HF iteration           38
+ rnl(100,1)=  3.792684045106013E-002
+ HF iteration l550          38
+ HF iteration           39
+ rnl(100,1)=  3.792684263186992E-002
+ HF iteration l550          39
+ HF iteration           40
+ rnl(100,1)=  3.792684426744802E-002
+ HF iteration l550          40
+ HF iteration           41
+ rnl(100,1)=  3.792684549411515E-002
+ HF iteration l550          41
+ HF iteration           42
+ rnl(100,1)=  3.792684641410624E-002
+ HF iteration l550          42
+ HF iteration           43
+ rnl(100,1)=  3.797258679911504E-002
+ HF iteration l550          43
+ HF iteration           44
+ rnl(100,1)=  3.799402752993461E-002
+ HF iteration l550          44
+ HF iteration           45
+ rnl(100,1)=  3.800558541248544E-002
+ HF iteration l550          45
+ HF iteration           46
+ rnl(100,1)=  3.801242532868063E-002
+ HF iteration l550          46
+ HF iteration           47
+ rnl(100,1)=  3.801674369298266E-002
+ HF iteration l550          47
+ HF iteration           48
+ rnl(100,1)=  3.801959817790937E-002
+ HF iteration l550          48
+ HF iteration           49
+ rnl(100,1)=  3.802154852762735E-002
+ HF iteration l550          49
+ HF iteration           50
+ rnl(100,1)=  3.802291366227180E-002
+ HF iteration l550          50
+ HF iteration           51
+ rnl(100,1)=  3.802388626288080E-002
+ HF iteration l550          51
+ HF iteration           52
+ rnl(100,1)=  3.802458832804759E-002
+ HF iteration l550          52
+ HF iteration           53
+ rnl(100,1)=  3.802510005100837E-002
+ HF iteration l550          53
+ HF iteration           54
+ rnl(100,1)=  3.802547573846792E-002
+ HF iteration l550          54
+ HF iteration           55
+ rnl(100,1)=  3.802575304140791E-002
+ HF iteration l550          55
+ HF iteration           56
+ rnl(100,1)=  3.802595854812742E-002
+ HF iteration l550          56
+ HF iteration           57
+ rnl(100,1)=  3.802611130502610E-002
+ HF iteration l550          57
+ HF iteration           58
+ rnl(100,1)=  3.802622510718960E-002
+ HF iteration l550          58
+ HF iteration           59
+ rnl(100,1)=  3.802631003108967E-002
+ HF iteration l550          59
+ HF iteration           60
+ rnl(100,1)=  3.802637348462647E-002
+ HF iteration l550          60
+ HF iteration           61
+ rnl(100,1)=  3.802642094062928E-002
+ HF iteration l550          61
+ HF iteration           62
+ rnl(100,1)=  3.802645645738486E-002
+ HF iteration l550          62
+ HF iteration           63
+ rnl(100,1)=  3.802648305271484E-002
+ HF iteration l550          63
+ HF iteration           64
+ rnl(100,1)=  3.802650297549185E-002
+ HF iteration l550          64
+ HF iteration l767          64
+ HF iteration l832          64
+ HF iteration l913          64
+ HF iteration l940          64
+ starting hfsolve
+ starting iterations
+ np =         1076
+ HF iteration            1
+ rnl(100,1)=  3.070366170577140E-002
+ HF iteration l550           1
+ HF iteration            2
+ rnl(100,1)=  3.070365836940454E-002
+ HF iteration l550           2
+ HF iteration l767           2
+ HF iteration l832           2
+ HF iteration l913           2
+ HF iteration l940           2
+do nonlocal in hybrid solve
+zeff=1.000000 ixc=-1 exccut_temp=0.000000 ipsp=1 ifc=0 iexit=0 irel=0 iprint=1!!NOTE!!: All Hartree-Fock tests are done with the semi-local form of the potential 
+!!NOTE!!: Use the 'sl' command instead of the 'nl' command to remove this warning...
