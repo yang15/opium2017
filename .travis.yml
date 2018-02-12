@@ -1,12 +1,37 @@
-language: c
-
+language: python
+python:
+  # We don't actually use the Travis Python, but this keeps it organized.
+  - "2.7"
+  - "3.5"
+  - "3.6"
 sudo: required
 
 before_install:
     - sudo apt-get install gfortran
-    - sudo apt-get install anaconda
-    - conda install python
-    - conda install numpy
+    - sudo apt-get install gcc
+
+install:
+  - sudo apt-get update
+  # We do this conditionally because it saves us some downloading if the
+  # version is the same.
+  - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
+      wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
+    else
+      wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+    fi
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  # Useful for debugging any issues with conda
+  - conda info -a
+
+  # Replace dep1 dep2 ... with your dependencies
+  #- conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION dep1 dep2 ...
+  #- source activate test-environment
+  #- python setup.py install
+  - conda install numpy
 
 script:
     - ./configure && make
@@ -14,7 +39,7 @@ script:
       # - ./opium testdir/O/GGA/o.param testdir/O/GGA/o.log ae
     - cd testdir/O/GGA
     - ./opium o o.log ae
-    - grep -B6 'End AE calculation' o.log > alleEng
+    - grep -B6 'End AE calculation' o.log | head -n 3 > alleEng
     - python comparetest.py 
 
 notifications:
