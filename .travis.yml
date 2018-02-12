@@ -32,6 +32,7 @@ install:
   #- source activate test-environment
   #- python setup.py install
   - conda install numpy
+  - conda install pytest
 
 script:
     - ./configure && make
