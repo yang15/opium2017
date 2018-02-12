@@ -7,11 +7,11 @@ before_install:
 
 script:
     - ./configure && make
-      #    - ./opium testdir/C/GGA/c.param testdir/C/GGA/c.log ae
-    - cd testdir/C/GGA
-    - ../../../opium c c.log ae
-    - grep points c.log > testpoints
-    - diff testpoints points 
+      # - ./opium testdir/O/GGA/o.param testdir/O/GGA/o.log ae
+    - cd testdir/O/GGA
+    - ../../../opium o o.log ae
+    - grep -B6 'End AE calculation' o.log > alleEng
+    - diff alleEng refence/alleEng 
 
 notifications:
   email: false
