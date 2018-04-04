@@ -1,61 +1,61 @@
 c-------------------------------------------------------------------
-c     The following code is adapted from:
-c     
-c     A GENERAL HARTREE-FOCK PROGRAM
-c     
+c The following code is adapted from:
+c
+c A GENERAL HARTREE-FOCK PROGRAM
+c
 c     by C. Froese Fischer
-c     Vanderbilt University
-c     Nashville, TN 37235 USA
-c     
+c        Vanderbilt University
+c        Nashville, TN 37235 USA
+c
 c     April, 1987
 c     Published in Computer Physics Communications, 43 (1987) 355
-c     
+c
 c     .... Modified for for arbitrarily filled f-shells
 c     by Gediminas GAIGALAS 
-c     Institute of Theoretical Physics and Astronomy
-c     A. Gostauto str. 12
-c     Vilnius, 2600, Lithuania
-c     
+c        Institute of Theoretical Physics and Astronomy
+c        A. Gostauto str. 12
+c        Vilnius, 2600, Lithuania
+c       
 c     January, 1996
-c     
+c
 c     Pulished in Computer Physics Communications, 98 (1996) 255.
-c     
-c     
-c     
-c     
-c     Obtained from http://atoms.vuse.vanderbilt.edu/Elements/CompMeth/hf.f
+c
+c
+c
+c
+c Obtained from http://atoms.vuse.vanderbilt.edu/Elements/CompMeth/hf.f
 c-----------------------------------------------------------------------
 
 
-c     
-c     Copyright (c) 1998-2012 The OPIUM Group
-c     
-c     This program is free software; you can redistribute it and/or modify
-c     it under the terms of the GNU General Public License as published by
-c     the Free Software Foundation; either version 2 of the License, or
-c     (at your option) any later version.
-c     
-c     This program is distributed in the hope that it will be useful,
-c     but WITHOUT ANY WARRANTY; without even the implied warranty of
-c     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-c     GNU General Public License for more details.
-c     
-c     You should have received a copy of the GNU General Public License
-c     along with this program; if not, write to the Free Software
-c     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-c     
-c     
+c
+c Copyright (c) 1998-2012 The OPIUM Group
+c
+c This program is free software; you can redistribute it and/or modify
+c it under the terms of the GNU General Public License as published by
+c the Free Software Foundation; either version 2 of the License, or
+c (at your option) any later version.
+c
+c This program is distributed in the hope that it will be useful,
+c but WITHOUT ANY WARRANTY; without even the implied warranty of
+c MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+c GNU General Public License for more details.
+c
+c You should have received a copy of the GNU General Public License
+c along with this program; if not, write to the Free Software
+c Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+c
+c
 
       subroutine hfsolve(zeff,ixc,exccut,ipsp,ifc,iexit,irel,iprint)
-      
+     
 c     *************************************************************************
 c     determine the self-consistent solution
 c     *************************************************************************
-      
+     
       implicit double precision (a-h,o-z)
 
 #include "fortdim.h"
-      
+ 
 c     -------------------------------------------------------------------------
 c     External (shared between C and Fortran) common blocks
 c     -------------------------------------------------------------------------
@@ -112,25 +112,25 @@ c     *************************************************************************
       
       dimension wavea(npdm),icarray(30)
       dimension x(npdm),yr(npdm),fr(npdm),fr2(npdm)
+      dimension x_new(npdm),yr_new(npdm)
       dimension lcount(10)
       dimension rvn(npdm),rvf(npdm),p(npdm)
+      dimension rvps_new(npdm,npdm),rvps_old(npdm,n0),p_new(npdm)
+      dimension deltav(npdm,n0),sumdv(npdm,npdm),rv_new(npdm)
+      dimension pref(npdm),pcurr(npdm),rvpsp(npdm),rvpco(npdm)
 c     *************************************************************************
 c     *************************************************************************
-      
-
       character*80 file_log
       character*1 xc(0:3)
       logical ilast,first
       logical fexist
 
-      REAL*8 etl, vtl
-      
       xc(0)='s'
       xc(1)='p'
       xc(2)='d'
       xc(3)='f'
 
-!     HFs setup
+      !HFs setup
 
       vtl=vtol
       etl=etol*10.d0
@@ -147,10 +147,11 @@ c     *************************************************************************
       icorb = norb/4+2
       ighost=0
       ighost2=0
+      anl=0 !set for augmentation correction
 
       open(unit=7,file=file_log,form='formatted',access='append')
 
-      iflag=0                   ! comment by JY: this is a dummy variable 
+      iflag=0  ! comment by JY: this is a dummy variable 
       nfails=0
 
       call hfcoef(iflag,ipsp)
@@ -179,6 +180,16 @@ c     starting guess for channels which don't have a psp-wfn guess
          enddo
       enddo
 
+c     if(ipsp.ne.0.and.inl.ne.0) then
+c         do j=1,norb
+c           do i=1,np
+c               write(31,*) r(i),rnl(i,j)
+c           enddo
+c           write(31,*) '@'
+c          enddo
+c      endif
+
+
       if (ipsp.eq.0) then
          do j=1,norb
             do jj=1,norb
@@ -193,13 +204,26 @@ c     starting guess for channels which don't have a psp-wfn guess
             enddo
          enddo
       else
-         do j=1,norb
-            do i = 1,np
-               rnl(i,j)=rnl(i,j)/sqrt(r(i))
-            enddo
-         enddo
+          if (inl.ne.0) then
+              do j=1,norb
+                do i = 1,np
+                    phipsref(i,j)=rnl(i,j)/sqrt(r(i))
+                    rnl(i,j)=rnl(i,j)/sqrt(r(i))
+                    rvps_old(i,j)=rvps(i,j)
+c                   rnl(i,j)=phipsref(i,j)
+c                   rnl(i,j)=pnf*hwf(no(j),lo(j),zeff-s(j),r(i))
+c    $                 /sqrt(r(i))
+                enddo
+               enddo
+           else
+                do j=1,norb
+                    do i = 1,np
+                        rnl(i,j)=rnl(i,j)/sqrt(r(i))
+                    enddo
+                enddo
+            endif
       endif
-
+      
       etotlast = 0
       ifock=0
       
@@ -229,7 +253,7 @@ c     starting guess for channels which don't have a psp-wfn guess
 
             if (lcount(lo(i)+1).gt.1) then
                do k=1,np
-                  rnl(k,i)=pnf*hwf(no(i),lo(i),zeff-s(i),r(k))/sqrt(r(k))
+                 rnl(k,i)=pnf*hwf(no(i),lo(i),zeff-s(i),r(k))/sqrt(r(k))
                enddo
             endif
             az(i)=1.d0
@@ -253,16 +277,16 @@ c     starting guess for channels which don't have a psp-wfn guess
  33      continue
       enddo
 
-!     DFT setup
+      !DFT setup
       
-!     Do dft steps only when we are doing AE calculation.
-!     If we are doing psp calculation (Trail&Needs procedure),
-!     skip directly to HF steps
+      !Do dft steps only when we are doing AE calculation.
+      !If we are doing psp calculation (Trail&Needs procedure),
+      !  skip directly to HF steps
       if(ipsp.ne.0) goto 55
 
       do j=1,norb
          do i = 1,np
-            rnl(i,j)=rnl(i,j)*sqrt(r(i))
+          rnl(i,j)=rnl(i,j)*sqrt(r(i))
          enddo
       enddo
 
@@ -277,35 +301,33 @@ c     starting guess for channels which don't have a psp-wfn guess
       enddo
 
 
-!     initialize charge density
+      !initialize charge density
       maxim = 0 
       do m=1,norb
-         do i = 1,nmax(m)
-            rsatom(i) = rsatom(i) + wnl(m) * rnl(i,m)**2 
-         enddo
-         maxim = max(maxim,nmax(m))
+        do i = 1,nmax(m)
+          rsatom(i) = rsatom(i) + wnl(m) * rnl(i,m)**2 
+        enddo
+        maxim = max(maxim,nmax(m))
       enddo
 
-!     initialize dft potential
+      !initialize dft potential
 
       call hrtree(maxim,h,r,rsatom,rvh)
       call excorr(maxim,ixc,exccut,rsatom,
-     $     rvxc,rexc,rvx,rex,rvc,rec,irelxc)
+     $           rvxc,rexc,rvx,rex,rvc,rec,irelxc)
 
       do i = 1,np
          do iorb = 1,norb
-!     rvps(i,iorb)=rvcore(i,iorb)+rvh(i)+rvxc(i)
             rvps(i,iorb)=rvcore(i,iorb)+rvh(i)+rvx(i)+rvc(i)
          enddo
       enddo
-c     ******************************************************************
-c     ! do a few iterations of dftsolve first
-c     ******************************************************************
+
+      ! do a few iterations of dftsolve first
 
       igh=0
       ipratt=6
       npratt = ipratt
-      do niter=1,50
+      do niter=1,10
 
          if(niter.eq.1) then
             do i=1,norb
@@ -321,7 +343,7 @@ c     ******************************************************************
             rsold(i)=rsatom(i)
             rsatom(i) = 0
          enddo
-         
+ 
          do m = 1,norb
             if (m.le.ncore) then
                ibound=1
@@ -331,9 +353,9 @@ c     ******************************************************************
 
 
             call schsl(m,no(m),lo(m),en(m),nmax(m),
-     $           rvps(:,m),p,igh,ibound)
+     $                    rvps(:,m),p,igh,ibound)
             do i = 1,nmax(m)
-               rnl(i,m) = p(i)  !this is "dft-style rnl"
+               rnl(i,m) = p(i) !this is "dft-style rnl"
                rsatom(i) = rsatom(i) + wnl(m) * rnl(i,m)**2
             enddo
 
@@ -345,12 +367,12 @@ c     ******************************************************************
                rsatom(i) = alpha * rsatom(i) + (1.0-alpha) * rsold(i)
             enddo
          endif
-         
+ 
          call hrtree(maxim,h,r,rsatom,rvh)
 
 
          call excorr(maxim,ixc,exccut,rsatom,
-     $        rvxc,rexc,rvx,rex,rvc,rec,irelxc)
+     $           rvxc,rexc,rvx,rex,rvc,rec,irelxc)
 
 
          dvmax = 0
@@ -381,11 +403,11 @@ c     ******************************************************************
          enddo
       enddo
 
-!     done with DFT iterations, now transform the variables back.
+      !done with DFT iterations, now transform the variables back.
 
       do j=1,norb
          do i = 1,np
-            rnl(i,j)=rnl(i,j)/sqrt(r(i))
+          rnl(i,j)=rnl(i,j)/sqrt(r(i))
          enddo
       enddo
 
@@ -398,26 +420,13 @@ c     ******************************************************************
       do i=1,norb        
          en(i)=-en(i)
       enddo
-c     c      do i=1,norb
-c     c               write(*,*) en(i)
-c     c      enddo
-!     done with DFT
- 55   continue
-
-c     ***********************************************************************
-c     non-local correction      
-c     ***********************************************************************
-
+      !done with DFT
+55    continue
+c*****************************************************************      
+c   non-localize the rvcore (semilocal) to non-local psp
+c***************************************************************** 
+c   Obtain augmentation box information      
       if (ipsp.ne.0.and.inl.ne.0) then
-c     c        write(*,*)"inside inl"
-
-!     initialize some work vectors    
-         do i=1,np
-            do j=1,norb
-               phipsref(i,j)=rnl(i,j)
-               phiguess(i,j)=rnl(i,j)
-            enddo
-         enddo
 c     store index of rc 
          do i=1,norb
             do j=1,np
@@ -444,7 +453,8 @@ c     store index of rc
             ioutmin=0
             ioutmax=0
             do i=1,numbox
-               write(7,9240) i,r(iboxstart(i)),r(iboxend(i)),boxheight(i) 
+               write(7,9240) i,r(iboxstart(i)),r(iboxend(i)),
+     $               boxheight(i) 
                if (r(iboxend(i)).gt.rindmin) ioutmin = 1
                if (r(iboxend(i)).gt.rindmax) ioutmax = 1
             enddo
@@ -463,19 +473,146 @@ c     store index of rc
      $        ' MAXIMUM cutoff radius')
       endif 
 
-c     ***********************************************************************
-c     Hartree-Fock calculation starts here      
-c     ***********************************************************************
-      write(7,*) '---------Eigenvalue guesses---------'      
+      if (inl.ne.0.and.ifc.eq.0.and.anl.eq.0) then
+          do i=1,np
+            write(38,*) r(i),rvcore(i,2)
+          enddo
+      endif
 
-      do i=1,norb
-         ipos(i)=0
-         write(7,9339) no(i),xc(lo(i)),en(i)
-      enddo
- 9339 format(1x,i1,a1,3x,f20.8)
-      
+c   non-local tranformation starts here
+      do m=1,norb
+        if (m.gt.ncore) then
+            if (inl.ne.0) then
+                call applyaug(rvloc,rvps(1,iloc))
+                if (m.ne.iloc) then
+                    do i=1,np
+                        pref(i)=phipsref(i,m)
+                        pcurr(i)=rnl(i,m)
+                        rvpsp(i)=rvps(i,m)
+                        rvpco(i)=rvcore(i,m)
+                    enddo
+                    call updatervcore(m,pref,
+     $                  pcurr,rvpsp,rvpco,rvloc)
+                    do i=1,np
+                        rvps(i,m)=rvps_old(i,m)
+                        rvcore(i,m)=rvpco(i)
+                    enddo
+                endif
+            endif
+        endif
+c           if (m.gt.ncore) then
+
+c               if (inl.ne.0) then
+c                   write(*,*) 'write ipsp label, ipsp=',ipsp
+c                  call applyaughf(rvloc,rvps(1,iloc))
+c                   if (m.ne.iloc) then
+c                       do i=1,np
+c                           write(35,*) r(i),rvps(i,m) 
+c                       enddo
+c                       write(35,*) '@'
+
+c                       do i=1,np
+c                           p_new(i)=rnl(i,m)
+c                       enddo
+c                       do i=1,np
+c                           deltav(i,m) = rvps(i,m)-rvloc(i)
+c                           if (i.ge.iboxstart(m).and.i.le.iboxend(m))
+c    $                      then
+c                               deltav(i,m) = deltav(i,m) - boxheight(m)
+c                           endif
+c                       enddo
+c                           
+c                       do i=1,np
+c                           do j=1,np
+c                               sumdv(i,j)=deltav(i,m)*phipsref(i,m)
+c    $                              *phipsref(j,m)*deltav(j,m) 
+c                           enddo
+c                       enddo
+
+c                       detv=0.0
+c                       do i=1,np
+c                           detv=detv+
+c    $                       phipsref(i,m)*deltav(i,m)*phipsref(i,m)
+c                       enddo
+
+c                       write(*,*) 'detv=',detv,'niter=',niter
+c                       do i=1,np
+c                           do j=1,np
+c                               if(i.eq.j) then
+c                                   rvps_new(i,j)=rvloc(i)+
+c    $                              sumdv(i,j)/detv
+c                               else
+c                                   rvps_new(i,j)=sumdv(i,j)/detv
+c                               endif
+c                           enddo
+c                       enddo
+c                       do i=1,np
+c                           rv_new(i)=0.0
+c                       enddo
+c                       do i=1,np
+c                           do j=1,np
+c                               rv_new(i)=rv_new(i)+
+c    $                          rvps_new(i,j)*phipsref(j,m)
+c                           enddo
+c                       enddo
+
+c                       do i=1,np
+c                           if ((abs(phipsref(i,m)*sqrt(r(i))).lt.1e-8)
+c    $                            .and.(r(i).gt.5.0)) then
+c                               rmmax=r(i)
+c                               rcoremax=r(i-5)
+c                               nmv=i+1
+c                               goto 799
+c                           endif
+c                       enddo
+c799                    continue
+c                       if (iprint.gt.-1) write(7,*) 'Max radius used
+c    $                      for NL Veff:',nmv,rmmax
+c                       do i=1,np
+c                           if (r(i).lt.rmmax) then
+c                               rvps(i,m) = rv_new(i)/phipsref(i,m)
+c                           endif
+c                       enddo
+c                       do i=1,np
+c                           rnl(i,m)=phipsref(i,m)
+c                       enddo
+c                       call potl(yr_new,m)
+c                       do i=1,np
+c                           write(36,*) r(i),rnl(i,m) 
+c                       enddo
+c                       write(36,*) '@'
+c                       call xch(x_new,m,1)
+c                       do i=1,np
+c                           rnl(i,m)=p_new(i)
+c                       enddo
+c                       do i=1,np
+c                           rps=phipsref(i,m)*sqrt(r(i))
+c                           if (r(i).lt.rcoremax) then
+c                               ax=x_new(i)/sqrt(r(i))
+c                               rij=2.d0*yr_new(i)/r(i)
+c                               rvcore(i,m) = (rvps(i,m)-r(i)
+c    $                          *(rij+ax/rps))
+c                               rvcore(i,m) = -rvcore(i,m)/2.d0
+c                           endif
+c                           rvps(i,m) = rvps_old(i,m)
+c                       enddo
+c                        
+c                   endif
+c               endif
+c           endif
+            enddo
+c    nonlocalization ends
+     
+      if (inl.ne.0.and.ifc.eq.0.and.anl.eq.0) then
+          do i=1,np
+            write(39,*) r(i),rvcore(i,2)
+          enddo
+      endif
+
       do niter = 1,maxit
-         
+        write(*,*) 'ifc=',ifc
+c     ***********************************************************************
+c     ***********************************************************************
          dp1= 0
          edmax = 0
          difmax = 0
@@ -486,13 +623,13 @@ c     ***********************************************************************
             rsatom(i) = 0
          enddo
 
-!     mix charge density
+         !mix charge density
          maxim = 0 
          do m=1,norb
-            do i = 1,nmax(m)
-               rsatom(i) = rsatom(i) + wnl(m) * rnl(i,m)**2 * r(i)
-            enddo
-            maxim = max(maxim,nmax(m))
+           do i = 1,nmax(m)
+             rsatom(i) = rsatom(i) + wnl(m) * rnl(i,m)**2 * r(i)
+           enddo
+           maxim = max(maxim,nmax(m))
          enddo
 
          alpha = 0.5
@@ -501,122 +638,71 @@ c     ***********************************************************************
                rsatom(i) = alpha * rsatom(i) + (1.0-alpha) * rsold(i)
             enddo
          endif
-         
-!     set up dft potentials for hybrid calculations
+ 
+         !set up dft potentials for hybrid calculations
          do i=1,np
-            rvxc(i) = 0
-            rvx(i) = 0
-            rvc(i) = 0
-            rvdft(i) = 0
+           rvxc(i) = 0
+           rvx(i) = 0
+           rvc(i) = 0
+           rvdft(i) = 0
          enddo
 
          call hrtree(maxim,h,r,rsatom,rvh)
+
          call excorr(maxim,ixc,exccut,rsatom,
      $        rvxc,rexc,rvx,rex,rvc,rec,irel)
 
+
+
          do i=1,np
-            rvdft(i) = (1.0-exxw)*(rvh(i)+rvx(i)) + rvc(i)*ecw
+           rvdft(i) = (1.0-exxw)*(rvh(i)+rvx(i)) + rvc(i)*ecw
          enddo
 
-
-!     construct off-diag energy params
+         !construct off-diag energy params
          call grange1
 
          dp1=0.d0
-
-         open(unit=30,file="nl_rnl",form="formatted")
-         open(unit=31,file="nl_ps",form="formatted")
-         open(unit=32,file="kb_ps",form="formatted")
-c     ************************************************
-c     m loop
-c     ************************************************       
          do m=1,norb
-
-c     if (m.le.ncore) then
-c     ibound=1
-c     else
-c     ibound=ibd(m-ncore)               
-c     endif
-c     write(7,*)"ifc=",ifc
-c     if (ifc.eq.0.or.m.gt.ncore) then
-
-c     if not a frozen core calc or if valence
-            do i=1,np
-               write(31,*) r(i),rvps(i,m)
-            enddo
-            write(31,*) '@'
-            if (ipsp.ne.0.and.inl.ne.0) then
-c     write(*,*) 'idesign=',idesign
-!     convert wavefunction back for schl use
-c     if (idesign.ne.1) go to 1500
-c     do i = 1,np
-c     rnl(i,m)=rnl(i,m)*sqrt(r(i))
-c     enddo
-
-c     do j=1,np
-!     rvcore(j,i)=-rvcore(j,i)*2.d0
-c     rvcore(j,m)=-rvcore(j,m)
-c     enddo
-
-c     en(m)=-en(m)
-               call applyaug(rvloc,rvcore(1,iloc))
-               
-c     write(32,*) 'm=',m,'n=',no(m)
-c     do j=1,nval
-c     if(j.eq.iloc) then
-c     do i=1,np            
-c     rvcore(i,ncore+j)=rvloc(i)
-c     enddo
-c     endif
-c     enddo
-c     do i=1,np
-c     write(32,*) r(i),rvloc(i),m
-c     enddo
-c     write(32,*) '@'
-
-c     write(7,*)"iloc=",iloc
-c     write(7,*)"ibound=",ibound
-c     write(7,*)"igh=",igh
-c     rvps with *r in it
-               do i=1,np
-                  Flstar(i) = (rvcore(i,m) - rvloc(i))
-     $                 *phipsref(i,m)/r(i)
-
-                  write(32,*) r(i),rvps(i,iloc)
-               enddo
-               write(32,*) '@'
-               go to 1500
-c     end of inl != 0
-            endif
-            
- 1500       continue
             ed1=0
             eold(m)=en(m)
             ed2=e(m,m)
+c           if (inl.ne.0.and.niter.eq.1.and.m.eq.2) then
+c               if (ifc.eq.0) then
+c                   write(41,*) '#niter=',niter,ifc
+c                   do j=1,np
+c                       write(41,*) r(j),rnl(j,m)
+c                   enddo
+c                   write(41,*) '@'
+c               else
+c                   write(40,*) '#niter=',niter,ifc
+c                   do j=1,np
+c                       write(40,*) r(j),rnl(j,m)
+c                   enddo
+c                   write(40,*) '@'
+c               endif
+c           endif
 
-c     c            if (ipsp.eq.0) then
-c     c                write(*,*) "ed2=",ed2
-c     c            endif
+
+            !rvcore doesn't change but wavefunction does
             call hfde(m,ipsp,zeff,dpm,iprint)
-c     ------------------------------------------------------------------
-c     test for wavefunction modification
-c     ------------------------------------------------------------------
-            if (ipsp.ne.0.and.inl.ne.0) then
-               if (no(iloc).ne.no(m).and.lo(iloc).eq.lo(m)) then
-c     c                    write(*,*) 'nl=',no(m),lo(m)
-                  do i=1,np
-                     write(44,*) r(i),rnl(i,m)*sqrt(r(i)) 
-                  enddo
-                  write(44,*) '@'
-               endif
-            endif
-c     ------------------------------------------------------------------
-c     end test for wavefunction modification
-c     ------------------------------------------------------------------
-
-c     write(7,*) 'NFAILS', nfails
             if (nfails.gt.25) goto 911
+            if (inl.ne.0.and.m.eq.2.and.anl.eq.0) then
+                if (ifc.eq.0) then
+                    write(41,*) '#niter=',niter,ifc
+                    do j=1,np
+                        write(41,*) r(j),rvcore(j,m)
+                    enddo
+                    write(41,*) '@'
+                else
+                    write(40,*) '#niter=',niter,ifc
+                    do j=1,np
+                        write(40,*) r(j),rvcore(j,m)
+                    enddo
+                    write(40,*) '@'
+                endif
+            endif
 
+                   
             dp=dpm(m)
             if (dp1.ge.dp) goto 2
             dp1=dp
@@ -625,66 +711,13 @@ c     write(7,*) 'NFAILS', nfails
             edif = abs((en(m) - eold(m))/eold(m))
             eold(m) = en(m)
             edmax = max(edif,edmax)
-c     write(*,*)'idesign_last=',idesign
-c     if(idesign.eq.1) then
-            call applyaug(rvloc,rvcore(1,iloc))
-            do i = 1, np
-               phiguess(i,m) = rnl(i,m)
-            enddo
-c     endif
          enddo
-         
-
-!     do m=1,norb
-!     do i = 1,np
-!     write(30,*) rnl(i,m)
-!     enddo
-!     enddo
-
+            
 c     ***********************************************************************
-c     m loop
+c      m loop
 c     ***********************************************************************
          
-!     if (dp1.lt.vtl) goto 66
-         goto 66
-c     write(*,*) 'in here'
-c     dp1=0.d0
-c     do mm=1,6
-c     m=ibad
-c     ed1=0
-c     ed2=e(m,m)
-c     eold(m)=en(m)
-c     call hfde(m,ipsp,zeff,dpm,iprint)
-
-c     if (nfails.gt.25) goto 911
-c     dp1=0.d0
-c     do j=1,norb
-
-
-c     dp=dsqrt(wnl(j))*dpm(j)
-c     if (dp1.gt.dp) goto 5
-c     ibad=j
-c     dp1=dp
-c     5             continue
-
-c     edif = abs((en(m) - eold(m))/eold(m))
-c     eold(m) = en(m)
-c     edmax = max(edif,edmax)
-c     enddo
-
-c     if (dp1.lt.vtl) goto 66
-c     enddo
- 66      continue
-
-!     do m=1,norb
-!     do i = 1,np
-!     write(30,*) rnl(i,m)
-!     enddo
-!     enddo
-
          call orthog(ilast)
-
-
 
          ebs=0.d0
          do m = 1,norb
@@ -707,9 +740,9 @@ c     enddo
 
          
          etot2=etot
-!     etot=-ebs-ehart-exx
+         !etot=-ebs-ehart-exx
 
-c     etot2=-ebs-ehart-exx
+c         etot2=-ebs-ehart-exx
          edf=etot-etot2
 
          ediff = etot - etotlast
@@ -730,28 +763,52 @@ c     ***********************************************************************
             endif
             
             etotlast = etot
-            
- 191        format(' iter',7x,'Etot',13x,'Ebs',13x,'Ehart',4x
+         
+ 191        format(' iter',7x,'Etot',13x,'Eeig',13x,'Ehart',4x
      $           ,'de_max',3x,'dv_max')
  490        format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7)
  491        format(1x,i3,2x,f15.7,1x,f15.7,1x,f15.7,1x,e8.2,1x,e8.2)
          endif
-         if (dvmax.lt.vtl.and.edmax.lt.etl) goto 1000
+
+         if (dvmax.lt.vtl.and.edmax.lt.etl) then
+c            if (anl.eq.0) then
+c               anl = 1
+c               do j=1,norb
+c                   do i=1,np
+c                       phipsref(i,j)=rnl(i,j)
+c                   enddo
+c               enddo
+c               
+c               goto 55
+c           else
+                goto 1000
+c           endif
+         endif
          
 c     ***********************************************************************
 c     ***********************************************************************
          vtl=vtl*1.1d0
          etl=etl*1.1d0
+c        do j=1,norb
+c           do i=1,np
+c               phipsref(i,j)=rnl(i,j)
+c           enddo
+c        enddo
       enddo
 
  1000 continue
+      if(inl.ne.0.and.ifc.eq.0) then
+          do i=1,np
+            write(42,*) r(i),rvps(i,2)
+          enddo
+      endif
 
       if (iprint.gt.0)  then
          write(7,*) 
          if (ixc.eq.-1) then
-            write(7,*) 'Hartree-Fock converged!'
+           write(7,*) 'Hartree-Fock converged!'
          elseif (ixc.eq.7) then
-            write(7,*) 'Hybrid functional converged!'
+           write(7,*) 'Hybrid functional converged!'
          endif
       endif
 
@@ -761,12 +818,45 @@ c     ***********************************************************************
  492  format(7x,f15.7,1x,f15.7,1x,f15.7,1x,f15.7,1x,f15.7)
  192  format(12x,'(Etot2)',13x,'Ekin',13x,'Exx',13x,'Evir',13x,'Edf')
 
-      
+
+
+      m=1
+      n=2
+      if (ipsp.eq.33) then
+         write(7,*) 'E=',-en(m)
+         iprint=5
+
+         dpm(m)=0.d0
+         ipsp=1
+         first=.false.
+         do k=1,np
+            rsold(k)=rvcore(k,m)
+            rvcore(k,m)=rvcore(k,n)
+            rnl(k,m)=rnl(k,n)
+         enddo
+         ighost=1
+         ighost2=1
+         
+         do k=1,1
+            call hfmethd(m,ipsp,rsold,zeff,azz,fail,iprint)
+            write(7,*) 'E=',-en(m)
+            no(m)=no(m)+1
+
+            call hfmethd(m,ipsp,rsold,zeff,azz,fail,iprint)
+            write(7,*) 'E=',-en(m)
+            no(m)=no(m)-1
+         enddo
+         
+
+         stop
+      endif
+
+            
       ilast=.true.
       call orthog(ilast)
 
       rmmax=15.d0
-      if (ipsp.eq.0) then
+      if (ipsp.eq.0) then !all-electron store rvps
          do i=1,norb
 
             do j=1,np
@@ -781,16 +871,19 @@ c     ***********************************************************************
      $           i,rmmax
             call potl(yr,i)
             call xch(x,i,1)
-            eps=1d-18
+            eps=1d-8
             do j=1,np
                if (r(j).gt.rmmax) goto 922
                xxx=x(j)/sqrt(r(j))
                rji=2.d0*yr(j)/r(j)
                rvps(j,i)=-2.d0*rvcore(j,i)+2.d0*yr(j)+x(j)
      $              /(rnl(j,i)+eps)
+
             enddo
+
  922        continue
          enddo
+
       endif
 
       do i=1,norb
@@ -799,7 +892,6 @@ c     ***********************************************************************
             rvcore(j,i)=-2.d0*rvcore(j,i)
          enddo
          en(i)=-en(i)
-c     c         write(*,*) 'en1=',en(i)
       enddo
 
       do i=1,np
@@ -811,14 +903,6 @@ c     c         write(*,*) 'en1=',en(i)
          enddo
       enddo
       call hrtree(np,h,r,rsatom,rvh)
-      if (ipsp.eq.0) then
-         open(unit=33,file="vcore",form="formatted")
-         do i=1,np
-            write(33,*) r(i),rvh(i)
-         enddo
-         close(33)
-      endif
-
 
 c     ***********************************************************************
 c     ***********************************************************************
@@ -840,16 +924,6 @@ c     Flip wfn s.t. it is >0 as r->oo
          endif
       enddo
 
-c     write(30,*)'norb=',norb
-      do j=1,norb
-c     write(30,*)'m=',j
-         do i = 1,np
-            write(30,*) r(i),rnl(i,j),j
-            write(31,*) r(i),rvps(i,j),j
-         enddo
-         write(30,*)'@'
-         write(31,*)'@'
-      enddo
 c     compute valence density 
       do j = 1,np
          rsval(j) = 0
@@ -866,7 +940,7 @@ c     compute core density
       if (ipsp.eq.0) then
          rsc=0.0d0
          do j = 1,np
-            rscore(j) = 0.0d0
+            rscore(j) = 0
          enddo
          
          do i = 1,ncore
@@ -941,7 +1015,7 @@ c     write(7,701) etot,ebs,ehart+exx
  701  format(1x,'Energy: ',f16.8,4x,'Ebs: ',f16.8)
  702  format(1x,'Eh:     ',f16.8,4x,'Ex : ',f16.8)
 
-c     701  format(1x,'Energy: ',f16.8,2x,'Eeig: ',f16.8,
+c 701  format(1x,'Energy: ',f16.8,2x,'Eeig: ',f16.8,
 c     $     2x,'Ehart+Exx: ',f16.8)
 
  9222 format(3x,'Orbital',4x,'Filling',7x,'Eigenvalues',4x,
@@ -957,10 +1031,6 @@ c     $     2x,'Ehart+Exx: ',f16.8)
 
       call flush(7)
       close(unit=7)
-      close(unit=30)
-      close(unit=33)
-      close(unit=31)
-      close(unit=32)
 
       return
       
@@ -970,6 +1040,9 @@ c     911 = terminal error - exit scpot
       write(6,*) " !!ERROR!! Could not find self-consistent solution!"
       iexit=1
       
+      call flush(7)
+      close(unit=7)
+
 
  370  format(1x,i2,2i5,2f6.1,f10.4)
  390  format(//,' radial grid parameters',//,
