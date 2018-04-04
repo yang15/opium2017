@@ -726,3 +726,126 @@ c      write (7,100) nlm(i),nlm(j),g,nlm(i),nlm(j),dg,eps
 
       return
       end
+
+*
+*     ------------------------------------------------------------------
+*                Update rvcore for nonlocal 
+*     ------------------------------------------------------------------
+*
+*       Returns the value of nonlocal rvcore, using a special formula to
+*  preserve symmetry.
+*
+      subroutine updatervcore(m,pref,
+     $         pcurr,rvpsp,rvpco,rvl)
+      implicit double precision (a-h,o-z)
+
+#include "fortdim.h"
+ 
+      common /wfn/ rnl(npdm,n0)
+      common /grid/ h,r1,z,r(npdm),np
+      common /box/ iboxstart(n0),iboxend(n0),boxheight(n0),numbox
+      common /hybrid/ exxw,ecw
+      common /aorb/ ncore,nval,norb,nlm(n0),
+     $     no(n0),lo(n0),nmax(n0),maxim
+
+
+      common /partpot/ rvh(npdm),rvxc(npdm),rexc(npdm),
+     $     rvx(npdm),rex(npdm),rvc(npdm),rec(npdm),rvdft(npdm)
+
+
+      dimension deltav(npdm,n0),sumdv(npdm,npdm),rv_new(npdm)
+      dimension rvps_new(npdm,npdm)
+      dimension x_new(npdm),yr_new(npdm)
+      dimension pref(npdm),pcurr(npdm),rvpsp(npdm),rvpco(npdm),rvl(npdm)
+      
+c   non-local tranformation starts here
+      do i=1,np
+         write(45,*) r(i),pref(i) 
+      enddo
+      write(45,*) '@'
+      do i=1,np
+         deltav(i,m) = rvpsp(i)-rvl(i)
+         if (i.ge.iboxstart(m).and.i.le.iboxend(m))
+     $        then
+            deltav(i,m) = deltav(i,m) - boxheight(m)
+         endif
+      enddo
+      
+      do i=1,np
+         do j=1,np
+            sumdv(i,j)=deltav(i,m)*pref(i)
+     $           *pref(j)*deltav(j,m) 
+         enddo
+      enddo
+
+      detv=0.0
+      do i=1,np
+         detv=detv+
+     $        pref(i)*deltav(i,m)*pref(i)
+      enddo
+
+      write(*,*) 'detv=',detv,'niter=',niter
+      do i=1,np
+         do j=1,np
+            if(i.eq.j) then
+               rvps_new(i,j)=rvl(i)+
+     $              sumdv(i,j)/detv
+            else
+               rvps_new(i,j)=sumdv(i,j)/detv
+            endif
+         enddo
+      enddo
+      do i=1,np
+         rv_new(i)=0.0
+      enddo
+      do i=1,np
+         do j=1,np
+            rv_new(i)=rv_new(i)+
+     $           rvps_new(i,j)*pref(j)
+         enddo
+      enddo
+
+      do i=1,np
+         if ((abs(pref(i)*sqrt(r(i))).lt.1e-8)
+     $        .and.(r(i).gt.5.0)) then
+            rmmax=r(i)
+            rcoremax=r(i-5)
+            nmv=i+1
+            goto 799
+         endif
+      enddo
+ 799  continue
+      if (iprint.gt.-1) write(7,*) 'Max radius used
+     $for NL Veff:',nmv,rmmax
+      do i=1,np
+         if (r(i).lt.rmmax) then
+            rvpsp(i) = rv_new(i)/pref(i)
+         endif
+      enddo
+      do i=1,np
+         rnl(i,m)=pref(i)
+      enddo
+      call potl(yr_new,m)
+      do i=1,np
+         write(36,*) r(i),rnl(i,m) 
+      enddo
+      write(36,*) '@'
+      call xch(x_new,m,1)
+      do i=1,np
+         rnl(i,m)=pcurr(i)
+      enddo
+      do i=1,np
+         rps=pref(i)*sqrt(r(i))
+         if (r(i).lt.rcoremax) then
+            ax=x_new(i)/sqrt(r(i))
+            rij=2.d0*yr_new(i)/r(i)
+            rvpco(i) = (rvpsp(i)-r(i)
+     $           *(rij+ax/rps))
+            rvpco(i) = -rvpco(i)/2.d0
+         endif
+      enddo
+      
+c     nonlocalization ends
+
+      return
+      end
