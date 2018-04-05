@@ -115,9 +115,9 @@ c     *************************************************************************
       dimension x_new(npdm),yr_new(npdm)
       dimension lcount(10)
       dimension rvn(npdm),rvf(npdm),p(npdm)
-      dimension rvps_new(npdm,npdm),rvps_old(npdm,n0),p_new(npdm)
+      dimension rvcore_new(npdm,npdm),rvps_old(npdm,n0)
       dimension deltav(npdm,n0),sumdv(npdm,npdm),rv_new(npdm)
-      dimension pref(npdm),pcurr(npdm),rvpsp(npdm),rvpco(npdm)
+      dimension rv_new1(npdm),rvcore1(npdm),rrv(npdm)
 c     *************************************************************************
 c     *************************************************************************
       character*80 file_log
@@ -147,7 +147,7 @@ c     *************************************************************************
       icorb = norb/4+2
       ighost=0
       ighost2=0
-      anl=0 !set for augmentation correction
+      igh=0
 
       open(unit=7,file=file_log,form='formatted',access='append')
 
@@ -208,7 +208,6 @@ c      endif
               do j=1,norb
                 do i = 1,np
                     phipsref(i,j)=rnl(i,j)/sqrt(r(i))
-                    rnl(i,j)=rnl(i,j)/sqrt(r(i))
                     rvps_old(i,j)=rvps(i,j)
 c                   rnl(i,j)=phipsref(i,j)
 c                   rnl(i,j)=pnf*hwf(no(j),lo(j),zeff-s(j),r(i))
@@ -473,144 +472,81 @@ c     store index of rc
      $        ' MAXIMUM cutoff radius')
       endif 
 
-      if (inl.ne.0.and.ifc.eq.0.and.anl.eq.0) then
-          do i=1,np
-            write(38,*) r(i),rvcore(i,2)
-          enddo
-      endif
 
 c   non-local tranformation starts here
       do m=1,norb
-        if (m.gt.ncore) then
-            if (inl.ne.0) then
-                call applyaug(rvloc,rvps(1,iloc))
-                if (m.ne.iloc) then
-                    do i=1,np
-                        pref(i)=phipsref(i,m)
-                        pcurr(i)=rnl(i,m)
-                        rvpsp(i)=rvps(i,m)
-                        rvpco(i)=rvcore(i,m)
-                    enddo
-                    call updatervcore(m,pref,
-     $                  pcurr,rvpsp,rvpco,rvloc)
-                    do i=1,np
-                        rvps(i,m)=rvps_old(i,m)
-                        rvcore(i,m)=rvpco(i)
-                    enddo
+c       if (m.le.ncore) then
+c           ibound = 1
+c       else
+c           ibound=ibd(m-ncore)
+c       endif
+            if (m.gt.ncore) then
+
+                if (inl.ne.0) then
+                   call applyaughf(rvloc,rvcore(1,iloc))
+                    if (m.ne.iloc) then
+
+                        do i=1,np
+                            deltav(i,m) = rvcore(i,m)-rvloc(i)
+                        enddo
+                            
+                        do i=1,np
+                            do j=1,np
+                                sumdv(i,j)=deltav(i,m)*phipsref(i,m)
+     $                              *phipsref(j,m)*deltav(j,m) 
+                            enddo
+                        enddo
+
+                        detv=0.0
+                        do i=1,np
+                            detv=detv+
+     $                       phipsref(i,m)*deltav(i,m)*phipsref(i,m)
+                        enddo
+
+                        do i=1,np
+                            do j=1,np
+                                if(i.eq.j) then
+                                    rvcore_new(i,j)=rvloc(i)+
+     $                              sumdv(i,j)/detv
+                                else
+                                    rvcore_new(i,j)=sumdv(i,j)/detv
+                                endif
+                            enddo
+                        enddo
+                        do i=1,np
+                            rv_new(i)=0.0
+                        enddo
+                        do i=1,np
+                            do j=1,np
+                                rv_new(i)=rv_new(i)+
+     $                          rvcore_new(i,j)*phipsref(j,m)
+                            enddo
+                        enddo
+
+                        do i=1,np
+                            if ((abs(phipsref(i,m)*sqrt(r(i))).lt.1e-8)
+     $                            .and.(r(i).gt.5.0)) then
+                                rmmax=r(i)
+                                rcoremax=r(i-5)
+                                nmv=i+1
+                                goto 799
+                            endif
+                        enddo
+ 799                    continue
+                        if (iprint.gt.-1) write(7,*) 'Max radius used
+     $                      for NL Veff:',nmv,rmmax
+                        do i=1,np
+                            if (r(i).lt.rmmax) then
+                                rvcore(i,m) = rv_new(i)/phipsref(i,m)
+                            endif
+                        enddo
+                    endif
                 endif
             endif
-        endif
-c           if (m.gt.ncore) then
-
-c               if (inl.ne.0) then
-c                   write(*,*) 'write ipsp label, ipsp=',ipsp
-c                  call applyaughf(rvloc,rvps(1,iloc))
-c                   if (m.ne.iloc) then
-c                       do i=1,np
-c                           write(35,*) r(i),rvps(i,m) 
-c                       enddo
-c                       write(35,*) '@'
-
-c                       do i=1,np
-c                           p_new(i)=rnl(i,m)
-c                       enddo
-c                       do i=1,np
-c                           deltav(i,m) = rvps(i,m)-rvloc(i)
-c                           if (i.ge.iboxstart(m).and.i.le.iboxend(m))
-c    $                      then
-c                               deltav(i,m) = deltav(i,m) - boxheight(m)
-c                           endif
-c                       enddo
-c                           
-c                       do i=1,np
-c                           do j=1,np
-c                               sumdv(i,j)=deltav(i,m)*phipsref(i,m)
-c    $                              *phipsref(j,m)*deltav(j,m) 
-c                           enddo
-c                       enddo
-
-c                       detv=0.0
-c                       do i=1,np
-c                           detv=detv+
-c    $                       phipsref(i,m)*deltav(i,m)*phipsref(i,m)
-c                       enddo
-
-c                       write(*,*) 'detv=',detv,'niter=',niter
-c                       do i=1,np
-c                           do j=1,np
-c                               if(i.eq.j) then
-c                                   rvps_new(i,j)=rvloc(i)+
-c    $                              sumdv(i,j)/detv
-c                               else
-c                                   rvps_new(i,j)=sumdv(i,j)/detv
-c                               endif
-c                           enddo
-c                       enddo
-c                       do i=1,np
-c                           rv_new(i)=0.0
-c                       enddo
-c                       do i=1,np
-c                           do j=1,np
-c                               rv_new(i)=rv_new(i)+
-c    $                          rvps_new(i,j)*phipsref(j,m)
-c                           enddo
-c                       enddo
-
-c                       do i=1,np
-c                           if ((abs(phipsref(i,m)*sqrt(r(i))).lt.1e-8)
-c    $                            .and.(r(i).gt.5.0)) then
-c                               rmmax=r(i)
-c                               rcoremax=r(i-5)
-c                               nmv=i+1
-c                               goto 799
-c                           endif
-c                       enddo
-c799                    continue
-c                       if (iprint.gt.-1) write(7,*) 'Max radius used
-c    $                      for NL Veff:',nmv,rmmax
-c                       do i=1,np
-c                           if (r(i).lt.rmmax) then
-c                               rvps(i,m) = rv_new(i)/phipsref(i,m)
-c                           endif
-c                       enddo
-c                       do i=1,np
-c                           rnl(i,m)=phipsref(i,m)
-c                       enddo
-c                       call potl(yr_new,m)
-c                       do i=1,np
-c                           write(36,*) r(i),rnl(i,m) 
-c                       enddo
-c                       write(36,*) '@'
-c                       call xch(x_new,m,1)
-c                       do i=1,np
-c                           rnl(i,m)=p_new(i)
-c                       enddo
-c                       do i=1,np
-c                           rps=phipsref(i,m)*sqrt(r(i))
-c                           if (r(i).lt.rcoremax) then
-c                               ax=x_new(i)/sqrt(r(i))
-c                               rij=2.d0*yr_new(i)/r(i)
-c                               rvcore(i,m) = (rvps(i,m)-r(i)
-c    $                          *(rij+ax/rps))
-c                               rvcore(i,m) = -rvcore(i,m)/2.d0
-c                           endif
-c                           rvps(i,m) = rvps_old(i,m)
-c                       enddo
-c                        
-c                   endif
-c               endif
-c           endif
             enddo
 c    nonlocalization ends
      
-      if (inl.ne.0.and.ifc.eq.0.and.anl.eq.0) then
-          do i=1,np
-            write(39,*) r(i),rvcore(i,2)
-          enddo
-      endif
-
       do niter = 1,maxit
-        write(*,*) 'ifc=',ifc
 c     ***********************************************************************
 c     ***********************************************************************
          dp1= 0
@@ -666,43 +602,46 @@ c     ***********************************************************************
             ed1=0
             eold(m)=en(m)
             ed2=e(m,m)
-c           if (inl.ne.0.and.niter.eq.1.and.m.eq.2) then
-c               if (ifc.eq.0) then
-c                   write(41,*) '#niter=',niter,ifc
-c                   do j=1,np
-c                       write(41,*) r(j),rnl(j,m)
-c                   enddo
-c                   write(41,*) '@'
-c               else
-c                   write(40,*) '#niter=',niter,ifc
-c                   do j=1,np
-c                       write(40,*) r(j),rnl(j,m)
-c                   enddo
-c                   write(40,*) '@'
-c               endif
-c           endif
 
+            if (inl.ne.0.and.m.gt.ncore.and.m.ne.iloc) then
+                do i=1,np
+                   rv_new(i)=0.0
+                enddo
+                do i=1,np
+                   do j=1,np
+                       rv_new(i)=rv_new(i)+
+     $                    rvcore_new(i,j)*rnl(j,m)
+                   enddo
+                enddo
 
-            !rvcore doesn't change but wavefunction does
-            call hfde(m,ipsp,zeff,dpm,iprint)
-            if (nfails.gt.25) goto 911
-            if (inl.ne.0.and.m.eq.2.and.anl.eq.0) then
-                if (ifc.eq.0) then
-                    write(41,*) '#niter=',niter,ifc
-                    do j=1,np
-                        write(41,*) r(j),rvcore(j,m)
-                    enddo
-                    write(41,*) '@'
-                else
-                    write(40,*) '#niter=',niter,ifc
-                    do j=1,np
-                        write(40,*) r(j),rvcore(j,m)
-                    enddo
-                    write(40,*) '@'
-                endif
+                do i=1,np
+                    if ((abs(rnl(i,m)*sqrt(r(i))).lt.1e-8)
+     $                  .and.(r(i).gt.5.0)) then
+                            rmmax=r(i)
+                            nmv=i
+                            goto 797
+                    endif
+                enddo
+ 797            continue
+                if (iprint.gt.-1) write(7,*) 'Max radius used
+     $                      for NL Veff:',nmv,rmmax
+
+                do i=1,np
+                    if (r(i).lt.rmmax) then
+                        rvcore(i,m) = rv_new(i)/rnl(i,m)
+                    endif
+                enddo
+c               ifile=55
+c               write(ifile,*) '#niter=',niter
+c               do i=1,np
+c                   write(ifile,*) r(i),rvcore(i,m)
+c               enddo
+c                   write(ifile,*) '@'
             endif
-
-                   
+                !rvcore doesn't change but wavefunction does
+                call hfde(m,ipsp,zeff,dpm,iprint)
+                if (nfails.gt.25) goto 911
+c           endif 
             dp=dpm(m)
             if (dp1.ge.dp) goto 2
             dp1=dp
@@ -771,37 +710,31 @@ c     ***********************************************************************
          endif
 
          if (dvmax.lt.vtl.and.edmax.lt.etl) then
-c            if (anl.eq.0) then
-c               anl = 1
-c               do j=1,norb
-c                   do i=1,np
-c                       phipsref(i,j)=rnl(i,j)
-c                   enddo
-c               enddo
-c               
-c               goto 55
-c           else
+             if(inl.ne.0) then
+                 do i=1,np
+                    rrv(i)=0.0
+                 enddo
+                 do i=1,np
+                    do j=1,np
+                        rrv(i)=rrv(i)+sumdv(i,j)/detv*rnl(i,2)
+                    enddo
+                enddo
+                do i=1,np
+                    write(20,*) r(i),rrv(i)
+                enddo
+                write(20,*) '@'
+            endif
                 goto 1000
-c           endif
          endif
          
 c     ***********************************************************************
 c     ***********************************************************************
          vtl=vtl*1.1d0
          etl=etl*1.1d0
-c        do j=1,norb
-c           do i=1,np
-c               phipsref(i,j)=rnl(i,j)
-c           enddo
-c        enddo
+
       enddo
 
  1000 continue
-      if(inl.ne.0.and.ifc.eq.0) then
-          do i=1,np
-            write(42,*) r(i),rvps(i,2)
-          enddo
-      endif
 
       if (iprint.gt.0)  then
          write(7,*) 
