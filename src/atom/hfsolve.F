@@ -180,16 +180,6 @@ c     starting guess for channels which don't have a psp-wfn guess
          enddo
       enddo
 
-c     if(ipsp.ne.0.and.inl.ne.0) then
-c         do j=1,norb
-c           do i=1,np
-c               write(31,*) r(i),rnl(i,j)
-c           enddo
-c           write(31,*) '@'
-c          enddo
-c      endif
-
-
       if (ipsp.eq.0) then
          do j=1,norb
             do jj=1,norb
@@ -209,9 +199,6 @@ c      endif
                 do i = 1,np
                     phipsref(i,j)=rnl(i,j)/sqrt(r(i))
                     rvps_old(i,j)=rvps(i,j)
-c                   rnl(i,j)=phipsref(i,j)
-c                   rnl(i,j)=pnf*hwf(no(j),lo(j),zeff-s(j),r(i))
-c    $                 /sqrt(r(i))
                 enddo
                enddo
            else
@@ -475,11 +462,6 @@ c     store index of rc
 
 c   non-local tranformation starts here
       do m=1,norb
-c       if (m.le.ncore) then
-c           ibound = 1
-c       else
-c           ibound=ibd(m-ncore)
-c       endif
             if (m.gt.ncore) then
 
                 if (inl.ne.0) then
@@ -631,17 +613,10 @@ c     ***********************************************************************
                         rvcore(i,m) = rv_new(i)/rnl(i,m)
                     endif
                 enddo
-c               ifile=55
-c               write(ifile,*) '#niter=',niter
-c               do i=1,np
-c                   write(ifile,*) r(i),rvcore(i,m)
-c               enddo
-c                   write(ifile,*) '@'
             endif
                 !rvcore doesn't change but wavefunction does
                 call hfde(m,ipsp,zeff,dpm,iprint)
                 if (nfails.gt.25) goto 911
-c           endif 
             dp=dpm(m)
             if (dp1.ge.dp) goto 2
             dp1=dp
