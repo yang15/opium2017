@@ -45,8 +45,7 @@ int do_qeupf(param_t *param, FILE *fp_param, char *logfile){
 
   int i,j,k,ic,ncore;
   char filename[180];
-  char filervloc[180];
-  FILE *fp,*fp2,*fprvloc;
+  FILE *fp,*fp2;
   FILE *fp_log;
   int kk=2;
   double zeff;
@@ -156,9 +155,7 @@ int do_qeupf(param_t *param, FILE *fp_param, char *logfile){
   /* First put in the param file: */
 
   sprintf(filename, "%s.upf", param->name);
-  sprintf(filervloc, "%s.rvloc", param->name);
   fp = fopen(filename, "w");
-  fprvloc = fopen(filervloc, "w");
 
   fprintf(fp,"  <PP_INFO>\n");
   writeparam(param, fp, fp_param);  
@@ -322,10 +319,6 @@ int do_qeupf(param_t *param, FILE *fp_param, char *logfile){
       }
       if(i%4 !=0 ) fprintf(fp,"\n");
 
-      for (i=0;i<param->ngrid;i++){
-          fprintf(fprvloc,"%19.16le %19.16le\n", rr[i],-(rvcore[j][i]+nlcore[i]*2.0)/2.0);
-      }
-
       fprintf(fp,"  </PP_BETA>\n");
       ng=param->ngrid;
       if (ng%2 !=0) ng-=1;
@@ -392,7 +385,6 @@ int do_qeupf(param_t *param, FILE *fp_param, char *logfile){
     fprintf(fp,"</PP_ADDINFO>\n");
   }
   fclose(fp);
-  fclose(fprvloc);
   return 0;
 }
 
