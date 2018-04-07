@@ -232,12 +232,6 @@ c     *************************************************************************
  9260 format(1x,'WARNING!: One or more functions extend beyond the',
      $     ' MAXIMUM cutoff radius')
 
-      if (inl.ne.0.and.ifc.eq.11) then
-          do i=1,np
-            write(31,*) r(i),rvps(i,2)
-          enddo
-      endif
-
 c     *************************************************************************
 c     Begin self-consistency loop.
 c     *************************************************************************
@@ -300,21 +294,9 @@ c     if non-local
                         Flstar(i) = (rvps(i,m) - rvloc(i))
      $                       *phipsref(i,m)/r(i)
                      enddo
-                     write(*,*) niter,ifc,m
-                     if (niter.eq.5.and.m.eq.2.and.ifc.eq.11) then
-                        do i=1,np
-                            write(26,*) r(i),rvps(i,m)
-                        enddo
-                        write(26,*)'@'
-                    endif
+
                      call schsl (m,no(m),lo(m),en(m),nmax(m),
      $                    rvloc,p,igh,ibound)
-                     if (m.eq.2.and.ifc.eq.11) then
-                        do i=1,np
-                            write(27,*) r(i),rnl(i,m),rvps(i,m)
-                        enddo
-                        write(27,*)'@'
-                    endif
 
                      if (itermcount.gt.50) then
                          goto 911
@@ -486,13 +468,6 @@ c     ***********************************************************************
      $              + (1.0 - xmix) * rvps(i,iorb)
             enddo
          enddo
-         if (inl.ne.0.and.ifc.eq.11) then
-            write(30,*) "#niter=",niter
-            do i=1,np
-                write(30,*) r(i),rvps(i,2)
-            enddo
-            write(30,*) '@'
-         endif
 
          if (niter.eq.maxit) then
              goto 911
@@ -583,13 +558,6 @@ c     911 = terminal error - exit scpot
 c     ***********************************************************************
 c     Section 8:  logder
 c     ***********************************************************************
-
-      if (inl.ne.0.and.ifc.eq.11) then
-          do i=1,np
-            write(32,*) r(i),rvps(i,2)
-          enddo
-          write(32,*) '@'
-      endif
 
       if (ilogder.eq.1) then
          if (ipsp.eq.0) then
