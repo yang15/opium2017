@@ -459,13 +459,18 @@ c     store index of rc
      $        ' MAXIMUM cutoff radius')
       endif 
 
+      if(ifc.eq.0.and.inl.ne.0) then
+          do i=1,np
+            write(78,*) r(i),rvcore(i,1)
+          enddo
+      endif
 
 c   non-local tranformation starts here
       do m=1,norb
+        if (inl.ne.0) then
+            call applyaughf(rvloc,rvcore(1,iloc))
             if (m.gt.ncore) then
 
-                if (inl.ne.0) then
-                   call applyaughf(rvloc,rvcore(1,iloc))
                     if (m.ne.iloc) then
 
                         do i=1,np
@@ -523,9 +528,18 @@ c   non-local tranformation starts here
                             endif
                         enddo
                     endif
+                    
                 endif
             endif
             enddo
+            if (ifc.eq.0.and.inl.ne.0) then
+            do j=ncore+1,norb
+                do i=1,np
+                    write(77,*) r(i),rvcore(i,j)-rvloc(i)
+                enddo
+                write(77,*) 
+            enddo
+            endif
 c    nonlocalization ends
      
       do niter = 1,maxit
@@ -685,20 +699,20 @@ c     ***********************************************************************
          endif
 
          if (dvmax.lt.vtl.and.edmax.lt.etl) then
-             if(inl.ne.0) then
-                 do i=1,np
-                    rrv(i)=0.0
-                 enddo
-                 do i=1,np
-                    do j=1,np
-                        rrv(i)=rrv(i)+sumdv(i,j)/detv*rnl(i,2)
-                    enddo
-                enddo
-                do i=1,np
-                    write(20,*) r(i),rrv(i)
-                enddo
-                write(20,*) '@'
-            endif
+c            if(inl.ne.0) then
+c                do i=1,np
+c                   rrv(i)=0.0
+c                enddo
+c                do i=1,np
+c                   do j=1,np
+c                       rrv(i)=rrv(i)+sumdv(i,j)/detv*rnl(i,2)
+c                   enddo
+c               enddo
+c               do i=1,np
+c                   write(20,*) r(i),rrv(i)
+c               enddo
+c               write(20,*) '@'
+c           endif
                 goto 1000
          endif
          
