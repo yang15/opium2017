@@ -459,12 +459,6 @@ c     store index of rc
      $        ' MAXIMUM cutoff radius')
       endif 
 
-      if(ifc.eq.0.and.inl.ne.0) then
-          do i=1,np
-            write(78,*) r(i),rvcore(i,1)
-          enddo
-      endif
-
 c   non-local tranformation starts here
       do m=1,norb
         if (inl.ne.0) then
@@ -532,14 +526,6 @@ c   non-local tranformation starts here
                 endif
             endif
             enddo
-            if (ifc.eq.0.and.inl.ne.0) then
-            do j=ncore+1,norb
-                do i=1,np
-                    write(77,*) r(i),rvcore(i,j)-rvloc(i)
-                enddo
-                write(77,*) 
-            enddo
-            endif
 c    nonlocalization ends
      
       do niter = 1,maxit
@@ -619,8 +605,8 @@ c     ***********************************************************************
                     endif
                 enddo
  797            continue
-                if (iprint.gt.-1) write(7,*) 'Max radius used
-     $                      for NL Veff:',nmv,rmmax
+c               if (iprint.gt.-1) write(7,*) 'Max radius used
+c    $                      for NL Veff:',nmv,rmmax
 
                 do i=1,np
                     if (r(i).lt.rmmax) then
@@ -699,20 +685,6 @@ c     ***********************************************************************
          endif
 
          if (dvmax.lt.vtl.and.edmax.lt.etl) then
-c            if(inl.ne.0) then
-c                do i=1,np
-c                   rrv(i)=0.0
-c                enddo
-c                do i=1,np
-c                   do j=1,np
-c                       rrv(i)=rrv(i)+sumdv(i,j)/detv*rnl(i,2)
-c                   enddo
-c               enddo
-c               do i=1,np
-c                   write(20,*) r(i),rrv(i)
-c               enddo
-c               write(20,*) '@'
-c           endif
                 goto 1000
          endif
          
