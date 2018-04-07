@@ -142,7 +142,6 @@ c      endif
       endif
 
       if (inl.ne.0) then
-          write(*,*) 'ipsp=',ipsp
          do i=1,np
             do j=1,norb
                phipsref(i,j)=rnl(i,j)
@@ -151,7 +150,7 @@ c      endif
          enddo
       endif
             
-      if (ifc.eq.0) then
+      if (ifc.le.12) then
          do j = 1,norb
             eold(j) = en(j)
             nmax(j) = 0
@@ -233,6 +232,12 @@ c     *************************************************************************
  9260 format(1x,'WARNING!: One or more functions extend beyond the',
      $     ' MAXIMUM cutoff radius')
 
+      if (inl.ne.0.and.ifc.eq.11) then
+          do i=1,np
+            write(31,*) r(i),rvps(i,2)
+          enddo
+      endif
+
 c     *************************************************************************
 c     Begin self-consistency loop.
 c     *************************************************************************
@@ -273,32 +278,16 @@ c         enddo
 c     ***********************************************************************
 c     Section 3:  call schsl for each orbital & compile charge density.
 c     ***********************************************************************
-      
-c       open(unit=39,file="dft_nl_rnl",form="formatted")
+
          do m = 1,norb
-c   ------------------------------------------------------------------
-c   test for wavefunction modification
-c   ------------------------------------------------------------------
-            if (ipsp.ne.0.and.inl.ne.0) then
-c               if (no(iloc).ne.no(m).and.lo(iloc).eq.lo(m)) then
-                    write(*,*) 'dftnl=',no(m),lo(m)
-                    do i=1,np
-                      write(45,*) r(i),phipsref(i,m) 
-                    enddo
-                    write(45,*) '@'
-c               endif
-            endif
-c   ------------------------------------------------------------------
-c   end test for wavefunction modification
-c   ------------------------------------------------------------------
 
             if (m.le.ncore) then
                ibound=1
             else
                ibound=ibd(m-ncore)               
             endif
-c           write(7,*)"ifc=",ifc
-            if (ifc.eq.0.or.m.gt.ncore) then
+
+            if (ifc.le.12.or.m.gt.ncore) then
 
 c     if not a frozen core calc or if valence
                if (irel.eq.0) then
@@ -307,20 +296,25 @@ c     if non-rel
                   if (inl.ne.0) then
 c     if non-local
                      call applyaug(rvloc,rvps(1,iloc))
-                     if (no(m).eq.no(iloc).and.lo(m).eq.lo(iloc)) then
-                     do i=1,np
-                        write(39,*) r(i),rvloc(i)/r(i),m
-                     enddo
-                     write(39,*) '@'
-                     endif
-                     
                      do i=1,np
                         Flstar(i) = (rvps(i,m) - rvloc(i))
      $                       *phipsref(i,m)/r(i)
                      enddo
-
+                     write(*,*) niter,ifc,m
+                     if (niter.eq.5.and.m.eq.2.and.ifc.eq.11) then
+                        do i=1,np
+                            write(26,*) r(i),rvps(i,m)
+                        enddo
+                        write(26,*)'@'
+                    endif
                      call schsl (m,no(m),lo(m),en(m),nmax(m),
      $                    rvloc,p,igh,ibound)
+                     if (m.eq.2.and.ifc.eq.11) then
+                        do i=1,np
+                            write(27,*) r(i),rnl(i,m),rvps(i,m)
+                        enddo
+                        write(27,*)'@'
+                    endif
 
                      if (itermcount.gt.50) then
                          goto 911
@@ -332,23 +326,14 @@ c     911 = terminal error - exit scpot
                      do i = 1, np
                         phiguess(i,m) = p(i)
                      enddo
-c                     write(39,*)'norb=',norb
-c                     write(39,*)'m=',m
-           do i = 1,np
-c            if (rnl(i,m).lt.0.0) then
-c            write(39,*) r(i),-rnl(i,m)*sqrt(r(i))
-c            else
-c             write(39,*) r(i),rnl(i,m)*sqrt(r(i))
-c            endif
-           enddo
-c          write(39,*)'@'
-                    
+                     
                   else
 c     if AE or local 
                      call schsl(m,no(m),lo(m),en(m),nmax(m),
      $                    rvps(1,m),p,igh,ibound)
 
                      if (itermcount.gt.50) then
+                         write(7,*) "line 445"
                          goto 911
                      endif
 c     911 = terminal error - exit scpot
@@ -370,6 +355,7 @@ c     911 = terminal error - exit scpot
                   edif = abs((en(m) - eold(m))/eold(m))
                   eold(m) = en(m)
                   edmax = max(edif,edmax)
+                  
                else
 c     if relativistic
                   
@@ -500,6 +486,14 @@ c     ***********************************************************************
      $              + (1.0 - xmix) * rvps(i,iorb)
             enddo
          enddo
+         if (inl.ne.0.and.ifc.eq.11) then
+            write(30,*) "#niter=",niter
+            do i=1,np
+                write(30,*) r(i),rvps(i,2)
+            enddo
+            write(30,*) '@'
+         endif
+
          if (niter.eq.maxit) then
              goto 911
           endif
@@ -540,7 +534,7 @@ c     ***********************************************************************
             else
                ibound=ibd(m-ncore)
             endif
-            if (ifc.eq.0.and.ibound.eq.1) then
+            if (ifc.le.12.and.ibound.eq.1) then
                if (irel.eq.0) then
                   do i = 1,nmax(m)
                      f(i) = p(i) * rnl(i,m)**2
@@ -580,10 +574,6 @@ c     911 = terminal error - exit scpot
 
       enddo
 
-c      close(77)
-c      close(78)
-c      close(79)
-c      close(80)
 
  505  format(1x,'!WARNING! positive eigenvalue predicted',
      $     ' in scpot  nlm=',i4,5x,'new e =',e13.7)
@@ -593,6 +583,13 @@ c      close(80)
 c     ***********************************************************************
 c     Section 8:  logder
 c     ***********************************************************************
+
+      if (inl.ne.0.and.ifc.eq.11) then
+          do i=1,np
+            write(32,*) r(i),rvps(i,2)
+          enddo
+          write(32,*) '@'
+      endif
 
       if (ilogder.eq.1) then
          if (ipsp.eq.0) then
@@ -979,7 +976,6 @@ c     911 = terminal error - exit scpot
       
       call flush(7)
       close(unit=7)
-c     close(unit=39)
 
 
  370  format(1x,i2,2i5,2f6.1,f10.4)
