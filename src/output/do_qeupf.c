@@ -263,6 +263,7 @@ int do_qeupf(param_t *param, FILE *fp_param, char *logfile){
   } else if (param->ixc == 7) {
     for (i=0;i<param->ngrid;i++){
       fprintf(fp,"%19.16le ",-nlcore[i]*2.0/rr[i]);
+//      fprintf(fp,"%19.16le ",rvcore[param->localind][i]/rr[i]);
       if( (i+1)%4 == 0 ) fprintf(fp,"\n");
     }
   } else {
@@ -304,6 +305,7 @@ int do_qeupf(param_t *param, FILE *fp_param, char *logfile){
             //looks wierd but rvcore has changed sign when it's written in rvps file
             //nlcore is positive here needs to change back to negative
             beta[i]=rnl[j][i]*(rvcore[j][i]+nlcore[i]*2.0)/rr[i];
+//            beta[i]=rnl[j][i]*(rvcore[j][i]-rvcore[param->localind][i])/rr[i];
         } else {
 	beta[i]=rnl[j][i]*(rvcore[j][i]-nlcore[i])/rr[i];
         }
