@@ -461,8 +461,8 @@ c     store index of rc
 
 c   non-local tranformation starts here
       do m=1,norb
+        call applyaughf(rvloc,rvcore(1,iloc))
         if (inl.ne.0) then
-            call applyaughf(rvloc,rvcore(1,iloc))
             if (m.gt.ncore) then
 
                     if (m.ne.iloc) then
