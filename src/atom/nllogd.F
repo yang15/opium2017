@@ -172,3 +172,62 @@ c     BST 09/08/10
       return
       end
 
+      subroutine applyaughf(rvl,rvs)
+      implicit double precision (a-h,o-z)
+
+#include "fortdim.h"
+
+c -------------------------------------------------------------------------
+c     External (shared between C and Fortran) common blocks
+c -------------------------------------------------------------------------
+      common /grid/ h,r1,z,r(npdm),np
+      common /box/ iboxstart(n0),iboxend(n0),boxheight(n0),numbox
+      common /nlpot2/ inl,indrc(n0),IB,ID,IG
+
+      dimension rvl(npdm),rvs(npdm)
+
+c      IA     = iboxstart(1)
+c      IB     = iboxend(1)
+c      ADEPTH = boxheight(1)
+c      IC     = iboxstart(2)
+c      ID     = iboxend(2)
+c      BDEPTH = boxheight(2)
+c      IE     = iboxstart(3)
+c      IG     = iboxend(3)
+c      CDEPTH = boxheight(3)
+c      IH     = iboxstart(4)
+c      IJ     = iboxend(4)
+c      DDEPTH = boxheight(4)
+      
+      do i = 1,np
+        rvl(i) = rvs(i)*r(i)
+      enddo
+
+c      do i = IA,IB
+c         rvl(i) = rvl(i) + ADEPTH * r(i)
+c      enddo
+c      do i = IC,ID
+c         rvl(i) = rvl(i) + BDEPTH * r(i)
+c      enddo
+c      do i = IE,IG
+c         rvl(i) = rvl(i) + CDEPTH * r(i)
+c      enddo
+c      do i = IH,IJ
+c         rvl(i) = rvl(i) + DDEPTH * r(i)
+c      enddo
+c     due to reversing the sign of rvcore, now rvcore is positive
+c     the box added is positive by convention, use minus sign here
+c     to make the local potential shallower
+
+      do i = 1,min(numbox,n0)
+         do j = iboxstart(i),iboxend(i)
+            rvl(j) = rvl(j) - boxheight(i) * r(j)
+         enddo
+      enddo
+      
+      do i=1,np
+        rvl(i)=rvl(i)/r(i)
+      enddo
+      return
+      end
+
